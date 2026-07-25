@@ -9,7 +9,9 @@ const AdminLayout = () => {
         <div className="admin-layout flex h-screen bg-gray-50 overflow-hidden">
             <Sidebar />
 
-            <div className="flex-1 flex flex-col lg:ml-64">
+            {/* min-w-0 lets this column shrink below its content width so <main>'s
+                overflow-x-auto actually engages; without it wide pages push past the viewport. */}
+            <div className="flex-1 flex flex-col lg:ml-64 min-w-0">
                 <AdminHeader />
 
                 <main
