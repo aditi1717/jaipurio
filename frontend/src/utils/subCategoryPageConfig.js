@@ -270,29 +270,15 @@ const writeCatalogToIndexedDb = async (catalog) => {
 };
 
 export const readCategoryPageCatalogAsync = async () => {
-    try {
-        const localCatalog = readStoredLocalCatalog();
-        if (isNonEmptyCatalog(localCatalog)) {
-            return localCatalog;
-        }
-    } catch {
-        // Continue to IndexedDB/network fallback.
-    }
-
-    try {
-        const indexedDbCatalog = sanitizeCategoryPageCatalog(await readCatalogFromIndexedDb());
-        if (isNonEmptyCatalog(indexedDbCatalog)) {
-            setIndexedDbPointer();
-            return indexedDbCatalog;
-        }
-    } catch {
-        // Continue to network fallback.
-    }
-
+    // The server is the source of truth: writeCategoryPageCatalog() always PUTs
+    // there, so IndexedDB/localStorage are only a per-browser cache. Reading the
+    // cache first made every device show its own divergent catalog and never
+    // pick up another device's saved changes.
     try {
         const { data } = await API.get('/settings');
-        const serverCatalog = data?.[SUBCATEGORY_PAGE_BUILDER_SERVER_FIELD];
-        if (Array.isArray(serverCatalog) && serverCatalog.length >= 0) {
+        const serverCatalog = sanitizeCategoryPageCatalog(data?.[SUBCATEGORY_PAGE_BUILDER_SERVER_FIELD]);
+
+        if (isNonEmptyCatalog(serverCatalog)) {
             if (typeof window !== 'undefined') {
                 try {
                     await writeCatalogToIndexedDb(serverCatalog);
@@ -305,11 +291,31 @@ export const readCategoryPageCatalogAsync = async () => {
                     }
                 }
             }
-            const sanitizedServerCatalog = sanitizeCategoryPageCatalog(serverCatalog);
-            return isNonEmptyCatalog(sanitizedServerCatalog) ? sanitizedServerCatalog : legacyCatalog;
+            return serverCatalog;
+        }
+        // Server reachable but empty: fall through to the cache rather than
+        // blanking a browser whose earlier save may not have reached it.
+    } catch {
+        // Offline or request failed — use whatever this browser cached.
+    }
+
+    try {
+        const localCatalog = readStoredLocalCatalog();
+        if (isNonEmptyCatalog(localCatalog)) {
+            return localCatalog;
         }
     } catch {
-        // Fallback to final local parse below.
+        // Continue to IndexedDB fallback.
+    }
+
+    try {
+        const indexedDbCatalog = sanitizeCategoryPageCatalog(await readCatalogFromIndexedDb());
+        if (isNonEmptyCatalog(indexedDbCatalog)) {
+            setIndexedDbPointer();
+            return indexedDbCatalog;
+        }
+    } catch {
+        // Continue to final local fallback.
     }
 
     try {
