@@ -18,7 +18,7 @@ dotenv.config({ path: path.join(__dirname, '..', '.env') });
 
 const MAP_PATH = path.join(__dirname, '..', 'cloudinary-url-map.json');
 const UPLOADS_ROOT = path.join(__dirname, '..', 'uploads');
-const BACKUP_PATH = path.join(__dirname, '..', `remap-backup-${Date.now()}.json`);
+const BACKUP_PATH = path.join(__dirname, '..', `remap-backup-${Date.now()}.jsonl`);
 const APPLY = process.argv.includes('--apply');
 
 // Replaces any mapped URL found inside a nested document shape.
@@ -71,7 +71,12 @@ const run = async () => {
     const db = mongoose.connection.db;
     const collections = await db.listCollections().toArray();
 
-    const backup = [];
+    // Backups stream to newline-delimited JSON. Accumulating changed documents
+    // in memory would risk an OOM on a small box: product docs carry large
+    // dailyViewStats arrays and this host has under 2GB of RAM.
+    const backupStream = APPLY ? fs.createWriteStream(BACKUP_PATH, { flags: 'a' }) : null;
+    let backedUp = 0;
+
     const summary = {};
     let totalDocs = 0;
     let totalReplaced = 0;
@@ -94,7 +99,13 @@ const run = async () => {
             replacedHere += stats.replaced;
 
             if (APPLY) {
-                backup.push({ collection: name, id: String(doc._id), before: doc });
+                const line = `${JSON.stringify({ collection: name, id: String(doc._id), before: doc })}\n`;
+                if (!backupStream.write(line)) {
+                    await new Promise((resolve) => backupStream.once('drain', resolve));
+                }
+                backedUp += 1;
+
+                // Only the fields that actually changed need writing back.
                 const { _id, ...fields } = updated;
                 await collection.updateOne({ _id: doc._id }, { $set: fields });
             }
@@ -107,8 +118,8 @@ const run = async () => {
         }
     }
 
-    if (APPLY && backup.length) {
-        fs.writeFileSync(BACKUP_PATH, JSON.stringify(backup, null, 2));
+    if (backupStream) {
+        await new Promise((resolve) => backupStream.end(resolve));
     }
 
     console.log('--- remap summary ---');
@@ -119,7 +130,7 @@ const run = async () => {
     console.log(`urls rewritten    : ${totalReplaced}`);
     console.log(`urls left as-is   : ${totalUnmapped} (not downloaded; still point at Cloudinary)`);
     if (APPLY) {
-        console.log(`backup            : ${backup.length ? BACKUP_PATH : 'none needed'}`);
+        console.log(`backup            : ${backedUp ? `${BACKUP_PATH} (${backedUp} docs)` : 'none needed'}`);
     } else {
         console.log('\nNothing was written. Re-run with --apply to commit.');
     }

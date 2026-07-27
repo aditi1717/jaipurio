@@ -47,4 +47,4 @@ temp_interactive_push.bat
 backend/cloudinary-manifest.json
 backend/cloudinary-url-map.json
 backend/cloudinary-failures.json
-backend/remap-backup-*.json
+backend/remap-backup-*.jsonl
