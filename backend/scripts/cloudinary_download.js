@@ -58,17 +58,14 @@ const downloadOne = async (url) => {
 
     const target = path.join(UPLOADS_DIR, relative);
 
-    const response = await fetchWithRetry(url);
-    const expected = Number(response.headers.get('content-length') || 0);
-
-    if (fs.existsSync(target)) {
-        const actual = fs.statSync(target).size;
-        if (actual > 0 && (!expected || actual === expected)) {
-            response.body?.cancel?.();
-            return { url, relative, status: 'skipped' };
-        }
+    // Resume check happens before any network call: cancelling an in-flight
+    // response body trips an undici assertion that kills the whole process,
+    // and skipping 1000s of files without a round-trip is far faster anyway.
+    if (fs.existsSync(target) && fs.statSync(target).size > 0) {
+        return { url, relative, status: 'skipped' };
     }
 
+    const response = await fetchWithRetry(url);
     fs.mkdirSync(path.dirname(target), { recursive: true });
 
     // Write to a temp file first so an interrupted run never leaves a
@@ -88,6 +85,16 @@ const run = async () => {
     const manifest = JSON.parse(fs.readFileSync(MANIFEST_PATH, 'utf8'));
     const urls = manifest.urls || [];
     fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+
+    // Drop truncated files from an interrupted run so they are re-fetched.
+    const sweepPartials = (dir) => {
+        for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+            const full = path.join(dir, entry.name);
+            if (entry.isDirectory()) sweepPartials(full);
+            else if (entry.name.endsWith('.part')) fs.unlinkSync(full);
+        }
+    };
+    sweepPartials(UPLOADS_DIR);
 
     const urlMap = fs.existsSync(MAP_PATH)
         ? JSON.parse(fs.readFileSync(MAP_PATH, 'utf8'))
