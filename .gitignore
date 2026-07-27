@@ -42,3 +42,9 @@ temp/
 branch_structure.json
 temp_auto_push.bat
 temp_interactive_push.bat
+
+# Cloudinary migration artefacts (large, regenerable)
+backend/cloudinary-manifest.json
+backend/cloudinary-url-map.json
+backend/cloudinary-failures.json
+backend/remap-backup-*.json
