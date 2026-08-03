@@ -129,7 +129,15 @@ app.use(
         immutable: true,
         fallthrough: false,
         index: false,
-        dotfiles: 'deny'
+        dotfiles: 'deny',
+        setHeaders: (res) => {
+            // Cloudinary served these with ACAO:*, and the invoice/label PDFs
+            // draw them into a canvas. Without it the canvas taints and the
+            // images come out blank. These are public assets with no cookies,
+            // so a wildcard is safe here even though the API allowlist is strict.
+            res.setHeader('Access-Control-Allow-Origin', '*');
+            res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
+        }
     })
 );
 
