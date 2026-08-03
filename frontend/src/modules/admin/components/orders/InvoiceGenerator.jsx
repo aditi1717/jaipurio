@@ -301,16 +301,16 @@ export const InvoiceDisplay = React.forwardRef(
           .label .barcode-wrap {
             height: 138px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            gap: 5px;
             padding: 8px 4px;
           }
           .label .barcode-meta {
             font-size: 8px;
             font-weight: bold;
             text-align: center;
-            writing-mode: vertical-rl;
-            transform: rotate(180deg);
             letter-spacing: 0.08em;
           }
           .label .qr-wrap {
@@ -468,23 +468,23 @@ export const InvoiceDisplay = React.forwardRef(
                 </td>
               </tr>
               <tr>
-                <td className="media-cell" style={{ width: "108px" }}>
+                <td className="media-cell" style={{ width: "130px" }}>
+                  <div className="qr-wrap">
+                    <QrCodeImage value={qrPayload} size={112} />
+                    <div className="mini-note" style={{ fontWeight: "bold", textAlign: "center" }}>
+                      {isCourierMode && trackingId ? `${getShippingProviderLabel(fulfillmentMode)} Tracking: ${trackingId}` : `Order ID: ${labelOrderId}`}
+                    </div>
+                  </div>
+                </td>
+                <td colSpan="3" className="media-cell">
                   <div className="barcode-wrap">
-                    <div style={{ width: "86px" }}>
-                      <BarcodeSvg value={barcodeValue} height={110} />
+                    <div style={{ width: "230px" }}>
+                      <BarcodeSvg value={barcodeValue} height={96} />
                     </div>
                     <div className="barcode-meta">
                       {awbDisplayValue
                         ? (isCourierMode && trackingId ? `Open Tracking | ${awbDisplayValue}` : `AWB No. ${awbDisplayValue}`)
                         : "TRACKING ID"}
-                    </div>
-                  </div>
-                </td>
-                <td colSpan="3" className="media-cell">
-                  <div className="qr-wrap">
-                    <QrCodeImage value={qrPayload} size={116} />
-                    <div className="mini-note" style={{ fontWeight: "bold", textAlign: "center" }}>
-                      {isCourierMode && trackingId ? `${getShippingProviderLabel(fulfillmentMode)} Tracking: ${trackingId}` : `Order ID: ${labelOrderId}`}
                     </div>
                   </div>
                 </td>
