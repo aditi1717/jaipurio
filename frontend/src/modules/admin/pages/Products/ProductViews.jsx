@@ -105,7 +105,8 @@ const ProductViews = () => {
             if (rangeRef.current.endDate) params.endDate = rangeRef.current.endDate;
             const [productsResult, portalResult] = await Promise.allSettled([
                 API.get('/products/view-insights/products', { params }),
-                API.get('/products/view-insights/portal')
+                // Same window drives the portal-wide cards, charts and funnel.
+                API.get('/products/view-insights/portal', { params })
             ]);
 
             if (productsResult.status === 'fulfilled') {
@@ -189,7 +190,9 @@ const ProductViews = () => {
     const startIndex = (safeCurrentPage - 1) * ITEMS_PER_PAGE;
     const paginatedProducts = filteredProducts.slice(startIndex, startIndex + ITEMS_PER_PAGE);
     const totalPortalVisitors = Number(portalInsights?.totalVisitors || 0);
-    const last7DaysVisitors = Number(portalInsights?.last7Days?.visitors || 0);
+    const last7DaysVisitors = Number(
+        (isRangeScoped ? portalInsights?.rangeTotals?.visitors : portalInsights?.last7Days?.visitors) || 0
+    );
     const liveLoggedInUsers = Number(portalInsights?.authStats?.activeLoggedInUsers || 0);
     const liveActiveAllUsers = Number(portalInsights?.authStats?.liveActiveAllUsers || 0);
     const todayLogins = Number(portalInsights?.authStats?.todayLogins || 0);
@@ -344,7 +347,9 @@ const ProductViews = () => {
                     <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-600 text-white">
                         <MdPeople size={22} />
                     </div>
-                    <p className="mt-4 text-xs font-black uppercase tracking-[0.2em] text-blue-500">Portal Visitors</p>
+                    <p className="mt-4 text-xs font-black uppercase tracking-[0.2em] text-blue-500">
+                        {isRangeScoped ? 'Visitors In Range' : 'Portal Visitors'}
+                    </p>
                     <p className="mt-2 text-3xl font-black text-gray-900">{totalPortalVisitors.toLocaleString()}</p>
                     <p className="mt-1 text-xs font-semibold text-gray-500">Tracked across guest and logged-in portal sessions</p>
                 </div>
@@ -368,7 +373,9 @@ const ProductViews = () => {
                     <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-amber-500 text-white">
                         <MdBarChart size={22} />
                     </div>
-                    <p className="mt-4 text-xs font-black uppercase tracking-[0.2em] text-amber-600">Last 7 Days</p>
+                    <p className="mt-4 text-xs font-black uppercase tracking-[0.2em] text-amber-600">
+                        {isRangeScoped ? 'Selected Range' : 'Last 7 Days'}
+                    </p>
                     <p className="mt-2 text-3xl font-black text-gray-900">{last7DaysVisitors.toLocaleString()}</p>
                     <p className="mt-1 text-xs font-semibold text-gray-500">Recent visitor movement across the portal</p>
                 </div>

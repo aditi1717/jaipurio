@@ -1024,7 +1024,9 @@ export const getProductViewInsights = async (req, res) => {
         return res.status(500).json({ message: error.message });
     }
 };
-let portalInsightsCache = { fetchedAt: 0, data: null };
+// Keyed by date range: a single shared slot would serve one range's numbers
+// for another once the dashboard filter started sending a window.
+const portalInsightsCache = new Map();
 
 // @desc    Get the lightweight product list used by the product views dashboard
 // @route   GET /api/products/view-insights/products
@@ -1075,13 +1077,15 @@ export const getProductViewProducts = async (req, res) => {
 // @desc    Get portal-wide product view insights
 // @route   GET /api/products/view-insights/portal
 // @access  Private/Admin
-export const getPortalViewInsights = async (_req, res) => {
+export const getPortalViewInsights = async (req, res) => {
     try {
-        if (
-            portalInsightsCache.data &&
-            (Date.now() - portalInsightsCache.fetchedAt) < PORTAL_INSIGHTS_CACHE_TTL_MS
-        ) {
-            return res.json(portalInsightsCache.data);
+        const requestedStart = String(req.query?.startDate || '').trim();
+        const requestedEnd = String(req.query?.endDate || '').trim();
+        const cacheKey = `${requestedStart}|${requestedEnd}`;
+
+        const cached = portalInsightsCache.get(cacheKey);
+        if (cached && (Date.now() - cached.fetchedAt) < PORTAL_INSIGHTS_CACHE_TTL_MS) {
+            return res.json(cached.data);
         }
 
         const now = new Date();
@@ -1090,9 +1094,34 @@ export const getPortalViewInsights = async (_req, res) => {
         startOfToday.setHours(0, 0, 0, 0);
 
         const recentDailyMap = new Map();
-        const recentStart = new Date(now);
-        recentStart.setDate(recentStart.getDate() - 29);
+
+        // The dashboard filter drives the whole aggregate window, not just the
+        // product table. Falls back to the previous 30-day default.
+        const parsedStart = requestedStart ? new Date(`${requestedStart}T00:00:00`) : null;
+        const parsedEnd = requestedEnd ? new Date(`${requestedEnd}T23:59:59.999`) : null;
+
+        const recentStart = parsedStart && !Number.isNaN(parsedStart.getTime())
+            ? parsedStart
+            : (() => {
+                const fallback = new Date(now);
+                fallback.setDate(fallback.getDate() - 29);
+                return fallback;
+            })();
         recentStart.setHours(0, 0, 0, 0);
+
+        const rangeEnd = parsedEnd && !Number.isNaN(parsedEnd.getTime()) ? parsedEnd : now;
+        const rangeDays = Math.max(
+            1,
+            Math.min(365, Math.round((rangeEnd - recentStart) / (24 * 60 * 60 * 1000)) + 1)
+        );
+
+        // Every aggregate below counts only page views inside the window, so the
+        // funnel, engagement and distribution figures move with the filter too.
+        const pagesInRange = (session) => (Array.isArray(session?.pagesVisited) ? session.pagesVisited : [])
+            .filter((page) => {
+                const at = page?.visitedAt ? new Date(page.visitedAt) : null;
+                return at && !Number.isNaN(at.getTime()) && at >= recentStart && at <= rangeEnd;
+            });
 
         const weekdayOrder = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
         const weeklyMap = new Map(weekdayOrder.map((day) => [day, { day, views: 0, visitors: 0 }]));
@@ -1112,13 +1141,14 @@ export const getPortalViewInsights = async (_req, res) => {
             recentSessions
         ] = await Promise.all([
             Product.countDocuments(),
-            PortalSession.countDocuments(),
+            // Scoped to the window: an all-time count would not move with the filter.
+            PortalSession.countDocuments({ lastSeenAt: { $gte: recentStart, $lte: rangeEnd } }),
             PortalSession.countDocuments({ isActive: true, lastSeenAt: { $gte: liveThreshold }, userRole: { $ne: 'guest' } }),
             PortalSession.countDocuments({ isActive: true, lastSeenAt: { $gte: liveThreshold } }),
             PortalSession.countDocuments({ loginAt: { $gte: startOfToday }, userRole: { $ne: 'guest' } }),
             PortalSession.countDocuments({ logoutAt: { $gte: startOfToday }, userRole: { $ne: 'guest' } }),
             PortalSession.countDocuments({ userRole: { $ne: 'guest' } }),
-            PortalSession.find({ lastSeenAt: { $gte: recentStart } })
+            PortalSession.find({ lastSeenAt: { $gte: recentStart, $lte: rangeEnd } })
                 .select(analyticsSessionFields)
                 .sort({ lastSeenAt: -1 })
                 .limit(PORTAL_ANALYTICS_SESSION_LIMIT)
@@ -1136,16 +1166,16 @@ export const getPortalViewInsights = async (_req, res) => {
             const visitedDates = new Set();
 
             const loginAt = session?.loginAt ? new Date(session.loginAt) : null;
-            if (loginAt && !Number.isNaN(loginAt.getTime()) && loginAt >= recentStart) {
+            if (loginAt && !Number.isNaN(loginAt.getTime()) && loginAt >= recentStart && loginAt <= rangeEnd) {
                 visitedDates.add(formatIndiaDateKey(loginAt));
             }
 
             const lastSeenAt = session?.lastSeenAt ? new Date(session.lastSeenAt) : null;
-            if (lastSeenAt && !Number.isNaN(lastSeenAt.getTime()) && lastSeenAt >= recentStart) {
+            if (lastSeenAt && !Number.isNaN(lastSeenAt.getTime()) && lastSeenAt >= recentStart && lastSeenAt <= rangeEnd) {
                 visitedDates.add(formatIndiaDateKey(lastSeenAt));
             }
 
-            const pagesVisited = Array.isArray(session?.pagesVisited) ? session.pagesVisited : [];
+            const pagesVisited = pagesInRange(session);
             totalViews += pagesVisited.length;
 
             for (const page of pagesVisited) {
@@ -1155,7 +1185,7 @@ export const getPortalViewInsights = async (_req, res) => {
                 const viewDateKey = formatIndiaDateKey(visitedAt);
                 visitedDates.add(viewDateKey);
 
-                if (visitedAt >= recentStart) {
+                if (visitedAt >= recentStart && visitedAt <= rangeEnd) {
                     const existing = recentDailyMap.get(viewDateKey) || { date: viewDateKey, views: 0, visitors: 0 };
                     existing.views += 1;
                     recentDailyMap.set(viewDateKey, existing);
@@ -1169,7 +1199,7 @@ export const getPortalViewInsights = async (_req, res) => {
 
             for (const dateKey of visitedDates) {
                 const dateVal = parseDateKey(dateKey);
-                if (!dateVal || dateVal < recentStart) continue;
+                if (!dateVal || dateVal < recentStart || dateVal > rangeEnd) continue;
 
                 const existing = recentDailyMap.get(dateKey) || { date: dateKey, views: 0, visitors: 0 };
                 existing.visitors += 1;
@@ -1199,7 +1229,7 @@ export const getPortalViewInsights = async (_req, res) => {
         let totalPagesVisited = 0;
 
         for (const session of allPortalSessions) {
-            const pages = Array.isArray(session?.pagesVisited) ? session.pagesVisited : [];
+            const pages = pagesInRange(session);
             const pagesCount = pages.length;
             totalPagesVisited += pagesCount;
 
@@ -1279,7 +1309,7 @@ export const getPortalViewInsights = async (_req, res) => {
             referrerMap[cleanRef] = (referrerMap[cleanRef] || 0) + 1;
 
             // Funnel tracking
-            const pages = Array.isArray(session?.pagesVisited) ? session.pagesVisited : [];
+            const pages = pagesInRange(session);
             let hasPdp = false;
             let hasCart = false;
             let hasCheckout = false;
@@ -1312,19 +1342,26 @@ export const getPortalViewInsights = async (_req, res) => {
             purchased: purchasedCount
         };
 
+        // Walk the selected window rather than a fixed 30 days so the trend
+        // chart spans exactly what the filter asked for.
         const dailyStats = [];
-        for (let offset = 29; offset >= 0; offset -= 1) {
-            const date = new Date(now);
-            date.setDate(date.getDate() - offset);
+        for (let offset = 0; offset < rangeDays; offset += 1) {
+            const date = new Date(recentStart);
+            date.setDate(date.getDate() + offset);
+            if (date > rangeEnd) break;
             const dateKey = formatIndiaDateKey(date);
             dailyStats.push(recentDailyMap.get(dateKey) || { date: dateKey, views: 0, visitors: 0 });
         }
 
         const weeklyDistribution = weekdayOrder.map((day) => weeklyMap.get(day));
-        const last7Days = dailyStats.slice(-7).reduce((acc, entry) => ({
+        const sumDays = (entries) => entries.reduce((acc, entry) => ({
             views: acc.views + Number(entry?.views || 0),
             visitors: acc.visitors + Number(entry?.visitors || 0)
         }), { views: 0, visitors: 0 });
+
+        const last7Days = sumDays(dailyStats.slice(-7));
+        // Totals across the whole selected window, for when a filter is active.
+        const rangeTotals = sumDays(dailyStats);
         const busiestDay = dailyStats.reduce((best, entry) => (
             Number(entry?.visitors || 0) > Number(best?.visitors || 0) ? entry : best
         ), dailyStats[0] || { date: '', views: 0, visitors: 0 });
@@ -1352,6 +1389,9 @@ export const getPortalViewInsights = async (_req, res) => {
             totalViews,
             totalVisitors,
             last7Days,
+            rangeTotals,
+            rangeStart: formatIndiaDateKey(recentStart),
+            rangeEnd: formatIndiaDateKey(rangeEnd),
             busiestDay,
             dailyStats,
             weeklyDistribution,
@@ -1374,7 +1414,7 @@ export const getPortalViewInsights = async (_req, res) => {
             }
         };
 
-        portalInsightsCache = { fetchedAt: Date.now(), data: responseData };
+        portalInsightsCache.set(cacheKey, { fetchedAt: Date.now(), data: responseData });
         return res.json(responseData);
     } catch (error) {
         return res.status(500).json({ message: error.message });
