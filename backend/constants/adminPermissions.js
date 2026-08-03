@@ -6,6 +6,7 @@ export const ADMIN_SIDEBAR_OPTIONS = [
     { key: 'deliverySlip', label: 'Delivery Slip', path: '/admin/delivery-slip' },
     { key: 'shippingCharges', label: 'Shipping Charges', path: '/admin/shipping-charges' },
     { key: 'pinCodes', label: 'PIN Codes', path: '/admin/pincodes' },
+    { key: 'demoBookings', label: 'Demo Bookings', path: '/admin/demo-bookings' },
     { key: 'products', label: 'Products', path: '/admin/products' },
     { key: 'maxSellingQty', label: 'Max Selling Qty', path: '/admin/products/max-selling-quantity' },
     { key: 'productViews', label: 'Product Views', path: '/admin/product-views' },

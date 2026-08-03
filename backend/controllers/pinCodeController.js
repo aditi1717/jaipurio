@@ -95,7 +95,7 @@ const buildImportPayload = (row) => {
 // @route   POST /api/pincodes
 // @access  Private/Admin
 const addPinCode = async (req, res) => {
-    const { code, isCOD, deliveryTime, deliveryUnit } = req.body;
+    const { code, isCOD, deliveryTime, deliveryUnit, demoEnabled } = req.body;
 
     // Validate inputs
     if (!code) {
@@ -114,7 +114,8 @@ const addPinCode = async (req, res) => {
         deliveryTime: Number(deliveryTime) > 0 ? Number(deliveryTime) : 3,
         deliveryUnit: ['minutes', 'hours', 'days'].includes(String(deliveryUnit || '').toLowerCase())
             ? String(deliveryUnit).toLowerCase()
-            : 'days'
+            : 'days',
+        demoEnabled: demoEnabled === true || String(demoEnabled).toLowerCase() === 'true'
     });
 
     if (pinCode) {
@@ -201,7 +202,7 @@ const checkPinCode = async (req, res) => {
 // @route   PUT /api/pincodes/:id
 // @access  Private/Admin
 const updatePinCode = async (req, res) => {
-    const { code, isCOD, deliveryTime, deliveryUnit } = req.body;
+    const { code, isCOD, deliveryTime, deliveryUnit, demoEnabled } = req.body;
     const pinCode = await PinCode.findById(req.params.id);
 
     if (pinCode) {
@@ -210,6 +211,9 @@ const updatePinCode = async (req, res) => {
         if (deliveryTime !== undefined && Number(deliveryTime) > 0) pinCode.deliveryTime = Number(deliveryTime);
         if (deliveryUnit !== undefined && ['minutes', 'hours', 'days'].includes(String(deliveryUnit).toLowerCase())) {
             pinCode.deliveryUnit = String(deliveryUnit).toLowerCase();
+        }
+        if (demoEnabled !== undefined) {
+            pinCode.demoEnabled = demoEnabled === true || String(demoEnabled).toLowerCase() === 'true';
         }
 
         const updatedPinCode = await pinCode.save();
