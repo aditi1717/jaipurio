@@ -198,7 +198,16 @@ export const getProducts = async (req, res) => {
             if (subCategoryTerm) {
                 const normalizedSubcategory = subCategoryTerm.toLowerCase();
                 const subRegex = new RegExp(`^${escapeRegex(subCategoryTerm)}$`, 'i');
-                const nameRegex = new RegExp(escapeRegex(subCategoryTerm), 'i');
+                // Must sit on its own between non-alphanumerics. An unanchored
+                // substring made short subcategory names match unrelated
+                // products — "mi" hit "Remix" and "Mini", pulling OPPO handsets
+                // into the Mi listing. Written without \b or lookbehind so it
+                // behaves identically in MongoDB's regex engine and for terms
+                // ending in punctuation such as "C+".
+                const nameRegex = new RegExp(
+                    `(^|[^A-Za-z0-9])${escapeRegex(subCategoryTerm)}([^A-Za-z0-9]|$)`,
+                    'i'
+                );
                 const scopedSubCategories = matchedCategory
                     ? activeSubCategories.filter((sub) => String(sub.category) === String(matchedCategory._id))
                     : activeSubCategories;
