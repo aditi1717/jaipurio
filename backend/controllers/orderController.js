@@ -1196,12 +1196,19 @@ const syncOrderFulfillmentStatus = async (order) => {
                 order.status = 'Delivered';
                 statusChanged = true;
             } else if (step === 'Cancelled' && order.status !== 'Cancelled') {
-                order.status = 'Cancelled';
-                statusChanged = true;
-                try {
-                    await restoreOrderStock(order);
-                } catch (stockError) {
-                    console.error(`Failed to restore stock for order ${order._id}:`, stockError);
+                // Do NOT cancel the order here. This sync runs on admin page
+                // loads, so a courier reporting Cancelled would silently void a
+                // live order and restore its stock with nobody in the loop.
+                // Flag it instead and let an admin confirm.
+                if (!order.courierCancellation?.reportedAt) {
+                    order.courierCancellation = {
+                        provider: getFulfillmentMode(order),
+                        rawStatus: String(tracking.currentStatus || step),
+                        reportedAt: new Date(),
+                        acknowledged: false
+                    };
+                    statusChanged = true;
+                    console.warn(`[courier-cancel] ${order.displayId || order._id} reported Cancelled by ${getFulfillmentMode(order)} — flagged for review, order left as ${order.status}`);
                 }
             } else if (['Dispatched', 'Out for Delivery'].includes(step)) {
                 if (order.status !== step) {
@@ -1360,12 +1367,19 @@ export const getOrderShippingTracking = async (req, res) => {
                 order.status = 'Delivered';
                 statusChanged = true;
             } else if (step === 'Cancelled' && order.status !== 'Cancelled') {
-                order.status = 'Cancelled';
-                statusChanged = true;
-                try {
-                    await restoreOrderStock(order);
-                } catch (stockError) {
-                    console.error(`Failed to restore stock for order ${order._id}:`, stockError);
+                // Do NOT cancel the order here. This sync runs on admin page
+                // loads, so a courier reporting Cancelled would silently void a
+                // live order and restore its stock with nobody in the loop.
+                // Flag it instead and let an admin confirm.
+                if (!order.courierCancellation?.reportedAt) {
+                    order.courierCancellation = {
+                        provider: getFulfillmentMode(order),
+                        rawStatus: String(tracking.currentStatus || step),
+                        reportedAt: new Date(),
+                        acknowledged: false
+                    };
+                    statusChanged = true;
+                    console.warn(`[courier-cancel] ${order.displayId || order._id} reported Cancelled by ${getFulfillmentMode(order)} — flagged for review, order left as ${order.status}`);
                 }
             } else if (['Dispatched', 'Out for Delivery'].includes(step)) {
                 if (order.status !== step) {

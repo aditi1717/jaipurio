@@ -155,6 +155,16 @@ const orderSchema = mongoose.Schema({
         responsePayload: { type: mongoose.Schema.Types.Mixed, default: null },
         cancelResponsePayload: { type: mongoose.Schema.Types.Mixed, default: null },
         lastError: { type: String, default: '' }
+    },
+
+    // Set when a courier reports the shipment cancelled but we did not cancel it.
+    // Recorded for an admin to action rather than cancelling the order outright:
+    // a courier blip would otherwise silently void a live order and return stock.
+    courierCancellation: {
+        provider: { type: String, default: '' },
+        rawStatus: { type: String, default: '' },
+        reportedAt: { type: Date },
+        acknowledged: { type: Boolean, default: false }
     }
 }, {
     timestamps: true,
