@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import API from '../../../services/api';
 
 const isSameItem = (item, product, variant = product?.variant || {}) => (
     item.id === product.id &&
@@ -68,6 +69,61 @@ export const useCartStore = create()(
                     }
                     return { cart: [...state.cart, { ...cartItem, quantity: clampQuantity(cartItem, 1) }] };
                 });
+            },
+
+            /**
+             * Cart items are a snapshot of the product taken when it was added,
+             * and the cart is persisted to localStorage. Without this refresh an
+             * admin changing "max selling quantity" never reaches carts that
+             * already hold the item, so the old limit applies indefinitely.
+             * Re-reads the live limit and stock, then re-clamps quantities.
+             */
+            refreshCartLimits: async () => {
+                const items = get().cart;
+                const ids = [...new Set(items.map((item) => item?.id).filter(Boolean))];
+                if (!ids.length) return;
+
+                let live = [];
+                try {
+                    const { data } = await API.get('/products', {
+                        params: { ids: ids.join(','), lite: true }
+                    });
+                    live = Array.isArray(data) ? data : (data?.products || []);
+                } catch {
+                    return; // Offline or failed: keep whatever limits we have.
+                }
+
+                const byId = new Map(live.map((product) => [String(product.id), product]));
+
+                set((state) => ({
+                    cart: state.cart.map((item) => {
+                        const product = byId.get(String(item?.id));
+                        if (!product) return item;
+
+                        // For a variant item the SKU's own stock is the real cap.
+                        let stock = Number(product.stock) || 0;
+                        const variant = item.variant || {};
+                        if (Object.keys(variant).length && Array.isArray(product.skus)) {
+                            const sku = product.skus.find((candidate) => {
+                                const combination = candidate?.combination || {};
+                                const keys = Object.keys(variant);
+                                return keys.length === Object.keys(combination).length
+                                    && keys.every((key) => String(variant[key]) === String(combination[key]));
+                            });
+                            if (sku) stock = Number(sku.stock) || 0;
+                        }
+
+                        const refreshed = {
+                            ...item,
+                            maxOrderQuantity: product.maxOrderQuantity,
+                            stock,
+                            // Drop the stale precomputed cap so it is derived again.
+                            maxAllowedQuantity: undefined
+                        };
+
+                        return { ...refreshed, quantity: clampQuantity(refreshed, item.quantity) };
+                    })
+                }));
             },
 
             removeFromCart: (productId, variant = {}) => {

@@ -183,6 +183,12 @@ const Checkout = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const { cart, addresses, placeOrder, getTotalPrice, setAddresses, appliedCoupon, applyCoupon, removeCoupon } = useCartStore();
+
+    // Last chance to catch a limit changed after the item was added, before the
+    // server rejects the order for exceeding it.
+    useEffect(() => {
+        useCartStore.getState().refreshCartLimits();
+    }, []);
     const { user, syncAddresses } = useAuthStore();
     const buyNowItem = location.state?.buyNowItem;
     

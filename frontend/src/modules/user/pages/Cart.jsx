@@ -49,6 +49,12 @@ const Cart = () => {
         maxShippingOrderAmount: 499
     });
 
+    // Cart items are persisted, so their stored purchase limit can predate an
+    // admin changing the product's max selling quantity.
+    useEffect(() => {
+        useCartStore.getState().refreshCartLimits();
+    }, []);
+
     useEffect(() => {
         const fetchShippingSettings = async () => {
             try {
