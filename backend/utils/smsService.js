@@ -15,6 +15,15 @@ const MAX_OTP_ATTEMPTS = 5;
 // would silently re-open 999999/0000/1234 as universal logins.
 const isTestOtpBypassEnabled = () => process.env.ALLOW_HARDCODED_LOGIN_OTP === 'true';
 
+// One normaliser for both storing and looking up an OTP. These used to differ:
+// saving kept every digit while verification searched on the last ten, so a
+// number arriving as +91XXXXXXXXXX was stored under twelve digits and could
+// never be found again — the user always saw "failed to verify OTP".
+const normalizeOtpMobile = (value = '') => {
+    const digits = String(value || '').replace(/\D/g, '');
+    return digits.length > 10 ? digits.slice(-10) : digits;
+};
+
 function getSmsConfig() {
     const apiKey = process.env.SMSINDIAHUB_API_KEY || process.env.SMS_INDIA_HUB_API_KEY;
     const senderId = process.env.SMSINDIAHUB_SENDER_ID || process.env.SMS_INDIA_HUB_SENDER_ID;
@@ -216,8 +225,7 @@ async function sendSmsViaApi(mobile, message) {
  * Save OTP to database
  */
 async function saveOtpToDb(mobile, otp, userType) {
-    // Normalize mobile number (remove any non-digits, ensure consistent format)
-    const normalizedMobile = mobile.replace(/\D/g, '');
+    const normalizedMobile = normalizeOtpMobile(mobile);
 
     await Otp.deleteMany({ mobile: normalizedMobile, userType });
     await Otp.create({
@@ -232,8 +240,7 @@ async function saveOtpToDb(mobile, otp, userType) {
  * Verify OTP from database
  */
 async function verifyOtpFromDb(mobile, otp, userType) {
-    // Normalize mobile number (remove any non-digits, ensure consistent format)
-    const normalizedMobile = mobile.replace(/\D/g, '');
+    const normalizedMobile = normalizeOtpMobile(mobile);
 
     // Look up by mobile only: a 4-digit OTP is brute-forceable, so wrong guesses must burn attempts.
     const record = await Otp.findOne({ mobile: normalizedMobile, userType });
