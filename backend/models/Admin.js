@@ -39,6 +39,12 @@ const adminSchema = mongoose.Schema({
     fcmToken: {
         type: String,
         default: null
+    },
+    // Per-admin read marker for the sidebar order badge. Kept per account so
+    // one admin opening Orders does not clear the badge for everyone else.
+    ordersLastSeenAt: {
+        type: Date,
+        default: null
     }
 }, {
     timestamps: true,

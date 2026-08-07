@@ -10,7 +10,9 @@ import {
     getOrderDelhiveryTracking,
     getOrderShippingTracking,
     assignOrderFulfillment,
-    updateBulkOrderStatus
+    updateBulkOrderStatus,
+    getNewOrderCount,
+    markOrdersSeen
 } from '../controllers/orderController.js';
 import { protect, admin } from '../middleware/authMiddleware.js';
 
@@ -19,6 +21,10 @@ router.route('/')
     .get(protect, admin, getOrders); // Admin for listing all orders
 
 router.route('/export').get(protect, admin, exportOrdersCsv);
+
+// Must stay above '/:id' so these are not read as an order id.
+router.route('/new-count').get(protect, admin, getNewOrderCount);
+router.route('/mark-seen').put(protect, admin, markOrdersSeen);
 
 router.route('/myorders').get(protect, getMyOrders); // User's own orders
 

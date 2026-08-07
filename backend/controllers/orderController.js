@@ -1474,6 +1474,41 @@ export const assignOrderFulfillment = async (req, res) => {
     }
 };
 
+// @desc    Count orders placed since this admin last opened the Orders page
+// @route   GET /api/orders/new-count
+// @access  Private/Admin
+export const getNewOrderCount = async (req, res) => {
+    try {
+        const Admin = (await import('../models/Admin.js')).default;
+        const admin = await Admin.findById(req.user._id).select('ordersLastSeenAt').lean();
+
+        // First ever visit: treat the account's own creation as the baseline so
+        // a new admin is not greeted by every historical order.
+        const since = admin?.ordersLastSeenAt || req.user.createdAt || new Date(0);
+
+        const count = await Order.countDocuments({ createdAt: { $gt: since } });
+        res.json({ count, since });
+    } catch (error) {
+        console.error('New order count error:', error);
+        res.status(500).json({ message: error.message });
+    }
+};
+
+// @desc    Clear this admin's new-order badge
+// @route   PUT /api/orders/mark-seen
+// @access  Private/Admin
+export const markOrdersSeen = async (req, res) => {
+    try {
+        const Admin = (await import('../models/Admin.js')).default;
+        const seenAt = new Date();
+        await Admin.findByIdAndUpdate(req.user._id, { $set: { ordersLastSeenAt: seenAt } });
+        res.json({ count: 0, seenAt });
+    } catch (error) {
+        console.error('Mark orders seen error:', error);
+        res.status(500).json({ message: error.message });
+    }
+};
+
 // @desc    Get all orders
 // @route   GET /api/orders
 // @access  Private/Admin
