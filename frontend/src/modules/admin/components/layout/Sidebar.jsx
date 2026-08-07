@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { MdMenu, MdClose } from 'react-icons/md';
 import useAdminAuthStore from '../../store/adminAuthStore';
+import useNewOrderStore from '../../store/newOrderStore';
 import { ADMIN_MENU_GROUPS, hasAdminPermission } from '../../constants/adminPermissions';
 
 import logo from '../../../../assets/indiankart-logo.png';
@@ -9,6 +10,16 @@ import logo from '../../../../assets/indiankart-logo.png';
 const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(true);
     const adminUser = useAdminAuthStore((state) => state.adminUser);
+    const newOrderCount = useNewOrderStore((state) => state.count);
+    const startPolling = useNewOrderStore((state) => state.startPolling);
+    const stopPolling = useNewOrderStore((state) => state.stopPolling);
+
+    useEffect(() => {
+        if (!adminUser) return undefined;
+        startPolling();
+        return stopPolling;
+    }, [adminUser, startPolling, stopPolling]);
+
     const menuGroups = ADMIN_MENU_GROUPS
         .map((group) => ({
             ...group,
@@ -61,6 +72,7 @@ const Sidebar = () => {
                             <div>
                                 {group.items.map((item) => {
                                     const Icon = item.icon;
+                                    const badge = item.key === 'orders' ? newOrderCount : 0;
                                     return (
                                         <NavLink
                                             key={item.path}
@@ -73,10 +85,21 @@ const Sidebar = () => {
                                                 }`
                                             }
                                         >
-                                            <Icon size={22} className="shrink-0" />
+                                            <span className="relative shrink-0">
+                                                <Icon size={22} />
+                                                {/* Collapsed rail has no room for the label, so show a dot there. */}
+                                                {badge > 0 && !isOpen && (
+                                                    <span className="absolute -top-1 -right-1 h-2.5 w-2.5 rounded-full bg-red-500 ring-2 ring-gray-900" />
+                                                )}
+                                            </span>
                                             <span className={`${isOpen ? 'block' : 'hidden lg:hidden'}`}>
                                                 {item.name}
                                             </span>
+                                            {badge > 0 && isOpen && (
+                                                <span className="ml-auto min-w-[20px] rounded-full bg-red-500 px-1.5 py-0.5 text-center text-[11px] font-black leading-none text-white">
+                                                    {badge > 99 ? '99+' : badge}
+                                                </span>
+                                            )}
                                         </NavLink>
                                     );
                                 })}

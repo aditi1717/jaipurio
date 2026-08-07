@@ -6,6 +6,7 @@ import API from '../../../../services/api';
 import { getAdminPaymentStatus } from '../../utils/paymentStatus';
 import OrderListFilters from '../../components/orders/OrderListFilters';
 import { DATE_RANGE_PRESETS, resolveDateRange } from '../../components/orders/orderDateRange';
+import useNewOrderStore from '../../store/newOrderStore';
 import OrderListTable from '../../components/orders/OrderListTable';
 
 const BULK_STATUS_OPTIONS = [
@@ -277,6 +278,11 @@ const OrderList = () => {
         const timer = setTimeout(fetchPaginatedOrders, cachedOrders ? 0 : 300);
         return () => clearTimeout(timer);
     }, [currentPage, searchTerm, statusFilter, userEmailFilter, startDate, endDate]);
+
+    // Opening the list is the "read" action that clears the sidebar badge.
+    useEffect(() => {
+        useNewOrderStore.getState().markSeen();
+    }, []);
 
     useEffect(() => {
         setSelectedOrderIds(new Set());
