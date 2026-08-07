@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { MdAdd, MdSearch, MdEdit, MdDelete, MdFilterList, MdImage, MdVisibility, MdChevronLeft, MdChevronRight, MdClose } from 'react-icons/md';
+import { MdAdd, MdSearch, MdEdit, MdDelete, MdFilterList, MdImage, MdVisibility, MdChevronLeft, MdChevronRight, MdClose, MdFileDownload } from 'react-icons/md';
 import useProductStore from '../../store/productStore';
 import Pagination from '../../../../components/Pagination';
 import API from '../../../../services/api'; import toast from 'react-hot-toast';
@@ -55,6 +55,12 @@ const ProductManager = () => {
     const [searchParams] = useSearchParams();
     const { deleteProduct } = useProductStore();
     const { categories, fetchCategories } = useCategoryStore();
+    const [showExportModal, setShowExportModal] = useState(false);
+    const [exportScope, setExportScope] = useState('all');
+    const [exportCategory, setExportCategory] = useState('');
+    const [exportSubCategory, setExportSubCategory] = useState('');
+    const [exportSubOptions, setExportSubOptions] = useState([]);
+    const [isExporting, setIsExporting] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
     const [filterCategory, setFilterCategory] = useState('All');
     const [selectedProduct, setSelectedProduct] = useState(null);
@@ -255,6 +261,77 @@ const ProductManager = () => {
     };
 
 
+    // Subcategories are fetched on demand so the dialog only lists ones that
+    // actually belong to the chosen category.
+    const loadExportSubCategories = async (categoryId) => {
+        setExportSubCategory('');
+        setExportSubOptions([]);
+        if (!categoryId) return;
+        try {
+            const { data } = await API.get(`/subcategories/category/${categoryId}`);
+            const list = Array.isArray(data) ? data : (data?.subCategories || []);
+            setExportSubOptions(list);
+        } catch {
+            toast.error('Could not load subcategories');
+        }
+    };
+
+    const handleExportProducts = async () => {
+        if (exportScope === 'category' && !exportCategory) {
+            toast.error('Choose a category first');
+            return;
+        }
+        if (exportScope === 'subcategory' && !exportSubCategory) {
+            toast.error('Choose a subcategory first');
+            return;
+        }
+
+        setIsExporting(true);
+        try {
+            const params = {};
+            const selectedCategory = categories.find((c) => String(c._id || c.id) === String(exportCategory));
+
+            if (exportScope === 'category') {
+                params.category = selectedCategory?.name || '';
+            } else if (exportScope === 'subcategory') {
+                if (selectedCategory?.name) params.category = selectedCategory.name;
+                params.subcategory = exportSubCategory;
+            }
+
+            const { data } = await API.get('/products/stock/export', {
+                params,
+                responseType: 'blob',
+                timeout: 0
+            });
+
+            const url = window.URL.createObjectURL(new Blob([data]));
+            const link = document.createElement('a');
+            link.href = url;
+            const suffix = exportScope === 'all'
+                ? 'all'
+                : (exportScope === 'subcategory' ? exportSubCategory : selectedCategory?.name || 'category');
+            link.download = `products_${String(suffix).replace(/\s+/g, '-').toLowerCase()}_${new Date().toISOString().split('T')[0]}.xlsx`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+
+            setShowExportModal(false);
+            toast.success('Export downloaded');
+        } catch (error) {
+            // The server answers with JSON on failure even though we asked for
+            // a blob, so read it back before showing a generic message.
+            let message = '';
+            const payload = error?.response?.data;
+            if (payload instanceof Blob) {
+                try { message = JSON.parse(await payload.text())?.message || ''; } catch { message = ''; }
+            }
+            toast.error(message || 'Failed to export products');
+        } finally {
+            setIsExporting(false);
+        }
+    };
+
     return (
         <div className="space-y-2 md:space-y-6">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 md:gap-4">
@@ -280,12 +357,22 @@ const ProductManager = () => {
                         </button>
                     </div>
                 ) : (
-                    <button
-                        onClick={() => navigate('/admin/products/new')}
-                        className="flex items-center justify-center gap-1 md:gap-2 bg-blue-600 text-white px-3 py-2 md:px-4 md:py-2 rounded-lg hover:bg-blue-700 transition shadow-sm font-medium w-full md:w-auto text-xs md:text-base"
-                    >
-                        <MdAdd size={20} className="w-4 h-4 md:w-5 md:h-5" /> Add Product
-                    </button>
+                    <div className="flex items-center gap-2 w-full md:w-auto">
+                        <button
+                            onClick={() => setShowExportModal(true)}
+                            disabled={isExporting}
+                            className="flex items-center justify-center gap-1 md:gap-2 bg-emerald-600 text-white px-3 py-2 md:px-4 md:py-2 rounded-lg hover:bg-emerald-700 disabled:bg-emerald-300 transition shadow-sm font-medium flex-1 md:flex-none text-xs md:text-base"
+                        >
+                            <MdFileDownload size={20} className="w-4 h-4 md:w-5 md:h-5" />
+                            {isExporting ? 'Exporting...' : 'Export'}
+                        </button>
+                        <button
+                            onClick={() => navigate('/admin/products/new')}
+                            className="flex items-center justify-center gap-1 md:gap-2 bg-blue-600 text-white px-3 py-2 md:px-4 md:py-2 rounded-lg hover:bg-blue-700 transition shadow-sm font-medium flex-1 md:flex-none text-xs md:text-base"
+                        >
+                            <MdAdd size={20} className="w-4 h-4 md:w-5 md:h-5" /> Add Product
+                        </button>
+                    </div>
                 )}
             </div>
 
@@ -535,6 +622,103 @@ const ProductManager = () => {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+            {showExportModal && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-950/60 backdrop-blur-sm">
+                    <div className="w-full max-w-md rounded-3xl bg-white border border-gray-100 shadow-2xl p-6 space-y-4">
+                        <div>
+                            <h2 className="text-lg font-black text-gray-900 uppercase tracking-wide">Export Products</h2>
+                            <p className="text-xs font-bold text-gray-500 mt-1">Choose what to include in the spreadsheet.</p>
+                        </div>
+
+                        <div className="space-y-2">
+                            {[
+                                { value: 'all', label: 'All products', hint: 'Everything in the catalogue' },
+                                { value: 'category', label: 'By category', hint: 'One category only' },
+                                { value: 'subcategory', label: 'By subcategory', hint: 'A single subcategory' }
+                            ].map((option) => (
+                                <label
+                                    key={option.value}
+                                    className={`flex cursor-pointer items-start gap-3 rounded-xl border p-3 transition-colors ${
+                                        exportScope === option.value
+                                            ? 'border-emerald-500 bg-emerald-50'
+                                            : 'border-gray-200 hover:bg-gray-50'
+                                    }`}
+                                >
+                                    <input
+                                        type="radio"
+                                        name="exportScope"
+                                        value={option.value}
+                                        checked={exportScope === option.value}
+                                        onChange={(e) => setExportScope(e.target.value)}
+                                        className="mt-1"
+                                    />
+                                    <span>
+                                        <span className="block text-sm font-black text-gray-900">{option.label}</span>
+                                        <span className="block text-[11px] font-semibold text-gray-500">{option.hint}</span>
+                                    </span>
+                                </label>
+                            ))}
+                        </div>
+
+                        {exportScope !== 'all' && (
+                            <div>
+                                <label className="block text-[10px] font-black text-gray-400 uppercase mb-1">Category</label>
+                                <select
+                                    value={exportCategory}
+                                    onChange={(e) => {
+                                        setExportCategory(e.target.value);
+                                        if (exportScope === 'subcategory') loadExportSubCategories(e.target.value);
+                                    }}
+                                    className="w-full rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 text-sm font-bold text-gray-900 outline-none focus:border-emerald-500 focus:bg-white"
+                                >
+                                    <option value="">Select a category</option>
+                                    {categories.map((cat) => (
+                                        <option key={cat._id || cat.id} value={cat._id || cat.id}>{cat.name}</option>
+                                    ))}
+                                </select>
+                            </div>
+                        )}
+
+                        {exportScope === 'subcategory' && (
+                            <div>
+                                <label className="block text-[10px] font-black text-gray-400 uppercase mb-1">Subcategory</label>
+                                <select
+                                    value={exportSubCategory}
+                                    onChange={(e) => setExportSubCategory(e.target.value)}
+                                    disabled={!exportCategory}
+                                    className="w-full rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 text-sm font-bold text-gray-900 outline-none focus:border-emerald-500 focus:bg-white disabled:opacity-60"
+                                >
+                                    <option value="">
+                                        {exportCategory ? 'Select a subcategory' : 'Choose a category first'}
+                                    </option>
+                                    {exportSubOptions.map((sub) => (
+                                        <option key={sub._id || sub.id} value={sub.name}>{sub.name}</option>
+                                    ))}
+                                </select>
+                            </div>
+                        )}
+
+                        <div className="flex justify-end gap-2 pt-2">
+                            <button
+                                type="button"
+                                onClick={() => setShowExportModal(false)}
+                                disabled={isExporting}
+                                className="px-5 py-2.5 rounded-xl border border-gray-200 bg-white text-gray-600 text-xs font-black uppercase hover:bg-gray-50 disabled:opacity-60"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                type="button"
+                                onClick={handleExportProducts}
+                                disabled={isExporting}
+                                className="px-5 py-2.5 rounded-xl bg-emerald-600 text-white text-xs font-black uppercase hover:bg-emerald-700 disabled:bg-emerald-300"
+                            >
+                                {isExporting ? 'Exporting...' : 'Download Excel'}
+                            </button>
                         </div>
                     </div>
                 </div>

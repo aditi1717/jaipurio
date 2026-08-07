@@ -1435,7 +1435,38 @@ export const getPortalViewInsights = async (req, res) => {
 // @access  Private/Admin
 export const exportStockExcel = async (req, res) => {
     try {
-        const products = await Product.find({}).sort({ name: 1 });
+        // Optional scoping. No params means the whole catalogue, as before.
+        const categoryTerm = String(req.query.category || '').trim();
+        const subCategoryTerm = String(req.query.subcategory || '').trim();
+        const filter = {};
+
+        if (categoryTerm && categoryTerm !== 'All') {
+            filter.category = new RegExp(`^${escapeRegex(categoryTerm)}$`, 'i');
+        }
+
+        if (subCategoryTerm && subCategoryTerm !== 'All') {
+            const exact = new RegExp(`^${escapeRegex(subCategoryTerm)}$`, 'i');
+            const conditions = [
+                { brand: exact },
+                { subcategoryBrand: exact },
+                { tags: exact }
+            ];
+
+            // Match the stored reference too when the name resolves to a real
+            // subcategory, so products tagged only by id are still included.
+            const subCat = await SubCategory.findOne({ name: exact }).select('_id').lean();
+            if (subCat) {
+                conditions.push({ subCategories: subCat._id }, { subCategory: subCat._id });
+            }
+
+            filter.$or = conditions;
+        }
+
+        const products = await Product.find(filter).sort({ name: 1 });
+
+        if (!products.length) {
+            return res.status(404).json({ message: 'No products match the selected filter.' });
+        }
         
         const workbook = new ExcelJS.Workbook();
         const worksheet = workbook.addWorksheet('Stock Management');
