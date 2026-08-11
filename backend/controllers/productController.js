@@ -1433,6 +1433,195 @@ export const getPortalViewInsights = async (req, res) => {
 // @desc    Export current stock to Excel sheet
 // @route   GET /api/products/stock/export
 // @access  Private/Admin
+// @desc    Blank template for bulk-creating products
+// @route   GET /api/products/bulk/template
+// @access  Private/Admin
+export const exportProductTemplate = async (req, res) => {
+    try {
+        const workbook = new ExcelJS.Workbook();
+        const sheet = workbook.addWorksheet('New Products');
+
+        sheet.mergeCells('A1:I1');
+        const title = sheet.getCell('A1');
+        title.value = 'IndianKart Bulk Product Upload';
+        title.font = { name: 'Arial', size: 16, bold: true, color: { argb: 'FFFFFF' } };
+        title.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: '1E3A8A' } };
+        title.alignment = { vertical: 'middle', horizontal: 'center' };
+        sheet.getRow(1).height = 30;
+
+        sheet.mergeCells('A2:I2');
+        const note = sheet.getCell('A2');
+        note.value = 'Fill one row per product from row 5. Name, Price, Category and Subcategory are required — use the exact spellings on the "Valid Categories" tab. Images are NOT set here; add them by editing each product afterwards.';
+        note.font = { name: 'Arial', size: 10, italic: true, bold: true, color: { argb: 'B91C1C' } };
+        note.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+        sheet.getRow(2).height = 32;
+
+        const headers = [
+            'Name *', 'Price *', 'Original Price', 'Brand',
+            'Category *', 'Subcategory *', 'Stock', 'Max Order Qty', 'Description'
+        ];
+        const headerRow = sheet.getRow(4);
+        headerRow.values = headers;
+        headerRow.eachCell((cell) => {
+            cell.font = { name: 'Arial', size: 11, bold: true, color: { argb: 'FFFFFF' } };
+            cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: '374151' } };
+            cell.alignment = { vertical: 'middle', horizontal: 'center' };
+        });
+        sheet.columns = [
+            { width: 40 }, { width: 12 }, { width: 15 }, { width: 18 },
+            { width: 20 }, { width: 20 }, { width: 10 }, { width: 15 }, { width: 50 }
+        ];
+
+        // Reference tab so the admin can copy exact category/subcategory names.
+        const refSheet = workbook.addWorksheet('Valid Categories');
+        refSheet.getRow(1).values = ['Category', 'Subcategory'];
+        refSheet.getRow(1).eachCell((cell) => {
+            cell.font = { bold: true, color: { argb: 'FFFFFF' } };
+            cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: '374151' } };
+        });
+        refSheet.columns = [{ width: 28 }, { width: 28 }];
+
+        const categories = await Category.find({}).select('_id name').sort({ name: 1 }).lean();
+        const subCategories = await SubCategory.find({}).select('name category').lean();
+        const subsByCategory = new Map();
+        subCategories.forEach((sub) => {
+            const key = String(sub.category);
+            if (!subsByCategory.has(key)) subsByCategory.set(key, []);
+            subsByCategory.get(key).push(sub.name);
+        });
+
+        let row = 2;
+        categories.forEach((category) => {
+            const subs = (subsByCategory.get(String(category._id)) || []).sort();
+            if (!subs.length) {
+                refSheet.getRow(row++).values = [category.name, '(no subcategory — create one first)'];
+                return;
+            }
+            subs.forEach((subName) => {
+                refSheet.getRow(row++).values = [category.name, subName];
+            });
+        });
+
+        res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        res.setHeader('Content-Disposition', 'attachment; filename="indiakart_bulk_products_template.xlsx"');
+        await workbook.xlsx.write(res);
+        res.end();
+    } catch (error) {
+        console.error('Product template error:', error);
+        res.status(500).json({ message: 'Failed to build template', error: error.message });
+    }
+};
+
+// @desc    Bulk-create products from a filled template (no images)
+// @route   POST /api/products/bulk/import
+// @access  Private/Admin
+export const importProductsExcel = async (req, res) => {
+    try {
+        if (!req.file?.path) {
+            return res.status(400).json({ message: 'Please upload an Excel spreadsheet file.' });
+        }
+
+        const workbook = new ExcelJS.Workbook();
+        await workbook.xlsx.load(await fs.readFile(req.file.path));
+        const sheet = workbook.getWorksheet('New Products') || workbook.worksheets[0];
+        if (!sheet) {
+            return res.status(400).json({ message: 'Excel worksheet is empty or invalid.' });
+        }
+
+        const cellText = (cell) => String(cell?.value?.text ?? cell?.value?.result ?? cell?.value ?? '').trim();
+        const cellNumber = (cell) => {
+            const raw = cellText(cell).replace(/[^0-9.-]/g, '');
+            const parsed = Number(raw);
+            return Number.isFinite(parsed) ? parsed : NaN;
+        };
+
+        const categories = await Category.find({}).select('_id id name').lean();
+        const categoryByName = new Map(categories.map((c) => [c.name.trim().toLowerCase(), c]));
+        const subCategories = await SubCategory.find({}).select('_id name category').lean();
+
+        const errors = [];
+        const toCreate = [];
+        // Ids are Date.now()-based elsewhere; offset by row so a batch stays unique.
+        const idBase = Date.now();
+
+        for (let rowNumber = 5; rowNumber <= sheet.rowCount; rowNumber++) {
+            const row = sheet.getRow(rowNumber);
+            const name = cellText(row.getCell(1));
+            if (!name) continue; // blank row
+
+            const price = cellNumber(row.getCell(2));
+            const categoryName = cellText(row.getCell(5));
+            const subCategoryName = cellText(row.getCell(6));
+
+            if (!Number.isFinite(price) || price <= 0) {
+                errors.push(`Row ${rowNumber} (${name}): Price must be a number greater than 0.`);
+                continue;
+            }
+
+            const category = categoryByName.get(categoryName.toLowerCase());
+            if (!category) {
+                errors.push(`Row ${rowNumber} (${name}): Unknown category "${categoryName}".`);
+                continue;
+            }
+
+            const subCat = subCategories.find((sub) =>
+                String(sub.category) === String(category._id)
+                && sub.name.trim().toLowerCase() === subCategoryName.toLowerCase()
+            );
+            if (!subCat) {
+                errors.push(`Row ${rowNumber} (${name}): "${subCategoryName}" is not a subcategory of ${category.name}.`);
+                continue;
+            }
+
+            const originalPrice = cellNumber(row.getCell(3));
+            const stock = cellNumber(row.getCell(7));
+            const maxOrderQuantity = cellNumber(row.getCell(8));
+
+            toCreate.push({
+                id: idBase + rowNumber,
+                name,
+                price,
+                originalPrice: Number.isFinite(originalPrice) && originalPrice > 0 ? originalPrice : price,
+                brand: cellText(row.getCell(4)),
+                category: category.name,
+                categoryId: category.id,
+                subCategories: [subCat._id],
+                stock: Number.isFinite(stock) && stock > 0 ? Math.floor(stock) : 0,
+                maxOrderQuantity: normalizeMaxOrderQuantity(maxOrderQuantity),
+                description: cellText(row.getCell(9)),
+                // Images are added later by editing the product.
+                image: '',
+                images: []
+            });
+        }
+
+        let created = 0;
+        if (toCreate.length) {
+            // ordered:false so one bad document does not abandon the rest.
+            const result = await Product.insertMany(toCreate, { ordered: false })
+                .catch((error) => {
+                    (error?.writeErrors || []).forEach((writeError) => {
+                        errors.push(`Insert failed: ${writeError?.errmsg || writeError?.message || 'unknown error'}`);
+                    });
+                    return error?.insertedDocs || [];
+                });
+            created = Array.isArray(result) ? result.length : 0;
+        }
+
+        res.json({
+            message: `${created} product${created === 1 ? '' : 's'} created. Add images by editing each product.`,
+            created,
+            skipped: errors.length,
+            errors: errors.slice(0, 50)
+        });
+    } catch (error) {
+        console.error('Bulk product import error:', error);
+        res.status(400).json({ message: error.message || 'Failed to import products' });
+    } finally {
+        if (req.file?.path) await fs.unlink(req.file.path).catch(() => {});
+    }
+};
+
 // @desc    Export products with their B2B flag as an editable sheet
 // @route   GET /api/products/b2b/export
 // @access  Private/Admin

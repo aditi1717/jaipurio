@@ -13,6 +13,8 @@ import {
     getPortalViewInsights,
     exportStockExcel,
     exportB2BExcel,
+    exportProductTemplate,
+    importProductsExcel,
     importB2BExcel,
     importStockExcel
 } from '../controllers/productController.js';
@@ -32,6 +34,12 @@ const uploadMiddleware = (req, res, next) => {
 router.route('/')
     .get(getProducts)
     .post(protect, admin, uploadMiddleware, createProduct);
+
+router.route('/bulk/template')
+    .get(protect, admin, exportProductTemplate);
+
+router.route('/bulk/import')
+    .post(protect, admin, upload.single('file'), importProductsExcel);
 
 router.route('/b2b/export')
     .get(protect, admin, exportB2BExcel);
