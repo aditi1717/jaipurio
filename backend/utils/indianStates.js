@@ -58,6 +58,13 @@ const ALIASES = {
     maharastra: 'Maharashtra', maharashtra: 'Maharashtra',
     karnatka: 'Karnataka', kerela: 'Kerala',
 
+    // Unambiguous abbreviations. "AP" is deliberately absent: it is equally
+    // Andhra Pradesh or Arunachal Pradesh, so it stays Unknown.
+    up: 'Uttar Pradesh', mp: 'Madhya Pradesh', tn: 'Tamil Nadu',
+    wb: 'West Bengal', hp: 'Himachal Pradesh', jk: 'Jammu and Kashmir',
+    ka: 'Karnataka', mh: 'Maharashtra', tg: 'Telangana', ts: 'Telangana',
+    od: 'Odisha', ktk: 'Karnataka',
+
     // Cities that clearly identify a state
     shimla: 'Himachal Pradesh', mumbai: 'Maharashtra', pune: 'Maharashtra',
     bengaluru: 'Karnataka', bangalore: 'Karnataka', chennai: 'Tamil Nadu',

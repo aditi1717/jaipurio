@@ -29,6 +29,13 @@ for (const place of ['Dhenkanal', 'Sundargarh', 'Sundar Garh', 'Bhadrak', 'Cutta
 assert.strictEqual(canonicalizeState('Shimla'), 'Himachal Pradesh');
 assert.strictEqual(canonicalizeState('Hyderabad telangana'), 'Telangana');
 
+// Unambiguous abbreviations resolve; ambiguous ones must not.
+assert.strictEqual(canonicalizeState('UP'), 'Uttar Pradesh');
+assert.strictEqual(canonicalizeState('up'), 'Uttar Pradesh');
+assert.strictEqual(canonicalizeState('MP'), 'Madhya Pradesh');
+assert.strictEqual(canonicalizeState('WB'), 'West Bengal');
+assert.strictEqual(canonicalizeState('AP'), '', '"AP" is ambiguous and must stay unresolved');
+
 // Junk must NOT be guessed at — an empty result becomes Unknown upstream.
 for (const junk of ['nbwjkengw', 'jijbweujigtbwtr', 'Jio office', 'India', '', '   ', null, undefined]) {
     assert.strictEqual(canonicalizeState(junk), '', `${JSON.stringify(junk)} must not resolve to a state`);
