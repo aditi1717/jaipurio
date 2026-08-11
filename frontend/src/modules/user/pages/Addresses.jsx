@@ -1,3 +1,4 @@
+import { ALL_INDIAN_STATES } from '../../../constants/indianStates';
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCartStore } from '../store/cartStore';
@@ -454,17 +455,20 @@ const Addresses = () => {
                                         </div>
                                         <div className="col-span-2 md:col-span-1 space-y-1">
                                             <label className="text-[10px] font-bold text-gray-400 uppercase">{stateText}</label>
-                                            <input
+                                            {/* A dropdown, not free text: this field used to collect
+                                                districts, towns and typos, which split one state's
+                                                analytics across several buckets. */}
+                                            <select
                                                 required
-                                                type="text"
-                                                className="w-full border border-gray-200 p-3 rounded-sm text-sm outline-none focus:border-blue-500 text-gray-900"
-                                                value={newAddr.state}
-                                                onChange={e => {
-                                                    const value = e.target.value;
-                                                    if (/\d/.test(value)) return;
-                                                    setNewAddr({ ...newAddr, state: value });
-                                                }}
-                                            />
+                                                className="w-full border border-gray-200 p-3 rounded-sm text-sm outline-none focus:border-blue-500 text-gray-900 bg-white"
+                                                value={ALL_INDIAN_STATES.includes(newAddr.state) ? newAddr.state : ''}
+                                                onChange={e => setNewAddr({ ...newAddr, state: e.target.value })}
+                                            >
+                                                <option value="">Select state</option>
+                                                {ALL_INDIAN_STATES.map((stateName) => (
+                                                    <option key={stateName} value={stateName}>{stateName}</option>
+                                                ))}
+                                            </select>
                                         </div>
                                     </div>
 

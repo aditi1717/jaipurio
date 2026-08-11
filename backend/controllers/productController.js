@@ -2,6 +2,7 @@ import Product from '../models/Product.js';
 import Category from '../models/Category.js';
 import SubCategory from '../models/SubCategory.js';
 import { resolveStateFromIp, getClientIp } from '../utils/geoState.js';
+import { canonicalizeState } from '../utils/indianStates.js';
 import { uploadBufferToCloudinary } from '../utils/cloudinaryUpload.js';
 import PortalSession from '../models/PortalSession.js';
 import ExcelJS from 'exceljs';
@@ -929,12 +930,14 @@ export const incrementProductView = async (req, res) => {
         // The client only knows a state for signed-in users with an address or
         // those who typed a pincode, which left most views as "Unknown".
         // Fall back to the request IP so guest traffic is attributed too.
-        let requestedState = normalizeViewState(req.body?.state);
+        // Canonicalise first: the client may send a district or a misspelling,
+        // which would otherwise open its own bucket alongside the real state.
+        let requestedState = canonicalizeState(req.body?.state) || 'Unknown';
         if (requestedState === 'Unknown') {
             const geoState = resolveStateFromIp(getClientIp(req));
-            if (geoState) requestedState = normalizeViewState(geoState);
+            if (geoState) requestedState = canonicalizeState(geoState) || 'Unknown';
         }
-        const normalizedState = requestedState;
+        const normalizedState = normalizeViewState(requestedState);
         const existingStateEntry = Array.isArray(product.viewStatsByState)
             ? product.viewStatsByState.find((entry) => normalizeViewState(entry?.state) === normalizedState)
             : null;
