@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { MdBusinessCenter, MdSearch, MdSync } from 'react-icons/md';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { MdBusinessCenter, MdSearch, MdSync, MdFileDownload, MdFileUpload } from 'react-icons/md';
 import toast from 'react-hot-toast';
 import API from '../../../../services/api';
 import useCategoryStore from '../../store/categoryStore';
@@ -30,6 +30,9 @@ const B2BManager = () => {
     const [productsLoading, setProductsLoading] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
     const [productSavingId, setProductSavingId] = useState(null);
+    const [isExporting, setIsExporting] = useState(false);
+    const [isImporting, setIsImporting] = useState(false);
+    const fileInputRef = useRef(null);
 
     const topLevelCategories = useMemo(
         () => (Array.isArray(categories) ? categories.filter((category) => category?.name) : []),
@@ -132,6 +135,53 @@ const B2BManager = () => {
         }
     };
 
+    const handleExportB2B = async () => {
+        setIsExporting(true);
+        try {
+            const { data } = await API.get('/products/b2b/export', { responseType: 'blob', timeout: 0 });
+            const url = window.URL.createObjectURL(new Blob([data]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `b2b_access_${new Date().toISOString().split('T')[0]}.xlsx`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+            toast.success('B2B sheet downloaded');
+        } catch {
+            toast.error('Failed to export B2B sheet');
+        } finally {
+            setIsExporting(false);
+        }
+    };
+
+    const handleImportB2B = async (event) => {
+        const file = event.target.files?.[0];
+        // Reset immediately so re-picking the same file still fires onChange.
+        event.target.value = '';
+        if (!file) return;
+
+        setIsImporting(true);
+        try {
+            const formData = new FormData();
+            formData.append('file', file);
+            const { data } = await API.post('/products/b2b/import', formData, {
+                headers: { 'Content-Type': 'multipart/form-data' },
+                timeout: 0
+            });
+
+            toast.success(data?.message || 'B2B sheet imported');
+            if (data?.errorCount) {
+                toast.error(`${data.errorCount} row${data.errorCount === 1 ? '' : 's'} skipped. First: ${data.errors?.[0] || ''}`);
+            }
+            if (selectedCategory?.name) fetchCategoryProducts(selectedCategory.name);
+        } catch (error) {
+            toast.error(error?.response?.data?.message || 'Failed to import B2B sheet');
+        } finally {
+            setIsImporting(false);
+        }
+    };
+
     return (
         <div className="space-y-6">
             <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
@@ -139,14 +189,41 @@ const B2BManager = () => {
                     <h1 className="text-2xl font-bold text-gray-900">B2B Management</h1>
                     <p className="text-sm text-gray-500">Turn B2B on for a category as a gate, then choose the exact products that should show B2B on checkout.</p>
                 </div>
-                <button
-                    type="button"
-                    onClick={() => selectedCategory?.name && fetchCategoryProducts(selectedCategory.name)}
-                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50"
-                >
-                    <MdSync size={18} />
-                    Refresh Products
-                </button>
+                <div className="flex flex-wrap items-center gap-2">
+                    <button
+                        type="button"
+                        onClick={handleExportB2B}
+                        disabled={isExporting}
+                        className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700 disabled:bg-emerald-300"
+                    >
+                        <MdFileDownload size={18} />
+                        {isExporting ? 'Exporting...' : 'Export Excel'}
+                    </button>
+                    <button
+                        type="button"
+                        onClick={() => fileInputRef.current?.click()}
+                        disabled={isImporting}
+                        className="inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700 disabled:bg-indigo-300"
+                    >
+                        <MdFileUpload size={18} />
+                        {isImporting ? 'Importing...' : 'Import Excel'}
+                    </button>
+                    <input
+                        ref={fileInputRef}
+                        type="file"
+                        accept=".xlsx,.xls"
+                        className="hidden"
+                        onChange={handleImportB2B}
+                    />
+                    <button
+                        type="button"
+                        onClick={() => selectedCategory?.name && fetchCategoryProducts(selectedCategory.name)}
+                        className="inline-flex items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50"
+                    >
+                        <MdSync size={18} />
+                        Refresh Products
+                    </button>
+                </div>
             </div>
 
             <div className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm">
