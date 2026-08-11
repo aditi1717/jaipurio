@@ -1578,6 +1578,7 @@ export const importProductsExcel = async (req, res) => {
             const originalPrice = cellNumber(row.getCell(3));
             const stock = cellNumber(row.getCell(7));
             const maxOrderQuantity = cellNumber(row.getCell(8));
+            const descriptionText = cellText(row.getCell(9));
 
             toCreate.push({
                 id: idBase + rowNumber,
@@ -1590,7 +1591,9 @@ export const importProductsExcel = async (req, res) => {
                 subCategories: [subCat._id],
                 stock: Number.isFinite(stock) && stock > 0 ? Math.floor(stock) : 0,
                 maxOrderQuantity: normalizeMaxOrderQuantity(maxOrderQuantity),
-                description: cellText(row.getCell(9)),
+                // description is an array of sections, not a string; the sheet
+                // carries one paragraph so it becomes a single content block.
+                description: descriptionText ? [{ content: descriptionText }] : [],
                 // Images are added later by editing the product.
                 image: '',
                 images: []
@@ -1602,12 +1605,22 @@ export const importProductsExcel = async (req, res) => {
             // ordered:false so one bad document does not abandon the rest.
             const result = await Product.insertMany(toCreate, { ordered: false })
                 .catch((error) => {
-                    (error?.writeErrors || []).forEach((writeError) => {
-                        errors.push(`Insert failed: ${writeError?.errmsg || writeError?.message || 'unknown error'}`);
+                    const writeErrors = error?.writeErrors || [];
+                    writeErrors.forEach((writeError) => {
+                        errors.push(`Insert failed: ${writeError?.errmsg || writeError?.err?.errmsg || writeError?.message || 'unknown error'}`);
                     });
+                    // A schema validation failure carries no writeErrors. Without
+                    // this the request reported success while creating nothing.
+                    if (!writeErrors.length) {
+                        errors.push(`Insert failed: ${error?.message || 'unknown error'}`);
+                    }
                     return error?.insertedDocs || [];
                 });
             created = Array.isArray(result) ? result.length : 0;
+        }
+
+        if (toCreate.length && created === 0 && !errors.length) {
+            errors.push('Rows were valid but nothing was written. Please retry or contact support.');
         }
 
         res.json({

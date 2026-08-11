@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { MdAdd, MdSearch, MdEdit, MdDelete, MdFilterList, MdImage, MdVisibility, MdChevronLeft, MdChevronRight, MdClose, MdFileDownload } from 'react-icons/md';
+import { MdAdd, MdSearch, MdEdit, MdDelete, MdFilterList, MdImage, MdVisibility, MdChevronLeft, MdChevronRight, MdClose, MdFileDownload, MdFileUpload, MdDescription } from 'react-icons/md';
 import useProductStore from '../../store/productStore';
 import Pagination from '../../../../components/Pagination';
 import API from '../../../../services/api'; import toast from 'react-hot-toast';
@@ -61,6 +61,12 @@ const ProductManager = () => {
     const [exportSubCategory, setExportSubCategory] = useState('');
     const [exportSubOptions, setExportSubOptions] = useState([]);
     const [isExporting, setIsExporting] = useState(false);
+    const [isImporting, setIsImporting] = useState(false);
+    // The list loader is scoped inside its effect, so bumping this re-runs it.
+    const [refreshToken, setRefreshToken] = useState(0);
+    const [isDownloadingTemplate, setIsDownloadingTemplate] = useState(false);
+    const [importResult, setImportResult] = useState(null);
+    const bulkFileInputRef = React.useRef(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [filterCategory, setFilterCategory] = useState('All');
     const [selectedProduct, setSelectedProduct] = useState(null);
@@ -159,7 +165,7 @@ const ProductManager = () => {
             active = false;
             clearTimeout(timer);
         };
-    }, [currentPage, filterCategory, searchTerm]);
+    }, [currentPage, filterCategory, searchTerm, refreshToken]);
 
     useEffect(() => {
         fetchCategories();
@@ -276,6 +282,57 @@ const ProductManager = () => {
         }
     };
 
+    const handleDownloadTemplate = async () => {
+        setIsDownloadingTemplate(true);
+        try {
+            const { data } = await API.get('/products/bulk/template', { responseType: 'blob', timeout: 0 });
+            const url = window.URL.createObjectURL(new Blob([data]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'indiakart_bulk_products_template.xlsx';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+            toast.success('Template downloaded. Fill it, then use Import.');
+        } catch {
+            toast.error('Failed to download template');
+        } finally {
+            setIsDownloadingTemplate(false);
+        }
+    };
+
+    const handleBulkImport = async (event) => {
+        const file = event.target.files?.[0];
+        // Cleared straight away so picking the same file again still fires.
+        event.target.value = '';
+        if (!file) return;
+
+        setIsImporting(true);
+        setImportResult(null);
+        try {
+            const formData = new FormData();
+            formData.append('file', file);
+            const { data } = await API.post('/products/bulk/import', formData, {
+                headers: { 'Content-Type': 'multipart/form-data' },
+                timeout: 0
+            });
+
+            setImportResult(data);
+            if (data?.created > 0) {
+                toast.success(data.message);
+                clearAdminListCache();
+                setRefreshToken((token) => token + 1);
+            } else {
+                toast.error('No products were created. See the details below.');
+            }
+        } catch (error) {
+            toast.error(error?.response?.data?.message || 'Failed to import products');
+        } finally {
+            setIsImporting(false);
+        }
+    };
+
     const handleExportProducts = async () => {
         if (exportScope === 'category' && !exportCategory) {
             toast.error('Choose a category first');
@@ -357,7 +414,32 @@ const ProductManager = () => {
                         </button>
                     </div>
                 ) : (
-                    <div className="flex items-center gap-2 w-full md:w-auto">
+                    <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">
+                        <button
+                            onClick={handleDownloadTemplate}
+                            disabled={isDownloadingTemplate}
+                            title="Download a blank Excel template for adding products in bulk"
+                            className="flex items-center justify-center gap-1 md:gap-2 bg-white border border-gray-200 text-gray-700 px-3 py-2 md:px-4 md:py-2 rounded-lg hover:bg-gray-50 disabled:opacity-60 transition shadow-sm font-medium flex-1 md:flex-none text-xs md:text-base"
+                        >
+                            <MdDescription size={20} className="w-4 h-4 md:w-5 md:h-5" />
+                            {isDownloadingTemplate ? 'Preparing...' : 'Template'}
+                        </button>
+                        <button
+                            onClick={() => bulkFileInputRef.current?.click()}
+                            disabled={isImporting}
+                            title="Upload a filled template to create products in bulk"
+                            className="flex items-center justify-center gap-1 md:gap-2 bg-indigo-600 text-white px-3 py-2 md:px-4 md:py-2 rounded-lg hover:bg-indigo-700 disabled:bg-indigo-300 transition shadow-sm font-medium flex-1 md:flex-none text-xs md:text-base"
+                        >
+                            <MdFileUpload size={20} className="w-4 h-4 md:w-5 md:h-5" />
+                            {isImporting ? 'Importing...' : 'Import Excel'}
+                        </button>
+                        <input
+                            ref={bulkFileInputRef}
+                            type="file"
+                            accept=".xlsx,.xls"
+                            className="hidden"
+                            onChange={handleBulkImport}
+                        />
                         <button
                             onClick={() => setShowExportModal(true)}
                             disabled={isExporting}
@@ -376,7 +458,36 @@ const ProductManager = () => {
                 )}
             </div>
 
-            {/* Filters */}
+            {importResult && (
+                <div className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
+                    <div className="flex items-start justify-between gap-3">
+                        <div>
+                            <p className="text-sm font-black text-gray-900">
+                                Import finished — {importResult.created || 0} created
+                                {importResult.skipped ? `, ${importResult.skipped} skipped` : ''}
+                            </p>
+                            <p className="mt-0.5 text-xs font-semibold text-gray-500">
+                                Images are not part of the sheet. Edit each new product to add them.
+                            </p>
+                        </div>
+                        <button
+                            type="button"
+                            onClick={() => setImportResult(null)}
+                            className="text-gray-400 hover:text-gray-600"
+                        >
+                            <MdClose size={18} />
+                        </button>
+                    </div>
+                    {Array.isArray(importResult.errors) && importResult.errors.length > 0 && (
+                        <ul className="mt-3 max-h-48 overflow-y-auto space-y-1 rounded-xl bg-red-50 p-3">
+                            {importResult.errors.map((message, index) => (
+                                <li key={index} className="text-[11px] font-semibold text-red-700">{message}</li>
+                            ))}
+                        </ul>
+                    )}
+                </div>
+            )}
+
             {/* Filters */}
             <div className="bg-white p-3 md:p-4 rounded-xl md:rounded-3xl border border-gray-100 shadow-sm flex flex-col md:flex-row gap-3 md:gap-4 items-center justify-between">
                 <div className="relative flex-1 w-full">
