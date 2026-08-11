@@ -1433,6 +1433,151 @@ export const getPortalViewInsights = async (req, res) => {
 // @desc    Export current stock to Excel sheet
 // @route   GET /api/products/stock/export
 // @access  Private/Admin
+// @desc    Export products with their B2B flag as an editable sheet
+// @route   GET /api/products/b2b/export
+// @access  Private/Admin
+export const exportB2BExcel = async (req, res) => {
+    try {
+        const categoryTerm = String(req.query.category || '').trim();
+        const filter = {};
+        if (categoryTerm && categoryTerm !== 'All') {
+            filter.category = new RegExp(`^${escapeRegex(categoryTerm)}$`, 'i');
+        }
+
+        const products = await Product.find(filter)
+            .select('id name brand category b2bEnabled')
+            .sort({ category: 1, name: 1 })
+            .lean();
+
+        if (!products.length) {
+            return res.status(404).json({ message: 'No products match the selected filter.' });
+        }
+
+        const workbook = new ExcelJS.Workbook();
+        const worksheet = workbook.addWorksheet('B2B Access');
+
+        worksheet.mergeCells('A1:E1');
+        const title = worksheet.getCell('A1');
+        title.value = 'IndianKart B2B Access Sheet';
+        title.font = { name: 'Arial', size: 16, bold: true, color: { argb: 'FFFFFF' } };
+        title.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: '1E3A8A' } };
+        title.alignment = { vertical: 'middle', horizontal: 'center' };
+        worksheet.getRow(1).height = 30;
+
+        worksheet.mergeCells('A2:E2');
+        const note = worksheet.getCell('A2');
+        note.value = 'INSTRUCTIONS: Only edit the "New B2B" column (E). Enter Yes or No. Leave blank to keep the current value. Do NOT change any other column.';
+        note.font = { name: 'Arial', size: 10, italic: true, bold: true, color: { argb: 'B91C1C' } };
+        note.alignment = { vertical: 'middle', horizontal: 'center' };
+        worksheet.getRow(2).height = 25;
+
+        const headers = ['Product ID', 'Product Name', 'Brand', 'Category', 'Current B2B', 'New B2B'];
+        const headerRow = worksheet.getRow(4);
+        headerRow.values = headers;
+        headerRow.eachCell((cell) => {
+            cell.font = { name: 'Arial', size: 11, bold: true, color: { argb: 'FFFFFF' } };
+            cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: '374151' } };
+            cell.alignment = { vertical: 'middle', horizontal: 'center' };
+        });
+
+        products.forEach((product, index) => {
+            const row = worksheet.getRow(5 + index);
+            row.values = [
+                product.id,
+                product.name || '',
+                product.brand || '',
+                product.category || '',
+                product.b2bEnabled ? 'Yes' : 'No',
+                ''
+            ];
+            row.getCell(6).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FEF9C3' } };
+        });
+
+        worksheet.columns = [
+            { width: 16 }, { width: 46 }, { width: 18 }, { width: 22 }, { width: 14 }, { width: 14 }
+        ];
+
+        res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        res.setHeader('Content-Disposition', 'attachment; filename="indiakart_b2b_access.xlsx"');
+        await workbook.xlsx.write(res);
+        res.end();
+    } catch (error) {
+        console.error('Export B2B Error:', error);
+        res.status(500).json({ message: 'Failed to export B2B sheet', error: error.message });
+    }
+};
+
+// @desc    Apply B2B flags from an uploaded sheet
+// @route   POST /api/products/b2b/import
+// @access  Private/Admin
+export const importB2BExcel = async (req, res) => {
+    try {
+        if (!req.file?.path) {
+            return res.status(400).json({ message: 'Please upload an Excel spreadsheet file.' });
+        }
+
+        const workbook = new ExcelJS.Workbook();
+        await workbook.xlsx.load(await fs.readFile(req.file.path));
+        const worksheet = workbook.worksheets[0];
+        if (!worksheet) {
+            return res.status(400).json({ message: 'Excel worksheet is empty or invalid.' });
+        }
+
+        const parseFlag = (value) => {
+            const text = String(value?.text ?? value ?? '').trim().toLowerCase();
+            if (!text) return null; // blank means "leave unchanged"
+            if (['yes', 'y', 'true', '1', 'enabled'].includes(text)) return true;
+            if (['no', 'n', 'false', '0', 'disabled'].includes(text)) return false;
+            return undefined; // unrecognised
+        };
+
+        const errors = [];
+        const operations = [];
+
+        for (let rowNumber = 5; rowNumber <= worksheet.rowCount; rowNumber++) {
+            const row = worksheet.getRow(rowNumber);
+            const rawId = row.getCell(1).value;
+            if (!rawId) continue;
+
+            const productId = Number(rawId?.result ?? rawId);
+            if (!Number.isFinite(productId)) {
+                errors.push(`Row ${rowNumber}: invalid Product ID "${rawId}".`);
+                continue;
+            }
+
+            const flag = parseFlag(row.getCell(6).value);
+            if (flag === null) continue;
+            if (flag === undefined) {
+                errors.push(`Row ${rowNumber}: "New B2B" must be Yes or No.`);
+                continue;
+            }
+
+            operations.push({
+                updateOne: { filter: { id: productId }, update: { $set: { b2bEnabled: flag } } }
+            });
+        }
+
+        let updated = 0;
+        if (operations.length) {
+            const result = await Product.bulkWrite(operations, { ordered: false });
+            updated = result.modifiedCount ?? 0;
+        }
+
+        res.json({
+            message: `${updated} product${updated === 1 ? '' : 's'} updated.`,
+            requested: operations.length,
+            updated,
+            errors: errors.slice(0, 50),
+            errorCount: errors.length
+        });
+    } catch (error) {
+        console.error('Import B2B Error:', error);
+        res.status(400).json({ message: error.message || 'Failed to import B2B sheet' });
+    } finally {
+        if (req.file?.path) await fs.unlink(req.file.path).catch(() => {});
+    }
+};
+
 export const exportStockExcel = async (req, res) => {
     try {
         // Optional scoping. No params means the whole catalogue, as before.

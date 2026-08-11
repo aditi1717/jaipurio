@@ -12,6 +12,8 @@ import {
     getProductViewProducts,
     getPortalViewInsights,
     exportStockExcel,
+    exportB2BExcel,
+    importB2BExcel,
     importStockExcel
 } from '../controllers/productController.js';
 import { protect, admin } from '../middleware/authMiddleware.js';
@@ -30,6 +32,12 @@ const uploadMiddleware = (req, res, next) => {
 router.route('/')
     .get(getProducts)
     .post(protect, admin, uploadMiddleware, createProduct);
+
+router.route('/b2b/export')
+    .get(protect, admin, exportB2BExcel);
+
+router.route('/b2b/import')
+    .post(protect, admin, upload.single('file'), importB2BExcel);
 
 router.route('/stock/export')
     .get(protect, admin, exportStockExcel);
