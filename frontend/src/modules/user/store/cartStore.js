@@ -77,6 +77,10 @@ export const useCartStore = create()(
              * admin changing "max selling quantity" never reaches carts that
              * already hold the item, so the old limit applies indefinitely.
              * Re-reads the live limit and stock, then re-clamps quantities.
+             *
+             * b2bEnabled is refreshed for the same reason: checkout decides B2B
+             * eligibility from the cart item, so a snapshot taken before the flag
+             * existed on the listing payload would never qualify.
              */
             refreshCartLimits: async () => {
                 const items = get().cart;
@@ -116,6 +120,7 @@ export const useCartStore = create()(
                         const refreshed = {
                             ...item,
                             maxOrderQuantity: product.maxOrderQuantity,
+                            b2bEnabled: Boolean(product.b2bEnabled),
                             stock,
                             // Drop the stale precomputed cap so it is derived again.
                             maxAllowedQuantity: undefined
