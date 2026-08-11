@@ -1,6 +1,7 @@
 import Product from '../models/Product.js';
 import Category from '../models/Category.js';
 import SubCategory from '../models/SubCategory.js';
+import { resolveStateFromIp, getClientIp } from '../utils/geoState.js';
 import { uploadBufferToCloudinary } from '../utils/cloudinaryUpload.js';
 import PortalSession from '../models/PortalSession.js';
 import ExcelJS from 'exceljs';
@@ -925,7 +926,15 @@ export const incrementProductView = async (req, res) => {
             return res.status(404).json({ message: 'Product not found' });
         }
 
-        const normalizedState = normalizeViewState(req.body?.state);
+        // The client only knows a state for signed-in users with an address or
+        // those who typed a pincode, which left most views as "Unknown".
+        // Fall back to the request IP so guest traffic is attributed too.
+        let requestedState = normalizeViewState(req.body?.state);
+        if (requestedState === 'Unknown') {
+            const geoState = resolveStateFromIp(getClientIp(req));
+            if (geoState) requestedState = normalizeViewState(geoState);
+        }
+        const normalizedState = requestedState;
         const existingStateEntry = Array.isArray(product.viewStatsByState)
             ? product.viewStatsByState.find((entry) => normalizeViewState(entry?.state) === normalizedState)
             : null;

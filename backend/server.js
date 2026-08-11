@@ -121,6 +121,11 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(cookieParser());
 
+// One hop: nginx. Without this req.ip is nginx's loopback address, so the
+// geo-IP state fallback would never resolve a real visitor location. Set to 1
+// rather than true so a client cannot spoof its address via X-Forwarded-For.
+app.set('trust proxy', 1);
+
 // Locally hosted media (replaces Cloudinary). In production nginx serves this
 // path directly; this handler is the fallback for dev and any missed request.
 app.use(
