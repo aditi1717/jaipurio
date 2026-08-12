@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { MdSearch, MdCheckCircle, MdCancel, MdPendingActions, MdHistory, MdVisibility, MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import useReturnStore from '../../store/returnStore';
 import API from '../../../../services/api';
+import toast from 'react-hot-toast';
 import AdminTable, { AdminTableHead, AdminTableHeaderCell, AdminTableHeaderRow } from '../../components/common/AdminTable';
 
 const ReturnRequests = ({ forcedType = 'All', pageTitle = 'Returns & Replacements', pageDescription = 'Manage lifecycle of return and replacement requests' }) => {
@@ -10,6 +11,11 @@ const ReturnRequests = ({ forcedType = 'All', pageTitle = 'Returns & Replacement
     const { returns, updateReturnStatus, fetchReturns } = useReturnStore();
     const [searchTerm, setSearchTerm] = useState('');
     const [typeFilter, setTypeFilter] = useState(forcedType);
+    const [pickupMode, setPickupMode] = useState('manual');
+    const [pickupAwb, setPickupAwb] = useState('');
+    const [pickupDate, setPickupDate] = useState('');
+    const [pickupNotes, setPickupNotes] = useState('');
+    const [isAssigningPickup, setIsAssigningPickup] = useState(false);
 
     useEffect(() => {
         fetchReturns();
@@ -73,6 +79,34 @@ const ReturnRequests = ({ forcedType = 'All', pageTitle = 'Returns & Replacement
     const handleStatusUpdate = async (id, newStatus, note = '') => {
         await updateReturnStatus(id, newStatus, note);
         setSelectedReturn((prev) => prev ? { ...prev, status: newStatus } : prev);
+    };
+
+    const handleAssignPickup = async () => {
+        if (!selectedReturn) return;
+
+        const mode = pickupMode;
+        const awb = pickupAwb.trim();
+        if (['ekart', 'delhivery'].includes(mode) && !awb) {
+            toast.error('Enter the reverse pickup AWB from the courier panel');
+            return;
+        }
+
+        setIsAssigningPickup(true);
+        try {
+            const { data } = await API.put(`/returns/${selectedReturn._id || selectedReturn.id}/fulfillment`, {
+                mode,
+                trackingNumber: awb,
+                pickupScheduledAt: pickupDate || undefined,
+                notes: pickupNotes.trim()
+            });
+            setSelectedReturn(data);
+            toast.success(mode === 'manual' ? 'Manual pickup assigned' : `${mode} pickup assigned`);
+            fetchReturns();
+        } catch (error) {
+            toast.error(error?.response?.data?.message || 'Failed to assign pickup');
+        } finally {
+            setIsAssigningPickup(false);
+        }
     };
 
     const handleRejectWithReason = async (id) => {
@@ -386,6 +420,75 @@ const ReturnRequests = ({ forcedType = 'All', pageTitle = 'Returns & Replacement
                                 </span>
                                 <button onClick={() => setSelectedReturn(null)} className="p-2 hover:bg-gray-100 rounded-full text-gray-400 md:hidden"><MdCancel size={24} /></button>
                             </div>
+
+                            {/* Reverse pickup — same shape as the orders fulfillment flow */}
+                            {selectedReturn.type !== 'Cancellation' && (
+                                <div className="mb-6 rounded-2xl border border-gray-150 bg-gray-50/70 p-4">
+                                    <div className="flex items-center justify-between mb-3">
+                                        <p className="text-[11px] font-black uppercase tracking-widest text-gray-500">Reverse Pickup</p>
+                                        {selectedReturn.fulfillment?.mode && selectedReturn.fulfillment.mode !== 'unassigned' && (
+                                            <span className="rounded-full bg-emerald-100 px-2.5 py-1 text-[10px] font-black uppercase text-emerald-700">
+                                                {selectedReturn.fulfillment.mode}
+                                                {selectedReturn.fulfillment.trackingNumber ? ` · ${selectedReturn.fulfillment.trackingNumber}` : ''}
+                                            </span>
+                                        )}
+                                    </div>
+
+                                    <div className="grid grid-cols-2 gap-2">
+                                        <select
+                                            value={pickupMode}
+                                            onChange={(e) => setPickupMode(e.target.value)}
+                                            disabled={isAssigningPickup}
+                                            className="rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs font-bold text-gray-900 outline-none focus:border-blue-500"
+                                        >
+                                            <option value="manual">Manual (own staff)</option>
+                                            <option value="ekart">Ekart</option>
+                                            <option value="delhivery">Delhivery</option>
+                                        </select>
+                                        <input
+                                            type="date"
+                                            value={pickupDate}
+                                            onChange={(e) => setPickupDate(e.target.value)}
+                                            disabled={isAssigningPickup}
+                                            className="rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs font-bold text-gray-900 outline-none focus:border-blue-500"
+                                        />
+                                    </div>
+
+                                    {['ekart', 'delhivery'].includes(pickupMode) && (
+                                        <>
+                                            <input
+                                                type="text"
+                                                value={pickupAwb}
+                                                onChange={(e) => setPickupAwb(e.target.value)}
+                                                disabled={isAssigningPickup}
+                                                placeholder="Reverse pickup AWB"
+                                                className="mt-2 w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs font-mono text-gray-900 outline-none focus:border-blue-500"
+                                            />
+                                            <p className="mt-1 text-[10px] font-semibold text-amber-700">
+                                                Create the reverse pickup in the {pickupMode === 'ekart' ? 'Ekart' : 'Delhivery'} panel, then paste its AWB here.
+                                            </p>
+                                        </>
+                                    )}
+
+                                    <input
+                                        type="text"
+                                        value={pickupNotes}
+                                        onChange={(e) => setPickupNotes(e.target.value)}
+                                        disabled={isAssigningPickup}
+                                        placeholder="Notes (optional)"
+                                        className="mt-2 w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs font-semibold text-gray-900 outline-none focus:border-blue-500"
+                                    />
+
+                                    <button
+                                        type="button"
+                                        onClick={handleAssignPickup}
+                                        disabled={isAssigningPickup}
+                                        className="mt-3 w-full rounded-xl bg-blue-600 px-4 py-2.5 text-xs font-black uppercase tracking-wide text-white hover:bg-blue-700 disabled:bg-blue-300"
+                                    >
+                                        {isAssigningPickup ? 'Assigning...' : 'Assign Pickup'}
+                                    </button>
+                                </div>
+                            )}
 
                             <div className="space-y-6">
                                 <div className="flex gap-4">
