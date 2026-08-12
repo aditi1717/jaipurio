@@ -109,6 +109,31 @@ const syncReturnStatusesForOrder = async (order) => {
 // @desc    Create a new return request
 // @route   POST /api/returns
 // @access  Private
+/**
+ * A display name for the return record. Accounts created through OTP login have
+ * no name, which is most of them, and Return.customer is required — so building
+ * the record straight from req.user.name failed validation and those customers
+ * could never raise a return or replacement at all. The order's shipping name
+ * is the reliable source; phone and email are last resorts.
+ */
+const resolveCustomerName = (user, order) => {
+    const candidates = [
+        user?.name,
+        order?.shippingAddress?.name,
+        user?.phone,
+        order?.shippingAddress?.phone,
+        user?.email
+    ];
+
+    for (const candidate of candidates) {
+        const value = String(candidate || '').trim();
+        // Placeholder OTP emails are no better than a blank name.
+        if (value && !value.endsWith('@otp.local') && !value.endsWith('@temp.local')) return value;
+    }
+
+    return 'Customer';
+};
+
 export const createReturnRequest = async (req, res) => {
     try {
         const {
@@ -298,7 +323,7 @@ export const createReturnRequest = async (req, res) => {
                 orderId: order._id,
                 orderItemId: item._id?.toString(),
                 userId: req.user._id?.toString(),
-                customer: req.user.name,
+                customer: resolveCustomerName(req.user, order),
                 product: {
                     id: item.product,
                     name: item.name,
@@ -396,7 +421,7 @@ export const createReturnRequest = async (req, res) => {
                 id: `CAN-${Date.now()}`,
                 orderId: order._id,
                 userId: req.user._id?.toString(),
-                customer: req.user.name,
+                customer: resolveCustomerName(req.user, order),
                 product: {
                     name: 'Whole Order Cancellation',
                     image: order.orderItems[0]?.image || '', // Use first item image as placeholder
