@@ -25,6 +25,14 @@ const Login = () => {
     const location = useLocation();
     const { sendOtp, verifyOtp, updateProfile, loading, error } = useAuthStore();
 
+    // OTP signup stores a stand-in name rather than leaving it blank, which must
+    // not be prefilled as though the customer had typed it. Email has its own
+    // check in isRealEmail above.
+    const isRealName = (value = '') => {
+        const text = String(value || '').trim();
+        return Boolean(text) && text.toLowerCase() !== 'test user';
+    };
+
     const [mobile, setMobile] = useState(location.state?.mobile || '');
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -72,7 +80,18 @@ const Login = () => {
 
         try {
             const data = await verifyOtp(normalizeForHardcodedLogin(mobile), otp, 'Customer');
-            
+
+            // The API has always reported when an account still needs a name and
+            // email, but this jumped straight home and skipped the profile step,
+            // which is why almost every OTP account ended up nameless — and why
+            // those customers could not raise a return.
+            if (data?.requiresProfile) {
+                setName(isRealName(data?.name) ? String(data.name) : '');
+                setEmail(isRealEmail(data?.email) ? String(data.email) : '');
+                setStep(3);
+                return;
+            }
+
             toast.success('Login successful!');
             navigate('/', { replace: true });
             return;
@@ -119,7 +138,12 @@ const Login = () => {
         <div className="md:min-h-screen md:bg-gray-50 md:flex md:items-center md:justify-center">
             <div className="min-h-screen md:min-h-fit bg-white flex flex-col p-4 md:p-8 md:max-w-lg md:w-full md:rounded-2xl md:shadow-xl md:border md:border-gray-100">
                 <div className="flex justify-start md:justify-end mb-2">
-                    <button onClick={() => navigate('/')} className="material-icons text-2xl text-gray-800">close</button>
+                    {/* No dismissing the profile step: skipping it is what left
+                        most accounts nameless. Closing the tab is still fine —
+                        the API keeps reporting requiresProfile on next login. */}
+                    {step !== 3 && (
+                        <button onClick={() => navigate('/')} className="material-icons text-2xl text-gray-800">close</button>
+                    )}
                 </div>
 
                 <div className="flex-1 flex flex-col pt-0">
