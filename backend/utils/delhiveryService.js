@@ -269,6 +269,116 @@ const normalizeTrackingResponse = (responseData, fallbackWaybill = '') => {
     };
 };
 
+/**
+ * Reverse pickup (RVP) payload. Delhivery reuses the forward endpoint and
+ * schema: the shipment is addressed to the customer being collected FROM,
+ * payment_mode becomes "Pickup", and the return_* keys name where the parcel
+ * is delivered to. Without those keys it goes to the registered warehouse.
+ * See https://delhivery-express-api-doc.readme.io/reference/order-creation-api
+ */
+const buildReversePickupPayload = (returnRequest, order, settings) => {
+    const pickupFrom = returnRequest?.pickupAddress || {};
+    const shippingAddress = order?.shippingAddress || {};
+
+    // Collect from wherever the customer asked, falling back to the delivery
+    // address the order originally went to.
+    const name = sanitizeText(pickupFrom.name || shippingAddress.name || 'Customer');
+    const phone = normalizePhone(pickupFrom.phone || shippingAddress.phone || '');
+    const pin = String(pickupFrom.pincode || shippingAddress.postalCode || '').trim();
+    const city = sanitizeText(pickupFrom.city || shippingAddress.city || '');
+    const state = sanitizeText(pickupFrom.state || shippingAddress.state || '');
+    const address = sanitizeText(
+        [pickupFrom.address || shippingAddress.street, city, state].filter(Boolean).join(', ')
+    );
+
+    const sellerName = sanitizeText(settings?.sellerName || 'IndianKart');
+    const sellerAddress = sanitizeText(settings?.sellerAddress || 'Store Address');
+    const reference = sanitizeText(returnRequest?.id || returnRequest?._id || '');
+    const quantity = Math.max(1, Number(returnRequest?.requestedQuantity) || 1);
+
+    return {
+        shipments: [
+            {
+                name,
+                add: address,
+                pin,
+                city,
+                state,
+                country: 'India',
+                phone,
+                order: reference,
+                // The one field that makes this a reverse shipment.
+                payment_mode: 'Pickup',
+                products_desc: sanitizeText(returnRequest?.product?.name || 'Returned item').slice(0, 250),
+                order_date: formatOrderDate(returnRequest?.date || returnRequest?.createdAt),
+                total_amount: Number(returnRequest?.product?.price || 0) * quantity,
+                cod_amount: 0,
+                quantity,
+                seller_name: sellerName,
+                seller_add: sellerAddress,
+                seller_inv: reference,
+                shipment_width: 10,
+                shipment_height: 10,
+                shipment_length: 10,
+                weight: Math.max(0.5, quantity * 0.5),
+                seller_gst_tin: sanitizeText(settings?.gstNumber || ''),
+                hsn_code: '0000',
+                // Where the collected parcel is delivered back to.
+                return_name: sellerName,
+                return_add: sellerAddress,
+                return_city: sanitizeText(settings?.sellerCity || city),
+                return_state: sanitizeText(settings?.sellerState || state),
+                return_pin: String(settings?.sellerPincode || '').trim(),
+                return_phone: normalizePhone(settings?.contactPhone || '')
+            }
+        ],
+        pickup_location: {
+            name: sanitizeText(settings?.delhiveryPickupLocation || '')
+        },
+        client: sanitizeText(settings?.delhiveryClientName || '')
+    };
+};
+
+/**
+ * Books a Delhivery reverse pickup for a return request and returns its waybill.
+ */
+export const createDelhiveryReversePickup = async (returnRequest, order) => {
+    const { settings, baseUrl, token, clientName, pickupLocation } = await getDelhiverySettings();
+
+    if (!token || !clientName || !pickupLocation) {
+        throw new Error('Delhivery credentials are incomplete. Please save token, client name, and pickup location in Admin > API Credentials.');
+    }
+
+    const payload = buildReversePickupPayload(returnRequest, order, settings);
+    const firstShipment = payload.shipments[0];
+    if (!firstShipment.pin || !firstShipment.phone) {
+        throw new Error('Pickup address needs a valid pincode and phone number before booking a reverse pickup.');
+    }
+
+    const encodedBody = `format=json&data=${encodeURIComponent(JSON.stringify(payload))}`;
+
+    const { data } = await axios.post(
+        `${baseUrl}/api/cmu/create.json`,
+        encodedBody,
+        {
+            headers: {
+                Authorization: `Token ${token}`,
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            timeout: 20000
+        }
+    );
+
+    const waybill = parseWaybill(data);
+    const remark = sanitizeText(data?.rmk || data?.remark || data?.error_message || data?.message || '');
+
+    if (!data?.success || !waybill) {
+        throw new Error(remark || 'Delhivery reverse pickup was not created successfully.');
+    }
+
+    return { waybill, remark, raw: data };
+};
+
 export const createDelhiveryShipment = async (order) => {
     const {
         settings,

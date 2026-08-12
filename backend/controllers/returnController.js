@@ -1,5 +1,6 @@
 import Return from '../models/Return.js';
 import Order from '../models/Order.js';
+import { createDelhiveryReversePickup } from '../utils/delhiveryService.js';
 import Notification from '../models/Notification.js';
 import Product from '../models/Product.js';
 import mongoose from 'mongoose';
@@ -550,14 +551,30 @@ export const assignReturnFulfillment = async (req, res) => {
             return res.status(404).json({ message: 'Return request not found' });
         }
 
-        const trackingNumber = String(req.body?.trackingNumber || '').trim();
-        // A courier pickup is only actionable once its waybill is known. It is
-        // entered from the courier's own panel: the shipment APIs here create
-        // forward deliveries, so calling them would send a parcel to the
-        // customer rather than collect one.
-        if (['ekart', 'delhivery'].includes(mode) && !trackingNumber) {
+        let trackingNumber = String(req.body?.trackingNumber || '').trim();
+
+        // Delhivery books reverse pickups on the same endpoint as forward
+        // shipments, distinguished by payment_mode "Pickup", so it can be
+        // created here. Ekart publishes no reverse contract, so its waybill is
+        // still raised in their panel and pasted in.
+        if (mode === 'delhivery' && !trackingNumber) {
+            const order = await Order.findById(returnRequest.orderId);
+            if (!order) {
+                return res.status(400).json({ message: 'Original order not found for this return.' });
+            }
+            try {
+                const { waybill } = await createDelhiveryReversePickup(returnRequest, order);
+                trackingNumber = waybill;
+            } catch (error) {
+                return res.status(400).json({
+                    message: error.message || 'Failed to book the Delhivery reverse pickup.'
+                });
+            }
+        }
+
+        if (mode === 'ekart' && !trackingNumber) {
             return res.status(400).json({
-                message: `Enter the ${mode === 'ekart' ? 'Ekart' : 'Delhivery'} reverse pickup AWB for this return.`
+                message: 'Enter the Ekart reverse pickup AWB for this return.'
             });
         }
 
