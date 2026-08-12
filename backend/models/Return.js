@@ -44,6 +44,24 @@ const returnSchema = mongoose.Schema({
         default: 'Pending',
         enum: ['Pending', 'Approved', 'Pickup Scheduled', 'Received at Warehouse', 'Refund Initiated', 'Replacement Dispatched', 'Completed', 'Rejected']
     },
+    // Reverse pickup assignment, mirroring the order fulfillment flow.
+    // This collects FROM the customer, the opposite direction to an order, so
+    // the courier waybill is recorded rather than created through the forward
+    // shipment API — that would dispatch a parcel to the customer instead.
+    fulfillment: {
+        mode: {
+            type: String,
+            enum: ['unassigned', 'manual', 'ekart', 'delhivery'],
+            default: 'unassigned'
+        },
+        trackingNumber: { type: String, default: '' },
+        provider: { type: String, default: '' },
+        pickupScheduledAt: { type: Date },
+        assignedAt: { type: Date },
+        assignedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'Admin', default: null },
+        notes: { type: String, default: '' }
+    },
+
     timeline: [{
         status: { type: String, required: true },
         time: { type: Date, default: Date.now },

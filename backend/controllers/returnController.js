@@ -525,6 +525,73 @@ export const getUserReturnRequests = async (req, res) => {
 // @desc    Update return status
 // @route   PUT /api/returns/:id
 // @access  Private/Admin
+const RETURN_FULFILLMENT_MODES = ['unassigned', 'manual', 'ekart', 'delhivery'];
+
+const findReturnByAnyId = async (id) => {
+    if (mongoose.Types.ObjectId.isValid(id)) {
+        const byObjectId = await Return.findById(id);
+        if (byObjectId) return byObjectId;
+    }
+    return Return.findOne({ id });
+};
+
+// @desc    Assign a reverse pickup mode to a return
+// @route   PUT /api/returns/:id/fulfillment
+// @access  Private/Admin
+export const assignReturnFulfillment = async (req, res) => {
+    try {
+        const mode = String(req.body?.mode || '').trim().toLowerCase();
+        if (!RETURN_FULFILLMENT_MODES.includes(mode)) {
+            return res.status(400).json({ message: 'Invalid pickup mode' });
+        }
+
+        const returnRequest = await findReturnByAnyId(req.params.id);
+        if (!returnRequest) {
+            return res.status(404).json({ message: 'Return request not found' });
+        }
+
+        const trackingNumber = String(req.body?.trackingNumber || '').trim();
+        // A courier pickup is only actionable once its waybill is known. It is
+        // entered from the courier's own panel: the shipment APIs here create
+        // forward deliveries, so calling them would send a parcel to the
+        // customer rather than collect one.
+        if (['ekart', 'delhivery'].includes(mode) && !trackingNumber) {
+            return res.status(400).json({
+                message: `Enter the ${mode === 'ekart' ? 'Ekart' : 'Delhivery'} reverse pickup AWB for this return.`
+            });
+        }
+
+        const scheduledAt = req.body?.pickupScheduledAt ? new Date(req.body.pickupScheduledAt) : null;
+
+        returnRequest.fulfillment = {
+            mode,
+            provider: mode === 'manual' || mode === 'unassigned' ? '' : mode,
+            trackingNumber: mode === 'unassigned' ? '' : trackingNumber,
+            pickupScheduledAt: scheduledAt && !Number.isNaN(scheduledAt.getTime()) ? scheduledAt : undefined,
+            assignedAt: new Date(),
+            assignedBy: req.user?._id || null,
+            notes: String(req.body?.notes || '').trim()
+        };
+
+        // Assigning a pickup is the point the request stops being just "Approved".
+        if (mode !== 'unassigned' && ['Pending', 'Approved'].includes(returnRequest.status)) {
+            returnRequest.status = 'Pickup Scheduled';
+            returnRequest.timeline.push({
+                status: 'Pickup Scheduled',
+                note: mode === 'manual'
+                    ? 'Manual pickup assigned'
+                    : `${mode === 'ekart' ? 'Ekart' : 'Delhivery'} reverse pickup assigned (${trackingNumber})`
+            });
+        }
+
+        const updated = await returnRequest.save();
+        return res.json(updated);
+    } catch (error) {
+        console.error('Assign return fulfillment error:', error);
+        return res.status(500).json({ message: error.message || 'Failed to assign pickup' });
+    }
+};
+
 export const updateReturnStatus = async (req, res) => {
     try {
         const nextStatus = String(req.body.status || '').trim();

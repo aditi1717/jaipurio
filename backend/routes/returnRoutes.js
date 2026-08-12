@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import { getReturns, updateReturnStatus, createReturnRequest, getUserReturnRequests } from '../controllers/returnController.js';
+import { getReturns, updateReturnStatus, createReturnRequest, getUserReturnRequests, assignReturnFulfillment } from '../controllers/returnController.js';
 import { protect, admin } from '../middleware/authMiddleware.js';
 import upload from '../middleware/upload.js';
 
@@ -21,7 +21,10 @@ router.route('/')
 
 router.route('/my-returns').get(protect, getUserReturnRequests);
 
-router.route('/:id')
+router.route("/:id/fulfillment")
+    .put(protect, admin, assignReturnFulfillment);
+
+router.route("/:id")
     .put(protect, admin, updateReturnStatus);
 
 export default router;
