@@ -65,7 +65,7 @@ const RichTextEditor = ({ value, onChange, placeholder = 'Enter product highligh
             type="button"
             onClick={onClick}
             className={`p-2 rounded-lg transition-all ${active
-                ? 'bg-blue-600 text-white shadow-md'
+                ? 'bg-primary-600 text-white shadow-md'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
             title={title}
@@ -79,7 +79,7 @@ const RichTextEditor = ({ value, onChange, placeholder = 'Enter product highligh
             type="button"
             onClick={() => editor.chain().focus().setColor(color).run()}
             className={`w-8 h-8 rounded-lg border-2 transition-all ${editor.isActive('textStyle', { color })
-                ? 'border-blue-600 scale-110'
+                ? 'border-primary-600 scale-110'
                 : 'border-gray-300 hover:scale-105'
                 }`}
             style={{ backgroundColor: color }}
@@ -92,7 +92,7 @@ const RichTextEditor = ({ value, onChange, placeholder = 'Enter product highligh
             type="button"
             onClick={() => editor.chain().focus().toggleHighlight({ color }).run()}
             className={`w-8 h-8 rounded-lg border-2 transition-all ${editor.isActive('highlight', { color })
-                ? 'border-blue-600 scale-110'
+                ? 'border-primary-600 scale-110'
                 : 'border-gray-300 hover:scale-105'
                 }`}
             style={{ backgroundColor: color }}
@@ -105,7 +105,7 @@ const RichTextEditor = ({ value, onChange, placeholder = 'Enter product highligh
             type="button"
             onClick={() => editor.chain().focus().setFontFamily(font).run()}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${editor.isActive('textStyle', { fontFamily: font })
-                ? 'bg-blue-600 text-white'
+                ? 'bg-primary-600 text-white'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
             style={{ fontFamily: font }}
@@ -151,7 +151,7 @@ const RichTextEditor = ({ value, onChange, placeholder = 'Enter product highligh
                             type="button"
                             onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
                             className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all ${editor.isActive('heading', { level: 1 })
-                                ? 'bg-blue-600 text-white shadow-md'
+                                ? 'bg-primary-600 text-white shadow-md'
                                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                                 }`}
                             title="Heading 1 (Large)"
@@ -162,7 +162,7 @@ const RichTextEditor = ({ value, onChange, placeholder = 'Enter product highligh
                             type="button"
                             onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
                             className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all ${editor.isActive('heading', { level: 2 })
-                                ? 'bg-blue-600 text-white shadow-md'
+                                ? 'bg-primary-600 text-white shadow-md'
                                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                                 }`}
                             title="Heading 2 (Medium)"
@@ -173,7 +173,7 @@ const RichTextEditor = ({ value, onChange, placeholder = 'Enter product highligh
                             type="button"
                             onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
                             className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all ${editor.isActive('heading', { level: 3 })
-                                ? 'bg-blue-600 text-white shadow-md'
+                                ? 'bg-primary-600 text-white shadow-md'
                                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                                 }`}
                             title="Heading 3 (Small)"
@@ -284,7 +284,7 @@ const RichTextEditor = ({ value, onChange, placeholder = 'Enter product highligh
                 {/* Table Controls (shown when table is active) */}
                 {editor.isActive('table') && (
                     <div className="flex items-center gap-2 flex-wrap pt-2 border-t border-gray-300">
-                        <span className="text-[10px] font-black text-blue-600 uppercase tracking-widest">Table:</span>
+                        <span className="text-[10px] font-black text-primary-600 uppercase tracking-widest">Table:</span>
                         <div className="flex items-center gap-1">
                             <button
                                 type="button"

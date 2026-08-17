@@ -109,7 +109,7 @@ const ShippingCharges = () => {
                         name="shippingCharge"
                         value={form.shippingCharge}
                         onChange={handleChange}
-                        className="w-full border border-gray-200 rounded-xl p-3.5 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none font-medium text-gray-900 bg-gray-50/50 transition-all"
+                        className="w-full border border-gray-200 rounded-xl p-3.5 focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 outline-none font-medium text-gray-900 bg-gray-50/50 transition-all"
                     />
                 </div>
 
@@ -124,7 +124,7 @@ const ShippingCharges = () => {
                         name="minShippingOrderAmount"
                         value={form.minShippingOrderAmount}
                         onChange={handleChange}
-                        className="w-full border border-gray-200 rounded-xl p-3.5 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none font-medium text-gray-900 bg-gray-50/50 transition-all"
+                        className="w-full border border-gray-200 rounded-xl p-3.5 focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 outline-none font-medium text-gray-900 bg-gray-50/50 transition-all"
                     />
                 </div>
 
@@ -139,7 +139,7 @@ const ShippingCharges = () => {
                         name="maxShippingOrderAmount"
                         value={form.maxShippingOrderAmount}
                         onChange={handleChange}
-                        className="w-full border border-gray-200 rounded-xl p-3.5 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none font-medium text-gray-900 bg-gray-50/50 transition-all"
+                        className="w-full border border-gray-200 rounded-xl p-3.5 focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 outline-none font-medium text-gray-900 bg-gray-50/50 transition-all"
                     />
                     <p className="text-xs text-gray-500 mt-2">
                         Shipping charge will apply only when cart total is between min and max range. Outside this range, shipping is free.
@@ -150,7 +150,7 @@ const ShippingCharges = () => {
                     <button
                         type="submit"
                         disabled={saving}
-                        className={`px-8 py-3 rounded-xl font-black text-xs uppercase tracking-widest transition-all ${saving ? 'bg-gray-300 text-gray-600 cursor-not-allowed' : 'bg-blue-600 text-white hover:bg-blue-700'}`}
+                        className={`px-8 py-3 rounded-xl font-black text-xs uppercase tracking-widest transition-all ${saving ? 'bg-gray-300 text-gray-600 cursor-not-allowed' : 'bg-primary-600 text-white hover:bg-primary-700'}`}
                     >
                         {saving ? 'Saving...' : 'Save Shipping Charges'}
                     </button>

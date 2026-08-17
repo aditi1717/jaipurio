@@ -61,7 +61,7 @@ const SellerRequests = () => {
     if (loading) {
         return (
             <div className="flex items-center justify-center min-h-[400px]">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
             </div>
         );
     }
@@ -73,7 +73,7 @@ const SellerRequests = () => {
                     <h1 className="text-xl md:text-2xl font-black text-gray-900">Seller Requests</h1>
                     <p className="text-xs md:text-sm text-gray-500 font-medium">Manage and review merchant applications</p>
                 </div>
-                <div className="bg-blue-50 text-blue-600 px-3 py-1.5 md:px-4 md:py-2 rounded-xl font-bold text-xs md:text-sm border border-blue-100 uppercase tracking-wider w-fit">
+                <div className="bg-primary-50 text-primary-600 px-3 py-1.5 md:px-4 md:py-2 rounded-xl font-bold text-xs md:text-sm border border-primary-100 uppercase tracking-wider w-fit">
                     {requests.length} Total Requests
                 </div>
             </div>
@@ -104,7 +104,7 @@ const SellerRequests = () => {
                                     </td>
                                     <td className="px-4 py-3 text-sm font-medium text-gray-700">{request.businessEmail}</td>
                                     <td className="px-4 py-3 text-sm font-medium text-gray-700">{request.phoneNumber}</td>
-                                    <td className="px-4 py-3 text-sm font-bold text-blue-700">{request.taxId}</td>
+                                    <td className="px-4 py-3 text-sm font-bold text-primary-700">{request.taxId}</td>
                                     <td className="px-4 py-3">
                                         <span className={`inline-flex px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${request.status === 'Pending'
                                                 ? 'bg-amber-50 text-amber-700 border border-amber-200'
@@ -175,18 +175,18 @@ const SellerRequests = () => {
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
                                     <h4 className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1.5">Business Type</h4>
-                                    <p className="font-bold text-gray-900 flex items-center gap-2"><MdInfo className="text-blue-600" /> {selectedRequest.businessType}</p>
+                                    <p className="font-bold text-gray-900 flex items-center gap-2"><MdInfo className="text-primary-600" /> {selectedRequest.businessType}</p>
                                 </div>
                                 <div>
                                     <h4 className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1.5">Registration ID</h4>
-                                    <p className="font-bold text-gray-900 flex items-center gap-2"><MdInfo className="text-blue-600" /> {selectedRequest.taxId}</p>
+                                    <p className="font-bold text-gray-900 flex items-center gap-2"><MdInfo className="text-primary-600" /> {selectedRequest.taxId}</p>
                                 </div>
                             </div>
 
                             <div>
                                 <h4 className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1.5">Business Address</h4>
                                 <p className="font-medium text-gray-800 bg-gray-50 p-3 rounded-xl border border-gray-200 flex items-start gap-2">
-                                    <MdLocationOn className="text-blue-600 text-lg shrink-0 mt-0.5" />
+                                    <MdLocationOn className="text-primary-600 text-lg shrink-0 mt-0.5" />
                                     {selectedRequest.businessAddress}
                                 </p>
                             </div>
@@ -205,7 +205,7 @@ const SellerRequests = () => {
                                     onChange={(e) => setAdminNotes(e.target.value)}
                                     readOnly={isReviewLocked}
                                     placeholder={isReviewLocked ? 'No admin notes added.' : 'Add feedback for the seller...'}
-                                    className={`w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-xl outline-none font-medium text-gray-800 transition-all min-h-[90px] placeholder:text-gray-500 ${isReviewLocked ? 'cursor-default' : 'focus:border-blue-500'}`}
+                                    className={`w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-xl outline-none font-medium text-gray-800 transition-all min-h-[90px] placeholder:text-gray-500 ${isReviewLocked ? 'cursor-default' : 'focus:border-primary-500'}`}
                                 ></textarea>
                             </div>
                         </div>

@@ -60,12 +60,12 @@ const getInitials = (name = '') =>
 const getGradientForInitials = (name = '') => {
     const hash = name.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
     const gradients = [
-        'bg-gradient-to-tr from-blue-500 to-indigo-600 text-white',
+        'bg-gradient-to-tr from-primary-500 to-indigo-600 text-white',
         'bg-gradient-to-tr from-emerald-400 to-teal-600 text-white',
         'bg-gradient-to-tr from-violet-500 to-purple-600 text-white',
         'bg-gradient-to-tr from-amber-400 to-orange-600 text-white',
         'bg-gradient-to-tr from-rose-400 to-red-600 text-white',
-        'bg-gradient-to-tr from-cyan-500 to-blue-600 text-white',
+        'bg-gradient-to-tr from-cyan-500 to-primary-600 text-white',
         'bg-gradient-to-tr from-pink-500 to-rose-600 text-white',
     ];
     return gradients[hash % gradients.length];
@@ -286,8 +286,8 @@ const AgentManagement = () => {
                 
                 <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
                     <div className="space-y-2">
-                        <div className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
-                            <span className="flex h-2 w-2 rounded-full bg-blue-600 animate-pulse" />
+                        <div className="inline-flex items-center gap-2 rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold text-primary-700">
+                            <span className="flex h-2 w-2 rounded-full bg-primary-600 animate-pulse" />
                             Referral Network & Agents
                         </div>
                         <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Agent Management</h1>
@@ -298,11 +298,11 @@ const AgentManagement = () => {
 
                     {/* Stats Tiles */}
                     <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:w-auto xl:min-w-[600px]">
-                        <div className="group rounded-2xl border border-slate-100 bg-white p-4 shadow-sm transition hover:border-blue-100 hover:shadow-md">
+                        <div className="group rounded-2xl border border-slate-100 bg-white p-4 shadow-sm transition hover:border-primary-100 hover:shadow-md">
                             <p className="text-[10px] font-black uppercase tracking-wider text-slate-400">Total Agents</p>
                             <div className="mt-2 flex items-center justify-between">
                                 <span className="text-2xl font-black text-slate-800">{totals.totalAgents}</span>
-                                <span className="rounded-lg bg-slate-50 p-2 text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-500 transition">
+                                <span className="rounded-lg bg-slate-50 p-2 text-slate-400 group-hover:bg-primary-50 group-hover:text-primary-500 transition">
                                     <MdPeople size={18} />
                                 </span>
                             </div>
@@ -318,11 +318,11 @@ const AgentManagement = () => {
                             </div>
                         </div>
 
-                        <div className="group rounded-2xl border border-blue-100 bg-blue-50/20 p-4 shadow-sm transition hover:border-blue-200 hover:shadow-md">
-                            <p className="text-[10px] font-black uppercase tracking-wider text-blue-600">Customers</p>
+                        <div className="group rounded-2xl border border-primary-100 bg-primary-50/20 p-4 shadow-sm transition hover:border-primary-200 hover:shadow-md">
+                            <p className="text-[10px] font-black uppercase tracking-wider text-primary-600">Customers</p>
                             <div className="mt-2 flex items-center justify-between">
-                                <span className="text-2xl font-black text-blue-700">{totals.totalCustomers}</span>
-                                <span className="rounded-lg bg-blue-50 p-2 text-blue-600 transition">
+                                <span className="text-2xl font-black text-primary-700">{totals.totalCustomers}</span>
+                                <span className="rounded-lg bg-primary-50 p-2 text-primary-600 transition">
                                     <MdPeople size={18} />
                                 </span>
                             </div>
@@ -352,7 +352,7 @@ const AgentManagement = () => {
                         value={searchTerm}
                         onChange={(event) => setSearchTerm(event.target.value)}
                         placeholder="Search by name, code, email, or phone..."
-                        className="w-full rounded-2xl border border-slate-200 bg-slate-50/50 py-3 pl-11 pr-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-blue-500 focus:bg-white placeholder-slate-400"
+                        className="w-full rounded-2xl border border-slate-200 bg-slate-50/50 py-3 pl-11 pr-4 text-sm font-semibold text-slate-800 outline-none transition focus:border-primary-500 focus:bg-white placeholder-slate-400"
                     />
                 </div>
 
@@ -370,7 +370,7 @@ const AgentManagement = () => {
                     <button
                         type="button"
                         onClick={handleAddAgentClick}
-                        className="inline-flex h-11 items-center gap-2 rounded-2xl bg-blue-600 px-5 text-sm font-bold text-white shadow-md shadow-blue-200 hover:bg-blue-700 transition hover:shadow-lg active:scale-95"
+                        className="inline-flex h-11 items-center gap-2 rounded-2xl bg-primary-600 px-5 text-sm font-bold text-white shadow-md shadow-primary-200 hover:bg-primary-700 transition hover:shadow-lg active:scale-95"
                     >
                         <MdAdd size={20} />
                         Add Agent
@@ -410,7 +410,7 @@ const AgentManagement = () => {
                         <div
                             key={agent._id}
                             onClick={() => handleCardClick(agent)}
-                            className="group relative cursor-pointer rounded-[24px] border border-slate-200/60 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-md hover:shadow-slate-100"
+                            className="group relative cursor-pointer rounded-[24px] border border-slate-200/60 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary-200 hover:shadow-md hover:shadow-slate-100"
                         >
                             {/* Card Content */}
                             <div className="flex items-start gap-4">
@@ -421,7 +421,7 @@ const AgentManagement = () => {
 
                                 <div className="min-w-0 flex-1 space-y-1">
                                     <div className="flex items-center justify-between gap-2">
-                                        <h3 className="truncate text-base font-bold tracking-tight text-slate-800 group-hover:text-blue-600 transition">
+                                        <h3 className="truncate text-base font-bold tracking-tight text-slate-800 group-hover:text-primary-600 transition">
                                             {agent.name}
                                         </h3>
                                         <span className={`inline-flex shrink-0 rounded-full px-2 py-0.5 text-[9px] font-black uppercase tracking-wider ${
@@ -447,7 +447,7 @@ const AgentManagement = () => {
                                 <button
                                     type="button"
                                     onClick={(event) => handleCopyCode(agent.referralCode, event)}
-                                    className="p-1 rounded-md text-slate-400 hover:text-blue-600 hover:bg-white transition"
+                                    className="p-1 rounded-md text-slate-400 hover:text-primary-600 hover:bg-white transition"
                                     title="Copy Code"
                                 >
                                     {copiedCode === agent.referralCode ? (
@@ -553,7 +553,7 @@ const AgentManagement = () => {
                                                     value={form.name}
                                                     onChange={(event) => setForm((current) => ({ ...current, name: event.target.value }))}
                                                     required
-                                                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-800 outline-none transition focus:border-blue-500 focus:bg-white"
+                                                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-800 outline-none transition focus:border-primary-500 focus:bg-white"
                                                     placeholder="e.g. Rahul Sharma"
                                                 />
                                             </label>
@@ -565,7 +565,7 @@ const AgentManagement = () => {
                                                         type="email"
                                                         value={form.email}
                                                         onChange={(event) => setForm((current) => ({ ...current, email: event.target.value }))}
-                                                        className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-800 outline-none transition focus:border-blue-500 focus:bg-white"
+                                                        className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-800 outline-none transition focus:border-primary-500 focus:bg-white"
                                                         placeholder="rahul@example.com"
                                                     />
                                                 </label>
@@ -575,7 +575,7 @@ const AgentManagement = () => {
                                                         type="tel"
                                                         value={form.phone}
                                                         onChange={(event) => setForm((current) => ({ ...current, phone: event.target.value }))}
-                                                        className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-800 outline-none transition focus:border-blue-500 focus:bg-white"
+                                                        className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-800 outline-none transition focus:border-primary-500 focus:bg-white"
                                                         placeholder="10-digit number"
                                                     />
                                                 </label>
@@ -590,7 +590,7 @@ const AgentManagement = () => {
                                                         onChange={(event) => setForm((current) => ({ ...current, referralCode: event.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '') }))}
                                                         required
                                                         disabled={isEditing}
-                                                        className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-mono font-bold uppercase tracking-wider text-slate-800 outline-none transition focus:border-blue-500 focus:bg-white disabled:opacity-60 disabled:cursor-not-allowed"
+                                                        className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-mono font-bold uppercase tracking-wider text-slate-800 outline-none transition focus:border-primary-500 focus:bg-white disabled:opacity-60 disabled:cursor-not-allowed"
                                                         placeholder="e.g. INDRAHUL20"
                                                     />
                                                 </label>
@@ -605,7 +605,7 @@ const AgentManagement = () => {
                                                             value={form.commissionPercent}
                                                             onChange={(event) => setForm((current) => ({ ...current, commissionPercent: event.target.value }))}
                                                             required
-                                                            className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-3 pl-4 pr-10 text-sm font-semibold text-slate-800 outline-none transition focus:border-blue-500 focus:bg-white"
+                                                            className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-3 pl-4 pr-10 text-sm font-semibold text-slate-800 outline-none transition focus:border-primary-500 focus:bg-white"
                                                             placeholder="10"
                                                         />
                                                         <span className="absolute inset-y-0 right-4 flex items-center text-slate-400">
@@ -621,7 +621,7 @@ const AgentManagement = () => {
                                                     rows="3"
                                                     value={form.notes}
                                                     onChange={(event) => setForm((current) => ({ ...current, notes: event.target.value }))}
-                                                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-800 outline-none transition focus:border-blue-500 focus:bg-white"
+                                                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-800 outline-none transition focus:border-primary-500 focus:bg-white"
                                                     placeholder="Add campaign source details, payouts account info, notes..."
                                                 />
                                             </label>
@@ -631,7 +631,7 @@ const AgentManagement = () => {
                                                     type="checkbox"
                                                     checked={form.isActive}
                                                     onChange={(event) => setForm((current) => ({ ...current, isActive: event.target.checked }))}
-                                                    className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                                                    className="h-4 w-4 rounded border-slate-300 text-primary-600 focus:ring-primary-500"
                                                 />
                                                 <div className="text-sm">
                                                     <p className="font-bold text-slate-700">Set agent as Active</p>
@@ -695,7 +695,7 @@ const AgentManagement = () => {
                                                     <button
                                                         type="button"
                                                         onClick={() => handleCopyCode(selectedAgent.referralCode)}
-                                                        className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-blue-600 transition"
+                                                        className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-primary-600 transition"
                                                         title="Copy Code"
                                                     >
                                                         {copiedCode === selectedAgent.referralCode ? (
@@ -737,9 +737,9 @@ const AgentManagement = () => {
                                                     {selectedAgent.summary?.cancelledReferralOrders || 0}
                                                 </p>
                                             </div>
-                                            <div className="rounded-2xl border border-blue-50 bg-blue-50/10 p-3.5 shadow-sm text-center">
-                                                <p className="text-[9px] font-extrabold uppercase tracking-wider text-blue-600">Commission</p>
-                                                <p className="mt-2 text-base font-black text-blue-800 truncate px-0.5">
+                                            <div className="rounded-2xl border border-primary-50 bg-primary-50/10 p-3.5 shadow-sm text-center">
+                                                <p className="text-[9px] font-extrabold uppercase tracking-wider text-primary-600">Commission</p>
+                                                <p className="mt-2 text-base font-black text-primary-800 truncate px-0.5">
                                                     {formatCurrency(selectedAgent.summary?.commissionEarned || 0).replace('₹', '₹ ')}
                                                 </p>
                                             </div>
@@ -754,7 +754,7 @@ const AgentManagement = () => {
                                                     onClick={() => setDrawerTab('overview')}
                                                     className={`pb-3 text-sm font-bold border-b-2 px-1 transition ${
                                                         drawerTab === 'overview'
-                                                            ? 'border-blue-600 text-blue-600'
+                                                            ? 'border-primary-600 text-primary-600'
                                                             : 'border-transparent text-slate-400 hover:text-slate-600'
                                                     }`}
                                                 >
@@ -765,7 +765,7 @@ const AgentManagement = () => {
                                                     onClick={() => setDrawerTab('orders')}
                                                     className={`ml-6 pb-3 text-sm font-bold border-b-2 px-1 transition ${
                                                         drawerTab === 'orders'
-                                                            ? 'border-blue-600 text-blue-600'
+                                                            ? 'border-primary-600 text-primary-600'
                                                             : 'border-transparent text-slate-400 hover:text-slate-600'
                                                     }`}
                                                 >
@@ -821,7 +821,7 @@ const AgentManagement = () => {
                                                                                     ? 'bg-rose-50 text-rose-700'
                                                                                     : order.status === 'Delivered'
                                                                                     ? 'bg-emerald-50 text-emerald-700'
-                                                                                    : 'bg-blue-50 text-blue-700'
+                                                                                    : 'bg-primary-50 text-primary-700'
                                                                             }`}>
                                                                                 {order.status}
                                                                             </span>
@@ -883,7 +883,7 @@ const AgentManagement = () => {
                                         type="submit"
                                         form="agent-drawer-form"
                                         disabled={saving}
-                                        className="h-11 rounded-2xl bg-blue-600 px-6 text-sm font-bold text-white shadow-md shadow-blue-200 hover:bg-blue-700 transition active:scale-95 disabled:bg-blue-400 disabled:shadow-none"
+                                        className="h-11 rounded-2xl bg-primary-600 px-6 text-sm font-bold text-white shadow-md shadow-primary-200 hover:bg-primary-700 transition active:scale-95 disabled:bg-primary-400 disabled:shadow-none"
                                     >
                                         {saving ? (
                                             <span className="flex items-center gap-2">

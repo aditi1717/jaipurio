@@ -110,7 +110,7 @@ const CategoryForm = ({ category, onClose }) => {
                             value={formData.name}
                             onChange={handleChange}
                             autoComplete="off"
-                            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 outline-none focus:border-transparent focus:ring-2 focus:ring-blue-500 md:px-4 md:py-3 md:text-base"
+                            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 outline-none focus:border-transparent focus:ring-2 focus:ring-primary-500 md:px-4 md:py-3 md:text-base"
                             placeholder="Enter category name"
                             required
                         />
@@ -124,7 +124,7 @@ const CategoryForm = ({ category, onClose }) => {
                             type="file"
                             accept="image/*"
                             onChange={handleImageChange}
-                            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 outline-none focus:border-transparent focus:ring-2 focus:ring-blue-500 md:px-4 md:py-3 md:text-base"
+                            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 outline-none focus:border-transparent focus:ring-2 focus:ring-primary-500 md:px-4 md:py-3 md:text-base"
                         />
                         {formData.image && (
                             <div className="mt-2 rounded-lg border border-gray-200 bg-gray-50 p-2">
@@ -145,7 +145,7 @@ const CategoryForm = ({ category, onClose }) => {
                             name="active"
                             checked={formData.active}
                             onChange={handleChange}
-                            className="h-4 w-4 rounded text-blue-600 focus:ring-2 focus:ring-blue-500 md:h-5 md:w-5"
+                            className="h-4 w-4 rounded text-primary-600 focus:ring-2 focus:ring-primary-500 md:h-5 md:w-5"
                         />
                         <label htmlFor="active" className="text-xs font-medium text-gray-700 md:text-sm">
                             Active (Category will be visible to users)
@@ -164,7 +164,7 @@ const CategoryForm = ({ category, onClose }) => {
                         <button
                             type="submit"
                             disabled={isLoading}
-                            className={`flex flex-1 items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold text-white transition md:px-6 md:py-3 md:text-base ${isLoading ? 'cursor-not-allowed bg-blue-400' : 'bg-blue-600 hover:bg-blue-700'}`}
+                            className={`flex flex-1 items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold text-white transition md:px-6 md:py-3 md:text-base ${isLoading ? 'cursor-not-allowed bg-primary-400' : 'bg-primary-600 hover:bg-primary-700'}`}
                         >
                             {isLoading ? (
                                 <>

@@ -140,7 +140,7 @@ const Footer = () => {
                                                 href={social.url}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="text-white transition-colors hover:text-blue-400"
+                                                className="text-white transition-colors hover:text-primary-400"
                                             >
                                                 <social.icon size={18} />
                                             </a>
@@ -210,7 +210,7 @@ const Footer = () => {
                                         <li key={linkIndex}>
                                             <button
                                                 onClick={() => handleLinkClick(link)}
-                                                className="text-left text-white hover:text-blue-400"
+                                                className="text-left text-white hover:text-primary-400"
                                             >
                                                 {link.label}
                                             </button>

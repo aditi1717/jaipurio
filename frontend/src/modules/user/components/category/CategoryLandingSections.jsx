@@ -655,7 +655,7 @@ const CategoryLandingSections = ({ categoryName }) => {
                                         <button
                                             type="button"
                                             onClick={() => openLink(activeSection.sectionLink)}
-                                            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-500 text-white shadow-sm transition hover:bg-blue-600"
+                                            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary-500 text-white shadow-sm transition hover:bg-primary-600"
                                             aria-label={`Open ${activeSection.title || categoryName}`}
                                         >
                                             <MdArrowForward className="text-[18px]" />

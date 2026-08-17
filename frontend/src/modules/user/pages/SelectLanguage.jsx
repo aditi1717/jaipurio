@@ -38,7 +38,7 @@ const SelectLanguage = () => {
                 {/* Desktop Back Button */}
                 <button
                     onClick={() => navigate(-1)}
-                    className="hidden md:flex absolute top-8 left-8 items-center gap-1 text-gray-500 hover:text-blue-600 transition-colors"
+                    className="hidden md:flex absolute top-8 left-8 items-center gap-1 text-gray-500 hover:text-primary-600 transition-colors"
                 >
                     <span className="material-icons text-lg">arrow_back</span>
                     <span className="text-xs font-bold uppercase">Back</span>
@@ -53,18 +53,18 @@ const SelectLanguage = () => {
                             key={lang.name}
                             onClick={() => handleSelect(lang.name)}
                             className={`p-4 rounded-lg border-2 transition-all flex flex-col items-center justify-center gap-1 group active:scale-95 md:h-32 md:hover:shadow-md ${language === lang.name
-                                ? 'border-blue-600 bg-blue-50'
-                                : 'border-gray-100 hover:border-blue-200'
+                                ? 'border-primary-600 bg-primary-50'
+                                : 'border-gray-100 hover:border-primary-200'
                                 }`}
                         >
-                            <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors ${language === lang.name ? 'border-blue-600 bg-blue-600' : 'border-gray-300'
+                            <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors ${language === lang.name ? 'border-primary-600 bg-primary-600' : 'border-gray-300'
                                 }`}>
                                 {language === lang.name && <span className="material-icons text-white text-[16px]">check</span>}
                             </div>
-                            <span className={`text-base font-bold ${language === lang.name ? 'text-blue-600' : 'text-gray-800'}`}>
+                            <span className={`text-base font-bold ${language === lang.name ? 'text-primary-600' : 'text-gray-800'}`}>
                                 {lang.native}
                             </span>
-                            <span className={`text-xs ${language === lang.name ? 'text-blue-400' : 'text-gray-400'}`}>
+                            <span className={`text-xs ${language === lang.name ? 'text-primary-400' : 'text-gray-400'}`}>
                                 {lang.name}
                             </span>
                         </button>

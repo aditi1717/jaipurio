@@ -138,7 +138,7 @@ const NotificationManager = () => {
         switch (type) {
             case 'Promotional':
             case 'promotional':
-                return 'bg-blue-100 text-blue-700 border-blue-200';
+                return 'bg-primary-100 text-primary-700 border-primary-200';
             case 'Order Update':
             case 'order':
                 return 'bg-sky-100 text-sky-700 border-sky-200';
@@ -184,7 +184,7 @@ const NotificationManager = () => {
         <div className="space-y-6 max-w-7xl mx-auto pb-10">
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
                 <div className="flex items-center gap-4">
-                    <div className="p-3 bg-blue-100 text-blue-600 rounded-xl">
+                    <div className="p-3 bg-primary-100 text-primary-600 rounded-xl">
                         <MdNotifications size={28} />
                     </div>
                     <div>
@@ -196,7 +196,7 @@ const NotificationManager = () => {
 
             <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
                 <div className="flex items-center gap-3 border-b border-gray-50 pb-4 mb-6">
-                    <span className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
+                    <span className="w-8 h-8 rounded-lg bg-primary-50 text-primary-600 flex items-center justify-center font-bold">
                         <MdSend size={18} />
                     </span>
                     <div>
@@ -215,7 +215,7 @@ const NotificationManager = () => {
                                 value={formData.title}
                                 onChange={handleInputChange}
                                 placeholder="e.g. Flash Sale Alert"
-                                className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-blue-500 focus:bg-white outline-none transition-all font-bold text-gray-900 placeholder:text-gray-400"
+                                className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-primary-500 focus:bg-white outline-none transition-all font-bold text-gray-900 placeholder:text-gray-400"
                                 required
                             />
                         </div>
@@ -225,7 +225,7 @@ const NotificationManager = () => {
                                 name="type"
                                 value={formData.type}
                                 onChange={handleInputChange}
-                                className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-blue-500 focus:bg-white outline-none transition-all font-bold text-gray-900"
+                                className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-primary-500 focus:bg-white outline-none transition-all font-bold text-gray-900"
                             >
                                 {notificationTypes.map((type) => (
                                     <option key={type} value={type}>{type}</option>
@@ -242,7 +242,7 @@ const NotificationManager = () => {
                             onChange={handleInputChange}
                             placeholder="Write your notification message here..."
                             rows="4"
-                            className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-blue-500 focus:bg-white outline-none transition-all font-bold text-gray-900 placeholder:text-gray-400 resize-none"
+                            className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-primary-500 focus:bg-white outline-none transition-all font-bold text-gray-900 placeholder:text-gray-400 resize-none"
                             maxLength="200"
                             required
                         />
@@ -251,7 +251,7 @@ const NotificationManager = () => {
 
                     <div className="p-5 bg-gray-50 rounded-2xl border border-gray-100 space-y-4">
                         <div className="flex items-center gap-3">
-                            <div className="p-2 bg-white rounded-lg text-blue-500 shadow-sm">
+                            <div className="p-2 bg-white rounded-lg text-primary-500 shadow-sm">
                                 <MdPeopleAlt size={20} />
                             </div>
                             <div>
@@ -266,8 +266,8 @@ const NotificationManager = () => {
                                     type="button"
                                     onClick={() => setFormData((prev) => ({ ...prev, targetAudience: target }))}
                                     className={`px-4 py-3 rounded-xl text-sm font-bold transition-all border ${formData.targetAudience === target
-                                        ? 'bg-blue-600 text-white border-blue-600 shadow-md'
-                                        : 'bg-white text-gray-600 border-gray-200 hover:border-blue-300'
+                                        ? 'bg-primary-600 text-white border-primary-600 shadow-md'
+                                        : 'bg-white text-gray-600 border-gray-200 hover:border-primary-300'
                                     }`}
                                 >
                                     {target}
@@ -284,8 +284,8 @@ const NotificationManager = () => {
                             type="submit"
                             disabled={isLoading}
                             className={`flex items-center justify-center gap-2 px-8 py-3.5 rounded-2xl font-black tracking-wide transition-all ${isLoading
-                                ? 'bg-blue-300 text-white cursor-not-allowed'
-                                : 'bg-blue-600 text-white hover:bg-blue-700 shadow-xl shadow-blue-100'
+                                ? 'bg-primary-300 text-white cursor-not-allowed'
+                                : 'bg-primary-600 text-white hover:bg-primary-700 shadow-xl shadow-primary-100'
                             }`}
                         >
                             <MdSend size={20} />
@@ -355,7 +355,7 @@ const NotificationManager = () => {
                                 </tr>
                             ) : (
                                 paginatedNotifications.map((notif, index) => (
-                                    <tr key={notif._id || notif.id} className="hover:bg-blue-50/5 transition-colors group">
+                                    <tr key={notif._id || notif.id} className="hover:bg-primary-50/5 transition-colors group">
                                         <td className="px-5 py-3 font-bold text-gray-400 text-sm">#{((currentPage - 1) * itemsPerPage) + index + 1}</td>
                                         <td className="px-5 py-3 max-w-md">
                                             <p className="font-bold text-gray-800 text-sm">{notif.title}</p>

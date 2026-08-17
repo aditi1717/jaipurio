@@ -120,7 +120,7 @@ const PinCodeManager = () => {
     return (
         <div className="space-y-2 md:space-y-6 max-w-4xl mx-auto">
             <div className="flex items-center gap-2 md:gap-4 mb-2 md:mb-6">
-                <div className="p-2 md:p-3 bg-blue-100 text-blue-600 rounded-xl">
+                <div className="p-2 md:p-3 bg-primary-100 text-primary-600 rounded-xl">
                     <MdLocationOn size={28} className="w-5 h-5 md:w-7 md:h-7" />
                 </div>
                 <div>
@@ -132,7 +132,7 @@ const PinCodeManager = () => {
             {/* Add PIN Code Form */}
             <div className="bg-white p-3 md:p-6 rounded-2xl shadow-sm border border-gray-100">
                 <h2 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
-                    <MdAdd className="text-blue-500" /> Add New Serviceable Area
+                    <MdAdd className="text-primary-500" /> Add New Serviceable Area
                 </h2>
                 <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 items-end">
                     <div className="space-y-1.5 md:col-span-1">
@@ -144,7 +144,7 @@ const PinCodeManager = () => {
                             onChange={handleChange}
                             required
                             placeholder="e.g. 110001"
-                            className="w-full px-3 py-2 md:px-4 md:py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-blue-500 outline-none font-bold text-gray-700"
+                            className="w-full px-3 py-2 md:px-4 md:py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-primary-500 outline-none font-bold text-gray-700"
                         />
                     </div>
                     <div className="space-y-1.5 md:col-span-1">
@@ -155,7 +155,7 @@ const PinCodeManager = () => {
                                 name="isCOD"
                                 checked={formData.isCOD}
                                 onChange={(e) => setFormData(prev => ({ ...prev, isCOD: e.target.checked }))}
-                                className="w-5 h-5 accent-blue-600 rounded"
+                                className="w-5 h-5 accent-primary-600 rounded"
                             />
                             <span className="text-sm font-bold text-gray-700">{formData.isCOD ? 'Yes' : 'No'}</span>
                         </label>
@@ -169,7 +169,7 @@ const PinCodeManager = () => {
                             value={formData.deliveryTime}
                             onChange={handleChange}
                             required
-                            className="w-full px-3 py-2 md:px-4 md:py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-blue-500 outline-none font-bold text-gray-700"
+                            className="w-full px-3 py-2 md:px-4 md:py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-primary-500 outline-none font-bold text-gray-700"
                         />
                     </div>
                     <div className="space-y-1.5 md:col-span-1">
@@ -178,7 +178,7 @@ const PinCodeManager = () => {
                             name="deliveryUnit"
                             value={formData.deliveryUnit}
                             onChange={handleChange}
-                            className="w-full px-3 py-2 md:px-4 md:py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-blue-500 outline-none font-bold text-gray-700"
+                            className="w-full px-3 py-2 md:px-4 md:py-2.5 rounded-xl bg-gray-50 border border-gray-200 focus:border-primary-500 outline-none font-bold text-gray-700"
                         >
                             <option value="minutes">Minutes</option>
                             <option value="hours">Hours</option>
@@ -189,7 +189,7 @@ const PinCodeManager = () => {
                         <button
                             type="submit"
                             disabled={isLoading}
-                            className="w-full py-2 md:py-2.5 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition shadow-lg shadow-blue-200 disabled:opacity-70 flex items-center justify-center gap-2"
+                            className="w-full py-2 md:py-2.5 bg-primary-600 text-white font-bold rounded-xl hover:bg-primary-700 transition shadow-lg shadow-primary-200 disabled:opacity-70 flex items-center justify-center gap-2"
                         >
                             {isLoading ? 'Adding...' : 'Add PIN Code'}
                         </button>
@@ -210,7 +210,7 @@ const PinCodeManager = () => {
                         <div className="text-sm space-y-1">
                             <p className="text-gray-700"><span className="font-bold">Total Rows:</span> {importResults.total}</p>
                             <p className="text-green-700"><span className="font-bold">Added:</span> {importResults.successful}</p>
-                            <p className="text-blue-700"><span className="font-bold">Updated:</span> {importResults.updated || 0}</p>
+                            <p className="text-primary-700"><span className="font-bold">Updated:</span> {importResults.updated || 0}</p>
                             <p className="text-yellow-700"><span className="font-bold">Skipped:</span> {importResults.skipped}</p>
                             <p className="text-red-700"><span className="font-bold">Errors:</span> {importResults.errors?.length || 0}</p>
                             {importResults.meta?.fileName && (
@@ -232,7 +232,7 @@ const PinCodeManager = () => {
             </div>
 
             {/* Bulk Import Section */}
-            <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-3 md:p-6 rounded-2xl shadow-sm border border-purple-100">
+            <div className="bg-gradient-to-r from-purple-50 to-primary-50 p-3 md:p-6 rounded-2xl shadow-sm border border-purple-100">
                 <h2 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
                     <MdUpload className="text-purple-500" /> Bulk Import from Excel
                 </h2>
@@ -278,12 +278,12 @@ const PinCodeManager = () => {
                 ) : (
                     <div className="divide-y divide-gray-200">
                         {pinCodes.map((pin) => (
-                            <div key={pin._id} className="p-2 md:p-4 flex items-center justify-between hover:bg-blue-50/30 transition-colors group">
+                            <div key={pin._id} className="p-2 md:p-4 flex items-center justify-between hover:bg-primary-50/30 transition-colors group">
                                 <div className="flex items-center gap-2 md:gap-6">
                                     <span className="text-sm md:text-lg font-black text-gray-800 font-mono tracking-wider">{pin.code}</span>
                                     <button
                                         onClick={() => toggleCOD(pin._id, pin.isCOD !== false)}
-                                        className={`flex items-center gap-1.5 px-2 py-1 md:px-3 md:py-1.5 rounded-full transition-all border shadow-sm active:scale-95 ${pin.isCOD !== false ? 'bg-blue-600 text-white border-blue-600 hover:bg-blue-700' : 'bg-gray-100 text-gray-400 border-gray-200 hover:bg-gray-200'}`}
+                                        className={`flex items-center gap-1.5 px-2 py-1 md:px-3 md:py-1.5 rounded-full transition-all border shadow-sm active:scale-95 ${pin.isCOD !== false ? 'bg-primary-600 text-white border-primary-600 hover:bg-primary-700' : 'bg-gray-100 text-gray-400 border-gray-200 hover:bg-gray-200'}`}
                                         title="Click to Toggle COD"
                                     >
                                         <span className="material-icons text-[14px]">{pin.isCOD !== false ? 'payments' : 'money_off'}</span>
@@ -295,12 +295,12 @@ const PinCodeManager = () => {
                                             min="1"
                                             value={pin.deliveryTime || 3}
                                             onChange={(e) => updatePinCode(pin._id, { deliveryTime: e.target.value })}
-                                            className="w-16 px-2 py-1 rounded-lg bg-gray-50 border border-gray-200 focus:border-blue-500 outline-none text-sm font-bold text-gray-700"
+                                            className="w-16 px-2 py-1 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary-500 outline-none text-sm font-bold text-gray-700"
                                         />
                                         <select
                                             value={pin.deliveryUnit || 'days'}
                                             onChange={(e) => updatePinCode(pin._id, { deliveryUnit: e.target.value })}
-                                            className="px-2 py-1 rounded-lg bg-gray-50 border border-gray-200 focus:border-blue-500 outline-none text-sm font-bold text-gray-700"
+                                            className="px-2 py-1 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary-500 outline-none text-sm font-bold text-gray-700"
                                         >
                                             <option value="minutes">Minutes</option>
                                             <option value="hours">Hours</option>
@@ -329,7 +329,7 @@ const PinCodeManager = () => {
                             <button
                                 onClick={() => setCurrentPage(currentPage - 1)}
                                 disabled={currentPage === 1 || isLoading}
-                                className="px-3 py-2 rounded-lg border border-gray-200 bg-white text-sm font-semibold text-gray-600 disabled:opacity-50 disabled:cursor-not-allowed hover:border-blue-300 hover:text-blue-600"
+                                className="px-3 py-2 rounded-lg border border-gray-200 bg-white text-sm font-semibold text-gray-600 disabled:opacity-50 disabled:cursor-not-allowed hover:border-primary-300 hover:text-primary-600"
                             >
                                 Previous
                             </button>
@@ -345,8 +345,8 @@ const PinCodeManager = () => {
                                             disabled={isLoading}
                                             className={`min-w-10 px-3 py-2 rounded-lg text-sm font-semibold border transition ${
                                                 page === currentPage
-                                                    ? 'bg-blue-600 text-white border-blue-600'
-                                                    : 'bg-white text-gray-600 border-gray-200 hover:border-blue-300 hover:text-blue-600'
+                                                    ? 'bg-primary-600 text-white border-primary-600'
+                                                    : 'bg-white text-gray-600 border-gray-200 hover:border-primary-300 hover:text-primary-600'
                                             }`}
                                         >
                                             {page}
@@ -357,7 +357,7 @@ const PinCodeManager = () => {
                             <button
                                 onClick={() => setCurrentPage(currentPage + 1)}
                                 disabled={currentPage === totalPages || isLoading}
-                                className="px-3 py-2 rounded-lg border border-gray-200 bg-white text-sm font-semibold text-gray-600 disabled:opacity-50 disabled:cursor-not-allowed hover:border-blue-300 hover:text-blue-600"
+                                className="px-3 py-2 rounded-lg border border-gray-200 bg-white text-sm font-semibold text-gray-600 disabled:opacity-50 disabled:cursor-not-allowed hover:border-primary-300 hover:text-primary-600"
                             >
                                 Next
                             </button>

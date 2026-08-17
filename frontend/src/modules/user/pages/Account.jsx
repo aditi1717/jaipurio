@@ -341,7 +341,7 @@ const Account = () => {
             {/* Desktop View (New Sidebar Layout) */}
             <div className="hidden md:flex flex-row min-h-screen bg-gray-50">
                 {/* Left Sidebar - Light Blue Theme */}
-                <div className="w-[350px] bg-blue-50 text-slate-900 p-6 min-h-screen flex flex-col gap-6 shrink-0">
+                <div className="w-[350px] bg-primary-50 text-slate-900 p-6 min-h-screen flex flex-col gap-6 shrink-0">
                     <button onClick={() => navigate('/')} className="self-start mb-2 text-slate-500 hover:text-[#2874f0] transition-colors p-1 -ml-1">
                         <MdArrowBack size={24} />
                     </button>
@@ -351,7 +351,7 @@ const Account = () => {
                             <h1 className="text-3xl font-bold">{currentUser?.name?.split(' ')[0] || 'User'}</h1>
                         </div>
                         <div className="relative">
-                            <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-xl font-bold text-[#2874f0] border-2 border-blue-200">
+                            <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-xl font-bold text-[#2874f0] border-2 border-primary-200">
                                 {currentUser?.name?.charAt(0)?.toUpperCase() || 'U'}
                             </div>
                             <button
@@ -429,13 +429,13 @@ const Account = () => {
                                 <div className="flex gap-3">
                                     <button
                                         onClick={handleSave}
-                                        className="flex-1 bg-[#2874f0] text-white py-2.5 rounded-lg text-sm font-bold hover:bg-blue-600 transition-colors shadow-md"
+                                        className="flex-1 bg-[#2874f0] text-white py-2.5 rounded-lg text-sm font-bold hover:bg-primary-600 transition-colors shadow-md"
                                     >
                                         Save
                                     </button>
                                     <button
                                         onClick={handleCancel}
-                                        className="flex-1 bg-transparent border border-slate-300 text-slate-700 py-2.5 rounded-lg text-sm font-medium hover:bg-blue-100 transition-colors"
+                                        className="flex-1 bg-transparent border border-slate-300 text-slate-700 py-2.5 rounded-lg text-sm font-medium hover:bg-primary-100 transition-colors"
                                     >
                                         Cancel
                                     </button>

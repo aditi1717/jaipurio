@@ -152,7 +152,7 @@ const HomeBanner = ({ banner, isMobileViewport = false }) => {
                 </div>
                 <div
                     onClick={handleBannerContentClick}
-                    className={`relative rounded-3xl overflow-hidden md:h-[300px] cursor-pointer group hover:shadow-xl transition-shadow ${banner.content.backgroundColor || 'bg-gradient-to-b from-white to-blue-100'} border border-blue-200`}
+                    className={`relative rounded-3xl overflow-hidden md:h-[300px] cursor-pointer group hover:shadow-xl transition-shadow ${banner.content.backgroundColor || 'bg-gradient-to-b from-white to-primary-100'} border border-primary-200`}
                 >
                     <div className="absolute inset-0 p-4 md:p-12 flex items-center">
                         <div className="w-1/2 md:w-1/3 z-10">

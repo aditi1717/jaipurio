@@ -22,7 +22,7 @@ const HomeContentManager = () => {
                 <div>
                     <h1 className="text-base font-black text-gray-900 flex items-center gap-2 uppercase tracking-tight">
                         {activeTab === 'layout' && <MdLayers size={20} className="text-orange-500" />}
-                        {activeTab === 'sections' && <MdViewAgenda size={20} className="text-blue-500" />}
+                        {activeTab === 'sections' && <MdViewAgenda size={20} className="text-primary-500" />}
                         {activeTab === 'banners' && <MdViewCarousel size={20} className="text-purple-500" />}
                         Homepage Content
                     </h1>

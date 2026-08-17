@@ -78,7 +78,7 @@ const ReviewList = () => {
                     <input
                         type="text"
                         placeholder="Search product, user, or comment..."
-                        className="w-full pl-12 pr-4 py-2.5 bg-gray-50 border border-transparent rounded-xl focus:bg-white focus:border-blue-500 outline-none transition-all text-sm text-gray-900 placeholder:text-gray-900 font-bold"
+                        className="w-full pl-12 pr-4 py-2.5 bg-gray-50 border border-transparent rounded-xl focus:bg-white focus:border-primary-500 outline-none transition-all text-sm text-gray-900 placeholder:text-gray-900 font-bold"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
@@ -86,7 +86,7 @@ const ReviewList = () => {
                 <div className="flex items-center gap-3 w-full md:w-auto">
                     <MdFilterList className="text-gray-400" size={20} />
                     <select
-                        className="px-4 py-2.5 bg-gray-50 border border-transparent rounded-xl outline-none focus:bg-white focus:border-blue-500 text-sm font-black text-gray-900 min-w-[150px] appearance-none"
+                        className="px-4 py-2.5 bg-gray-50 border border-transparent rounded-xl outline-none focus:bg-white focus:border-primary-500 text-sm font-black text-gray-900 min-w-[150px] appearance-none"
                         value={statusFilter}
                         onChange={(e) => setStatusFilter(e.target.value)}
                     >

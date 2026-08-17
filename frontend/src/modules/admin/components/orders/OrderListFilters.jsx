@@ -2,7 +2,7 @@ import React from 'react';
 import { MdFilterList, MdSearch } from 'react-icons/md';
 import { DATE_RANGE_PRESETS } from './orderDateRange';
 
-const selectClass = 'px-4 py-2 md:px-5 md:py-3 bg-gray-50 border border-transparent rounded-xl md:rounded-2xl outline-none focus:bg-white focus:border-blue-500 text-sm font-bold text-gray-900 appearance-none shadow-sm cursor-pointer';
+const selectClass = 'px-4 py-2 md:px-5 md:py-3 bg-gray-50 border border-transparent rounded-xl md:rounded-2xl outline-none focus:bg-white focus:border-primary-500 text-sm font-bold text-gray-900 appearance-none shadow-sm cursor-pointer';
 
 const OrderListFilters = ({
     searchTerm,
@@ -21,7 +21,7 @@ const OrderListFilters = ({
             <input
                 type="text"
                 placeholder="Search by Order ID, Customer, or Product Name..."
-                className="w-full pl-12 pr-4 py-2 bg-gray-50 border border-transparent rounded-xl md:rounded-2xl focus:bg-white focus:border-blue-500 outline-none transition-all text-sm font-bold text-gray-900 placeholder:text-gray-400 caret-blue-600 shadow-inner"
+                className="w-full pl-12 pr-4 py-2 bg-gray-50 border border-transparent rounded-xl md:rounded-2xl focus:bg-white focus:border-primary-500 outline-none transition-all text-sm font-bold text-gray-900 placeholder:text-gray-400 caret-primary-600 shadow-inner"
                 value={searchTerm}
                 onChange={(e) => onSearchChange(e.target.value)}
             />

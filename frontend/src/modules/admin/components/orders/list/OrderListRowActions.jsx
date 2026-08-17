@@ -10,7 +10,7 @@ const OrderListRowActions = ({ order, onOpenSerialEditor, serialEditorOrderId, n
                     e.stopPropagation();
                     navigate(`/admin/orders/${order.id}`);
                 }}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-blue-100 bg-white text-blue-600 shadow-sm transition-all hover:bg-blue-600 hover:text-white hover:border-blue-700"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-primary-100 bg-white text-primary-600 shadow-sm transition-all hover:bg-primary-600 hover:text-white hover:border-primary-700"
                 title="View Details"
                 aria-label={`View order ${order.displayId || order.id}`}
             >

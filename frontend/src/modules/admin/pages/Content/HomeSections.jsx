@@ -129,7 +129,7 @@ const HomeSections = () => {
                                         placeholder="e.g. summer_sale"
                                         value={formData.id}
                                         onChange={(e) => setFormData({ ...formData, id: e.target.value })}
-                                        className="w-full px-3 py-2 bg-gray-50 rounded-lg text-sm font-normal text-gray-800 outline-none focus:bg-white focus:ring-2 ring-blue-100 transition"
+                                        className="w-full px-3 py-2 bg-gray-50 rounded-lg text-sm font-normal text-gray-800 outline-none focus:bg-white focus:ring-2 ring-primary-100 transition"
                                     />
                                     {isEditing && <p className="text-[9px] text-orange-500 font-bold mt-1 uppercase">Warning: Changing ID may break external links.</p>}
                                 </div>
@@ -140,7 +140,7 @@ const HomeSections = () => {
                                         placeholder="e.g. Summer Sale 50% Off"
                                         value={formData.title}
                                         onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                                        className="w-full px-3 py-2 bg-gray-50 rounded-lg text-sm font-normal text-gray-800 outline-none focus:bg-white focus:ring-2 ring-blue-100 transition"
+                                        className="w-full px-3 py-2 bg-gray-50 rounded-lg text-sm font-normal text-gray-800 outline-none focus:bg-white focus:ring-2 ring-primary-100 transition"
                                     />
                                 </div>
                                 <div className="space-y-1">
@@ -150,11 +150,11 @@ const HomeSections = () => {
                                         placeholder="Small description text"
                                         value={formData.subtitle}
                                         onChange={(e) => setFormData({ ...formData, subtitle: e.target.value })}
-                                        className="w-full px-3 py-2 bg-gray-50 rounded-lg text-sm font-normal text-gray-800 outline-none focus:bg-white focus:ring-2 ring-blue-100 transition"
+                                        className="w-full px-3 py-2 bg-gray-50 rounded-lg text-sm font-normal text-gray-800 outline-none focus:bg-white focus:ring-2 ring-primary-100 transition"
                                     />
                                 </div>
                                 <div className="flex gap-2 pt-4">
-                                    <button onClick={handleSubmit} className="flex-1 py-2 bg-blue-600 text-white rounded-lg text-xs font-black uppercase hover:bg-blue-700 transition">
+                                    <button onClick={handleSubmit} className="flex-1 py-2 bg-primary-600 text-white rounded-lg text-xs font-black uppercase hover:bg-primary-700 transition">
                                         {isEditing ? 'Update Section' : 'Create Section'}
                                     </button>
                                     <button onClick={() => setShowForm(false)} className="px-6 py-2 bg-gray-100 text-gray-500 rounded-lg text-xs font-black uppercase hover:bg-gray-200 transition">Cancel</button>
@@ -168,7 +168,7 @@ const HomeSections = () => {
                     <div className="p-4 border-b border-gray-50 flex justify-between items-center bg-gray-50/30">
                         <h3 className="text-sm font-black text-gray-800 uppercase tracking-tight">All Sections</h3>
                         {!showForm && (
-                            <button onClick={() => { setIsEditing(false); setFormData({ title: '', id: '', subtitle: '' }); setShowForm(true); }} className="flex items-center gap-2 text-[10px] font-bold text-blue-600 bg-blue-50 px-3 py-1.5 rounded-lg hover:bg-blue-100 transition">
+                            <button onClick={() => { setIsEditing(false); setFormData({ title: '', id: '', subtitle: '' }); setShowForm(true); }} className="flex items-center gap-2 text-[10px] font-bold text-primary-600 bg-primary-50 px-3 py-1.5 rounded-lg hover:bg-primary-100 transition">
                                 <MdAdd size={14} /> NEW SECTION
                             </button>
                         )}
@@ -192,7 +192,7 @@ const HomeSections = () => {
                                             </div>
                                         </td>
                                         <td className="px-6 py-4 text-center">
-                                            <span className="text-xs font-black text-blue-600 bg-blue-50 px-2 py-1 rounded-lg">
+                                            <span className="text-xs font-black text-primary-600 bg-primary-50 px-2 py-1 rounded-lg">
                                                 {section.products?.length || 0}
                                             </span>
                                         </td>
@@ -200,7 +200,7 @@ const HomeSections = () => {
                                             <div className="flex justify-end gap-2">
                                                 <button
                                                     onClick={(e) => handleEditOpen(section, e)}
-                                                    className="p-1.5 text-blue-400 hover:bg-blue-50 rounded-lg transition"
+                                                    className="p-1.5 text-primary-400 hover:bg-primary-50 rounded-lg transition"
                                                 >
                                                     <MdEdit size={16} />
                                                 </button>
@@ -240,20 +240,20 @@ const HomeSections = () => {
                     <button onClick={() => setSelectedSectionId(null)} className="p-2 text-gray-400 hover:text-gray-900 transition"><MdArrowBack size={20} /></button>
                     {isEditingTitle ? (
                         <div className="flex items-center gap-2">
-                            <input type="text" value={newTitle} onChange={(e) => setNewTitle(e.target.value)} className="text-sm font-bold text-gray-900 border-b border-blue-500 outline-none w-48 bg-transparent" autoFocus />
-                            <button onClick={handleSaveTitle} className="text-blue-600"><MdSave size={18} /></button>
+                            <input type="text" value={newTitle} onChange={(e) => setNewTitle(e.target.value)} className="text-sm font-bold text-gray-900 border-b border-primary-500 outline-none w-48 bg-transparent" autoFocus />
+                            <button onClick={handleSaveTitle} className="text-primary-600"><MdSave size={18} /></button>
                             <button onClick={() => setIsEditingTitle(false)} className="text-gray-400"><MdClose size={18} /></button>
                         </div>
                     ) : (
                         <div className="flex flex-col">
                             <div className="flex items-center gap-2 group">
                                 <h2 className="text-sm font-black text-gray-900 uppercase tracking-tight">{activeSection.title}</h2>
-                                <button onClick={handleEditTitleOpen} className="opacity-0 group-hover:opacity-100 p-1 text-gray-400 hover:text-blue-600 transition"><MdEdit size={14} /></button>
+                                <button onClick={handleEditTitleOpen} className="opacity-0 group-hover:opacity-100 p-1 text-gray-400 hover:text-primary-600 transition"><MdEdit size={14} /></button>
                             </div>
                             {isEditingSubtitle ? (
                                 <div className="flex items-center gap-2 mt-1">
-                                    <input type="text" value={newSubtitle} onChange={(e) => setNewSubtitle(e.target.value)} className="text-[10px] font-bold text-gray-400 border-b border-blue-300 outline-none w-64 bg-transparent" autoFocus placeholder="Enter subtitle..." />
-                                    <button onClick={handleSaveSubtitle} className="text-blue-400"><MdSave size={14} /></button>
+                                    <input type="text" value={newSubtitle} onChange={(e) => setNewSubtitle(e.target.value)} className="text-[10px] font-bold text-gray-400 border-b border-primary-300 outline-none w-64 bg-transparent" autoFocus placeholder="Enter subtitle..." />
+                                    <button onClick={handleSaveSubtitle} className="text-primary-400"><MdSave size={14} /></button>
                                     <button onClick={() => setIsEditingSubtitle(false)} className="text-gray-300"><MdClose size={14} /></button>
                                 </div>
                             ) : (
@@ -261,7 +261,7 @@ const HomeSections = () => {
                                     <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wide">
                                         {activeSection.subtitle || 'No subtitle set'}
                                     </p>
-                                    <button onClick={handleEditSubtitleOpen} className="opacity-0 group-hover:opacity-100 p-0.5 text-gray-300 hover:text-blue-400 transition"><MdEdit size={12} /></button>
+                                    <button onClick={handleEditSubtitleOpen} className="opacity-0 group-hover:opacity-100 p-0.5 text-gray-300 hover:text-primary-400 transition"><MdEdit size={12} /></button>
                                 </div>
                             )}
                         </div>
@@ -269,7 +269,7 @@ const HomeSections = () => {
                 </div>
                 <button
                     onClick={() => setShowProductModal(true)}
-                    className="flex items-center gap-1.5 px-4 py-2 bg-blue-600 text-white rounded-xl text-[10px] font-black hover:bg-blue-700 transition"
+                    className="flex items-center gap-1.5 px-4 py-2 bg-primary-600 text-white rounded-xl text-[10px] font-black hover:bg-primary-700 transition"
                 >
                     <MdAdd size={16} /> ADD PRODUCTS
                 </button>
@@ -282,7 +282,7 @@ const HomeSections = () => {
                 ) : (
                     <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
                         {activeSection.products.map((p) => (
-                            <div key={p.id} className="group relative bg-gray-50 border border-gray-100 rounded-xl p-1.5 hover:border-blue-200 transition">
+                            <div key={p.id} className="group relative bg-gray-50 border border-gray-100 rounded-xl p-1.5 hover:border-primary-200 transition">
                                 <div className="aspect-square rounded-lg overflow-hidden bg-white mb-1.5">
                                     <img src={p.image} className="w-full h-full object-cover" />
                                 </div>
@@ -308,17 +308,17 @@ const HomeSections = () => {
                         <div className="p-4 bg-gray-50/50">
                             <div className="relative">
                                 <MdSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-                                <input value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} type="text" placeholder="Search..." className="w-full bg-white border border-gray-200 rounded-xl pl-10 pr-4 py-2 text-xs font-bold outline-none focus:border-blue-400" />
+                                <input value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} type="text" placeholder="Search..." className="w-full bg-white border border-gray-200 rounded-xl pl-10 pr-4 py-2 text-xs font-bold outline-none focus:border-primary-400" />
                             </div>
                         </div>
                         <div className="max-h-[350px] overflow-y-auto p-4 space-y-2 no-scrollbar">
                             {filteredProducts.map(p => {
                                 const exists = activeSection.products?.some(ap => ap.id === p.id);
                                 return (
-                                    <button key={p.id} disabled={exists} onClick={() => { addProductToSection(activeSection.id, p); setShowProductModal(false); }} className={`w-full flex items-center gap-3 p-2 rounded-xl border transition-all text-left ${exists ? 'opacity-40 bg-gray-50 border-transparent' : 'bg-white border-gray-100 hover:border-blue-100'}`}>
+                                    <button key={p.id} disabled={exists} onClick={() => { addProductToSection(activeSection.id, p); setShowProductModal(false); }} className={`w-full flex items-center gap-3 p-2 rounded-xl border transition-all text-left ${exists ? 'opacity-40 bg-gray-50 border-transparent' : 'bg-white border-gray-100 hover:border-primary-100'}`}>
                                         <img src={p.image} className="w-10 h-10 rounded-lg object-cover" />
                                         <div className="flex-1 min-w-0"><p className="text-[10px] font-black text-gray-800 truncate">{p.name}</p><p className="text-[9px] text-gray-400 font-bold uppercase">₹{p.price}</p></div>
-                                        {!exists && <MdAdd size={18} className="text-blue-500" />}
+                                        {!exists && <MdAdd size={18} className="text-primary-500" />}
                                     </button>
                                 );
                             })}

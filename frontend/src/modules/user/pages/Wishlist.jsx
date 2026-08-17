@@ -18,7 +18,7 @@ const Wishlist = () => {
             {/* Desktop Header */}
             <div className="hidden md:flex items-center justify-between px-6 py-4 bg-white shadow-sm mb-4">
                 <div className="flex items-center gap-4">
-                    <button onClick={() => navigate(-1)} className="flex items-center gap-1 text-gray-500 hover:text-blue-600">
+                    <button onClick={() => navigate(-1)} className="flex items-center gap-1 text-gray-500 hover:text-primary-600">
                         <span className="material-icons">arrow_back</span>
                     </button>
                     <h1 className="text-xl font-bold text-gray-800">My Wishlist ({wishlist.length})</h1>
@@ -34,7 +34,7 @@ const Wishlist = () => {
                         </div>
                         <h2 className="text-xl font-bold mb-2">Empty Wishlist!</h2>
                         <p className="text-gray-500 text-sm mb-6">You have no items in your wishlist. Start adding!</p>
-                        <button onClick={() => navigate('/')} className="bg-blue-600 text-white px-8 py-3 rounded-lg font-bold hover:shadow-lg transition-all">Shop Now</button>
+                        <button onClick={() => navigate('/')} className="bg-primary-600 text-white px-8 py-3 rounded-lg font-bold hover:shadow-lg transition-all">Shop Now</button>
                     </div>
                 ) : (
                     // Grid Layout: Full Width, Responsive Columns
@@ -74,7 +74,7 @@ const Wishlist = () => {
 
                                 {/* Details Area */}
                                 <div className="flex-1 flex flex-col px-1" onClick={() => navigate(`/product/${product.id}`)}>
-                                    <h3 className="text-xs md:text-sm font-medium text-gray-800 line-clamp-2 mb-1 hover:text-blue-600 cursor-pointer" title={product.name}>
+                                    <h3 className="text-xs md:text-sm font-medium text-gray-800 line-clamp-2 mb-1 hover:text-primary-600 cursor-pointer" title={product.name}>
                                         {product.name}
                                     </h3>
 
@@ -97,7 +97,7 @@ const Wishlist = () => {
                                             moveToCart(product);
                                             navigate('/cart');
                                         }}
-                                        className="mt-auto w-full bg-white text-blue-600 border border-blue-600 py-1.5 md:py-2.5 rounded-sm font-bold text-[10px] md:text-sm uppercase hover:bg-blue-600 hover:text-white transition-all"
+                                        className="mt-auto w-full bg-white text-primary-600 border border-primary-600 py-1.5 md:py-2.5 rounded-sm font-bold text-[10px] md:text-sm uppercase hover:bg-primary-600 hover:text-white transition-all"
                                     >
                                         Move to Cart
                                     </button>

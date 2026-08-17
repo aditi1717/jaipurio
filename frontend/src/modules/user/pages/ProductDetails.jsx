@@ -415,7 +415,7 @@ const ProductDetails = () => {
         
         // Format text like professional apps (e.g. Flipkart)
         // We include the URL in the text for maximum compatibility across apps
-        const shareText = `Check out this ${product?.name} at ₹${selectedPrice?.toLocaleString()} on Indian Kart!\n\n${shareUrl}`;
+        const shareText = `Check out this ${product?.name} at ₹${selectedPrice?.toLocaleString()} on Jaipurio!\n\n${shareUrl}`;
 
         if (navigator.share) {
             try {
@@ -634,12 +634,12 @@ const ProductDetails = () => {
         };
 
         // Update Title
-        document.title = `${product.name} | Indian Kart`;
+        document.title = `${product.name} | Jaipurio`;
 
         // Update Open Graph Tags
         updateMeta('og:title', product.name);
         updateMeta('og:image', product.image);
-        updateMeta('og:description', `Buy ${product.name} for ₹${selectedPrice?.toLocaleString()} only on Indian Kart.`);
+        updateMeta('og:description', `Buy ${product.name} for ₹${selectedPrice?.toLocaleString()} only on Jaipurio.`);
         updateMeta('og:url', window.location.href);
         updateMeta('og:type', 'product');
 
@@ -781,7 +781,7 @@ const ProductDetails = () => {
                 <div className="flex items-center gap-3 mb-6">
                     <button
                         onClick={() => navigate(-1)}
-                        className="inline-flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors"
+                        className="inline-flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-primary-600 transition-colors"
                     >
                         <span className="material-icons text-[20px]">arrow_back</span>
                         <span>Back</span>
@@ -799,7 +799,7 @@ const ProductDetails = () => {
                                         <div
                                             key={idx}
                                             onMouseEnter={() => setCurrentImageIndex(idx)}
-                                            className={`w-16 h-16 border-2 rounded-lg p-1 cursor-pointer transition-all ${currentImageIndex === idx ? 'border-blue-600' : 'border-gray-200 hover:border-blue-400'}`}
+                                            className={`w-16 h-16 border-2 rounded-lg p-1 cursor-pointer transition-all ${currentImageIndex === idx ? 'border-primary-600' : 'border-gray-200 hover:border-primary-400'}`}
                                         >
                                             <img src={img || null} alt="" className="w-full h-full object-contain" />
                                         </div>
@@ -823,7 +823,7 @@ const ProductDetails = () => {
                                 <button onClick={() => toggleWishlist(product)} className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full shadow-md border border-gray-100 flex items-center justify-center hover:scale-110 transition-transform text-gray-400 hover:text-red-500 group/fav">
                                     <span className={`material-icons ${isInWishlist ? 'text-red-500' : ''}`}>favorite</span>
                                 </button>
-                                <button onClick={handleShare} className="absolute top-16 right-4 w-10 h-10 bg-white rounded-full shadow-md border border-gray-100 flex items-center justify-center hover:scale-110 transition-transform text-gray-400 hover:text-blue-500">
+                                <button onClick={handleShare} className="absolute top-16 right-4 w-10 h-10 bg-white rounded-full shadow-md border border-gray-100 flex items-center justify-center hover:scale-110 transition-transform text-gray-400 hover:text-primary-500">
                                     <span className="material-icons">share</span>
                                 </button>
                             </div>
@@ -870,8 +870,8 @@ const ProductDetails = () => {
                     {/* RIGHT COLUMN: Info & Details */}
                     <div className="flex-1 min-w-0">
                         <div className="mb-2">
-                            <p className="text-gray-400 font-bold text-xs uppercase tracking-widest mb-1 hover:text-blue-600 cursor-pointer w-fit">{product.brand || "Brand Name"}</p>
-                            <h1 className="text-2xl font-medium text-gray-900 leading-snug hover:text-blue-600 cursor-pointer transition-colors inline-block">
+                            <p className="text-gray-400 font-bold text-xs uppercase tracking-widest mb-1 hover:text-primary-600 cursor-pointer w-fit">{product.brand || "Brand Name"}</p>
+                            <h1 className="text-2xl font-medium text-gray-900 leading-snug hover:text-primary-600 cursor-pointer transition-colors inline-block">
                                 {translatedName}
                                 {selectedVariantSummary && (
                                     <span className="text-gray-500 ml-1">({selectedVariantSummary})</span>
@@ -913,7 +913,7 @@ const ProductDetails = () => {
                                                     <div
                                                         key={idx}
                                                         onClick={() => handleVariantSelect(vh.name, opt.name)}
-                                                        className={`w-14 h-16 rounded border-2 p-0.5 cursor-pointer transition-all hover:scale-105 ${selectedVariants[vh.name] === opt.name ? 'border-blue-600' : 'border-transparent'}`}
+                                                        className={`w-14 h-16 rounded border-2 p-0.5 cursor-pointer transition-all hover:scale-105 ${selectedVariants[vh.name] === opt.name ? 'border-primary-600' : 'border-transparent'}`}
                                                     >
                                                         <img
                                                             src={opt.image || (opt.images && opt.images[0])}
@@ -926,8 +926,8 @@ const ProductDetails = () => {
                                                         key={idx}
                                                         onClick={() => handleVariantSelect(vh.name, opt.name)}
                                                         className={`min-w-[50px] h-10 px-4 rounded-sm border-2 font-bold text-sm transition-all ${selectedVariants[vh.name] === opt.name
-                                                            ? 'border-blue-600 text-blue-600 bg-blue-50/20'
-                                                            : 'border-gray-200 text-gray-900 hover:border-blue-400'
+                                                            ? 'border-primary-600 text-primary-600 bg-primary-50/20'
+                                                            : 'border-gray-200 text-gray-900 hover:border-primary-400'
                                                             }`}
                                                     >
                                                         <TranslatedText text={opt.name} />
@@ -949,7 +949,7 @@ const ProductDetails = () => {
                                     <div>
                                         <span className="font-bold text-gray-800">{offer.type}</span>
                                         <span className="ml-1">{offer.text}</span>
-                                        <span className="text-blue-600 font-medium cursor-pointer ml-1">T&C</span>
+                                        <span className="text-primary-600 font-medium cursor-pointer ml-1">T&C</span>
                                     </div>
                                 </div>
                             ))}
@@ -961,7 +961,7 @@ const ProductDetails = () => {
                             <div className="flex gap-4">
                                 <span className="text-gray-500 font-medium text-sm w-12 pt-1">{deliveryText}</span>
                                 <div className="flex flex-col gap-2">
-                                    <div className="flex items-center gap-2 border-b-2 border-blue-600 pb-0.5 max-w-[200px]">
+                                    <div className="flex items-center gap-2 border-b-2 border-primary-600 pb-0.5 max-w-[200px]">
                                         <span className="material-icons text-[18px] text-gray-400">location_on</span>
                                         <input
                                             type="text"
@@ -974,7 +974,7 @@ const ProductDetails = () => {
                                         <button
                                             onClick={() => handleCheckPincode()}
                                             disabled={checkingPincode}
-                                            className="text-blue-600 text-[11px] font-bold uppercase whitespace-nowrap hover:text-blue-700 disabled:opacity-50"
+                                            className="text-primary-600 text-[11px] font-bold uppercase whitespace-nowrap hover:text-primary-700 disabled:opacity-50"
                                         >
                                             {checkingPincode ? '...' : checkText}
                                         </button>
@@ -1012,8 +1012,8 @@ const ProductDetails = () => {
                         <div className="flex gap-8 mb-8 mt-2">
                             {product.returnPolicy && (
                                 <div className="flex items-center gap-4 group cursor-pointer">
-                                    <div className="w-12 h-12 rounded-xl bg-[#f5f5f5] flex items-center justify-center text-gray-800 transition-colors group-hover:bg-blue-50">
-                                        <span className="material-icons-outlined text-[24px] group-hover:text-blue-600">autorenew</span>
+                                    <div className="w-12 h-12 rounded-xl bg-[#f5f5f5] flex items-center justify-center text-gray-800 transition-colors group-hover:bg-primary-50">
+                                        <span className="material-icons-outlined text-[24px] group-hover:text-primary-600">autorenew</span>
                                     </div>
                                     <div className="text-gray-800">
                                         <span className="text-[14px] font-bold leading-tight block">{product.returnPolicy.days}{daysReturnText}</span>
@@ -1026,8 +1026,8 @@ const ProductDetails = () => {
 
 
                             <div className="flex items-center gap-4 group cursor-pointer">
-                                <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors ${pincodeStatus ? (pincodeStatus?.isCOD ? 'bg-green-50 text-green-600' : 'bg-red-50 text-red-500') : 'bg-[#f5f5f5] text-gray-800 group-hover:bg-blue-50'}`}>
-                                    <span className="material-icons-outlined text-[24px] group-hover:text-blue-600">
+                                <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors ${pincodeStatus ? (pincodeStatus?.isCOD ? 'bg-green-50 text-green-600' : 'bg-red-50 text-red-500') : 'bg-[#f5f5f5] text-gray-800 group-hover:bg-primary-50'}`}>
+                                    <span className="material-icons-outlined text-[24px] group-hover:text-primary-600">
                                         {pincodeStatus ? (pincodeStatus.isCOD ? 'payments' : 'money_off') : 'payments'}
                                     </span>
                                 </div>
@@ -1042,8 +1042,8 @@ const ProductDetails = () => {
                             </div>
 
                             <div className="flex items-center gap-4 group cursor-pointer">
-                                <div className="w-12 h-12 rounded-xl bg-[#f5f5f5] flex items-center justify-center text-gray-800 transition-colors group-hover:bg-blue-50">
-                                    <span className="material-icons-outlined text-[24px] group-hover:text-blue-600">verified_user</span>
+                                <div className="w-12 h-12 rounded-xl bg-[#f5f5f5] flex items-center justify-center text-gray-800 transition-colors group-hover:bg-primary-50">
+                                    <span className="material-icons-outlined text-[24px] group-hover:text-primary-600">verified_user</span>
                                 </div>
                                 <div className="text-gray-800">
                                     <span className="text-[14px] font-bold leading-tight block">{product.warranty?.summary || 'Brand Warranty'}</span>
@@ -1105,7 +1105,7 @@ const ProductDetails = () => {
                                                         {section.points.map((point, pIdx) => (
                                                             point && (
                                                                 <li key={pIdx} className="flex items-start gap-3 text-sm text-gray-700">
-                                                                    <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 flex-shrink-0"></span>
+                                                                    <span className="w-1.5 h-1.5 rounded-full bg-primary-600 mt-2 flex-shrink-0"></span>
                                                                     <span className="leading-relaxed"><TranslatedText text={point} /></span>
                                                                 </li>
                                                             )
@@ -1288,7 +1288,7 @@ const ProductDetails = () => {
                                         key={idx}
                                         onClick={() => setCurrentImageIndex(idx)}
                                         className={`flex-shrink-0 w-14 h-14 rounded border-2 p-0.5 transition-all ${currentImageIndex === idx
-                                            ? 'border-blue-600'
+                                            ? 'border-primary-600'
                                             : 'border-gray-200'
                                             }`}
                                     >
@@ -1304,7 +1304,7 @@ const ProductDetails = () => {
                 <div className="bg-white px-5 py-4">
                     {/* Brand */}
                     <div className="mb-2">
-                        <span className="text-blue-600 text-[10px] font-black uppercase tracking-widest bg-blue-50 px-2 py-0.5 rounded">
+                        <span className="text-primary-600 text-[10px] font-black uppercase tracking-widest bg-primary-50 px-2 py-0.5 rounded">
                             {product.brand || 'Brand'}
                         </span>
                     </div>
@@ -1356,7 +1356,7 @@ const ProductDetails = () => {
                                                     key={idx}
                                                     onClick={() => handleVariantSelect(vh.name, opt.name)}
                                                     className={`w-14 h-16 rounded-xl border-2 p-0.5 transition-all shadow-sm ${selectedVariants[vh.name] === opt.name
-                                                        ? 'border-blue-600 bg-blue-50/50 scale-105 shadow-md'
+                                                        ? 'border-primary-600 bg-primary-50/50 scale-105 shadow-md'
                                                         : 'border-gray-100 bg-white hover:border-gray-200'
                                                         }`}
                                                 >
@@ -1367,7 +1367,7 @@ const ProductDetails = () => {
                                                     key={idx}
                                                     onClick={() => handleVariantSelect(vh.name, opt.name)}
                                                     className={`h-11 px-5 rounded-xl border-2 font-bold text-xs transition-all shadow-sm ${selectedVariants[vh.name] === opt.name
-                                                        ? 'border-blue-600 text-blue-600 bg-blue-50/50 scale-105 shadow-md'
+                                                        ? 'border-primary-600 text-primary-600 bg-primary-50/50 scale-105 shadow-md'
                                                         : 'border-gray-100 bg-gray-50 text-gray-700 hover:border-gray-200'
                                                         }`}
                                                 >
@@ -1418,7 +1418,7 @@ const ProductDetails = () => {
                                 <button
                                     onClick={() => handleCheckPincode()}
                                     disabled={checkingPincode}
-                                    className="text-xs font-bold text-blue-600 whitespace-nowrap disabled:opacity-50"
+                                    className="text-xs font-bold text-primary-600 whitespace-nowrap disabled:opacity-50"
                                 >
                                     {checkingPincode ? '...' : checkText}
                                 </button>
@@ -1559,7 +1559,7 @@ const ProductDetails = () => {
                                                 {section.points?.map((point, pointIdx) => (
                                                     point && (
                                                         <li key={pointIdx} className="flex items-start gap-2 text-[11px] text-gray-700">
-                                                            <span className="text-blue-600 mt-1 flex-shrink-0 font-bold">•</span>
+                                                            <span className="text-primary-600 mt-1 flex-shrink-0 font-bold">•</span>
                                                             <span className="leading-relaxed font-medium"><TranslatedText text={point} /></span>
                                                         </li>
                                                     )
@@ -1801,7 +1801,7 @@ const ProductDetails = () => {
                         </div>
                         <button
                             onClick={() => navigate('/cart')}
-                            className="text-blue-400 font-bold text-sm uppercase"
+                            className="text-primary-400 font-bold text-sm uppercase"
                         >
                             Go to Cart
                         </button>

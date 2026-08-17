@@ -55,7 +55,7 @@ const ReturnRequests = ({ forcedType = 'All', pageTitle = 'Returns & Replacement
     const getStatusStyle = (status) => {
         switch (status) {
             case 'Pending': return 'bg-amber-50 text-amber-600 border-amber-100';
-            case 'Approved': return 'bg-blue-50 text-blue-600 border-blue-100';
+            case 'Approved': return 'bg-primary-50 text-primary-600 border-primary-100';
             case 'Pickup Scheduled': return 'bg-purple-50 text-purple-600 border-purple-100';
             case 'Received at Warehouse': return 'bg-indigo-50 text-indigo-600 border-indigo-100';
             case 'Refund Initiated':
@@ -271,7 +271,7 @@ const ReturnRequests = ({ forcedType = 'All', pageTitle = 'Returns & Replacement
                     <input
                         type="text"
                         placeholder="Search by ID, Order #, or Customer..."
-                        className="w-full pl-12 pr-4 py-2.5 bg-gray-50 border border-transparent rounded-xl focus:bg-white focus:border-blue-500 outline-none transition-all text-sm text-gray-900 placeholder:text-gray-900 font-bold"
+                        className="w-full pl-12 pr-4 py-2.5 bg-gray-50 border border-transparent rounded-xl focus:bg-white focus:border-primary-500 outline-none transition-all text-sm text-gray-900 placeholder:text-gray-900 font-bold"
                         onChange={(e) => {
                             setSearchTerm(e.target.value);
                             setCurrentPage(1);
@@ -281,7 +281,7 @@ const ReturnRequests = ({ forcedType = 'All', pageTitle = 'Returns & Replacement
                 <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto">
                     {forcedType === 'All' && (
                         <select
-                            className="flex-1 lg:flex-none px-4 py-2.5 bg-gray-50 border border-transparent rounded-xl outline-none focus:bg-white focus:border-blue-500 text-sm font-black text-gray-900 min-w-[130px]"
+                            className="flex-1 lg:flex-none px-4 py-2.5 bg-gray-50 border border-transparent rounded-xl outline-none focus:bg-white focus:border-primary-500 text-sm font-black text-gray-900 min-w-[130px]"
                             value={typeFilter}
                             onChange={(e) => {
                                 setTypeFilter(e.target.value);
@@ -294,7 +294,7 @@ const ReturnRequests = ({ forcedType = 'All', pageTitle = 'Returns & Replacement
                         </select>
                     )}
                     <select
-                        className="flex-1 lg:flex-none px-4 py-2.5 bg-gray-50 border border-transparent rounded-xl outline-none focus:bg-white focus:border-blue-500 text-sm font-black text-gray-900 min-w-[150px]"
+                        className="flex-1 lg:flex-none px-4 py-2.5 bg-gray-50 border border-transparent rounded-xl outline-none focus:bg-white focus:border-primary-500 text-sm font-black text-gray-900 min-w-[150px]"
                         value={statusFilter}
                         onChange={(e) => {
                             setStatusFilter(e.target.value);
@@ -324,7 +324,7 @@ const ReturnRequests = ({ forcedType = 'All', pageTitle = 'Returns & Replacement
                         </AdminTableHead>
                         <tbody className="divide-y divide-gray-200">
                             {paginatedReturns.map(ret => (
-                                <tr key={ret.id} className="hover:bg-blue-50/10 transition-colors group">
+                                <tr key={ret.id} className="hover:bg-primary-50/10 transition-colors group">
                                     <td className="px-5 py-3">
                                         <div className="flex flex-col">
                                             <div className="flex items-center gap-2">
@@ -336,14 +336,14 @@ const ReturnRequests = ({ forcedType = 'All', pageTitle = 'Returns & Replacement
                                                     {ret.type}
                                                 </span>
                                             </div>
-                                            <span className="text-[10px] font-bold text-blue-600 mt-1 uppercase tracking-tighter">Order: {ret.orderDisplayId || ret.orderId}</span>
+                                            <span className="text-[10px] font-bold text-primary-600 mt-1 uppercase tracking-tighter">Order: {ret.orderDisplayId || ret.orderId}</span>
                                         </div>
                                     </td>
                                     <td className="px-5 py-3">
                                         <button
                                             type="button"
                                             onClick={() => handleOpenCustomerProfile(ret)}
-                                            className="text-[11px] font-black text-blue-700 hover:text-blue-800 hover:underline transition-all text-left"
+                                            className="text-[11px] font-black text-primary-700 hover:text-primary-800 hover:underline transition-all text-left"
                                             title="Open customer profile"
                                         >
                                             {ret.customer || 'N/A'}
@@ -369,7 +369,7 @@ const ReturnRequests = ({ forcedType = 'All', pageTitle = 'Returns & Replacement
                                         <div className="flex items-center justify-end gap-2">
                                             <button
                                                 onClick={() => setSelectedReturn(ret)}
-                                                className="w-10 h-10 flex items-center justify-center bg-gray-50 hover:bg-blue-600 text-gray-400 hover:text-white rounded-xl transition-all shadow-sm border border-transparent hover:border-blue-700"
+                                                className="w-10 h-10 flex items-center justify-center bg-gray-50 hover:bg-primary-600 text-gray-400 hover:text-white rounded-xl transition-all shadow-sm border border-transparent hover:border-primary-700"
                                             >
                                                 <MdVisibility size={20} />
                                             </button>
@@ -439,7 +439,7 @@ const ReturnRequests = ({ forcedType = 'All', pageTitle = 'Returns & Replacement
                                             value={pickupMode}
                                             onChange={(e) => setPickupMode(e.target.value)}
                                             disabled={isAssigningPickup}
-                                            className="rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs font-bold text-gray-900 outline-none focus:border-blue-500"
+                                            className="rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs font-bold text-gray-900 outline-none focus:border-primary-500"
                                         >
                                             <option value="manual">Manual (own staff)</option>
                                             <option value="ekart">Ekart</option>
@@ -450,7 +450,7 @@ const ReturnRequests = ({ forcedType = 'All', pageTitle = 'Returns & Replacement
                                             value={pickupDate}
                                             onChange={(e) => setPickupDate(e.target.value)}
                                             disabled={isAssigningPickup}
-                                            className="rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs font-bold text-gray-900 outline-none focus:border-blue-500"
+                                            className="rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs font-bold text-gray-900 outline-none focus:border-primary-500"
                                         />
                                     </div>
 
@@ -462,7 +462,7 @@ const ReturnRequests = ({ forcedType = 'All', pageTitle = 'Returns & Replacement
                                                 onChange={(e) => setPickupAwb(e.target.value)}
                                                 disabled={isAssigningPickup}
                                                 placeholder="Reverse pickup AWB"
-                                                className="mt-2 w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs font-mono text-gray-900 outline-none focus:border-blue-500"
+                                                className="mt-2 w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs font-mono text-gray-900 outline-none focus:border-primary-500"
                                             />
                                             <p className="mt-1 text-[10px] font-semibold text-amber-700">
                                                 Create the reverse pickup in the {pickupMode === 'ekart' ? 'Ekart' : 'Delhivery'} panel, then paste its AWB here.
@@ -476,14 +476,14 @@ const ReturnRequests = ({ forcedType = 'All', pageTitle = 'Returns & Replacement
                                         onChange={(e) => setPickupNotes(e.target.value)}
                                         disabled={isAssigningPickup}
                                         placeholder="Notes (optional)"
-                                        className="mt-2 w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs font-semibold text-gray-900 outline-none focus:border-blue-500"
+                                        className="mt-2 w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs font-semibold text-gray-900 outline-none focus:border-primary-500"
                                     />
 
                                     <button
                                         type="button"
                                         onClick={handleAssignPickup}
                                         disabled={isAssigningPickup}
-                                        className="mt-3 w-full rounded-xl bg-blue-600 px-4 py-2.5 text-xs font-black uppercase tracking-wide text-white hover:bg-blue-700 disabled:bg-blue-300"
+                                        className="mt-3 w-full rounded-xl bg-primary-600 px-4 py-2.5 text-xs font-black uppercase tracking-wide text-white hover:bg-primary-700 disabled:bg-primary-300"
                                     >
                                         {isAssigningPickup ? 'Assigning...' : 'Assign Pickup'}
                                     </button>
@@ -519,7 +519,7 @@ const ReturnRequests = ({ forcedType = 'All', pageTitle = 'Returns & Replacement
                                                 href={selectedReturn.googleDriveLink}
                                                 target="_blank"
                                                 rel="noreferrer"
-                                                className="inline-flex items-center gap-2 text-xs font-bold text-blue-700 bg-blue-50 border border-blue-200 px-3 py-2 rounded-lg hover:bg-blue-100 transition-all break-all"
+                                                className="inline-flex items-center gap-2 text-xs font-bold text-primary-700 bg-primary-50 border border-primary-200 px-3 py-2 rounded-lg hover:bg-primary-100 transition-all break-all"
                                             >
                                                 Open Google Proof Link
                                             </a>
@@ -568,16 +568,16 @@ const ReturnRequests = ({ forcedType = 'All', pageTitle = 'Returns & Replacement
                                 </div>
 
                                 <div className="grid grid-cols-2 gap-4">
-                                    <div className="bg-blue-50/50 p-4 rounded-2xl">
-                                        <p className="text-[9px] font-black text-blue-400 uppercase mb-1">Order Ref</p>
-                                        <p className="text-xs font-black text-blue-700">#{selectedReturn.orderDisplayId || selectedReturn.orderId}</p>
+                                    <div className="bg-primary-50/50 p-4 rounded-2xl">
+                                        <p className="text-[9px] font-black text-primary-400 uppercase mb-1">Order Ref</p>
+                                        <p className="text-xs font-black text-primary-700">#{selectedReturn.orderDisplayId || selectedReturn.orderId}</p>
                                     </div>
                                     <div className="bg-gray-50 p-4 rounded-2xl">
                                         <p className="text-[9px] font-black text-gray-400 uppercase mb-1">Customer</p>
                                         <button
                                             type="button"
                                             onClick={() => handleOpenCustomerProfile(selectedReturn)}
-                                            className="text-xs font-black text-blue-700 hover:text-blue-800 hover:underline transition-all cursor-pointer text-left"
+                                            className="text-xs font-black text-primary-700 hover:text-primary-800 hover:underline transition-all cursor-pointer text-left"
                                             title="Open customer profile"
                                         >
                                             {selectedReturn.customer}
@@ -605,8 +605,8 @@ const ReturnRequests = ({ forcedType = 'All', pageTitle = 'Returns & Replacement
                                 )}
 
                                 {selectedReturn.pickupAddress && (
-                                    <div className="bg-blue-50/60 p-4 rounded-2xl border border-blue-100">
-                                        <p className="text-[9px] font-black text-blue-500 uppercase mb-2 tracking-widest">
+                                    <div className="bg-primary-50/60 p-4 rounded-2xl border border-primary-100">
+                                        <p className="text-[9px] font-black text-primary-500 uppercase mb-2 tracking-widest">
                                             Pickup Address
                                         </p>
                                         <div className="space-y-1.5">
@@ -635,7 +635,7 @@ const ReturnRequests = ({ forcedType = 'All', pageTitle = 'Returns & Replacement
                         <div className="md:w-1/2 flex flex-col bg-gray-50 overflow-hidden">
                             <div className="flex items-center justify-between p-6 bg-white border-b border-gray-100">
                                 <h2 className="text-sm font-black text-gray-800 uppercase tracking-widest flex items-center gap-2">
-                                    <MdHistory className="text-blue-600" size={20} /> Lifecycle Tracking
+                                    <MdHistory className="text-primary-600" size={20} /> Lifecycle Tracking
                                 </h2>
                                 <button onClick={() => setSelectedReturn(null)} className="hidden md:block p-2 hover:bg-gray-100 rounded-full text-gray-400"><MdCancel size={24} /></button>
                             </div>
@@ -655,9 +655,9 @@ const ReturnRequests = ({ forcedType = 'All', pageTitle = 'Returns & Replacement
 
                                     return (
                                         <div className="relative pb-4">
-                                            <div className="absolute left-[15px] top-0 bottom-0 w-0.5 bg-blue-200 pointer-events-none"></div>
+                                            <div className="absolute left-[15px] top-0 bottom-0 w-0.5 bg-primary-200 pointer-events-none"></div>
                                             <div
-                                                className="absolute left-[15px] top-0 w-0.5 bg-blue-600 pointer-events-none transition-all duration-300"
+                                                className="absolute left-[15px] top-0 w-0.5 bg-primary-600 pointer-events-none transition-all duration-300"
                                                 style={{ height: progressHeight }}
                                             ></div>
 
@@ -668,10 +668,10 @@ const ReturnRequests = ({ forcedType = 'All', pageTitle = 'Returns & Replacement
                                                 const stepLabel = getDisplayStatusLabel(selectedReturn.type, step, selectedReturn);
                                                 return (
                                                     <div key={`${selectedReturn.id}-${step}`} className="relative flex gap-6 mb-8 last:mb-0">
-                                                        <div className={`w-8 h-8 rounded-full flex items-center justify-center relative z-10 text-white transition-all ${isCompleted ? 'bg-blue-600 shadow-lg shadow-blue-100' : 'bg-gray-300'}`}>
+                                                        <div className={`w-8 h-8 rounded-full flex items-center justify-center relative z-10 text-white transition-all ${isCompleted ? 'bg-primary-600 shadow-lg shadow-primary-100' : 'bg-gray-300'}`}>
                                                             {isCompleted ? <MdCheckCircle size={16} /> : <MdPendingActions size={16} />}
                                                         </div>
-                                                        <div className={`flex-1 bg-white p-4 rounded-2xl shadow-sm border transition-all ${isCurrent ? 'border-blue-200' : 'border-gray-100'}`}>
+                                                        <div className={`flex-1 bg-white p-4 rounded-2xl shadow-sm border transition-all ${isCurrent ? 'border-primary-200' : 'border-gray-100'}`}>
                                                             <div className="flex items-center justify-between mb-1">
                                                                 <span className="text-xs font-black text-gray-900 uppercase tracking-widest">{stepLabel}</span>
                                                                 <span className="text-[9px] text-gray-900 font-bold">
@@ -694,7 +694,7 @@ const ReturnRequests = ({ forcedType = 'All', pageTitle = 'Returns & Replacement
                                         <div className="grid grid-cols-2 gap-3">
                                             <button
                                                 onClick={() => handleStatusUpdate(selectedReturn._id, 'Approved')}
-                                                className="py-3 bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-blue-700 transition shadow-lg shadow-blue-100"
+                                                className="py-3 bg-primary-600 text-white text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-primary-700 transition shadow-lg shadow-primary-100"
                                             >
                                                 {selectedReturn.type === 'Cancellation' ? 'Approve Cancellation' : 'Accept Request'}
                                             </button>
@@ -710,7 +710,7 @@ const ReturnRequests = ({ forcedType = 'All', pageTitle = 'Returns & Replacement
                                             <select
                                                 value={nextStatus}
                                                 onChange={(e) => setNextStatus(e.target.value)}
-                                                className="w-full bg-gray-50 border-2 border-transparent focus:border-blue-500 rounded-xl px-4 py-3 outline-none text-xs font-black text-gray-900"
+                                                className="w-full bg-gray-50 border-2 border-transparent focus:border-primary-500 rounded-xl px-4 py-3 outline-none text-xs font-black text-gray-900"
                                             >
                                                 <option value="" disabled>Select next status</option>
                                                 {getStatusOptions(selectedReturn).map((status) => (
@@ -722,7 +722,7 @@ const ReturnRequests = ({ forcedType = 'All', pageTitle = 'Returns & Replacement
                                             <button
                                                 onClick={() => handleStatusUpdate(selectedReturn._id, nextStatus)}
                                                 disabled={!nextStatus}
-                                                className="py-3 px-5 bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-blue-700 transition shadow-lg shadow-blue-100 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                                                className="py-3 px-5 bg-primary-600 text-white text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-primary-700 transition shadow-lg shadow-primary-100 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
                                             >
                                                 {getActionLabel(nextStatus, selectedReturn.type, selectedReturn)}
                                             </button>

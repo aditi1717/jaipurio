@@ -56,19 +56,19 @@ const SortableItem = ({ id, category, onRemove }) => {
             ref={setNodeRef}
             style={style}
             className={`mb-2 flex items-center justify-between rounded-xl border border-gray-200 bg-white p-3 ${
-                isDragging ? 'ring-2 ring-blue-100 opacity-50 z-50' : 'hover:bg-gray-50 transition-colors'
+                isDragging ? 'ring-2 ring-primary-100 opacity-50 z-50' : 'hover:bg-gray-50 transition-colors'
             }`}
         >
             <div className="flex items-center gap-3">
                 <div 
                     {...attributes} 
                     {...listeners} 
-                    className="p-1.5 rounded-lg text-gray-300 hover:bg-gray-100 hover:text-blue-500 cursor-grab active:cursor-grabbing transition-colors"
+                    className="p-1.5 rounded-lg text-gray-300 hover:bg-gray-100 hover:text-primary-500 cursor-grab active:cursor-grabbing transition-colors"
                 >
                     <MdDragIndicator size={22} />
                 </div>
                 
-                <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600">
+                <div className="w-10 h-10 bg-primary-50 rounded-lg flex items-center justify-center text-primary-600">
                     <MdList size={20} />
                 </div>
                 
@@ -83,7 +83,7 @@ const SortableItem = ({ id, category, onRemove }) => {
             <button
                 type="button"
                 onClick={() => onRemove(id)}
-                className="p-2 text-blue-500 hover:bg-blue-50 rounded-lg transition-colors"
+                className="p-2 text-primary-500 hover:bg-primary-50 rounded-lg transition-colors"
                 title="Remove from header"
             >
                 <MdCheckBox size={24} />
@@ -209,7 +209,7 @@ const HeaderManager = () => {
                         disabled={isLoading || !hasChanges}
                         className={`flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition ${
                             hasChanges 
-                                ? 'bg-blue-600 text-white hover:bg-blue-700' 
+                                ? 'bg-primary-600 text-white hover:bg-primary-700' 
                                 : 'border border-gray-200 bg-white text-gray-300 cursor-not-allowed'
                         }`}
                     >
@@ -286,15 +286,15 @@ const HeaderManager = () => {
                                     className="group flex cursor-pointer items-center justify-between rounded-xl border border-gray-200 p-4 transition hover:bg-gray-50"
                                 >
                                     <div className="flex items-center gap-4">
-                                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-50 text-gray-400 transition-colors group-hover:text-blue-500">
+                                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-50 text-gray-400 transition-colors group-hover:text-primary-500">
                                             <MdFolder size={20} />
                                         </div>
                                         <div className="flex flex-col">
-                                            <span className="leading-none font-semibold text-gray-700 group-hover:text-blue-700">{category?.name || 'Unnamed'}</span>
+                                            <span className="leading-none font-semibold text-gray-700 group-hover:text-primary-700">{category?.name || 'Unnamed'}</span>
                                             <span className="mt-1 text-[10px] font-semibold text-gray-400">{category?.active ? 'Active' : 'Disabled'}</span>
                                         </div>
                                     </div>
-                                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-50 text-gray-300 transition group-hover:bg-blue-600 group-hover:text-white">
+                                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-50 text-gray-300 transition group-hover:bg-primary-600 group-hover:text-white">
                                         <MdAdd size={20} />
                                     </div>
                                 </div>

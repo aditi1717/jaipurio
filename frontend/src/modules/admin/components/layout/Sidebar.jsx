@@ -5,7 +5,7 @@ import useAdminAuthStore from '../../store/adminAuthStore';
 import useNewOrderStore from '../../store/newOrderStore';
 import { ADMIN_MENU_GROUPS, hasAdminPermission } from '../../constants/adminPermissions';
 
-import logo from '../../../../assets/indiankart-logo.png';
+import logo from '../../../../assets/jaipurio-logo.jpeg';
 
 const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(true);
@@ -52,9 +52,9 @@ const Sidebar = () => {
                         />
                         <div className={`transition-all duration-300 delay-100 ${isOpen ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4 pointer-events-none w-0'}`}>
                             <h1 className="font-black text-xl tracking-tighter leading-none bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent italic">
-                                INDIAN<span className="text-blue-500 not-italic">KART</span>
+                                JAIPUR<span className="text-primary-500 not-italic">IO</span>
                             </h1>
-                            <p className="text-[10px] font-black text-blue-500 tracking-[0.2em] uppercase mt-1">Admin Central</p>
+                            <p className="text-[10px] font-black text-primary-500 tracking-[0.2em] uppercase mt-1">Admin Central</p>
                         </div>
                     </div>
                 </div>
@@ -80,7 +80,7 @@ const Sidebar = () => {
                                             end={['/admin/categories', '/admin/products', '/admin/subcategories'].includes(item.path)}
                                             className={({ isActive }) =>
                                                 `flex items-center gap-3 px-4 py-3 rounded-lg mb-1 transition-colors ${isActive
-                                                    ? 'bg-blue-600 text-white'
+                                                    ? 'bg-primary-600 text-white'
                                                     : 'text-gray-300 hover:bg-gray-700 hover:text-white'
                                                 }`
                                             }

@@ -22,7 +22,7 @@ const DelhiveryRedirect = () => {
                 </p>
                 <a
                     href={targetUrl}
-                    className="mt-6 inline-flex rounded-xl bg-blue-600 px-5 py-3 text-xs font-black uppercase tracking-widest text-white"
+                    className="mt-6 inline-flex rounded-xl bg-primary-600 px-5 py-3 text-xs font-black uppercase tracking-widest text-white"
                 >
                     Open Delhivery
                 </a>

@@ -3,7 +3,7 @@ import API from '../services/api';
 
 export const CATEGORY_PAGE_BUILDER_STORAGE_KEY = 'subcategory-page-builder-catalog-v1';
 const LEGACY_CATEGORY_PAGE_BUILDER_STORAGE_KEY = 'subcategory-page-builder-dummy-catalog-v1';
-const CATEGORY_PAGE_BUILDER_IDB_NAME = 'indiankart-subcategory-page-builder';
+const CATEGORY_PAGE_BUILDER_IDB_NAME = 'jaipurio-subcategory-page-builder';
 const CATEGORY_PAGE_BUILDER_IDB_STORE = 'catalog';
 const CATEGORY_PAGE_BUILDER_IDB_KEY = 'catalog-v2';
 const INDEXED_DB_POINTER = '__indexed_db__';

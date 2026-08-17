@@ -345,7 +345,7 @@ const FooterManager = () => {
                     <button
                         onClick={handleSave}
                         disabled={isLoading}
-                        className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700 disabled:opacity-60"
+                        className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-700 disabled:opacity-60"
                     >
                         <MdSave />
                         {isLoading ? 'Saving...' : 'Save Changes'}
@@ -364,7 +364,7 @@ const FooterManager = () => {
             <div className="grid grid-cols-1 gap-8 xl:grid-cols-2">
                 <section className="rounded-2xl border border-gray-200 bg-white p-6 space-y-5">
                     <h2 className="flex items-center gap-2 text-lg font-semibold text-gray-900">
-                        <MdBusiness className="text-blue-600" />
+                        <MdBusiness className="text-primary-600" />
                         Address
                     </h2>
 
@@ -376,7 +376,7 @@ const FooterManager = () => {
                             rows="4"
                             disabled={!isEditing}
                             placeholder="Enter mail us address"
-                            className="w-full resize-none rounded-xl border border-gray-200 p-4 text-sm text-gray-900 outline-none focus:border-blue-500 disabled:bg-gray-50 disabled:text-gray-500"
+                            className="w-full resize-none rounded-xl border border-gray-200 p-4 text-sm text-gray-900 outline-none focus:border-primary-500 disabled:bg-gray-50 disabled:text-gray-500"
                         />
                     </div>
 
@@ -388,14 +388,14 @@ const FooterManager = () => {
                             rows="4"
                             disabled={!isEditing}
                             placeholder="Enter address"
-                            className="w-full resize-none rounded-xl border border-gray-200 p-4 text-sm text-gray-900 outline-none focus:border-blue-500 disabled:bg-gray-50 disabled:text-gray-500"
+                            className="w-full resize-none rounded-xl border border-gray-200 p-4 text-sm text-gray-900 outline-none focus:border-primary-500 disabled:bg-gray-50 disabled:text-gray-500"
                         />
                     </div>
                 </section>
 
                 <section className="rounded-2xl border border-gray-200 bg-white p-6 space-y-5">
                     <h2 className="flex items-center gap-2 text-lg font-semibold text-gray-900">
-                        <MdCopyright className="text-blue-600" />
+                        <MdCopyright className="text-primary-600" />
                         Copyright, CIN And Social Links
                     </h2>
 
@@ -406,7 +406,7 @@ const FooterManager = () => {
                             onChange={(e) => handleConfigChange('copyrightText', e.target.value)}
                             disabled={!isEditing}
                             placeholder="Enter copyright text"
-                            className="w-full rounded-xl border border-gray-200 p-3 text-sm text-gray-900 outline-none focus:border-blue-500 disabled:bg-gray-50 disabled:text-gray-500"
+                            className="w-full rounded-xl border border-gray-200 p-3 text-sm text-gray-900 outline-none focus:border-primary-500 disabled:bg-gray-50 disabled:text-gray-500"
                         />
                     </div>
 
@@ -417,7 +417,7 @@ const FooterManager = () => {
                             onChange={(e) => handleConfigChange('cinNumber', e.target.value)}
                             disabled={!isEditing}
                             placeholder="Enter CIN number"
-                            className="w-full rounded-xl border border-gray-200 p-3 text-sm text-gray-900 outline-none focus:border-blue-500 disabled:bg-gray-50 disabled:text-gray-500"
+                            className="w-full rounded-xl border border-gray-200 p-3 text-sm text-gray-900 outline-none focus:border-primary-500 disabled:bg-gray-50 disabled:text-gray-500"
                         />
                     </div>
 
@@ -435,7 +435,7 @@ const FooterManager = () => {
                                     }
                                     disabled={!isEditing}
                                     placeholder={`https://${platform}.com/...`}
-                                    className="w-full rounded-xl border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-blue-500 disabled:bg-gray-50 disabled:text-gray-500"
+                                    className="w-full rounded-xl border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary-500 disabled:bg-gray-50 disabled:text-gray-500"
                                 />
                             </div>
                         ))}
@@ -445,7 +445,7 @@ const FooterManager = () => {
 
             <section className="rounded-2xl border border-gray-200 bg-white p-6 space-y-5">
                 <h2 className="flex items-center gap-2 text-lg font-semibold text-gray-900">
-                    <MdLink className="text-blue-600" />
+                    <MdLink className="text-primary-600" />
                     Bottom Quick Links
                 </h2>
 
@@ -459,7 +459,7 @@ const FooterManager = () => {
                             >
                                 <div className="flex items-center gap-3 min-w-0">
                                     {React.createElement(QUICK_LINK_ICON_COMPONENTS[link.icon || 'help'] || FaQuestionCircle, {
-                                        className: 'shrink-0 text-base text-blue-600'
+                                        className: 'shrink-0 text-base text-primary-600'
                                     })}
                                     <div className="min-w-0">
                                         <p className="truncate text-sm font-semibold text-gray-900">
@@ -485,13 +485,13 @@ const FooterManager = () => {
                                             onChange={(e) => handleQuickLinkChange(index, 'label', e.target.value)}
                                             disabled={!isEditing}
                                             placeholder="Name"
-                                            className="w-full rounded-xl border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-blue-500 disabled:bg-gray-50 disabled:text-gray-500"
+                                            className="w-full rounded-xl border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary-500 disabled:bg-gray-50 disabled:text-gray-500"
                                         />
                                         <select
                                             value={link.icon || 'help'}
                                             onChange={(e) => handleQuickLinkChange(index, 'icon', e.target.value)}
                                             disabled={!isEditing}
-                                            className="w-full rounded-xl border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-blue-500 disabled:bg-gray-50 disabled:text-gray-500"
+                                            className="w-full rounded-xl border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary-500 disabled:bg-gray-50 disabled:text-gray-500"
                                         >
                                             {QUICK_LINK_ICONS.map((icon) => (
                                                 <option key={icon.value} value={icon.value}>
@@ -512,7 +512,7 @@ const FooterManager = () => {
                                                 handleQuickLinkChange(index, 'pageKey', value);
                                             }}
                                             disabled={!isEditing}
-                                            className="w-full rounded-xl border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-blue-500 disabled:bg-gray-50 disabled:text-gray-500"
+                                            className="w-full rounded-xl border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary-500 disabled:bg-gray-50 disabled:text-gray-500"
                                         >
                                             <option value="">Select page</option>
                                             {availablePages.map((page) => (
@@ -528,7 +528,7 @@ const FooterManager = () => {
                                                 onChange={(e) => handleQuickLinkChange(index, 'url', e.target.value)}
                                                 disabled={!isEditing}
                                                 placeholder="Enter external URL"
-                                                className="w-full rounded-xl border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-blue-500 disabled:bg-gray-50 disabled:text-gray-500"
+                                                className="w-full rounded-xl border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary-500 disabled:bg-gray-50 disabled:text-gray-500"
                                             />
                                         ) : null}
                                     </div>
@@ -549,7 +549,7 @@ const FooterManager = () => {
                     {isEditing ? (
                         <button
                             onClick={addQuickLink}
-                            className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-dashed border-gray-300 px-4 py-3 text-sm font-medium text-gray-600 transition hover:border-blue-400 hover:text-blue-600"
+                            className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-dashed border-gray-300 px-4 py-3 text-sm font-medium text-gray-600 transition hover:border-primary-400 hover:text-primary-600"
                         >
                             <MdAdd />
                             Add Link
@@ -561,7 +561,7 @@ const FooterManager = () => {
             <section className="rounded-2xl border border-gray-200 bg-white p-6">
                 <div className="mb-6 flex items-center justify-between">
                     <h2 className="flex items-center gap-2 text-lg font-semibold text-gray-900">
-                        <MdLink className="text-blue-600" />
+                        <MdLink className="text-primary-600" />
                         Footer Columns
                     </h2>
                     <span className="text-sm text-gray-500">3 fixed columns with page links or external URLs</span>
@@ -640,7 +640,7 @@ const FooterManager = () => {
                                                                 handleLinkChange(sectionIndex, linkIndex, 'pageKey', value);
                                                             }}
                                                             disabled={!isEditing}
-                                                            className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-blue-500 disabled:bg-gray-50 disabled:text-gray-500"
+                                                            className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary-500 disabled:bg-gray-50 disabled:text-gray-500"
                                                         >
                                                             <option value="">Select page</option>
                                                             {availablePages.map((page) => (
@@ -656,7 +656,7 @@ const FooterManager = () => {
                                                                 onChange={(e) => handleLinkChange(sectionIndex, linkIndex, 'url', e.target.value)}
                                                                 disabled={!isEditing}
                                                                 placeholder="Enter external URL"
-                                                                className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-blue-500 disabled:bg-gray-50 disabled:text-gray-500"
+                                                                className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary-500 disabled:bg-gray-50 disabled:text-gray-500"
                                                             />
                                                         ) : null}
                                                         {isEditing ? (
@@ -676,7 +676,7 @@ const FooterManager = () => {
                                         {isEditing ? (
                                             <button
                                                 onClick={() => addLink(sectionIndex)}
-                                                className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-dashed border-gray-300 px-4 py-3 text-sm font-medium text-gray-600 transition hover:border-blue-400 hover:text-blue-600"
+                                                className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-dashed border-gray-300 px-4 py-3 text-sm font-medium text-gray-600 transition hover:border-primary-400 hover:text-primary-600"
                                             >
                                                 <MdAdd />
                                                 Add Link

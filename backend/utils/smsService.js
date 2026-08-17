@@ -98,7 +98,7 @@ function normalizeMobileNumber(mobile) {
  * Build DLT-compliant message
  */
 function buildOtpMessage(otp) {
-    const appName = process.env.APP_NAME || 'Indian Kart';
+    const appName = process.env.APP_NAME || 'Jaipurio';
     const template = getSmsConfig().messageTemplate;
     if (template) {
         return template
@@ -459,7 +459,7 @@ export async function generateDeliveryOtp(orderId, customerPhone) {
 
         try {
             // Use SMS India HUB for Delivery OTPs as well
-            const appName = process.env.APP_NAME || 'Indian Kart';
+            const appName = process.env.APP_NAME || 'Jaipurio';
             const message = `Welcome to the ${appName} powered by SMSINDIAHUB. Your Delivery OTP for Order #${orderId.slice(-6).toUpperCase()} is ${otp}`;
             
             if (process.env.USE_MOCK_OTP !== 'true') {

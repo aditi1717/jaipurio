@@ -118,7 +118,7 @@ export const InvoiceDisplay = React.forwardRef(
 
     // Specific seller requirements - prioritize apiSettings from DB
     const settings = {
-        sellerName: apiSettings?.sellerName || "IndianKart",
+        sellerName: apiSettings?.sellerName || "Jaipurio",
         sellerAddress: apiSettings?.sellerAddress || "123 E-com St, Digital City",
         gstNumber: apiSettings?.gstNumber || "123456789",
         panNumber: apiSettings?.panNumber || "LBCPS9976F",
@@ -463,7 +463,7 @@ export const InvoiceDisplay = React.forwardRef(
                          crossOrigin="anonymous"
                        />
                      )}
-                     <div className="brand" style={{ fontSize: "13px" }}>IndianKart</div>
+                     <div className="brand" style={{ fontSize: "13px" }}>Jaipurio</div>
                    </div>
                 </td>
               </tr>
@@ -717,7 +717,7 @@ export const InvoiceDisplay = React.forwardRef(
           
           <div style={{ marginTop: "20px", display: "flex", justifyContent: "space-between", fontSize: "9px", fontWeight: "bold", borderTop: "1px solid #eee", paddingTop: "10px" }}>
              <span>E. & O.E.</span>
-             <span>Ordered Through IndianKart <span style={{ border: "1px solid black", padding: "0 1px", transform: "scaleX(-1)", display: "inline-block", fontSize: "8px" }}>f</span></span>
+             <span>Ordered Through Jaipurio <span style={{ border: "1px solid black", padding: "0 1px", transform: "scaleX(-1)", display: "inline-block", fontSize: "8px" }}>f</span></span>
           </div>
         </div>
       </div>
@@ -795,7 +795,7 @@ export const BulkInvoiceGenerator = ({ orders, settings, customTrigger, includeS
   ) : (
     <button
       onClick={handlePrint}
-      className="bg-blue-600 text-white px-6 py-3 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-blue-700 transition-all shadow-lg shadow-blue-100"
+      className="bg-primary-600 text-white px-6 py-3 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-primary-700 transition-all shadow-lg shadow-primary-100"
     >
       Print {orders.length} Invoices
     </button>

@@ -49,7 +49,7 @@ const BannerManager = () => {
                 </div>
                 <button
                     onClick={() => setShowForm(true)}
-                    className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+                    className="flex items-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition"
                 >
                     <MdAdd size={20} /> New Collection
                 </button>
@@ -100,7 +100,7 @@ const BannerManager = () => {
                                 <div className="absolute top-2 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity z-10">
                                     <button
                                         onClick={() => handleEdit(banner)}
-                                        className="p-2 bg-white rounded-full text-blue-600 shadow-sm hover:scale-105"
+                                        className="p-2 bg-white rounded-full text-primary-600 shadow-sm hover:scale-105"
                                     >
                                         <MdEdit size={16} />
                                     </button>

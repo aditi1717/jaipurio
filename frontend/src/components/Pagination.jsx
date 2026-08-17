@@ -50,7 +50,7 @@ const Pagination = ({ pages, page, changePage }) => {
                     <button
                         key={x}
                         className={`px-4 py-2 rounded-lg text-sm font-bold transition-colors border ${x === page
-                            ? 'bg-blue-600 text-white border-blue-600 shadow-md shadow-blue-200'
+                            ? 'bg-primary-600 text-white border-primary-600 shadow-md shadow-primary-200'
                             : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-100'
                             }`}
                         onClick={() => changePage(x)}

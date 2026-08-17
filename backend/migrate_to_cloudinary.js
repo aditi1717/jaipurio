@@ -29,7 +29,7 @@ async function migrateImages() {
             console.log(`Uploading image for subcategory: ${sub.name}`);
             try {
                 const result = await cloudinary.uploader.upload(sub.image, {
-                    folder: 'indiankart/subcategories'
+                    folder: 'jaipurio/subcategories'
                 });
                 sub.image = result.secure_url;
                 await sub.save();
@@ -58,7 +58,7 @@ async function migrateImages() {
                         console.log(`Uploading small banner ${i} for ${cat.name}`);
                         try {
                             const result = await cloudinary.uploader.upload(cat.smallBanners[i].image, {
-                                folder: 'indiankart/banners/small'
+                                folder: 'jaipurio/banners/small'
                             });
                             cat.smallBanners[i].image = result.secure_url;
                             updated = true;
@@ -73,7 +73,7 @@ async function migrateImages() {
                         console.log(`Uploading secondary banner ${i} for ${cat.name}`);
                         try {
                             const result = await cloudinary.uploader.upload(cat.secondaryBanners[i].image, {
-                                folder: 'indiankart/banners/secondary'
+                                folder: 'jaipurio/banners/secondary'
                             });
                             cat.secondaryBanners[i].image = result.secure_url;
                             updated = true;

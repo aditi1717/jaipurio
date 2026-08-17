@@ -165,7 +165,7 @@ const buildShipmentPayload = (order, settings) => {
     const taxValue = Math.max(0, Number(order?.taxPrice || 0));
     const taxableAmount = Math.max(1, Number((totalAmount - taxValue).toFixed(2)));
     const paymentMode = getPaymentMode(order);
-    const sellerName = sanitizeText(settings?.sellerName || settings?.ekartClientName || 'IndianKart');
+    const sellerName = sanitizeText(settings?.sellerName || settings?.ekartClientName || 'Jaipurio');
     const sellerAddress = sanitizeText(settings?.sellerAddress || '');
     const gstNumber = sanitizeText(settings?.gstNumber || '');
     const productsDescription = sanitizeText(orderItems.map((item) => item?.name || 'Item').join(', ')).slice(0, 250) || 'General merchandise';

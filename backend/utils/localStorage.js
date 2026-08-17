@@ -13,7 +13,7 @@ export const UPLOADS_URL_PREFIX = '/uploads';
 // Stored URLs must be absolute: the frontend runs on a different origin than
 // the API, so a relative /uploads/... path would resolve against the storefront.
 const getAssetBaseUrl = () =>
-    String(process.env.ASSET_BASE_URL || 'https://backend.indiankart.in').replace(/\/+$/, '');
+    String(process.env.ASSET_BASE_URL || 'https://backend.jaipurio.in').replace(/\/+$/, '');
 
 export const toPublicUrl = (relativePath) =>
     `${getAssetBaseUrl()}${UPLOADS_URL_PREFIX}/${String(relativePath).replace(/^\/+/, '')}`;

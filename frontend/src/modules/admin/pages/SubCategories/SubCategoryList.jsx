@@ -86,12 +86,12 @@ const SubCategoryList = () => {
                             placeholder="Search subcategories..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-64 rounded-lg border border-gray-200 bg-white pl-4 pr-10 py-2 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-64 rounded-lg border border-gray-200 bg-white pl-4 pr-10 py-2 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500"
                         />
                     </div>
                     <button
                         onClick={() => setShowForm(true)}
-                        className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+                        className="flex items-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition"
                     >
                         <MdAdd size={20} />
                         Add SubCategory
@@ -114,13 +114,13 @@ const SubCategoryList = () => {
                                     <button
                                         type="button"
                                         onClick={() => toggleCategory(group.categoryId)}
-                                        className={`w-full flex items-center justify-between px-5 py-4 text-left transition ${isExpanded ? 'bg-blue-50/70 border-b border-blue-100' : 'hover:bg-gray-50'}`}
+                                        className={`w-full flex items-center justify-between px-5 py-4 text-left transition ${isExpanded ? 'bg-primary-50/70 border-b border-primary-100' : 'hover:bg-gray-50'}`}
                                     >
-                                        <span className="flex items-center gap-2 font-bold text-blue-900 text-lg">
+                                        <span className="flex items-center gap-2 font-bold text-primary-900 text-lg">
                                             {isExpanded ? <MdExpandMore /> : <MdChevronRight />}
                                             {group.name}
                                         </span>
-                                        <span className="text-xs font-semibold text-blue-700 bg-blue-100 px-3 py-1 rounded-full">
+                                        <span className="text-xs font-semibold text-primary-700 bg-primary-100 px-3 py-1 rounded-full">
                                             {group.items.length} items
                                         </span>
                                     </button>
@@ -150,7 +150,7 @@ const SubCategoryList = () => {
                                                                 <div className="flex justify-end gap-2">
                                                                     <button
                                                                         onClick={() => handleEdit(sub)}
-                                                                        className="p-2 hover:bg-blue-50 rounded-lg text-blue-600 transition"
+                                                                        className="p-2 hover:bg-primary-50 rounded-lg text-primary-600 transition"
                                                                     >
                                                                         <MdEdit size={18} />
                                                                     </button>

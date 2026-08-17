@@ -41,7 +41,7 @@ const OrderSuccess = () => {
             <div className="w-full md:max-w-[480px] md:bg-white md:rounded-lg md:shadow-[0_4px_20px_rgba(0,0,0,0.08)] md:overflow-hidden">
 
                 {/* Header - Mobile Only */}
-                <div className="w-full bg-blue-600 text-white p-4 flex items-center justify-between md:hidden">
+                <div className="w-full bg-primary-600 text-white p-4 flex items-center justify-between md:hidden">
                     <button onClick={() => navigate('/')} className="material-icons">arrow_back</button>
                     <h1 className="text-lg font-bold">Order Confirmed</h1>
                     <div className="w-6"></div>
@@ -95,7 +95,7 @@ const OrderSuccess = () => {
                         </button>
                         <button
                             onClick={() => navigate('/my-orders')}
-                            className="w-full bg-blue-600 text-white py-3.5 rounded-lg font-bold shadow-lg hover:bg-blue-700 transition"
+                            className="w-full bg-primary-600 text-white py-3.5 rounded-lg font-bold shadow-lg hover:bg-primary-700 transition"
                         >
                             View My Orders
                         </button>
@@ -108,7 +108,7 @@ const OrderSuccess = () => {
                     </div>
 
                     <div className="mt-auto mb-10 text-center text-[10px] text-gray-400 max-w-[80%] uppercase tracking-widest font-bold md:mt-8 md:mb-0">
-                        Thank you for shopping with Indiankart
+                        Thank you for shopping with Jaipurio
                     </div>
                 </div>
             </div>

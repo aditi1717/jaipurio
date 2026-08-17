@@ -93,13 +93,13 @@ const HomeLayoutEditor = () => {
                     {/* Sections List */}
                     <div>
                         <h4 className="flex items-center gap-2 text-sm font-bold text-gray-800 mb-3">
-                            <MdViewAgenda className="text-blue-500" /> Sections
+                            <MdViewAgenda className="text-primary-500" /> Sections
                         </h4>
                         <div className="space-y-2">
                             {homeSections.map(section => (
-                                <div key={section.id} className="flex items-center justify-between p-3 bg-gray-50 hover:bg-white border border-transparent hover:border-blue-200 hover:shadow-sm rounded-xl group transition-all">
+                                <div key={section.id} className="flex items-center justify-between p-3 bg-gray-50 hover:bg-white border border-transparent hover:border-primary-200 hover:shadow-sm rounded-xl group transition-all">
                                     <div className="flex items-center gap-3 overflow-hidden">
-                                        <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center shrink-0 text-blue-400 font-bold text-[10px]">
+                                        <div className="w-8 h-8 rounded-lg bg-primary-50 flex items-center justify-center shrink-0 text-primary-400 font-bold text-[10px]">
                                             {section.products?.length || 0}
                                         </div>
                                         <div className="min-w-0">
@@ -109,7 +109,7 @@ const HomeLayoutEditor = () => {
                                     </div>
                                     <button 
                                         onClick={() => handleAddToLayout('section', section.id)}
-                                        className="p-1.5 bg-white text-blue-600 rounded-lg shadow-sm opacity-0 group-hover:opacity-100 transition-opacity"
+                                        className="p-1.5 bg-white text-primary-600 rounded-lg shadow-sm opacity-0 group-hover:opacity-100 transition-opacity"
                                     >
                                         <MdAdd size={16} />
                                     </button>
@@ -149,9 +149,9 @@ const HomeLayoutEditor = () => {
                                     <Reorder.Item 
                                         key={item._id} 
                                         value={item}
-                                        className="flex items-center gap-4 bg-white p-3 rounded-xl border border-gray-100 shadow-sm cursor-grab active:cursor-grabbing hover:border-blue-200 transition-colors bg-white relative group"
+                                        className="flex items-center gap-4 bg-white p-3 rounded-xl border border-gray-100 shadow-sm cursor-grab active:cursor-grabbing hover:border-primary-200 transition-colors bg-white relative group"
                                     >
-                                        <div className="flex flex-col items-center gap-1 text-gray-500 group-hover:text-blue-600 transition-colors bg-gray-100 p-1 rounded-lg">
+                                        <div className="flex flex-col items-center gap-1 text-gray-500 group-hover:text-primary-600 transition-colors bg-gray-100 p-1 rounded-lg">
                                             <MdDragIndicator size={24} />
                                             <span className="text-[9px] font-black">{index + 1}</span>
                                         </div>
@@ -166,16 +166,16 @@ const HomeLayoutEditor = () => {
                                                         onError={(e) => console.error('Layout Stream Thumb Error:', details.type, details._id, e.target.src)}
                                                     />
                                                 ) : (
-                                                    <div className="w-full h-full flex items-center justify-center text-blue-500 bg-blue-50 font-black text-xs">
+                                                    <div className="w-full h-full flex items-center justify-center text-primary-500 bg-primary-50 font-black text-xs">
                                                         {details.products?.length}
                                                     </div>
                                                 )}
-                                                <div className={`absolute bottom-0 left-0 right-0 h-1 ${item.type === 'banner' ? 'bg-purple-500' : 'bg-blue-500'}`} />
+                                                <div className={`absolute bottom-0 left-0 right-0 h-1 ${item.type === 'banner' ? 'bg-purple-500' : 'bg-primary-500'}`} />
                                             </div>
 
                                             <div className="min-w-0">
                                                 <div className="flex items-center gap-2 mb-0.5">
-                                                    <span className={`text-[8px] font-bold uppercase px-1.5 py-0.5 rounded ${item.type === 'banner' ? 'bg-purple-100 text-purple-700' : 'bg-blue-100 text-blue-700'}`}>
+                                                    <span className={`text-[8px] font-bold uppercase px-1.5 py-0.5 rounded ${item.type === 'banner' ? 'bg-purple-100 text-purple-700' : 'bg-primary-100 text-primary-700'}`}>
                                                         {item.type}
                                                     </span>
                                                     {item.type === 'banner' && <span className="text-[8px] font-bold text-gray-400 uppercase">{details.section}</span>}

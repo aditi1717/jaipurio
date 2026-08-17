@@ -26,7 +26,7 @@ const PrivacyPolicyPage = () => {
                 <div className="grid gap-6 md:grid-cols-[1.65fr_0.95fr]">
                     <section className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-gray-100 md:p-8">
                         <div className="mb-6 flex items-start gap-4">
-                            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-[#2874f0]">
+                            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-50 text-[#2874f0]">
                                 <MdPrivacyTip size={30} />
                             </div>
                             <div>
@@ -80,7 +80,7 @@ const PrivacyPolicyPage = () => {
                             </div>
                         </section>
 
-                        <section className="rounded-3xl bg-blue-50 p-6 shadow-sm ring-1 ring-blue-100">
+                        <section className="rounded-3xl bg-primary-50 p-6 shadow-sm ring-1 ring-primary-100">
                             <h2 className="text-lg font-bold text-gray-900">Need A Change?</h2>
                             <p className="mt-3 text-sm leading-6 text-gray-700">
                                 If you want to update your profile details or request account deletion, please contact the client using the details above.

@@ -31,11 +31,11 @@ const SECTION_STYLES = {
         soft: 'bg-slate-50'
     },
     delhivery: {
-        accent: 'from-blue-700 via-blue-600 to-cyan-500',
-        pill: 'bg-blue-100 text-blue-700',
-        border: 'border-blue-200',
-        focus: 'focus:ring-blue-500/20 focus:border-blue-500',
-        soft: 'bg-blue-50'
+        accent: 'from-primary-700 via-primary-600 to-cyan-500',
+        pill: 'bg-primary-100 text-primary-700',
+        border: 'border-primary-200',
+        focus: 'focus:ring-primary-500/20 focus:border-primary-500',
+        soft: 'bg-primary-50'
     },
     ekart: {
         accent: 'from-emerald-700 via-emerald-600 to-lime-500',

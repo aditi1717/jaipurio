@@ -101,7 +101,7 @@ const PlayManager = () => {
                             {/* Details */}
                             <div className="p-3">
                                 {/* Product Link URL */}
-                                <div className="flex items-center gap-2 text-xs text-blue-600 bg-blue-50 px-2 py-1.5 rounded-lg mb-2 w-full">
+                                <div className="flex items-center gap-2 text-xs text-primary-600 bg-primary-50 px-2 py-1.5 rounded-lg mb-2 w-full">
                                     <MdShoppingBag size={14} className="shrink-0" />
                                     <span className="font-medium truncate">{reel.productLink || 'No Link Added'}</span>
                                 </div>
@@ -116,7 +116,7 @@ const PlayManager = () => {
                                     </div>
                                     <button
                                         onClick={() => toggleReelStatus(reel._id)}
-                                        className="text-gray-400 hover:text-blue-600 font-medium transition"
+                                        className="text-gray-400 hover:text-primary-600 font-medium transition"
                                     >
                                         {reel.active ? 'Hide' : 'Publish'}
                                     </button>

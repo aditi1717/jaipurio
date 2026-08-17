@@ -82,7 +82,7 @@ const OfferList = () => {
 
     const getApplicableToBadge = (type) => {
         const colors = {
-            product: 'bg-blue-100 text-blue-700',
+            product: 'bg-primary-100 text-primary-700',
             category: 'bg-purple-100 text-purple-700',
             subcategory: 'bg-orange-100 text-orange-700'
         };
@@ -114,7 +114,7 @@ const OfferList = () => {
                     <input
                         type="text"
                         placeholder="Search offers by title..."
-                        className="w-full pl-12 pr-4 py-2 bg-gray-50 border border-transparent rounded-xl md:rounded-2xl focus:bg-white focus:border-blue-500 outline-none transition-all text-sm font-bold text-gray-900 placeholder:text-gray-400 caret-blue-600 shadow-inner"
+                        className="w-full pl-12 pr-4 py-2 bg-gray-50 border border-transparent rounded-xl md:rounded-2xl focus:bg-white focus:border-primary-500 outline-none transition-all text-sm font-bold text-gray-900 placeholder:text-gray-400 caret-primary-600 shadow-inner"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
@@ -122,7 +122,7 @@ const OfferList = () => {
                 <div className="flex items-center gap-2 md:gap-3 w-full md:w-auto">
                     <MdFilterList className="text-gray-400" size={20} />
                     <select
-                        className="px-4 py-2 md:px-6 md:py-3 bg-gray-50 border border-transparent rounded-xl md:rounded-2xl outline-none focus:bg-white focus:border-blue-500 text-sm font-bold text-gray-900 min-w-[140px] appearance-none shadow-sm cursor-pointer"
+                        className="px-4 py-2 md:px-6 md:py-3 bg-gray-50 border border-transparent rounded-xl md:rounded-2xl outline-none focus:bg-white focus:border-primary-500 text-sm font-bold text-gray-900 min-w-[140px] appearance-none shadow-sm cursor-pointer"
                         value={statusFilter}
                         onChange={(e) => setStatusFilter(e.target.value)}
                     >
@@ -132,7 +132,7 @@ const OfferList = () => {
                     </select>
 
                     <select
-                        className="px-4 py-2 md:px-6 md:py-3 bg-gray-50 border border-transparent rounded-xl md:rounded-2xl outline-none focus:bg-white focus:border-blue-500 text-sm font-bold text-gray-900 min-w-[160px] appearance-none shadow-sm cursor-pointer"
+                        className="px-4 py-2 md:px-6 md:py-3 bg-gray-50 border border-transparent rounded-xl md:rounded-2xl outline-none focus:bg-white focus:border-primary-500 text-sm font-bold text-gray-900 min-w-[160px] appearance-none shadow-sm cursor-pointer"
                         value={applicableToFilter}
                         onChange={(e) => setApplicableToFilter(e.target.value)}
                     >
@@ -147,7 +147,7 @@ const OfferList = () => {
             {/* Offers Table */}
             {isLoading ? (
                 <div className="flex items-center justify-center py-20">
-                    <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+                    <div className="w-16 h-16 border-4 border-primary-600 border-t-transparent rounded-full animate-spin"></div>
                 </div>
             ) : filteredOffers.length === 0 ? (
                 <div className="bg-white p-12 text-center rounded-3xl border border-dashed border-gray-200">
@@ -175,10 +175,10 @@ const OfferList = () => {
                                 </AdminTableHead>
                                 <tbody className="divide-y divide-gray-200">
                                     {filteredOffers.map((offer) => (
-                                        <tr key={offer._id} className="hover:bg-blue-50/10 transition-colors group">
+                                        <tr key={offer._id} className="hover:bg-primary-50/10 transition-colors group">
                                             <td className="whitespace-nowrap md:whitespace-normal px-2 py-2 md:px-6 md:py-4">
                                                 <div className="flex flex-col">
-                                                    <span className="text-xs font-black text-gray-900 group-hover:text-blue-600 transition-colors">
+                                                    <span className="text-xs font-black text-gray-900 group-hover:text-primary-600 transition-colors">
                                                         {offer.title}
                                                     </span>
                                                     {offer.description && (
@@ -224,7 +224,7 @@ const OfferList = () => {
                                                     </button>
                                                     <button
                                                         onClick={() => navigate(`/admin/offers/edit/${offer._id}`)}
-                                                        className="p-1.5 md:p-2 bg-blue-50 text-blue-600 rounded-lg border border-blue-200 hover:bg-blue-100 transition-all"
+                                                        className="p-1.5 md:p-2 bg-primary-50 text-primary-600 rounded-lg border border-primary-200 hover:bg-primary-100 transition-all"
                                                         title="Edit"
                                                     >
                                                         <MdEdit size={16} className="md:w-[20px] md:h-[20px]" />

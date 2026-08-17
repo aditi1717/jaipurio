@@ -194,9 +194,9 @@ const AdminManagement = () => {
                         <p className="text-[10px] font-black uppercase tracking-[0.18em] text-gray-400">Total Admins</p>
                         <p className="mt-1 text-xl font-black text-gray-900">{totalAdmins}</p>
                     </div>
-                    <div className="rounded-2xl border border-blue-100 bg-blue-50/80 px-4 py-3 shadow-sm">
-                        <p className="text-[10px] font-black uppercase tracking-[0.18em] text-blue-400">Subadmins</p>
-                        <p className="mt-1 text-xl font-black text-blue-700">{totalSubadmins}</p>
+                    <div className="rounded-2xl border border-primary-100 bg-primary-50/80 px-4 py-3 shadow-sm">
+                        <p className="text-[10px] font-black uppercase tracking-[0.18em] text-primary-400">Subadmins</p>
+                        <p className="mt-1 text-xl font-black text-primary-700">{totalSubadmins}</p>
                     </div>
                 </div>
             </div>
@@ -226,7 +226,7 @@ const AdminManagement = () => {
                         <button
                             type="submit"
                             disabled={saving}
-                            className="inline-flex items-center justify-center gap-2 rounded-2xl bg-blue-600 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-blue-400"
+                            className="inline-flex items-center justify-center gap-2 rounded-2xl bg-primary-600 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-primary-700 disabled:cursor-not-allowed disabled:bg-primary-400"
                         >
                             <MdAdd size={18} />
                             {saving ? 'Saving...' : isEditing ? 'Update Admin' : 'Create Admin'}
@@ -241,7 +241,7 @@ const AdminManagement = () => {
                             type="text"
                             value={form.name}
                             onChange={(event) => setForm((current) => ({ ...current, name: event.target.value }))}
-                            className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-semibold text-gray-900 outline-none transition focus:border-blue-500 focus:bg-white"
+                            className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-semibold text-gray-900 outline-none transition focus:border-primary-500 focus:bg-white"
                             placeholder="Admin name"
                         />
                     </label>
@@ -251,7 +251,7 @@ const AdminManagement = () => {
                             type="text"
                             value={form.username}
                             onChange={(event) => setForm((current) => ({ ...current, username: event.target.value }))}
-                            className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-semibold text-gray-900 outline-none transition focus:border-blue-500 focus:bg-white"
+                            className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-semibold text-gray-900 outline-none transition focus:border-primary-500 focus:bg-white"
                             placeholder="Optional username"
                         />
                     </label>
@@ -261,7 +261,7 @@ const AdminManagement = () => {
                             type="email"
                             value={form.email}
                             onChange={(event) => setForm((current) => ({ ...current, email: event.target.value }))}
-                            className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-semibold text-gray-900 outline-none transition focus:border-blue-500 focus:bg-white"
+                            className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-semibold text-gray-900 outline-none transition focus:border-primary-500 focus:bg-white"
                             placeholder="name@example.com"
                         />
                     </label>
@@ -273,7 +273,7 @@ const AdminManagement = () => {
                             type="password"
                             value={form.password}
                             onChange={(event) => setForm((current) => ({ ...current, password: event.target.value }))}
-                            className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-semibold text-gray-900 outline-none transition focus:border-blue-500 focus:bg-white"
+                            className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-semibold text-gray-900 outline-none transition focus:border-primary-500 focus:bg-white"
                             placeholder={isEditing ? 'Leave blank to keep current password' : 'Set login password'}
                         />
                     </label>
@@ -288,7 +288,7 @@ const AdminManagement = () => {
                             </p>
                         </div>
                         <div className="flex flex-wrap gap-3">
-                            <label className={`flex cursor-pointer items-center gap-3 rounded-2xl border px-4 py-3 text-sm font-bold transition ${form.role === 'superadmin' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-gray-200 bg-white text-gray-700'}`}>
+                            <label className={`flex cursor-pointer items-center gap-3 rounded-2xl border px-4 py-3 text-sm font-bold transition ${form.role === 'superadmin' ? 'border-primary-500 bg-primary-50 text-primary-700' : 'border-gray-200 bg-white text-gray-700'}`}>
                                 <input
                                     type="radio"
                                     name="role"
@@ -297,7 +297,7 @@ const AdminManagement = () => {
                                 />
                                 Superadmin
                             </label>
-                            <label className={`flex cursor-pointer items-center gap-3 rounded-2xl border px-4 py-3 text-sm font-bold transition ${form.role === 'subadmin' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-gray-200 bg-white text-gray-700'}`}>
+                            <label className={`flex cursor-pointer items-center gap-3 rounded-2xl border px-4 py-3 text-sm font-bold transition ${form.role === 'subadmin' ? 'border-primary-500 bg-primary-50 text-primary-700' : 'border-gray-200 bg-white text-gray-700'}`}>
                                 <input
                                     type="radio"
                                     name="role"
@@ -318,7 +318,7 @@ const AdminManagement = () => {
                                         {group.items.filter((item) => item.assignable !== false).map((item) => (
                                             <label
                                                 key={item.key}
-                                                className={`flex cursor-pointer items-center gap-3 rounded-2xl border px-4 py-3 text-sm font-semibold transition ${form.sidebarPermissions.includes(item.key) ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-gray-200 bg-gray-50 text-gray-700'}`}
+                                                className={`flex cursor-pointer items-center gap-3 rounded-2xl border px-4 py-3 text-sm font-semibold transition ${form.sidebarPermissions.includes(item.key) ? 'border-primary-500 bg-primary-50 text-primary-700' : 'border-gray-200 bg-gray-50 text-gray-700'}`}
                                             >
                                                 <input
                                                     type="checkbox"
@@ -336,7 +336,7 @@ const AdminManagement = () => {
                             </p>
                         </div>
                     ) : (
-                        <div className="mt-5 rounded-2xl border border-blue-100 bg-blue-50 px-4 py-4 text-sm font-semibold text-blue-800">
+                        <div className="mt-5 rounded-2xl border border-primary-100 bg-primary-50 px-4 py-4 text-sm font-semibold text-primary-800">
                             This admin will automatically receive every sidebar option, including Admin Management.
                         </div>
                     )}
@@ -388,7 +388,7 @@ const AdminManagement = () => {
                             </tr>
                         ) : (
                             admins.map((item) => (
-                                <tr key={item._id} className="hover:bg-blue-50/30">
+                                <tr key={item._id} className="hover:bg-primary-50/30">
                                     <td className="px-5 py-4">
                                         <div>
                                             <p className="font-black text-gray-900">{item.name}</p>
@@ -404,7 +404,7 @@ const AdminManagement = () => {
                                         </div>
                                     </td>
                                     <td className="px-5 py-4">
-                                        <span className={`inline-flex rounded-full px-3 py-1 text-[11px] font-black uppercase tracking-[0.16em] ${item.role === 'superadmin' ? 'bg-emerald-50 text-emerald-700' : 'bg-blue-50 text-blue-700'}`}>
+                                        <span className={`inline-flex rounded-full px-3 py-1 text-[11px] font-black uppercase tracking-[0.16em] ${item.role === 'superadmin' ? 'bg-emerald-50 text-emerald-700' : 'bg-primary-50 text-primary-700'}`}>
                                             {item.role}
                                         </span>
                                     </td>
@@ -429,7 +429,7 @@ const AdminManagement = () => {
                                             <button
                                                 type="button"
                                                 onClick={() => handleEdit(item)}
-                                                className="rounded-xl border border-gray-200 p-2 text-gray-500 transition hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700"
+                                                className="rounded-xl border border-gray-200 p-2 text-gray-500 transition hover:border-primary-200 hover:bg-primary-50 hover:text-primary-700"
                                                 title="Edit admin"
                                             >
                                                 <MdEdit size={18} />

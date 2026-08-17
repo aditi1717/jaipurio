@@ -28,7 +28,7 @@ const BecomeSeller = () => {
     const [submitting, setSubmitting] = useState(false);
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(false);
-    const fieldClass = "w-full px-4 py-2.5 rounded-lg bg-white border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all font-medium outline-none text-gray-900 placeholder:text-gray-400 caret-blue-600";
+    const fieldClass = "w-full px-4 py-2.5 rounded-lg bg-white border border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all font-medium outline-none text-gray-900 placeholder:text-gray-400 caret-primary-600";
 
     useEffect(() => {
         if (!isAuthenticated) {
@@ -116,7 +116,7 @@ const BecomeSeller = () => {
     if (loading) {
         return (
             <div className="min-h-screen flex items-center justify-center bg-white">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
             </div>
         );
     }
@@ -124,9 +124,9 @@ const BecomeSeller = () => {
     if (status === 'Pending' || success) {
         return (
             <div className="min-h-screen px-4 pt-6 md:pt-10 pb-8 bg-white flex items-start justify-center">
-                <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center border border-blue-50">
-                    <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <MdAssignment className="text-4xl text-blue-600" />
+                <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center border border-primary-50">
+                    <div className="w-20 h-20 bg-primary-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <MdAssignment className="text-4xl text-primary-600" />
                     </div>
                     <h2 className="text-2xl font-black text-gray-900 mb-2">Application Received!</h2>
                     <p className="text-gray-600 mb-8 font-medium">
@@ -134,7 +134,7 @@ const BecomeSeller = () => {
                     </p>
                     <button
                         onClick={() => navigate('/')}
-                        className="w-full bg-blue-600 text-white font-bold py-3 rounded-xl hover:bg-blue-700 transition-all shadow-lg shadow-blue-200"
+                        className="w-full bg-primary-600 text-white font-bold py-3 rounded-xl hover:bg-primary-700 transition-all shadow-lg shadow-primary-200"
                     >
                         Back to Home
                     </button>
@@ -170,12 +170,12 @@ const BecomeSeller = () => {
             <div className="max-w-3xl mx-auto">
                 <div className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
                     {/* Header */}
-                    <div className="bg-blue-600 p-4 md:p-5 text-white relative overflow-hidden">
+                    <div className="bg-primary-600 p-4 md:p-5 text-white relative overflow-hidden">
                         <div className="absolute top-0 right-0 p-3 opacity-10">
                             <MdStore size={88} />
                         </div>
                         <h1 className="text-xl md:text-2xl font-black mb-1">Become a Seller</h1>
-                        <p className="text-blue-100 text-sm font-medium opacity-90">Fill in the details below to start your selling journey on IndianKart.</p>
+                        <p className="text-primary-100 text-sm font-medium opacity-90">Fill in the details below to start your selling journey on Jaipurio.</p>
                     </div>
 
                     {/* Form */}
@@ -190,7 +190,7 @@ const BecomeSeller = () => {
                             {/* Store Name */}
                             <div className="space-y-1.5">
                                 <label className="text-xs font-black text-gray-400 uppercase tracking-widest flex items-center gap-1.5 ml-1">
-                                    <MdStore className="text-blue-600" /> Store Name
+                                    <MdStore className="text-primary-600" /> Store Name
                                 </label>
                                 <input
                                     required
@@ -206,7 +206,7 @@ const BecomeSeller = () => {
                             {/* Business Email */}
                             <div className="space-y-1.5">
                                 <label className="text-xs font-black text-gray-400 uppercase tracking-widest flex items-center gap-1.5 ml-1">
-                                    <MdEmail className="text-blue-600" /> Business Email
+                                    <MdEmail className="text-primary-600" /> Business Email
                                 </label>
                                 <input
                                     required
@@ -224,7 +224,7 @@ const BecomeSeller = () => {
                             {/* Phone Number */}
                             <div className="space-y-1.5">
                                 <label className="text-xs font-black text-gray-400 uppercase tracking-widest flex items-center gap-1.5 ml-1">
-                                    <MdPhone className="text-blue-600" /> Phone Number
+                                    <MdPhone className="text-primary-600" /> Phone Number
                                 </label>
                                 <input
                                     required
@@ -243,7 +243,7 @@ const BecomeSeller = () => {
                             {/* Tax ID */}
                             <div className="space-y-1.5">
                                 <label className="text-xs font-black text-gray-400 uppercase tracking-widest flex items-center gap-1.5 ml-1">
-                                    <MdAssignment className="text-blue-600" /> GSTIN / Tax ID
+                                    <MdAssignment className="text-primary-600" /> GSTIN / Tax ID
                                 </label>
                                 <input
                                     required
@@ -262,7 +262,7 @@ const BecomeSeller = () => {
                         {/* Business Type */}
                         <div className="space-y-1.5">
                             <label className="text-xs font-black text-gray-400 uppercase tracking-widest flex items-center gap-1.5 ml-1">
-                                <MdBusiness className="text-blue-600" /> Business Type
+                                <MdBusiness className="text-primary-600" /> Business Type
                             </label>
                             <div className="relative">
                                 <select
@@ -282,7 +282,7 @@ const BecomeSeller = () => {
                         {/* Business Address */}
                         <div className="space-y-1.5">
                             <label className="text-xs font-black text-gray-400 uppercase tracking-widest flex items-center gap-1.5 ml-1">
-                                <MdLocationOn className="text-blue-600" /> Business Address
+                                <MdLocationOn className="text-primary-600" /> Business Address
                             </label>
                             <textarea
                                 required
@@ -298,7 +298,7 @@ const BecomeSeller = () => {
                         {/* Description */}
                         <div className="space-y-1.5">
                             <label className="text-xs font-black text-gray-400 uppercase tracking-widest flex items-center gap-1.5 ml-1">
-                                <MdDescription className="text-blue-600" /> Business Description
+                                <MdDescription className="text-primary-600" /> Business Description
                             </label>
                             <textarea
                                 required
@@ -314,7 +314,7 @@ const BecomeSeller = () => {
                         <button
                             disabled={submitting}
                             type="submit"
-                            className="w-full bg-blue-600 text-white font-black py-3 rounded-xl hover:bg-blue-700 transition-all shadow-md shadow-blue-100 flex items-center justify-center gap-2 group disabled:opacity-70"
+                            className="w-full bg-primary-600 text-white font-black py-3 rounded-xl hover:bg-primary-700 transition-all shadow-md shadow-primary-100 flex items-center justify-center gap-2 group disabled:opacity-70"
                         >
                             {submitting ? (
                                 <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>

@@ -387,7 +387,7 @@ const Dashboard = () => {
                                             <ActivityIcon size={18} />
                                         </div>
                                         <div>
-                                            <p className="text-sm font-bold text-gray-800 group-hover:text-blue-600 transition-colors">{activity.text}</p>
+                                            <p className="text-sm font-bold text-gray-800 group-hover:text-primary-600 transition-colors">{activity.text}</p>
                                             <p className="text-xs text-gray-400 font-medium mt-0.5">{new Date(activity.time).toLocaleString()}</p>
                                         </div>
                                     </div>
@@ -441,7 +441,7 @@ const Dashboard = () => {
                                             {String(customer.name || 'CU').substring(0, 2)}
                                         </div>
                                         <div>
-                                            <h4 className="text-xs font-bold text-gray-800 group-hover:text-blue-600 transition-colors">{customer.name}</h4>
+                                            <h4 className="text-xs font-bold text-gray-800 group-hover:text-primary-600 transition-colors">{customer.name}</h4>
                                             <p className="text-[10px] text-gray-400">{Number(customer.orders || 0)} orders</p>
                                         </div>
                                     </div>

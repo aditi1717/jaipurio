@@ -48,7 +48,7 @@ const SupportPage = () => {
                 <div className="grid gap-6 md:grid-cols-[1.5fr_1fr]">
                     <section className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-gray-100 md:p-8">
                         <div className="mb-6 flex items-start gap-4">
-                            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-[#2874f0]">
+                            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-50 text-[#2874f0]">
                                 <MdSupportAgent size={30} />
                             </div>
                             <div>
@@ -69,7 +69,7 @@ const SupportPage = () => {
                             ))}
                         </div>
 
-                        <div className="mt-8 rounded-2xl border border-blue-100 bg-blue-50/60 p-5">
+                        <div className="mt-8 rounded-2xl border border-primary-100 bg-primary-50/60 p-5">
                             <div className="mb-3 flex items-center gap-2 text-[#2874f0]">
                                 <MdSchedule size={20} />
                                 <h3 className="text-base font-semibold">Before you contact support</h3>

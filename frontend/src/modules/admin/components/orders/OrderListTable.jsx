@@ -40,8 +40,8 @@ const OrderListTable = ({
 }) => (
     <div className="space-y-4">
         {isLiveSyncing && (
-            <div className="flex items-center gap-2 rounded-2xl border border-blue-100 bg-blue-50/70 px-4 py-3 text-blue-700">
-                <div className="h-4 w-4 rounded-full border-2 border-blue-200 border-t-blue-700 animate-spin" />
+            <div className="flex items-center gap-2 rounded-2xl border border-primary-100 bg-primary-50/70 px-4 py-3 text-primary-700">
+                <div className="h-4 w-4 rounded-full border-2 border-primary-200 border-t-primary-700 animate-spin" />
                 <span className="text-xs font-black uppercase tracking-[0.14em]">Syncing live courier statuses for visible orders</span>
             </div>
         )}
@@ -69,7 +69,7 @@ const OrderListTable = ({
                                     if (input) input.indeterminate = !allVisibleSelected && someVisibleSelected;
                                 }}
                                 onChange={onToggleVisibleOrders}
-                                className="h-4 w-4 rounded border-gray-300 text-blue-600 cursor-pointer"
+                                className="h-4 w-4 rounded border-gray-300 text-primary-600 cursor-pointer"
                             />
                         </AdminTableHeaderCell>
                         

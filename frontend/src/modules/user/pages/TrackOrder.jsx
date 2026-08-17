@@ -219,7 +219,7 @@ const TrackOrder = () => {
     if (loading) {
         return (
             <div className="min-h-screen bg-white md:bg-[#f1f3f6] flex items-center justify-center">
-                <div className="w-14 h-14 border-4 border-blue-100 border-t-blue-600 rounded-full animate-spin" />
+                <div className="w-14 h-14 border-4 border-primary-100 border-t-primary-600 rounded-full animate-spin" />
             </div>
         );
     }
@@ -230,7 +230,7 @@ const TrackOrder = () => {
 
     return (
         <div className="bg-white min-h-screen md:bg-[#f1f3f6] md:py-6">
-            <div className="bg-blue-600 text-white px-4 py-4 flex items-center gap-4 sticky top-0 z-50 shadow-md md:hidden">
+            <div className="bg-primary-600 text-white px-4 py-4 flex items-center gap-4 sticky top-0 z-50 shadow-md md:hidden">
                 <button
                     onClick={() => navigate(productId ? `/my-orders/${orderId}` : '/my-orders')}
                     className="material-icons p-1 -ml-1 active:bg-white/10 rounded-full transition-colors cursor-pointer relative z-[60]"
@@ -246,9 +246,9 @@ const TrackOrder = () => {
 
             <div className="md:max-w-[900px] md:mx-auto">
                 <div className="hidden md:flex items-center gap-2 text-xs text-gray-500 mb-4 px-4">
-                    <span onClick={() => navigate('/')} className="cursor-pointer hover:text-blue-600">Home</span>
+                    <span onClick={() => navigate('/')} className="cursor-pointer hover:text-primary-600">Home</span>
                     <span className="material-icons text-[10px]">chevron_right</span>
-                    <span onClick={() => navigate('/my-orders')} className="cursor-pointer hover:text-blue-600">My Orders</span>
+                    <span onClick={() => navigate('/my-orders')} className="cursor-pointer hover:text-primary-600">My Orders</span>
                     <span className="material-icons text-[10px]">chevron_right</span>
                     <span className="text-gray-800 font-bold">Track Order</span>
                 </div>
@@ -262,7 +262,7 @@ const TrackOrder = () => {
                             <div className="flex-1">
                                 <h2 className="text-sm font-bold text-gray-800 line-clamp-1 md:text-base">{targetItem?.name}</h2>
                                 <p className="text-xs text-gray-500 mt-1 md:text-sm">
-                                    Status: <span className="text-blue-600 font-bold uppercase tracking-tighter">{String(effectiveStatus || currentStatus || order.status || '').replace(/_/g, ' ')}</span>
+                                    Status: <span className="text-primary-600 font-bold uppercase tracking-tighter">{String(effectiveStatus || currentStatus || order.status || '').replace(/_/g, ' ')}</span>
                                 </p>
                                 <p className="text-[10px] text-gray-400 mt-1 hidden md:block">Order ID: {order.displayId || order._id}</p>
                             </div>
@@ -327,8 +327,8 @@ const TrackOrder = () => {
                                                         <p className="text-[10px] text-gray-400 mt-1 md:text-xs">{timestamp}</p>
                                                     ) : isCurrent ? (
                                                         <div className="flex items-center gap-1.5 mt-1">
-                                                            <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse" />
-                                                            <p className="text-[10px] text-blue-500 font-bold uppercase tracking-wider md:text-xs">In Progress...</p>
+                                                            <div className="w-1.5 h-1.5 bg-primary-500 rounded-full animate-pulse" />
+                                                            <p className="text-[10px] text-primary-500 font-bold uppercase tracking-wider md:text-xs">In Progress...</p>
                                                         </div>
                                                     ) : null}
                                                 </div>
@@ -376,7 +376,7 @@ const TrackOrder = () => {
                                             setTrackingLoading(false);
                                         }
                                     }}
-                                    className="rounded-lg border border-blue-100 bg-blue-50 px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-blue-600"
+                                    className="rounded-lg border border-primary-100 bg-primary-50 px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-primary-600"
                                 >
                                     {trackingLoading ? 'Refreshing...' : 'Refresh'}
                                 </button>
@@ -399,9 +399,9 @@ const TrackOrder = () => {
                         </div>
 
                         {rawCourierStatus ? (
-                            <div className="rounded-xl border border-blue-100 bg-blue-50 p-3">
-                                <p className="text-[10px] font-bold uppercase tracking-widest text-blue-700">Raw {getShippingProviderLabel(fulfillmentMode)} Status</p>
-                                <p className="mt-1 text-sm font-semibold text-blue-900">{rawCourierStatus}</p>
+                            <div className="rounded-xl border border-primary-100 bg-primary-50 p-3">
+                                <p className="text-[10px] font-bold uppercase tracking-widest text-primary-700">Raw {getShippingProviderLabel(fulfillmentMode)} Status</p>
+                                <p className="mt-1 text-sm font-semibold text-primary-900">{rawCourierStatus}</p>
                             </div>
                         ) : null}
 
@@ -413,7 +413,7 @@ const TrackOrder = () => {
                         ) : null}
 
                         {trackingLoading ? (
-                            <div className="rounded-xl border border-blue-100 bg-blue-50 p-3 text-sm font-semibold text-blue-600">
+                            <div className="rounded-xl border border-primary-100 bg-primary-50 p-3 text-sm font-semibold text-primary-600">
                                 Fetching live {getShippingProviderLabel(fulfillmentMode)} status...
                             </div>
                         ) : null}
@@ -445,16 +445,16 @@ const TrackOrder = () => {
                     </div>
                 ) : null}
 
-                <div className="m-4 p-4 bg-blue-50 rounded-xl border border-blue-100 md:mx-0 md:mt-6">
+                <div className="m-4 p-4 bg-primary-50 rounded-xl border border-primary-100 md:mx-0 md:mt-6">
                     <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-blue-600 shadow-sm">
+                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-primary-600 shadow-sm">
                             <span className="material-icons">support_agent</span>
                         </div>
                         <div className="flex-1">
-                            <p className="text-sm font-bold text-blue-900">Need help with tracking?</p>
-                            <p className="text-[11px] text-blue-700">Call our customer support at 1800-202-9898</p>
+                            <p className="text-sm font-bold text-primary-900">Need help with tracking?</p>
+                            <p className="text-[11px] text-primary-700">Call our customer support at 1800-202-9898</p>
                         </div>
-                        <button className="bg-blue-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold shadow-sm hover:bg-blue-700 transition-colors">Call Now</button>
+                        <button className="bg-primary-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold shadow-sm hover:bg-primary-700 transition-colors">Call Now</button>
                     </div>
                 </div>
 

@@ -211,9 +211,9 @@ const Addresses = () => {
                 <div className="hidden md:block w-[280px] shrink-0 space-y-4">
                     {/* Breadcrumbs */}
                     <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
-                        <span onClick={() => navigate('/')} className="cursor-pointer hover:text-blue-600"><TranslatedText text="Home" /></span>
+                        <span onClick={() => navigate('/')} className="cursor-pointer hover:text-primary-600"><TranslatedText text="Home" /></span>
                         <span className="material-icons text-[10px]">chevron_right</span>
-                        <span onClick={() => navigate('/account')} className="cursor-pointer hover:text-blue-600"><TranslatedText text="My Account" /></span>
+                        <span onClick={() => navigate('/account')} className="cursor-pointer hover:text-primary-600"><TranslatedText text="My Account" /></span>
                         <span className="material-icons text-[10px]">chevron_right</span>
                         <span className="text-gray-800 font-bold">{addressesText}</span>
                     </div>
@@ -245,7 +245,7 @@ const Addresses = () => {
                                     setEditingId(null);
                                     setIsAdding(true);
                                 }}
-                                className="w-full bg-white p-4 flex items-center gap-3 text-blue-600 font-bold text-sm shadow-sm active:bg-gray-50 transition-colors md:rounded-sm md:border md:border-gray-200 md:hover:bg-blue-50"
+                                className="w-full bg-white p-4 flex items-center gap-3 text-primary-600 font-bold text-sm shadow-sm active:bg-gray-50 transition-colors md:rounded-sm md:border md:border-gray-200 md:hover:bg-primary-50"
                             >
                                 <span className="material-icons text-lg">add</span>
                                 {addNewAddressText.toUpperCase()}
@@ -256,7 +256,7 @@ const Addresses = () => {
                         {isAdding && (
                             <div ref={formContainerRef} className="bg-white p-4 shadow-sm animate-in slide-in-from-top duration-300 md:rounded-sm md:border md:border-gray-200">
                                 <div className="flex items-center justify-between mb-4 border-b pb-3">
-                                    <h2 className="text-blue-600 font-bold uppercase text-[12px] tracking-wider">
+                                    <h2 className="text-primary-600 font-bold uppercase text-[12px] tracking-wider">
                                         {editingId ? editAddressText : addNewAddressText}
                                     </h2>
                                     <button onClick={() => { setIsAdding(false); setEditingId(null); }} className="text-gray-400 hover:text-red-500">
@@ -349,11 +349,11 @@ const Addresses = () => {
                                                     setIsLoadingLocation(false);
                                                 }
                                             }}
-                                            className={`w-full bg-blue-50 text-blue-600 py-3 rounded-sm font-bold text-xs uppercase flex items-center justify-center gap-2 hover:bg-blue-100 transition-colors mb-4 border border-blue-100 ${isLoadingLocation ? 'opacity-70 cursor-wait' : ''}`}
+                                            className={`w-full bg-primary-50 text-primary-600 py-3 rounded-sm font-bold text-xs uppercase flex items-center justify-center gap-2 hover:bg-primary-100 transition-colors mb-4 border border-primary-100 ${isLoadingLocation ? 'opacity-70 cursor-wait' : ''}`}
                                         >
                                             {isLoadingLocation ? (
                                                 <>
-                                                    <span className="w-4 h-4 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></span>
+                                                    <span className="w-4 h-4 border-2 border-primary-600 border-t-transparent rounded-full animate-spin"></span>
                                                     DETECTING...
                                                 </>
                                             ) : (
@@ -372,14 +372,14 @@ const Addresses = () => {
                                                 required 
                                                 type="text" 
                                                 ref={nameInputRef}
-                                                className="w-full border border-gray-200 p-3 rounded-sm text-sm outline-none focus:border-blue-500 text-gray-900" 
+                                                className="w-full border border-gray-200 p-3 rounded-sm text-sm outline-none focus:border-primary-500 text-gray-900" 
                                                 value={newAddr.name} 
                                                 onChange={e => setNewAddr({ ...newAddr, name: e.target.value })}
                                             />
                                         </div>
                                         <div className="col-span-2 md:col-span-1 space-y-1">
                                             <label className="text-[10px] font-bold text-gray-400 uppercase">{phoneNumberText}</label>
-                                            <input required type="tel" className="w-full border border-gray-200 p-3 rounded-sm text-sm outline-none focus:border-blue-500 text-gray-900" value={newAddr.mobile} onChange={e => setNewAddr({ ...newAddr, mobile: e.target.value })} />
+                                            <input required type="tel" className="w-full border border-gray-200 p-3 rounded-sm text-sm outline-none focus:border-primary-500 text-gray-900" value={newAddr.mobile} onChange={e => setNewAddr({ ...newAddr, mobile: e.target.value })} />
                                         </div>
                                         <div className="col-span-2 md:col-span-1 space-y-1">
                                             <label className="text-[10px] font-bold text-gray-400 uppercase">{pincodeText}</label>
@@ -388,7 +388,7 @@ const Addresses = () => {
                                                 type="text"
                                                 inputMode="numeric"
                                                 maxLength="6"
-                                                className="w-full border border-gray-200 p-3 rounded-sm text-sm outline-none focus:border-blue-500 text-gray-900"
+                                                className="w-full border border-gray-200 p-3 rounded-sm text-sm outline-none focus:border-primary-500 text-gray-900"
                                                 value={newAddr.pincode}
                                                 onChange={e => {
                                                     const value = e.target.value.replace(/\D/g, '').slice(0, 6);
@@ -401,7 +401,7 @@ const Addresses = () => {
                                             <textarea 
                                                 required 
                                                 rows="3" 
-                                                className="w-full border border-gray-200 p-3 rounded-sm text-sm outline-none focus:border-blue-500 text-gray-900" 
+                                                className="w-full border border-gray-200 p-3 rounded-sm text-sm outline-none focus:border-primary-500 text-gray-900" 
                                                 value={newAddr.address} 
                                                 onChange={e => {
                                                     const val = e.target.value;
@@ -444,7 +444,7 @@ const Addresses = () => {
                                             <input
                                                 required
                                                 type="text"
-                                                className="w-full border border-gray-200 p-3 rounded-sm text-sm outline-none focus:border-blue-500 text-gray-900"
+                                                className="w-full border border-gray-200 p-3 rounded-sm text-sm outline-none focus:border-primary-500 text-gray-900"
                                                 value={newAddr.city}
                                                 onChange={e => {
                                                     const value = e.target.value;
@@ -460,7 +460,7 @@ const Addresses = () => {
                                                 analytics across several buckets. */}
                                             <select
                                                 required
-                                                className="w-full border border-gray-200 p-3 rounded-sm text-sm outline-none focus:border-blue-500 text-gray-900 bg-white"
+                                                className="w-full border border-gray-200 p-3 rounded-sm text-sm outline-none focus:border-primary-500 text-gray-900 bg-white"
                                                 value={ALL_INDIAN_STATES.includes(newAddr.state) ? newAddr.state : ''}
                                                 onChange={e => setNewAddr({ ...newAddr, state: e.target.value })}
                                             >
@@ -477,7 +477,7 @@ const Addresses = () => {
                                         <div className="flex gap-6">
                                             {['Home', 'Work'].map(type => (
                                                 <label key={type} className="flex items-center gap-2 cursor-pointer group">
-                                                    <input type="radio" checked={newAddr.type === type} onChange={() => setNewAddr({ ...newAddr, type })} className="accent-blue-600 w-4 h-4 cursor-pointer" />
+                                                    <input type="radio" checked={newAddr.type === type} onChange={() => setNewAddr({ ...newAddr, type })} className="accent-primary-600 w-4 h-4 cursor-pointer" />
                                                     <span className="text-sm text-gray-700">{type === 'Home' ? homeTypeText : workTypeText}</span>
                                                 </label>
                                             ))}
@@ -486,7 +486,7 @@ const Addresses = () => {
 
                                     <div className="flex gap-3 pt-4">
                                         <button type="button" onClick={() => { setIsAdding(false); setEditingId(null); }} className="flex-1 py-4 text-gray-500 font-bold uppercase text-[12px] hover:text-gray-700">{cancelText}</button>
-                                        <button type="submit" className="flex-1 bg-blue-600 text-white py-4 rounded-sm font-bold uppercase text-[12px] shadow-lg active:scale-95 transition-all hover:bg-blue-700">
+                                        <button type="submit" className="flex-1 bg-primary-600 text-white py-4 rounded-sm font-bold uppercase text-[12px] shadow-lg active:scale-95 transition-all hover:bg-primary-700">
                                             {editingId ? updateAddressText : saveAddressText}
                                         </button>
                                     </div>
@@ -497,7 +497,7 @@ const Addresses = () => {
                         {/* Addresses List */}
                         <div className="space-y-2">
                             {addresses.map(addr => (
-                                <div key={addr.id} className="bg-white p-4 shadow-sm relative border-l-4 border-transparent hover:border-blue-600 transition-all md:rounded-sm md:border md:border-gray-200 md:hover:border-blue-600 md:hover:shadow-md">
+                                <div key={addr.id} className="bg-white p-4 shadow-sm relative border-l-4 border-transparent hover:border-primary-600 transition-all md:rounded-sm md:border md:border-gray-200 md:hover:border-primary-600 md:hover:shadow-md">
                                     <div className="flex items-center justify-between mb-2">
                                         <div className="flex items-center gap-2">
                                             <span className="text-[11px] bg-gray-100 px-2 py-0.5 rounded-sm text-gray-500 font-bold uppercase tracking-tighter">{addr.type}</span>

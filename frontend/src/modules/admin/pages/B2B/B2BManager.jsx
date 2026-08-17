@@ -11,7 +11,7 @@ const Toggle = ({ checked, disabled = false, onChange }) => (
         onClick={onChange}
         disabled={disabled}
         className={`relative inline-flex h-7 w-14 items-center rounded-full transition-colors ${
-            checked ? 'bg-blue-600' : 'bg-gray-300'
+            checked ? 'bg-primary-600' : 'bg-gray-300'
         } ${disabled ? 'opacity-60 cursor-not-allowed' : ''}`}
     >
         <span
@@ -236,7 +236,7 @@ const B2BManager = () => {
                             value={selectedCategoryId}
                             onChange={(event) => setSelectedCategoryId(event.target.value)}
                             disabled={categoriesLoading}
-                            className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-semibold text-gray-900 outline-none focus:border-blue-500 focus:bg-white"
+                            className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-semibold text-gray-900 outline-none focus:border-primary-500 focus:bg-white"
                         >
                             {topLevelCategories.map((category) => (
                                 <option key={category.id} value={category.id}>
@@ -246,26 +246,26 @@ const B2BManager = () => {
                         </select>
                     </div>
 
-                    <div className="rounded-2xl border border-blue-100 bg-blue-50/60 p-4">
+                    <div className="rounded-2xl border border-primary-100 bg-primary-50/60 p-4">
                         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                             <div className="flex items-start gap-3">
-                                <div className="rounded-2xl bg-blue-600 p-3 text-white">
+                                <div className="rounded-2xl bg-primary-600 p-3 text-white">
                                     <MdBusinessCenter size={22} />
                                 </div>
                                 <div>
-                                    <p className="text-xs font-black uppercase tracking-widest text-blue-600">Category B2B Gate</p>
+                                    <p className="text-xs font-black uppercase tracking-widest text-primary-600">Category B2B Gate</p>
                                     <h2 className="text-lg font-bold text-gray-900">{selectedCategory?.name || 'Select a category'}</h2>
                                     <p className="text-sm text-gray-600">
                                         This does not enable every product. It only allows checkout B2B for products below that are individually turned on.
                                     </p>
-                                    <p className="mt-2 text-xs font-bold uppercase tracking-wide text-blue-700">
+                                    <p className="mt-2 text-xs font-bold uppercase tracking-wide text-primary-700">
                                         {enabledProductCount} selected B2B product{enabledProductCount === 1 ? '' : 's'}
                                     </p>
                                 </div>
                             </div>
 
                             <div className="flex items-center gap-3">
-                                <span className={`text-sm font-bold ${selectedCategory?.b2bEnabled ? 'text-blue-700' : 'text-gray-500'}`}>
+                                <span className={`text-sm font-bold ${selectedCategory?.b2bEnabled ? 'text-primary-700' : 'text-gray-500'}`}>
                                     {selectedCategory?.b2bEnabled ? 'Enabled' : 'Disabled'}
                                 </span>
                                 <Toggle
@@ -292,7 +292,7 @@ const B2BManager = () => {
                             value={searchTerm}
                             onChange={(event) => setSearchTerm(event.target.value)}
                             placeholder="Search by product or brand"
-                            className="w-full rounded-2xl border border-gray-200 bg-gray-50 py-3 pl-10 pr-4 text-sm font-medium text-gray-900 outline-none focus:border-blue-500 focus:bg-white"
+                            className="w-full rounded-2xl border border-gray-200 bg-gray-50 py-3 pl-10 pr-4 text-sm font-medium text-gray-900 outline-none focus:border-primary-500 focus:bg-white"
                         />
                     </div>
                 </div>
@@ -330,7 +330,7 @@ const B2BManager = () => {
                                 </div>
 
                                 <div className="flex items-center justify-between gap-4 md:min-w-[190px] md:justify-end">
-                                    <span className={`text-sm font-bold ${product.b2bEnabled ? 'text-blue-700' : 'text-gray-500'}`}>
+                                    <span className={`text-sm font-bold ${product.b2bEnabled ? 'text-primary-700' : 'text-gray-500'}`}>
                                         {product.b2bEnabled ? 'B2B On' : 'B2B Off'}
                                     </span>
                                     <Toggle

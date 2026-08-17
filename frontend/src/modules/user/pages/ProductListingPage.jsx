@@ -167,7 +167,7 @@ const ProductListingPage = () => {
                     <div className="relative">
                         <button
                             onClick={() => setIsSortDropdownOpen(!isSortDropdownOpen)}
-                            className="flex items-center gap-3 bg-gray-50 border border-gray-100 px-4 py-2 rounded-lg hover:border-blue-500 transition-all shadow-sm group"
+                            className="flex items-center gap-3 bg-gray-50 border border-gray-100 px-4 py-2 rounded-lg hover:border-primary-500 transition-all shadow-sm group"
                         >
                             <span className="text-sm font-bold text-gray-700 capitalize">
                                 {[
@@ -177,7 +177,7 @@ const ProductListingPage = () => {
                                     { id: 'newest', label: 'Newest First' },
                                 ].find(opt => opt.id === sortBy)?.label}
                             </span>
-                            <MdExpandMore className={`text-xl text-gray-400 group-hover:text-blue-500 transition-transform duration-300 ${isSortDropdownOpen ? 'rotate-180' : ''}`} />
+                            <MdExpandMore className={`text-xl text-gray-400 group-hover:text-primary-500 transition-transform duration-300 ${isSortDropdownOpen ? 'rotate-180' : ''}`} />
                         </button>
 
                         {isSortDropdownOpen && (
@@ -199,11 +199,11 @@ const ProductListingPage = () => {
                                                 setSortBy(opt.id);
                                                 setIsSortDropdownOpen(false);
                                             }}
-                                            className={`w-full text-left px-5 py-3 transition-colors hover:bg-blue-50 group ${sortBy === opt.id ? 'bg-blue-50/50' : ''
+                                            className={`w-full text-left px-5 py-3 transition-colors hover:bg-primary-50 group ${sortBy === opt.id ? 'bg-primary-50/50' : ''
                                                 }`}
                                         >
                                             <div className="flex flex-col">
-                                                <span className={`text-sm font-bold ${sortBy === opt.id ? 'text-blue-600' : 'text-gray-700'}`}>
+                                                <span className={`text-sm font-bold ${sortBy === opt.id ? 'text-primary-600' : 'text-gray-700'}`}>
                                                     {opt.label}
                                                 </span>
                                                 <span className="text-[10px] text-gray-400 font-medium">{opt.desc}</span>
@@ -271,7 +271,7 @@ const ProductListingPage = () => {
                                 <button
                                     key={option.id}
                                     onClick={() => { setSortBy(option.id); setShowSortModal(false); }}
-                                    className={`w-full flex items-center justify-between p-4 rounded-xl transition-all ${sortBy === option.id ? 'bg-blue-50 text-blue-600' : 'text-gray-600 active:bg-gray-50'
+                                    className={`w-full flex items-center justify-between p-4 rounded-xl transition-all ${sortBy === option.id ? 'bg-primary-50 text-primary-600' : 'text-gray-600 active:bg-gray-50'
                                         }`}
                                 >
                                     <div className="flex items-center gap-3">
@@ -309,7 +309,7 @@ const ProductListingPage = () => {
                                                 key={cat}
                                                 onClick={() => toggleCategory(cat)}
                                                 className={`px-3 py-2 rounded-lg border text-xs font-bold transition-all ${selectedCategories.includes(cat)
-                                                    ? 'border-blue-600 bg-blue-50 text-blue-600'
+                                                    ? 'border-primary-600 bg-primary-50 text-primary-600'
                                                     : 'border-gray-100 text-gray-600'
                                                     }`}
                                             >
@@ -330,7 +330,7 @@ const ProductListingPage = () => {
                                                 key={brand}
                                                 onClick={() => toggleBrand(brand)}
                                                 className={`px-3 py-2 rounded-lg border text-xs font-bold transition-all ${selectedBrands.includes(brand)
-                                                    ? 'border-blue-600 bg-blue-50 text-blue-600'
+                                                    ? 'border-primary-600 bg-primary-50 text-primary-600'
                                                     : 'border-gray-100 text-gray-600'
                                                     }`}
                                             >
@@ -351,7 +351,7 @@ const ProductListingPage = () => {
                                                 key={ram}
                                                 onClick={() => toggleRam(ram)}
                                                 className={`px-3 py-2 rounded-lg border text-xs font-bold transition-all ${selectedRam.includes(ram)
-                                                    ? 'border-blue-600 bg-blue-50 text-blue-600'
+                                                    ? 'border-primary-600 bg-primary-50 text-primary-600'
                                                     : 'border-gray-100 text-gray-600'
                                                     }`}
                                             >
@@ -367,7 +367,7 @@ const ProductListingPage = () => {
                                 <h4 className="text-[10px] font-black text-gray-400 uppercase tracking-[2px] mb-6">Price Range</h4>
                                 <div className="space-y-6">
                                     <div className="flex items-center justify-between px-2">
-                                        <div className="bg-gray-50 px-4 py-2 rounded-lg border focus-within:border-blue-500 transition-colors">
+                                        <div className="bg-gray-50 px-4 py-2 rounded-lg border focus-within:border-primary-500 transition-colors">
                                             <span className="text-[10px] text-gray-400 block uppercase font-bold">Min</span>
                                             <div className="flex items-center gap-0.5">
                                                 <span className="font-black text-sm text-gray-900">₹</span>
@@ -380,7 +380,7 @@ const ProductListingPage = () => {
                                             </div>
                                         </div>
                                         <div className="w-8 h-[2px] bg-gray-200"></div>
-                                        <div className="bg-gray-50 px-4 py-2 rounded-lg border focus-within:border-blue-500 transition-colors">
+                                        <div className="bg-gray-50 px-4 py-2 rounded-lg border focus-within:border-primary-500 transition-colors">
                                             <span className="text-[10px] text-gray-400 block uppercase font-bold">Max</span>
                                             <div className="flex items-center gap-0.5">
                                                 <span className="font-black text-sm text-gray-900">₹</span>
@@ -404,7 +404,7 @@ const ProductListingPage = () => {
                                                 key={r.label}
                                                 onClick={() => setFilterRange(r.range)}
                                                 className={`px-3 py-2.5 rounded-lg border transition-all text-xs font-bold leading-tight ${JSON.stringify(filterRange) === JSON.stringify(r.range)
-                                                    ? 'border-blue-600 bg-blue-50 text-blue-600'
+                                                    ? 'border-primary-600 bg-primary-50 text-primary-600'
                                                     : 'border-gray-100 text-gray-600'
                                                     }`}
                                             >

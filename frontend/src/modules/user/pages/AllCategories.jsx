@@ -225,10 +225,10 @@ const AllCategories = () => {
                                 className={`flex flex-col items-center justify-center py-4 px-1 cursor-pointer relative ${isSelected ? 'bg-white' : ''}`}
                             >
                                 {isSelected && !isForYou && (
-                                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-600 rounded-r-full"></div>
+                                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary-600 rounded-r-full"></div>
                                 )}
 
-                                <div className={`relative w-12 h-12 rounded-full flex items-center justify-center mb-1 border transition-all ${isSelected && !isForYou ? 'bg-blue-50 text-blue-600 border-blue-200 scale-105 shadow-sm' : 'bg-gray-100 text-gray-500 border-gray-200'}`}>
+                                <div className={`relative w-12 h-12 rounded-full flex items-center justify-center mb-1 border transition-all ${isSelected && !isForYou ? 'bg-primary-50 text-primary-600 border-primary-200 scale-105 shadow-sm' : 'bg-gray-100 text-gray-500 border-gray-200'}`}>
                                     {hasCategoryImage ? (
                                         <CircleImage
                                             src={categoryImage}
@@ -242,7 +242,7 @@ const AllCategories = () => {
                                         <IconComponent className="text-2xl" />
                                     )}
                                 </div>
-                                <span className={`text-[10px] text-center font-medium leading-tight px-1 ${isSelected && !isForYou ? 'text-blue-600 font-bold' : 'text-gray-500'}`}>
+                                <span className={`text-[10px] text-center font-medium leading-tight px-1 ${isSelected && !isForYou ? 'text-primary-600 font-bold' : 'text-gray-500'}`}>
                                     {cat.name}
                                 </span>
                             </div>
@@ -277,7 +277,7 @@ const AllCategories = () => {
                                             }
                                             className="flex flex-col items-center gap-2 cursor-pointer group animate-in fade-in zoom-in-95 duration-200"
                                         >
-                                            <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center border border-gray-100 p-1 group-hover:border-blue-300 transition-all shadow-sm">
+                                            <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center border border-gray-100 p-1 group-hover:border-primary-300 transition-all shadow-sm">
                                                 <CircleImage
                                                     src={sub.image}
                                                     alt={sub.name}
@@ -287,7 +287,7 @@ const AllCategories = () => {
                                                     fallback={<div className="w-full h-full rounded-full bg-gray-200" />}
                                                 />
                                             </div>
-                                            <span className="text-[10px] font-medium text-center text-gray-700 leading-tight group-hover:text-blue-600">
+                                            <span className="text-[10px] font-medium text-center text-gray-700 leading-tight group-hover:text-primary-600">
                                                 {sub.name}
                                             </span>
                                         </div>

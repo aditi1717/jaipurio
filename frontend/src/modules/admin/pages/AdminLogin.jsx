@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MdVisibility, MdVisibilityOff } from 'react-icons/md';
 import useAdminAuthStore from '../store/adminAuthStore';
-import logo from '../../../assets/indiankart-logo.png';
+import logo from '../../../assets/jaipurio-logo.jpeg';
 
 import toast from 'react-hot-toast';
 
@@ -26,12 +26,12 @@ const AdminLogin = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center p-4">
+        <div className="min-h-screen bg-gradient-to-br from-primary-600 to-primary-800 flex items-center justify-center p-4">
             <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8">
                 <div className="text-center mb-8">
                     <img
                         src={logo}
-                        alt="Indiankart"
+                        alt="Jaipurio"
                         className="h-12 w-auto mx-auto mb-4 scale-[2] origin-center"
                     />
                     <h1 className="text-3xl font-bold text-gray-800 mb-2">Admin Panel</h1>
@@ -50,7 +50,7 @@ const AdminLogin = () => {
                             onChange={(e) => setUsername(e.target.value)}
                             disabled={loading}
                             autoComplete="off"
-                            className={`w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition text-gray-900 ${loading ? 'bg-gray-50 cursor-not-allowed opacity-75' : 'bg-white'}`}
+                            className={`w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition text-gray-900 ${loading ? 'bg-gray-50 cursor-not-allowed opacity-75' : 'bg-white'}`}
                             placeholder="Enter your username"
                             required
                         />
@@ -68,7 +68,7 @@ const AdminLogin = () => {
                                 onChange={(e) => setPassword(e.target.value)}
                                 disabled={loading}
                                 autoComplete="new-password"
-                                className={`w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition text-gray-900 ${loading ? 'bg-gray-50 cursor-not-allowed opacity-75' : 'bg-white'}`}
+                                className={`w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition text-gray-900 ${loading ? 'bg-gray-50 cursor-not-allowed opacity-75' : 'bg-white'}`}
                                 placeholder="Enter your password"
                                 required
                             />
@@ -88,7 +88,7 @@ const AdminLogin = () => {
                     <button
                         type="submit"
                         disabled={loading}
-                        className={`w-full py-3 rounded-lg font-semibold transition-all shadow-lg flex items-center justify-center gap-2 ${loading ? 'bg-blue-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700 text-white'}`}
+                        className={`w-full py-3 rounded-lg font-semibold transition-all shadow-lg flex items-center justify-center gap-2 ${loading ? 'bg-primary-400 cursor-not-allowed' : 'bg-primary-600 hover:bg-primary-700 text-white'}`}
                     >
                         {loading ? (
                             <>

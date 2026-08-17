@@ -29,7 +29,7 @@ export const generateDeliverySlip = (order) => {
 
     doc.setFontSize(10);
     doc.setFont(undefined, 'normal');
-    doc.text('IndianKart Logistics', pageWidth / 2, 28, { align: 'center' });
+    doc.text('Jaipurio Logistics', pageWidth / 2, 28, { align: 'center' });
 
     // Reset text color
     doc.setTextColor(...darkColor);
@@ -224,7 +224,7 @@ export const generateDeliverySlip = (order) => {
     doc.setFontSize(7);
     doc.setTextColor(...lightColor);
     doc.setFont(undefined, 'italic');
-    doc.text('IndianKart - Delivering Happiness | Support: +91 1800-123-4567', pageWidth / 2, yPos, { align: 'center' });
+    doc.text('Jaipurio - Delivering Happiness | Support: +91 1800-123-4567', pageWidth / 2, yPos, { align: 'center' });
 
     // Save the PDF
     const fileName = `DeliverySlip_${order.displayId || order._id?.slice(-8).toUpperCase() || order.id || 'Order'}.pdf`;

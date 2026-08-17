@@ -136,8 +136,8 @@ export const sendPushNotification = async (req, res) => {
                 },
                 webpush: {
                     notification: {
-                        icon: '/indiankart-logo.png',
-                        badge: '/indiankart-logo.png'
+                        icon: '/jaipurio-logo.png',
+                        badge: '/jaipurio-logo.png'
                     }
                 }
             }));

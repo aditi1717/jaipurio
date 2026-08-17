@@ -86,7 +86,7 @@ const CODAdvancedPayment = () => {
         return (
             <div className="flex h-screen items-center justify-center bg-gray-50/50">
                 <div className="flex flex-col items-center gap-3">
-                    <div className="h-10 w-10 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
+                    <div className="h-10 w-10 animate-spin rounded-full border-4 border-primary-500 border-t-transparent"></div>
                     <p className="text-sm font-semibold text-gray-500">Loading configurations...</p>
                 </div>
             </div>

@@ -75,9 +75,7 @@ const SettingsForm = ({ initialSettings, updateSettings }) => {
         }
 
         try {
-            await updateSettings(formData, {
-                headers: { 'Content-Type': 'multipart/form-data' }
-            });
+            await updateSettings(formData);
             setLogoFile(null);
             setSignatureFile(null);
             toast.success('Settings updated successfully');
@@ -100,7 +98,7 @@ const SettingsForm = ({ initialSettings, updateSettings }) => {
                             name="sellerName"
                             value={settings.sellerName}
                             onChange={handleChange}
-                            className="w-full border border-gray-200 rounded-xl p-3.5 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none placeholder:text-gray-500 caret-black font-medium text-gray-900 bg-gray-50/50 transition-all"
+                            className="w-full border border-gray-200 rounded-xl p-3.5 focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 outline-none placeholder:text-gray-500 caret-black font-medium text-gray-900 bg-gray-50/50 transition-all"
                             placeholder="Enter store name"
                         />
                     </div>
@@ -112,7 +110,7 @@ const SettingsForm = ({ initialSettings, updateSettings }) => {
                             name="gstNumber"
                             value={settings.gstNumber}
                             onChange={handleChange}
-                            className="w-full border border-gray-200 rounded-xl p-3.5 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none placeholder:text-gray-500 caret-black font-medium text-gray-900 bg-gray-50/50 transition-all"
+                            className="w-full border border-gray-200 rounded-xl p-3.5 focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 outline-none placeholder:text-gray-500 caret-black font-medium text-gray-900 bg-gray-50/50 transition-all"
                             placeholder="GSTIN"
                         />
                     </div>
@@ -124,7 +122,7 @@ const SettingsForm = ({ initialSettings, updateSettings }) => {
                             name="panNumber"
                             value={settings.panNumber}
                             onChange={handleChange}
-                            className="w-full border border-gray-200 rounded-xl p-3.5 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none placeholder:text-gray-500 caret-black font-medium text-gray-900 bg-gray-50/50 transition-all"
+                            className="w-full border border-gray-200 rounded-xl p-3.5 focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 outline-none placeholder:text-gray-500 caret-black font-medium text-gray-900 bg-gray-50/50 transition-all"
                             placeholder="PAN"
                         />
                     </div>
@@ -136,7 +134,7 @@ const SettingsForm = ({ initialSettings, updateSettings }) => {
                             value={settings.sellerAddress}
                             onChange={handleChange}
                             rows="4"
-                            className="w-full border border-gray-200 rounded-xl p-3.5 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none placeholder:text-gray-500 caret-black font-medium text-gray-900 bg-gray-50/50 transition-all resize-none"
+                            className="w-full border border-gray-200 rounded-xl p-3.5 focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 outline-none placeholder:text-gray-500 caret-black font-medium text-gray-900 bg-gray-50/50 transition-all resize-none"
                             placeholder="Full registered address"
                         ></textarea>
                     </div>
@@ -152,7 +150,7 @@ const SettingsForm = ({ initialSettings, updateSettings }) => {
                             name="contactEmail"
                             value={settings.contactEmail}
                             onChange={handleChange}
-                            className="w-full border border-gray-200 rounded-xl p-3.5 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none placeholder:text-gray-500 caret-black font-medium text-gray-900 bg-gray-50/50 transition-all"
+                            className="w-full border border-gray-200 rounded-xl p-3.5 focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 outline-none placeholder:text-gray-500 caret-black font-medium text-gray-900 bg-gray-50/50 transition-all"
                             placeholder="support@yourstore.com"
                         />
                     </div>
@@ -220,7 +218,7 @@ const SettingsForm = ({ initialSettings, updateSettings }) => {
             <div className="mt-10 pt-8 border-t border-gray-100 flex justify-end">
                 <button
                     type="submit"
-                    className="bg-blue-600 text-white font-black text-xs uppercase tracking-widest py-4 px-12 rounded-xl hover:bg-black transition-all shadow-xl shadow-blue-500/20 active:scale-95"
+                    className="bg-primary-600 text-white font-black text-xs uppercase tracking-widest py-4 px-12 rounded-xl hover:bg-black transition-all shadow-xl shadow-primary-500/20 active:scale-95"
                 >
                     Synchronize Settings
                 </button>

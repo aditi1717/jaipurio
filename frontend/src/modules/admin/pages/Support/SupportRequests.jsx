@@ -38,7 +38,7 @@ const SupportRequests = () => {
                         <input
                             type="text"
                             placeholder="Search requests..."
-                            className="pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500 w-64"
+                            className="pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:border-primary-500 w-64"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
@@ -46,7 +46,7 @@ const SupportRequests = () => {
 
                     <div className="relative">
                         <select
-                            className="appearance-none bg-white border px-4 py-2 pr-8 rounded-lg outline-none focus:border-blue-500 cursor-pointer"
+                            className="appearance-none bg-white border px-4 py-2 pr-8 rounded-lg outline-none focus:border-primary-500 cursor-pointer"
                             value={filterStatus}
                             onChange={(e) => setFilterStatus(e.target.value)}
                         >
@@ -62,7 +62,7 @@ const SupportRequests = () => {
 
             {/* Stats Cards */}
             <div className="grid grid-cols-4 gap-4 mb-8">
-                <div className="bg-white p-4 rounded-lg shadow-sm border border-l-4 border-l-blue-500">
+                <div className="bg-white p-4 rounded-lg shadow-sm border border-l-4 border-l-primary-500">
                     <p className="text-gray-500 text-sm font-medium uppercase">Total Requests</p>
                     <p className="text-2xl font-bold text-gray-800">{supportRequests.length}</p>
                 </div>
@@ -102,7 +102,7 @@ const SupportRequests = () => {
                                     </td>
                                     <td className="px-5 py-3">
                                         <div className="font-medium text-gray-800">{req.customerName}</div>
-                                        <div className="text-xs text-blue-600 mt-1">{req.contact}</div>
+                                        <div className="text-xs text-primary-600 mt-1">{req.contact}</div>
                                     </td>
                                     <td className="px-5 py-3 max-w-xs">
                                         <div className="text-xs font-bold text-gray-500 uppercase mb-1">{req.category}</div>

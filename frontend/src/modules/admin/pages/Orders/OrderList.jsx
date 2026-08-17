@@ -400,7 +400,7 @@ const OrderList = () => {
     const getStatusStyle = (status) => {
         switch (status) {
             case 'Pending': return 'bg-amber-50 text-amber-600 border-amber-100';
-            case 'Confirmed': return 'bg-blue-50 text-blue-600 border-blue-100';
+            case 'Confirmed': return 'bg-primary-50 text-primary-600 border-primary-100';
             case 'Packed': return 'bg-indigo-50 text-indigo-600 border-indigo-100';
             case 'Manifested': return 'bg-cyan-50 text-cyan-600 border-cyan-100';
             case 'Not Picked': return 'bg-sky-50 text-sky-600 border-sky-100';
@@ -774,7 +774,7 @@ const OrderList = () => {
                             type="button"
                             onClick={handleBulkStatusUpdate}
                             disabled={isBulkUpdating || !bulkStatus || isBulkFulfillmentUpdating}
-                            className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white text-xs font-black transition-colors"
+                            className="px-4 py-2 rounded-lg bg-primary-600 hover:bg-primary-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white text-xs font-black transition-colors"
                         >
                             {isBulkUpdating ? 'Updating...' : 'Update Selected'}
                         </button>

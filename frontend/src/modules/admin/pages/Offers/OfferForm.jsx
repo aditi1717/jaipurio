@@ -194,7 +194,7 @@ const OfferForm = () => {
                             name="title"
                             value={formData.title}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-blue-500 outline-none transition-all font-bold text-gray-900 caret-black placeholder:text-gray-500"
+                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-primary-500 outline-none transition-all font-bold text-gray-900 caret-black placeholder:text-gray-500"
                             placeholder="e.g., Summer Sale 2024"
                             required
                         />
@@ -207,7 +207,7 @@ const OfferForm = () => {
                             value={formData.description}
                             onChange={handleChange}
                             rows="3"
-                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-blue-500 outline-none transition-all font-bold text-gray-900 caret-black resize-none placeholder:text-gray-500"
+                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-primary-500 outline-none transition-all font-bold text-gray-900 caret-black resize-none placeholder:text-gray-500"
                             placeholder="Brief description of the offer..."
                         />
                     </div>
@@ -226,7 +226,7 @@ const OfferForm = () => {
                                 name="discountType"
                                 value={formData.discountType}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-blue-500 outline-none transition-all font-bold text-gray-900"
+                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-primary-500 outline-none transition-all font-bold text-gray-900"
                                 required
                             >
                                 <option value="percentage">Percentage (%)</option>
@@ -246,7 +246,7 @@ const OfferForm = () => {
                                 min="0"
                                 step={formData.discountType === 'percentage' ? '1' : '0.01'}
                                 max={formData.discountType === 'percentage' ? '100' : undefined}
-                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-blue-500 outline-none transition-all font-bold text-gray-900 caret-black placeholder:text-gray-500"
+                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-primary-500 outline-none transition-all font-bold text-gray-900 caret-black placeholder:text-gray-500"
                                 placeholder={formData.discountType === 'percentage' ? 'e.g., 20' : 'e.g., 500'}
                                 required
                             />
@@ -263,11 +263,11 @@ const OfferForm = () => {
                         
                         {/* Products Dropdown */}
                         <div className="space-y-2 p-4 bg-gray-50 rounded-xl border border-dashed border-gray-200">
-                            <label className="text-xs font-bold text-blue-600 uppercase block mb-1">Applicable Products</label>
+                            <label className="text-xs font-bold text-primary-600 uppercase block mb-1">Applicable Products</label>
                             <select 
                                 value="" 
                                 onChange={(e) => handleAddId('linkedProducts', e.target.value)}
-                                className="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg outline-none text-sm text-gray-900 caret-black focus:border-blue-500"
+                                className="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg outline-none text-sm text-gray-900 caret-black focus:border-primary-500"
                             >
                                 <option value="">+ Add Product</option>
                                 {products.map(p => !formData.linkedProducts.includes(p.id) && (
@@ -295,11 +295,11 @@ const OfferForm = () => {
 
                         {/* Categories Dropdown */}
                         <div className="space-y-2 p-4 bg-gray-50 rounded-xl border border-dashed border-gray-200">
-                            <label className="text-xs font-bold text-blue-600 uppercase block mb-1">Applicable Categories</label>
+                            <label className="text-xs font-bold text-primary-600 uppercase block mb-1">Applicable Categories</label>
                             <select 
                                 value="" 
                                 onChange={(e) => handleAddId('linkedCategories', e.target.value)}
-                                className="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg outline-none text-sm text-gray-900 caret-black focus:border-blue-500"
+                                className="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg outline-none text-sm text-gray-900 caret-black focus:border-primary-500"
                             >
                                 <option value="">+ Add Category</option>
                                 {categories.map(c => !formData.linkedCategories.includes(c._id) && (
@@ -325,11 +325,11 @@ const OfferForm = () => {
 
                         {/* Subcategories Dropdown */}
                         <div className="space-y-2 p-4 bg-gray-50 rounded-xl border border-dashed border-gray-200">
-                            <label className="text-xs font-bold text-blue-600 uppercase block mb-1">Applicable Subcategories</label>
+                            <label className="text-xs font-bold text-primary-600 uppercase block mb-1">Applicable Subcategories</label>
                             <select 
                                 value="" 
                                 onChange={(e) => handleAddId('linkedSubCategories', e.target.value)}
-                                className="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg outline-none text-sm text-gray-900 caret-black focus:border-blue-500"
+                                className="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg outline-none text-sm text-gray-900 caret-black focus:border-primary-500"
                             >
                                 <option value="">+ Add Subcategory</option>
                                 {subCategories.map(s => !formData.linkedSubCategories.includes(s._id) && (
@@ -369,7 +369,7 @@ const OfferForm = () => {
                                 name="startDate"
                                 value={formData.startDate}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-blue-500 outline-none transition-all font-bold text-gray-900"
+                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-primary-500 outline-none transition-all font-bold text-gray-900"
                                 required
                             />
                         </div>
@@ -383,7 +383,7 @@ const OfferForm = () => {
                                 name="endDate"
                                 value={formData.endDate}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-blue-500 outline-none transition-all font-bold text-gray-900"
+                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-primary-500 outline-none transition-all font-bold text-gray-900"
                                 required
                             />
                         </div>
@@ -403,7 +403,7 @@ const OfferForm = () => {
                                 value={formData.priority}
                                 onChange={handleChange}
                                 min="0"
-                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-blue-500 outline-none transition-all font-bold text-gray-900 caret-black placeholder:text-gray-500"
+                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-primary-500 outline-none transition-all font-bold text-gray-900 caret-black placeholder:text-gray-500"
                                 placeholder="0"
                             />
                             <p className="text-xs text-gray-500 mt-1">Higher priority offers display first</p>
@@ -417,7 +417,7 @@ const OfferForm = () => {
                             value={formData.termsAndConditions}
                             onChange={handleChange}
                             rows="4"
-                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-blue-500 outline-none transition-all font-bold text-gray-900 caret-black resize-none placeholder:text-gray-500"
+                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:border-primary-500 outline-none transition-all font-bold text-gray-900 caret-black resize-none placeholder:text-gray-500"
                             placeholder="Enter offer terms and conditions..."
                         />
                     </div>
@@ -428,7 +428,7 @@ const OfferForm = () => {
                             name="isActive"
                             checked={formData.isActive}
                             onChange={handleChange}
-                            className="w-5 h-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500"
+                            className="w-5 h-5 text-primary-600 rounded focus:ring-2 focus:ring-primary-500"
                             id="isActive"
                         />
                         <label htmlFor="isActive" className="text-sm font-bold text-gray-700">
@@ -442,7 +442,7 @@ const OfferForm = () => {
                     <button
                         type="submit"
                         disabled={isLoading || loadingOptions}
-                        className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-bold shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-600 to-purple-600 text-white rounded-xl font-bold shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         <MdSave size={20} />
                         {isEditMode ? 'Update Offer' : 'Create Offer'}

@@ -169,7 +169,7 @@ const MaxSellingQuantityManager = () => {
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
                     <h1 className="text-2xl font-black text-gray-900 tracking-tight flex items-center gap-2">
-                        <MdInventory className="text-blue-600" /> Max Selling Quantity
+                        <MdInventory className="text-primary-600" /> Max Selling Quantity
                     </h1>
                     <p className="text-sm text-gray-500 font-medium">Set the maximum quantity a user can buy per product</p>
                 </div>
@@ -190,7 +190,7 @@ const MaxSellingQuantityManager = () => {
                         <input
                             type="text"
                             placeholder="Search products by name or brand..."
-                            className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-transparent rounded-xl focus:bg-white focus:border-blue-500 outline-none transition-all text-sm font-medium text-gray-900 placeholder:text-gray-500"
+                            className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-transparent rounded-xl focus:bg-white focus:border-primary-500 outline-none transition-all text-sm font-medium text-gray-900 placeholder:text-gray-500"
                             value={searchTerm}
                             onChange={handleSearchChange}
                         />
@@ -202,7 +202,7 @@ const MaxSellingQuantityManager = () => {
                         <select
                             value={itemsPerPage}
                             onChange={handleItemsPerPageChange}
-                            className="w-full px-3 py-2.5 bg-gray-50 border border-transparent rounded-xl focus:bg-white focus:border-blue-500 outline-none transition-all text-sm font-semibold text-gray-700 cursor-pointer"
+                            className="w-full px-3 py-2.5 bg-gray-50 border border-transparent rounded-xl focus:bg-white focus:border-primary-500 outline-none transition-all text-sm font-semibold text-gray-700 cursor-pointer"
                         >
                             <option value={10}>10 items</option>
                             <option value={20}>20 items</option>
@@ -219,7 +219,7 @@ const MaxSellingQuantityManager = () => {
                         <select
                             value={selectedCategory}
                             onChange={handleCategoryChange}
-                            className="px-3 py-2 bg-gray-50 border border-transparent rounded-xl focus:bg-white focus:border-blue-500 outline-none transition-all text-sm font-semibold text-gray-700 cursor-pointer animate-none"
+                            className="px-3 py-2 bg-gray-50 border border-transparent rounded-xl focus:bg-white focus:border-primary-500 outline-none transition-all text-sm font-semibold text-gray-700 cursor-pointer animate-none"
                         >
                             <option value="All">All Categories</option>
                             {categories.map((cat) => (
@@ -235,7 +235,7 @@ const MaxSellingQuantityManager = () => {
                         <select
                             value={selectedSubCategory}
                             onChange={handleSubCategoryChange}
-                            className="px-3 py-2 bg-gray-50 border border-transparent rounded-xl focus:bg-white focus:border-blue-500 outline-none transition-all text-sm font-semibold text-gray-700 cursor-pointer animate-none"
+                            className="px-3 py-2 bg-gray-50 border border-transparent rounded-xl focus:bg-white focus:border-primary-500 outline-none transition-all text-sm font-semibold text-gray-700 cursor-pointer animate-none"
                         >
                             <option value="All">All Subcategories</option>
                             {filteredSubCategories.map((sub) => (
@@ -285,7 +285,7 @@ const MaxSellingQuantityManager = () => {
                                     const effectiveValue = draftValue ?? product.maxOrderQuantity ?? 1;
 
                                     return (
-                                        <tr key={product.id} className="hover:bg-blue-50/10 transition-colors">
+                                        <tr key={product.id} className="hover:bg-primary-50/10 transition-colors">
                                             <td className="px-4 py-3.5">
                                                 <div className="flex items-center gap-3">
                                                     <div className="h-10 w-10 rounded-lg bg-gray-50 border border-gray-100 overflow-hidden flex-shrink-0">
@@ -303,7 +303,7 @@ const MaxSellingQuantityManager = () => {
                                                 </span>
                                             </td>
                                             <td className="px-4 py-3.5 text-center">
-                                                <span className="text-sm font-black text-blue-600">{Number(product.stock) || 0}</span>
+                                                <span className="text-sm font-black text-primary-600">{Number(product.stock) || 0}</span>
                                             </td>
                                             <td className="px-4 py-3.5 text-center">
                                                 <div className="flex items-center justify-center gap-2">
@@ -312,7 +312,7 @@ const MaxSellingQuantityManager = () => {
                                                         min="1"
                                                         value={effectiveValue}
                                                         onChange={(e) => handleLimitChange(product.id, e.target.value)}
-                                                        className="w-24 px-2 py-1.5 text-center rounded-lg border-2 bg-white border-blue-100 focus:border-blue-500 text-gray-900 font-black text-sm transition-all outline-none"
+                                                        className="w-24 px-2 py-1.5 text-center rounded-lg border-2 bg-white border-primary-100 focus:border-primary-500 text-gray-900 font-black text-sm transition-all outline-none"
                                                     />
                                                 </div>
                                                 <p className="mt-1 text-[10px] text-gray-400 font-semibold uppercase">
@@ -325,7 +325,7 @@ const MaxSellingQuantityManager = () => {
                                                     disabled={draftValue === undefined}
                                                     className={`p-2 rounded-lg transition-all shadow-sm border ${
                                                         draftValue !== undefined
-                                                            ? 'bg-blue-600 text-white border-blue-700 hover:scale-105 active:scale-95'
+                                                            ? 'bg-primary-600 text-white border-primary-700 hover:scale-105 active:scale-95'
                                                             : 'bg-gray-50 text-gray-300 border-transparent cursor-not-allowed'
                                                     }`}
                                                     title="Save max quantity"

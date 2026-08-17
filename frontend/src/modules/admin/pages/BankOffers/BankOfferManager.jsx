@@ -614,7 +614,7 @@ const BankOfferManager = () => {
                                 <button onClick={() => toggleOfferStatus(offer._id)} className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${offer.isActive ? 'bg-green-100 text-green-600' : 'bg-gray-100 text-gray-400'}`}>
                                     {offer.isActive ? <MdCheckCircle size={20} /> : <MdCancel size={20} />}
                                 </button>
-                                <button onClick={() => handleEdit(offer)} className="w-8 h-8 rounded-full bg-blue-50 text-blue-500 hover:bg-blue-500 hover:text-white flex items-center justify-center transition-all">
+                                <button onClick={() => handleEdit(offer)} className="w-8 h-8 rounded-full bg-primary-50 text-primary-500 hover:bg-primary-500 hover:text-white flex items-center justify-center transition-all">
                                     <MdEdit size={18} />
                                 </button>
                                 <button onClick={() => deleteOffer(offer._id)} className="w-8 h-8 rounded-full bg-red-50 text-red-400 hover:bg-red-500 hover:text-white flex items-center justify-center transition-all">
@@ -630,7 +630,7 @@ const BankOfferManager = () => {
                             <span className="px-2 py-1 bg-gray-100 text-gray-700 text-[11px] font-semibold rounded-full uppercase tracking-tight">
                                 {platformLabelMap[offer.paymentPlatform] || 'Bank'}
                             </span>
-                            <span className="px-2 py-1 bg-blue-50 text-blue-700 text-[11px] font-semibold rounded-full uppercase tracking-tight">
+                            <span className="px-2 py-1 bg-primary-50 text-primary-700 text-[11px] font-semibold rounded-full uppercase tracking-tight">
                                 {offer.integrationProvider === 'razorpay' ? 'Razorpay' : 'Custom / Manual'}
                             </span>
                         </div>

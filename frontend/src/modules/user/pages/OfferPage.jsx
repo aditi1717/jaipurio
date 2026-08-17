@@ -91,7 +91,7 @@ const OfferPage = () => {
     if (loading) {
         return (
             <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-                <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+                <div className="w-16 h-16 border-4 border-primary-600 border-t-transparent rounded-full animate-spin"></div>
             </div>
         );
     }
@@ -104,7 +104,7 @@ const OfferPage = () => {
                     <p className="text-gray-600 mb-6">{error || 'This offer may have expired or been removed.'}</p>
                     <button
                         onClick={() => navigate('/')}
-                        className="px-6 py-3 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition-all"
+                        className="px-6 py-3 bg-primary-600 text-white rounded-lg font-bold hover:bg-primary-700 transition-all"
                     >
                         Back to Home
                     </button>
@@ -122,7 +122,7 @@ const OfferPage = () => {
     return (
         <div className="min-h-screen bg-gray-50 pb-20">
             {/* Header */}
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+            <div className="bg-gradient-to-r from-primary-600 to-purple-600 text-white">
                 <div className="max-w-7xl mx-auto px-4 py-6">
                     <button
                         onClick={() => navigate(-1)}

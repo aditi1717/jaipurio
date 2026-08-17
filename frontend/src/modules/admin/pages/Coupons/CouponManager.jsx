@@ -248,7 +248,7 @@ const CouponManager = () => {
                                     <div>
                                         <div
                                             onClick={() => copyCode(coupon.code)}
-                                            className="font-mono text-lg font-bold text-gray-800 tracking-wider cursor-pointer hover:text-blue-600 flex items-center gap-2 group/code"
+                                            className="font-mono text-lg font-bold text-gray-800 tracking-wider cursor-pointer hover:text-primary-600 flex items-center gap-2 group/code"
                                             title="Click to Copy"
                                         >
                                             {coupon.code}
@@ -321,7 +321,7 @@ const CouponManager = () => {
                                     <div className="flex items-center gap-2">
                                         <button
                                             onClick={() => handleEdit(coupon)}
-                                            className="text-blue-500 hover:text-blue-700 p-1 rounded hover:bg-blue-50 transition"
+                                            className="text-primary-500 hover:text-primary-700 p-1 rounded hover:bg-primary-50 transition"
                                             title="Edit coupon"
                                         >
                                             <MdEdit size={18} />
@@ -349,7 +349,7 @@ const CouponManager = () => {
                     <div className="bg-white rounded-2xl shadow-xl w-full max-w-5xl overflow-hidden animate-in fade-in zoom-in duration-200">
                         <div className="p-5 border-b border-gray-100 flex justify-between items-center bg-gray-50">
                             <h2 className="text-lg font-bold text-gray-800 flex items-center gap-2">
-                                {isEditing ? <MdEdit className="text-blue-500" /> : <MdAdd className="text-pink-500" />}
+                                {isEditing ? <MdEdit className="text-primary-500" /> : <MdAdd className="text-pink-500" />}
                                 {isEditing ? 'Edit Coupon' : 'New Coupon'}
                             </h2>
                             <button onClick={resetForm} className="p-1 hover:bg-gray-200 rounded-full transition">
@@ -425,7 +425,7 @@ const CouponManager = () => {
                                         <select
                                             value={couponData.userSegment}
                                             onChange={(e) => updateCouponField('userSegment', e.target.value)}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white outline-none focus:border-blue-500 text-sm text-gray-800"
+                                            className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white outline-none focus:border-primary-500 text-sm text-gray-800"
                                         >
                                             <option value="all">All Users</option>
                                             <option value="new_user">New Users Only</option>
@@ -437,7 +437,7 @@ const CouponManager = () => {
                                         <select
                                             value={couponData.applicableCategory}
                                             onChange={(e) => updateCouponField('applicableCategory', e.target.value)}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white outline-none focus:border-blue-500 text-sm text-gray-800"
+                                            className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white outline-none focus:border-primary-500 text-sm text-gray-800"
                                         >
                                             <option value="all">All Categories</option>
                                             {categoryOptions.map((category) => (
@@ -454,7 +454,7 @@ const CouponManager = () => {
                                             className={`w-full px-3 py-2 border border-gray-300 rounded-lg outline-none text-sm ${
                                                 isAllCategoriesSelected
                                                     ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                                                    : 'bg-white text-gray-800 focus:border-blue-500'
+                                                    : 'bg-white text-gray-800 focus:border-primary-500'
                                             }`}
                                         >
                                             <option value="all">All Subcategories</option>
@@ -477,7 +477,7 @@ const CouponManager = () => {
                                             className={`w-full px-3 py-2 border border-gray-300 rounded-lg outline-none text-sm ${
                                                 isAllCategoriesSelected || isAllSubCategoriesSelected
                                                     ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                                                    : 'bg-white text-gray-800 focus:border-blue-500'
+                                                    : 'bg-white text-gray-800 focus:border-primary-500'
                                             }`}
                                         >
                                             <option value="all">All Brands</option>
@@ -502,7 +502,7 @@ const CouponManager = () => {
                                             type="number"
                                             value={couponData.minPurchase}
                                             onChange={(e) => updateCouponField('minPurchase', e.target.value)}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-lg outline-none focus:border-blue-500 text-sm text-gray-800 placeholder:text-gray-500"
+                                            className="w-full px-3 py-2 border border-gray-300 rounded-lg outline-none focus:border-primary-500 text-sm text-gray-800 placeholder:text-gray-500"
                                             placeholder="Rs"
                                             required
                                         />
@@ -514,7 +514,7 @@ const CouponManager = () => {
                                             value={couponData.expiryDate}
                                             onChange={(e) => updateCouponField('expiryDate', e.target.value)}
                                             min={isEditing ? todayStr : tomorrowStr}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-lg outline-none focus:border-blue-500 text-sm text-gray-800"
+                                            className="w-full px-3 py-2 border border-gray-300 rounded-lg outline-none focus:border-primary-500 text-sm text-gray-800"
                                             required
                                         />
                                     </div>
@@ -525,7 +525,7 @@ const CouponManager = () => {
                                                 type="number"
                                                 value={couponData.maxDiscount}
                                                 onChange={(e) => updateCouponField('maxDiscount', e.target.value)}
-                                                className="w-full px-3 py-2 border border-gray-300 rounded-lg outline-none focus:border-blue-500 text-sm text-gray-800 placeholder:text-gray-500"
+                                                className="w-full px-3 py-2 border border-gray-300 rounded-lg outline-none focus:border-primary-500 text-sm text-gray-800 placeholder:text-gray-500"
                                                 placeholder="e.g. 100"
                                             />
                                         </div>

@@ -530,17 +530,17 @@ const ReturnOrder = () => {
                 <div className="flex items-center justify-between max-w-sm mx-auto relative cursor-default select-none">
                     <div className="absolute top-[15px] left-0 w-full h-[2px] bg-gray-200 z-0"></div>
                     <div 
-                        className="absolute top-[15px] left-0 h-[2px] bg-blue-600 z-0 transition-all duration-500"
+                        className="absolute top-[15px] left-0 h-[2px] bg-primary-600 z-0 transition-all duration-500"
                         style={{ width: `${(activeStepIdx / (steps.length - 1)) * 100}%` }}
                     ></div>
                     {steps.map((s, i) => (
                         <div key={s} className="relative z-10 flex flex-col items-center">
                             <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 border-2 ${
-                                i <= activeStepIdx ? 'bg-blue-600 text-white border-blue-600 shadow-md shadow-blue-100' : 'bg-white border-gray-200 text-gray-400'
+                                i <= activeStepIdx ? 'bg-primary-600 text-white border-primary-600 shadow-md shadow-primary-100' : 'bg-white border-gray-200 text-gray-400'
                             }`}>
                                 {i < activeStepIdx ? <span className="material-icons text-sm">check</span> : i + 1}
                             </div>
-                            <p className={`text-[9px] mt-2 font-black uppercase tracking-tight ${i <= activeStepIdx ? 'text-blue-600' : 'text-gray-400'}`}>
+                            <p className={`text-[9px] mt-2 font-black uppercase tracking-tight ${i <= activeStepIdx ? 'text-primary-600' : 'text-gray-400'}`}>
                                 {s}
                             </p>
                         </div>
@@ -562,7 +562,7 @@ const ReturnOrder = () => {
             <span className="material-icons text-7xl text-gray-100 mb-6 animate-bounce">inventory_2</span>
             <h1 className="text-xl font-black text-gray-800 uppercase tracking-widest">Order not found</h1>
             <p className="text-gray-400 text-sm mt-2 font-bold uppercase tracking-tight">The details for this order could not be loaded.</p>
-            <button onClick={() => navigate('/my-orders')} className="mt-8 px-10 py-3 bg-blue-600 text-white rounded-full font-black text-xs uppercase tracking-[0.2em] shadow-xl shadow-blue-100 hover:shadow-blue-200 active:scale-95 transition-all">Go to My Orders</button>
+            <button onClick={() => navigate('/my-orders')} className="mt-8 px-10 py-3 bg-primary-600 text-white rounded-full font-black text-xs uppercase tracking-[0.2em] shadow-xl shadow-primary-100 hover:shadow-primary-200 active:scale-95 transition-all">Go to My Orders</button>
         </div>
     );
 
@@ -680,9 +680,9 @@ const ReturnOrder = () => {
             <div className="hidden md:block bg-white border-b py-3 px-6 mb-6">
                 <div className="max-w-[1200px] mx-auto flex items-center justify-between">
                     <div className="flex items-center gap-2 text-[11px] text-gray-400">
-                        <span onClick={() => navigate('/')} className="cursor-pointer hover:text-blue-600 transition-colors uppercase tracking-tight">Home</span>
+                        <span onClick={() => navigate('/')} className="cursor-pointer hover:text-primary-600 transition-colors uppercase tracking-tight">Home</span>
                         <span className="material-icons text-[10px]">chevron_right</span>
-                        <span onClick={() => navigate('/my-orders')} className="cursor-pointer hover:text-blue-600 transition-colors uppercase tracking-tight">My Orders</span>
+                        <span onClick={() => navigate('/my-orders')} className="cursor-pointer hover:text-primary-600 transition-colors uppercase tracking-tight">My Orders</span>
                         <span className="material-icons text-[10px]">chevron_right</span>
                         <span className="text-gray-800 font-bold uppercase tracking-tight">Return Flow</span>
                     </div>
@@ -702,12 +702,12 @@ const ReturnOrder = () => {
                         
                         {!productId && targetItems.length > 0 && step === 0 && (
                             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden animate-in fade-in slide-in-from-bottom-2 duration-500">
-                                <div className="px-6 py-5 border-b border-gray-50 flex items-center justify-between bg-gradient-to-r from-blue-50/50 to-transparent">
+                                <div className="px-6 py-5 border-b border-gray-50 flex items-center justify-between bg-gradient-to-r from-primary-50/50 to-transparent">
                                     <div>
                                         <h3 className="text-sm font-black text-gray-800 uppercase tracking-widest">Select Products</h3>
                                         <p className="text-[10px] text-gray-400 mt-1 uppercase font-bold">Step 1: Choose item(s) to return or replace</p>
                                     </div>
-                                    <span className="material-icons text-blue-100 text-3xl">inventory_2</span>
+                                    <span className="material-icons text-primary-100 text-3xl">inventory_2</span>
                                 </div>
                                 <div className="p-4 space-y-3">
                                     {targetItems.map((item) => {
@@ -720,7 +720,7 @@ const ReturnOrder = () => {
                                                 type="button"
                                                 onClick={() => handleItemSelectionChange(item.id, !isSelected)}
                                                 className={`w-full text-left p-4 rounded-2xl border-2 transition-all ${
-                                                    isSelected ? 'border-blue-600 bg-blue-50 shadow-sm' : 'border-gray-100 hover:border-gray-200 hover:bg-gray-50'
+                                                    isSelected ? 'border-primary-600 bg-primary-50 shadow-sm' : 'border-gray-100 hover:border-gray-200 hover:bg-gray-50'
                                                 }`}
                                             >
                                                 <div className="flex items-start gap-4">
@@ -743,19 +743,19 @@ const ReturnOrder = () => {
                                                                 onClick={(e) => e.stopPropagation()}
                                                             >
                                                                 <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">Select Qty</span>
-                                                                <div className="flex items-center overflow-hidden rounded-xl border border-blue-200 bg-white">
+                                                                <div className="flex items-center overflow-hidden rounded-xl border border-primary-200 bg-white">
                                                                     <button
                                                                         type="button"
                                                                         onClick={() => handleSelectedQuantityChange(item.id, selectedQty - 1, maxQty)}
-                                                                        className="w-9 h-9 flex items-center justify-center text-blue-600 hover:bg-blue-50"
+                                                                        className="w-9 h-9 flex items-center justify-center text-primary-600 hover:bg-primary-50"
                                                                     >
                                                                         <span className="material-icons text-base">remove</span>
                                                                     </button>
-                                                                    <span className="w-10 text-center text-sm font-black text-blue-700">{selectedQty}</span>
+                                                                    <span className="w-10 text-center text-sm font-black text-primary-700">{selectedQty}</span>
                                                                     <button
                                                                         type="button"
                                                                         onClick={() => handleSelectedQuantityChange(item.id, selectedQty + 1, maxQty)}
-                                                                        className="w-9 h-9 flex items-center justify-center text-blue-600 hover:bg-blue-50"
+                                                                        className="w-9 h-9 flex items-center justify-center text-primary-600 hover:bg-primary-50"
                                                                     >
                                                                         <span className="material-icons text-base">add</span>
                                                                     </button>
@@ -764,7 +764,7 @@ const ReturnOrder = () => {
                                                             </div>
                                                         )}
                                                     </div>
-                                                    <span className={`material-icons ${isSelected ? 'text-blue-600' : 'text-gray-300'}`}>
+                                                    <span className={`material-icons ${isSelected ? 'text-primary-600' : 'text-gray-300'}`}>
                                                         {isSelected ? 'check_circle' : 'radio_button_unchecked'}
                                                     </span>
                                                 </div>
@@ -779,7 +779,7 @@ const ReturnOrder = () => {
                                         className={`mt-3 w-full h-12 rounded-2xl font-black text-[11px] uppercase tracking-[0.18em] transition-all ${
                                             selectedItemIds.length === 0
                                                 ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                                                : 'bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-100'
+                                                : 'bg-primary-600 text-white hover:bg-primary-700 shadow-lg shadow-primary-100'
                                         }`}
                                     >
                                         Continue
@@ -791,15 +791,15 @@ const ReturnOrder = () => {
                         {/* Step 1: Reason Selection */}
                         {step === 1 && (
                             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden animate-in fade-in slide-in-from-bottom-2 duration-500">
-                                <div className="px-6 py-5 border-b border-gray-50 flex items-center justify-between bg-gradient-to-r from-blue-50/50 to-transparent">
+                                <div className="px-6 py-5 border-b border-gray-50 flex items-center justify-between bg-gradient-to-r from-primary-50/50 to-transparent">
                                     <div className="flex items-center gap-3">
-                                        <button type="button" onClick={() => setStep(3)} className="material-icons text-gray-400 hover:text-blue-600 transition-colors">arrow_back</button>
+                                        <button type="button" onClick={() => setStep(3)} className="material-icons text-gray-400 hover:text-primary-600 transition-colors">arrow_back</button>
                                         <div>
                                             <h3 className="text-sm font-black text-gray-800 uppercase tracking-widest">Select Reason</h3>
                                             <p className="text-[10px] text-gray-400 mt-1 uppercase font-bold">Step 2 of 4: Tell us what's wrong</p>
                                         </div>
                                     </div>
-                                    <span className="material-icons text-blue-100 text-3xl">help_outline</span>
+                                    <span className="material-icons text-primary-100 text-3xl">help_outline</span>
                                 </div>
                                 <div className="p-2 md:p-4">
                                     <div className="grid grid-cols-1 gap-1">
@@ -810,15 +810,15 @@ const ReturnOrder = () => {
                                                     setReason(r.title);
                                                     setStep(2);
                                                 }}
-                                                className="group flex items-center justify-between p-4 rounded-xl hover:bg-blue-50 transition-all duration-300 text-left border border-transparent hover:border-blue-100"
+                                                className="group flex items-center justify-between p-4 rounded-xl hover:bg-primary-50 transition-all duration-300 text-left border border-transparent hover:border-primary-100"
                                             >
                                                 <div className="flex items-center gap-4">
                                                     <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-white transition-colors">
-                                                        <span className="material-icons text-gray-400 group-hover:text-blue-600 text-xl">report_problem</span>
+                                                        <span className="material-icons text-gray-400 group-hover:text-primary-600 text-xl">report_problem</span>
                                                     </div>
-                                                    <span className="text-sm text-gray-700 font-bold group-hover:text-blue-700 transition-colors leading-tight">{r.title}</span>
+                                                    <span className="text-sm text-gray-700 font-bold group-hover:text-primary-700 transition-colors leading-tight">{r.title}</span>
                                                 </div>
-                                                <span className="material-icons text-gray-300 group-hover:translate-x-1 group-hover:text-blue-600 transition-all">chevron_right</span>
+                                                <span className="material-icons text-gray-300 group-hover:translate-x-1 group-hover:text-primary-600 transition-all">chevron_right</span>
                                             </button>
                                         ))}
                                     </div>
@@ -831,13 +831,13 @@ const ReturnOrder = () => {
                             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden animate-in fade-in slide-in-from-right-4 duration-500">
                                 <div className="px-6 py-5 border-b border-gray-50 flex items-center justify-between">
                                     <div className="flex items-center gap-3">
-                                        <button type="button" onClick={() => setStep(1)} className="material-icons text-gray-400 hover:text-blue-600 transition-colors">arrow_back</button>
+                                        <button type="button" onClick={() => setStep(1)} className="material-icons text-gray-400 hover:text-primary-600 transition-colors">arrow_back</button>
                                         <div>
                                             <h3 className="text-sm font-black text-gray-800 uppercase tracking-widest">More Details</h3>
-                                            <p className="text-[10px] text-blue-600 mt-1 uppercase font-bold">Step 3 of 4 â€¢ {reason}</p>
+                                            <p className="text-[10px] text-primary-600 mt-1 uppercase font-bold">Step 3 of 4 â€¢ {reason}</p>
                                         </div>
                                     </div>
-                                    <span className="material-icons text-blue-100 text-3xl">list</span>
+                                    <span className="material-icons text-primary-100 text-3xl">list</span>
                                 </div>
                                 <div className="p-4 md:p-6 space-y-3">
                                     <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest block mb-1">Select specific issue</label>
@@ -851,13 +851,13 @@ const ReturnOrder = () => {
                                                 }}
                                                 className={`w-full text-left px-5 py-4 rounded-xl border-2 transition-all group ${
                                                     subReason === sub 
-                                                    ? 'border-blue-600 bg-blue-50' 
+                                                    ? 'border-primary-600 bg-primary-50' 
                                                     : 'border-gray-50 hover:bg-gray-50 hover:border-gray-200'
                                                 }`}
                                             >
                                                 <div className="flex items-center justify-between">
-                                                    <span className={`text-[13px] font-bold ${subReason === sub ? 'text-blue-700' : 'text-gray-600'}`}>{sub}</span>
-                                                    {subReason === sub && <span className="material-icons text-blue-600 text-sm">check_circle</span>}
+                                                    <span className={`text-[13px] font-bold ${subReason === sub ? 'text-primary-700' : 'text-gray-600'}`}>{sub}</span>
+                                                    {subReason === sub && <span className="material-icons text-primary-600 text-sm">check_circle</span>}
                                                 </div>
                                             </button>
                                         ))}
@@ -869,7 +869,7 @@ const ReturnOrder = () => {
                         {/* Step 3: Resolution Decision */}
                         {step === 3 && (
                             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden animate-in fade-in zoom-in-95 duration-500">
-                                <div className="px-6 py-5 border-b border-gray-50 flex items-center justify-between bg-blue-600 text-white">
+                                <div className="px-6 py-5 border-b border-gray-50 flex items-center justify-between bg-primary-600 text-white">
                                     <div>
                                         <h3 className="text-sm font-black uppercase tracking-widest">Resolution Choice</h3>
                                         <p className="text-[10px] text-white/70 mt-1 uppercase font-bold">Step 1 of 4: What do you want to do?</p>
@@ -883,17 +883,17 @@ const ReturnOrder = () => {
                                                 switchReturnMode('REFUND');
                                             }}
                                             className={`relative p-6 rounded-2xl border-2 cursor-pointer transition-all duration-300 group ${
-                                                returnMode === 'REFUND' ? 'border-blue-600 bg-blue-50 shadow-xl shadow-blue-50/50 lg:scale-[1.02]' : 'border-gray-100 hover:border-gray-200 hover:bg-gray-50'
+                                                returnMode === 'REFUND' ? 'border-primary-600 bg-primary-50 shadow-xl shadow-primary-50/50 lg:scale-[1.02]' : 'border-gray-100 hover:border-gray-200 hover:bg-gray-50'
                                             }`}
                                         >
                                             <div className={`w-12 h-12 rounded-2xl mb-4 flex items-center justify-center transition-all ${
-                                                returnMode === 'REFUND' ? 'bg-blue-600 text-white shadow-lg shadow-blue-200 animate-bounce-short' : 'bg-gray-50 text-gray-400 group-hover:bg-white'
+                                                returnMode === 'REFUND' ? 'bg-primary-600 text-white shadow-lg shadow-primary-200 animate-bounce-short' : 'bg-gray-50 text-gray-400 group-hover:bg-white'
                                             }`}>
                                                 <span className="material-icons text-2xl">account_balance_wallet</span>
                                             </div>
                                             <h4 className="font-black text-sm uppercase tracking-tight text-gray-900">Refund / Return</h4>
                                             <p className="text-[11px] text-gray-900 mt-2 leading-relaxed">Original payment source or bank account. Average time: 5-7 working days after pickup.</p>
-                                            {returnMode === 'REFUND' && <span className="absolute top-4 right-4 material-icons text-blue-600">check_circle</span>}
+                                            {returnMode === 'REFUND' && <span className="absolute top-4 right-4 material-icons text-primary-600">check_circle</span>}
                                         </div>
 
                                         {/* Replacement */}
@@ -933,7 +933,7 @@ const ReturnOrder = () => {
                                             <span className="text-[10px] font-bold uppercase tracking-widest leading-none text-gray-900">Safe & Secure process</span>
                                         </div>
                                         <div className="flex items-center gap-1">
-                                            <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+                                            <span className="w-2 h-2 rounded-full bg-primary-600 animate-pulse"></span>
                                             <span className="text-[10px] font-bold text-gray-900 uppercase tracking-widest leading-none">Trusted Flow</span>
                                         </div>
                                     </div>
@@ -951,7 +951,7 @@ const ReturnOrder = () => {
                                         className={`mt-6 w-full h-12 rounded-2xl font-black text-[11px] uppercase tracking-[0.18em] transition-all ${
                                             selectedItemIds.length === 0 || (returnMode === 'REPLACEMENT' && exactReplacementAvailability.checked && !exactReplacementAvailability.available)
                                                 ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                                                : 'bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-100'
+                                                : 'bg-primary-600 text-white hover:bg-primary-700 shadow-lg shadow-primary-100'
                                         }`}
                                     >
                                         Continue with {returnMode === 'REPLACEMENT' ? 'Replacement' : 'Return'}
@@ -969,7 +969,7 @@ const ReturnOrder = () => {
                                             <h3 className="text-sm font-black text-gray-900 uppercase tracking-widest">Final Details</h3>
                                             <p className="text-[10px] text-gray-900 mt-1 uppercase font-bold">Step 4 of 4: Complete your request</p>
                                         </div>
-                                        <button type="button" onClick={() => setStep(3)} className="text-blue-600 font-black text-[10px] uppercase hover:underline border border-blue-100 px-2 py-1 rounded">Edit Choice</button>
+                                        <button type="button" onClick={() => setStep(3)} className="text-primary-600 font-black text-[10px] uppercase hover:underline border border-primary-100 px-2 py-1 rounded">Edit Choice</button>
                                     </div>
                                     
                                     <div className="p-6 space-y-6">
@@ -977,7 +977,7 @@ const ReturnOrder = () => {
                                         <div>
                                             <label className="text-[10px] font-black text-gray-900 uppercase tracking-widest block mb-2">Detailed Comments</label>
                                             <textarea
-                                                className="w-full bg-gray-50 border border-gray-300 focus:border-blue-500 focus:bg-white rounded-xl p-4 text-sm outline-none transition-all h-28 text-gray-800 placeholder-gray-300 resize-none"
+                                                className="w-full bg-gray-50 border border-gray-300 focus:border-primary-500 focus:bg-white rounded-xl p-4 text-sm outline-none transition-all h-28 text-gray-800 placeholder-gray-300 resize-none"
                                                 placeholder="Tell us more about the issue (e.g. Item damaged, missing parts)..."
                                                 value={comment}
                                                 onChange={(e) => setComment(e.target.value)}
@@ -988,7 +988,7 @@ const ReturnOrder = () => {
                                         {returnMode === 'REFUND' && (
                                             <div className="bg-gray-50 rounded-2xl p-5 border border-gray-200/50">
                                                 <div className="flex items-center gap-2 mb-4">
-                                                    <span className="material-icons text-blue-600 text-xl">payments</span>
+                                                    <span className="material-icons text-primary-600 text-xl">payments</span>
                                                     <h4 className="text-xs font-black uppercase text-gray-700 tracking-tight">Bank Account for Refund</h4>
                                                 </div>
                                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -997,7 +997,7 @@ const ReturnOrder = () => {
                                                         <input 
                                                             type="text" 
                                                             placeholder="NAME ON ACCOUNT"
-                                                            className="w-full bg-white border border-gray-100 rounded-lg px-3 py-2.5 text-sm outline-none focus:ring-1 focus:ring-blue-500 font-bold text-gray-800 uppercase"
+                                                            className="w-full bg-white border border-gray-100 rounded-lg px-3 py-2.5 text-sm outline-none focus:ring-1 focus:ring-primary-500 font-bold text-gray-800 uppercase"
                                                             value={bankDetails.accountHolderName}
                                                             onChange={(e) => setBankDetails(p => ({ ...p, accountHolderName: e.target.value.replace(/\d/g, '') }))}
                                                         />
@@ -1007,7 +1007,7 @@ const ReturnOrder = () => {
                                                         <input 
                                                             type="text" 
                                                             placeholder="1234 5678 9012"
-                                                            className="w-full bg-white border border-gray-100 rounded-lg px-3 py-2.5 text-sm outline-none focus:ring-1 focus:ring-blue-500 font-bold text-gray-800"
+                                                            className="w-full bg-white border border-gray-100 rounded-lg px-3 py-2.5 text-sm outline-none focus:ring-1 focus:ring-primary-500 font-bold text-gray-800"
                                                             inputMode="numeric"
                                                             maxLength={22}
                                                             value={formatAccountNumber(bankDetails.accountNumber)}
@@ -1019,7 +1019,7 @@ const ReturnOrder = () => {
                                                         <input 
                                                             type="text" 
                                                             placeholder="SBIN0001234"
-                                                            className="w-full bg-white border border-gray-100 rounded-lg px-3 py-2.5 text-sm outline-none focus:ring-1 focus:ring-blue-500 font-bold text-gray-800 uppercase"
+                                                            className="w-full bg-white border border-gray-100 rounded-lg px-3 py-2.5 text-sm outline-none focus:ring-1 focus:ring-primary-500 font-bold text-gray-800 uppercase"
                                                             value={bankDetails.ifscCode}
                                                             onChange={(e) => setBankDetails(p => ({ ...p, ifscCode: e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0,11) }))}
                                                         />
@@ -1032,7 +1032,7 @@ const ReturnOrder = () => {
                                         <div className="space-y-3">
                                             <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest block">Evidence / Proof (Required)</label>
                                             <div className="flex flex-col gap-3">
-                                                <div className="flex-1 border-2 border-dashed border-gray-200 hover:border-blue-400 rounded-2xl p-8 transition-all bg-gray-50/50 text-center relative group">
+                                                <div className="flex-1 border-2 border-dashed border-gray-200 hover:border-primary-400 rounded-2xl p-8 transition-all bg-gray-50/50 text-center relative group">
                                                     <input 
                                                         type="file" multiple accept="image/*,video/*"
                                                         className="absolute inset-0 opacity-0 cursor-pointer z-10"
@@ -1045,14 +1045,14 @@ const ReturnOrder = () => {
                                                             setProofFiles(files);
                                                         }}
                                                     />
-                                                    <span className="material-icons text-5xl text-gray-300 group-hover:text-blue-500 transition-colors">cloud_upload</span>
+                                                    <span className="material-icons text-5xl text-gray-300 group-hover:text-primary-500 transition-colors">cloud_upload</span>
                                                     <p className="text-xs font-bold text-gray-600 mt-2">Click or drag to upload proof</p>
                                                     <p className="text-[9px] text-gray-400 mt-1 uppercase font-bold tracking-tight">JPG, PNG or MP4 (Max 10MB)</p>
                                                     
                                                     {proofFiles.length > 0 && (
                                                         <div className="mt-4 flex flex-wrap justify-center gap-2">
                                                             {proofFiles.map((f, i) => (
-                                                                <div key={i} className="flex items-center gap-1 bg-blue-600 text-white px-3 py-1 rounded-full text-[9px] font-bold shadow-lg">
+                                                                <div key={i} className="flex items-center gap-1 bg-primary-600 text-white px-3 py-1 rounded-full text-[9px] font-bold shadow-lg">
                                                                     <span className="material-icons text-[10px]">attachment</span>
                                                                     {f.name.slice(0,12)}
                                                                 </div>
@@ -1067,7 +1067,7 @@ const ReturnOrder = () => {
                                                     <input 
                                                         type="text" 
                                                         placeholder="Or paste Google Drive/Files Link here..."
-                                                        className="w-full bg-white border border-gray-200 rounded-xl py-3 pl-10 pr-4 text-xs outline-none focus:ring-1 focus:ring-blue-500 font-bold text-gray-500 uppercase tracking-tight"
+                                                        className="w-full bg-white border border-gray-200 rounded-xl py-3 pl-10 pr-4 text-xs outline-none focus:ring-1 focus:ring-primary-500 font-bold text-gray-500 uppercase tracking-tight"
                                                         value={googleDriveLink}
                                                         onChange={(e) => setGoogleDriveLink(e.target.value)}
                                                     />
@@ -1081,7 +1081,7 @@ const ReturnOrder = () => {
                                             className={`w-full h-14 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl transition-all active:scale-[0.98] mt-4 ${
                                                 loading 
                                                 ? 'bg-gray-100 text-gray-400 shadow-none cursor-default' 
-                                                : 'bg-blue-600 text-white shadow-blue-100 hover:bg-blue-700 hover:-translate-y-0.5'
+                                                : 'bg-primary-600 text-white shadow-primary-100 hover:bg-primary-700 hover:-translate-y-0.5'
                                             }`}
                                         >
                                             {loading ? (
@@ -1103,7 +1103,7 @@ const ReturnOrder = () => {
                         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
                             <div className="px-5 py-4 border-b border-gray-50 flex items-center justify-between bg-gray-50/50">
                                 <h4 className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Applying to item</h4>
-                                <span className={`text-[9px] font-black uppercase px-2 py-0.5 rounded-full ${returnMode === 'REPLACEMENT' ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700'}`}>
+                                <span className={`text-[9px] font-black uppercase px-2 py-0.5 rounded-full ${returnMode === 'REPLACEMENT' ? 'bg-green-100 text-green-700' : 'bg-primary-100 text-primary-700'}`}>
                                     {returnMode === 'REPLACEMENT' ? 'Replacement' : 'Refund'}
                                 </span>
                             </div>
@@ -1138,15 +1138,15 @@ const ReturnOrder = () => {
                                 <button
                                     type="button"
                                     onClick={() => setShowAddressSelector(!showAddressSelector)}
-                                    className="text-[10px] font-black uppercase tracking-widest text-blue-600 hover:text-blue-700 transition-all"
+                                    className="text-[10px] font-black uppercase tracking-widest text-primary-600 hover:text-primary-700 transition-all"
                                 >
                                     {showAddressSelector ? 'Close' : 'Change'}
                                 </button>
                             </div>
                             <div className="p-5">
                                 <div className="flex items-start gap-4">
-                                    <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
-                                        <span className="material-icons text-blue-600 text-lg">local_shipping</span>
+                                    <div className="w-10 h-10 rounded-full bg-primary-50 flex items-center justify-center flex-shrink-0">
+                                        <span className="material-icons text-primary-600 text-lg">local_shipping</span>
                                     </div>
                                     <div className="flex-1 min-w-0">
                                         <p className="text-[13px] font-black text-gray-800 uppercase tracking-tight">{selectedPickupAddress?.name || 'Customer'}</p>
@@ -1154,7 +1154,7 @@ const ReturnOrder = () => {
                                         <p className="text-[11px] text-gray-500 mt-2 leading-relaxed">
                                             {selectedPickupAddress?.address}, {selectedPickupAddress?.city}{selectedPickupAddress?.state ? `, ${selectedPickupAddress.state}` : ''} - {selectedPickupAddress?.pincode}
                                         </p>
-                                        <p className="text-[11px] font-bold text-blue-600 mt-2 tracking-widest">{selectedPickupAddress?.phone}</p>
+                                        <p className="text-[11px] font-bold text-primary-600 mt-2 tracking-widest">{selectedPickupAddress?.phone}</p>
                                     </div>
                                 </div>
 
@@ -1164,18 +1164,18 @@ const ReturnOrder = () => {
                                             type="button"
                                             onClick={handleSelectOrderShippingAddress}
                                             className={`w-full text-left p-3 rounded-xl border-2 transition-all ${
-                                                selectedPickupAddressId === 'order-shipping' ? 'border-blue-600 bg-blue-50/50 shadow-md' : 'border-gray-100 hover:bg-gray-50'
+                                                selectedPickupAddressId === 'order-shipping' ? 'border-primary-600 bg-primary-50/50 shadow-md' : 'border-gray-100 hover:bg-gray-50'
                                             }`}
                                         >
                                             <div className="flex items-center justify-between">
                                                 <p className="text-[10px] font-black text-gray-800 uppercase tracking-tight">Order Delivery Address</p>
-                                                {selectedPickupAddressId === 'order-shipping' && <span className="material-icons text-blue-600 text-sm">check_circle</span>}
+                                                {selectedPickupAddressId === 'order-shipping' && <span className="material-icons text-primary-600 text-sm">check_circle</span>}
                                             </div>
                                             <p className="text-[10px] text-gray-500 mt-1">
                                                 {order?.shippingAddress?.street}, {order?.shippingAddress?.city} - {order?.shippingAddress?.postalCode}
                                             </p>
                                             {!!order?.shippingAddress?.phone && (
-                                                <p className="text-[10px] text-blue-600 font-bold mt-1">{order.shippingAddress.phone}</p>
+                                                <p className="text-[10px] text-primary-600 font-bold mt-1">{order.shippingAddress.phone}</p>
                                             )}
                                         </button>
 
@@ -1185,17 +1185,17 @@ const ReturnOrder = () => {
                                                 key={addr.id}
                                                 onClick={() => handleSelectPickupAddress(addr)}
                                                 className={`w-full text-left p-3 rounded-xl border-2 transition-all ${
-                                                    selectedPickupAddressId === addr.id ? 'border-blue-600 bg-blue-50/50 shadow-md' : 'border-gray-50 hover:bg-gray-50'
+                                                    selectedPickupAddressId === addr.id ? 'border-primary-600 bg-primary-50/50 shadow-md' : 'border-gray-50 hover:bg-gray-50'
                                                 }`}
                                             >
                                                 <div className="flex items-center justify-between">
                                                     <p className="text-[10px] font-black text-gray-800 uppercase tracking-tight">{addr.type || 'HOME'}</p>
-                                                    {selectedPickupAddressId === addr.id && <span className="material-icons text-blue-600 text-sm">check_circle</span>}
+                                                    {selectedPickupAddressId === addr.id && <span className="material-icons text-primary-600 text-sm">check_circle</span>}
                                                 </div>
                                                 <p className="text-[10px] text-gray-500 mt-1">{addr.name}</p>
                                                 <p className="text-[10px] text-gray-500 mt-1">{addr.address}, {addr.city} - {addr.pincode}</p>
                                                 {!!(addr.mobile || addr.phone) && (
-                                                    <p className="text-[10px] text-blue-600 font-bold mt-1">{addr.mobile || addr.phone}</p>
+                                                    <p className="text-[10px] text-primary-600 font-bold mt-1">{addr.mobile || addr.phone}</p>
                                                 )}
                                             </button>
                                         ))}
@@ -1207,20 +1207,20 @@ const ReturnOrder = () => {
                         {/* Guidelines Card */}
                         <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 text-white shadow-2xl">
                             <div className="flex items-center gap-2 mb-4">
-                                <span className="material-icons text-blue-400">info_outline</span>
+                                <span className="material-icons text-primary-400">info_outline</span>
                                 <h5 className="text-[10px] font-black uppercase tracking-widest">Guidelines</h5>
                             </div>
                             <ul className="space-y-3">
                                 <li className="flex items-start gap-2">
-                                    <span className="material-icons text-[12px] mt-0.5 text-blue-400">lens</span>
+                                    <span className="material-icons text-[12px] mt-0.5 text-primary-400">lens</span>
                                     <p className="text-[10px] font-bold tracking-tight opacity-90">Keep original packaging and tags intact.</p>
                                 </li>
                                 <li className="flex items-start gap-2">
-                                    <span className="material-icons text-[12px] mt-0.5 text-blue-400">lens</span>
+                                    <span className="material-icons text-[12px] mt-0.5 text-primary-400">lens</span>
                                     <p className="text-[10px] font-bold tracking-tight opacity-90">Clear all personal data/locks (for electronics).</p>
                                 </li>
                                 <li className="flex items-start gap-2">
-                                    <span className="material-icons text-[12px] mt-0.5 text-blue-400">lens</span>
+                                    <span className="material-icons text-[12px] mt-0.5 text-primary-400">lens</span>
                                     <p className="text-[10px] font-bold tracking-tight opacity-90">Pickup is verified by our executive agent.</p>
                                 </li>
                             </ul>

@@ -37,7 +37,7 @@ export const generateInvoice = (order, settings = {}) => {
 
     // Default settings if not provided
     const seller = {
-        name: settings?.sellerName || 'INDIANKART',
+        name: settings?.sellerName || 'JAIPURIO',
         address: settings?.sellerAddress || '123 E-com St, Digital City',
         gst: settings?.gstNumber || 'N/A',
         pan: settings?.panNumber || 'N/A',

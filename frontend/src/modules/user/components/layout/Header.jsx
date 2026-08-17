@@ -31,7 +31,7 @@ import {
     MdSportsEsports,
     MdCancel
 } from 'react-icons/md';
-import logo from '../../../../assets/indiankart-logo.png';
+import logo from '../../../../assets/jaipurio-logo.jpeg';
 
 const normalizeSearchText = (value) => String(value || '').trim().toLowerCase();
 
@@ -424,7 +424,7 @@ const Header = () => {
     };
 
     return (
-        <header className={`${isPDP ? 'bg-gradient-to-b from-blue-100 to-blue-200' : 'bg-gradient-to-b from-blue-200 via-blue-100 to-blue-50'} px-3 fixed top-0 w-full left-0 right-0 z-50 transition-all duration-300 shadow-none ${isInfoPage ? 'border-b-0' : 'border-b border-blue-200'} ${isPDP ? 'py-1.5' : isCategory ? 'py-2' : 'py-0.5 md:py-0'} ${!isInfoPage && (isPDP ? 'md:border-blue-100' : 'border-blue-200/50 md:border-gray-100')}`}>
+        <header className={`${isPDP ? 'bg-gradient-to-b from-primary-100 to-primary-200' : 'bg-gradient-to-b from-primary-200 via-primary-100 to-primary-50'} px-3 fixed top-0 w-full left-0 right-0 z-50 transition-all duration-300 shadow-none ${isInfoPage ? 'border-b-0' : 'border-b border-primary-200'} ${isPDP ? 'py-1.5' : isCategory ? 'py-2' : 'py-0.5 md:py-0'} ${!isInfoPage && (isPDP ? 'md:border-primary-100' : 'border-primary-200/50 md:border-gray-100')}`}>
             <div className={`max-w-[1440px] mx-auto flex ${isPDP ? 'flex-row items-center gap-2' : 'flex-col'} md:flex-row md:items-center md:gap-8`}>
 
                 {/* Mobile Top Row: Logo (Left) + Seller Button (Right) - Hidden on mobile PDP to match single row design */}
@@ -435,7 +435,7 @@ const Header = () => {
                             className="flex items-center md:hidden -my-4 cursor-pointer shrink-0"
                             onClick={() => navigate('/')}
                         >
-                            <img src={headerLogo} alt="IndianKart" className="h-32 object-contain" />
+                            <img src={headerLogo} alt="Jaipurio" className="h-32 object-contain" />
                         </div>
                     )}
 
@@ -444,7 +444,7 @@ const Header = () => {
                         className="hidden md:flex flex-col cursor-pointer"
                         onClick={() => navigate('/')}
                     >
-                        <img src={headerLogo} alt="IndianKart" className="h-[70px] lg:h-[100px] object-contain" />
+                        <img src={headerLogo} alt="Jaipurio" className="h-[70px] lg:h-[100px] object-contain" />
                     </div>
 
                     {/* Mobile Header Actions (Seller + Language) - Only on Homepage */}
@@ -453,23 +453,23 @@ const Header = () => {
                             {/* Become a Seller Button (Mobile) */}
                             <div
                                 onClick={() => navigate('/become-seller')}
-                                className="flex items-center gap-1.5 bg-blue-50 px-2.5 py-1.5 rounded-lg border border-blue-100 shadow-sm active:scale-95 transition-all"
+                                className="flex items-center gap-1.5 bg-primary-50 px-2.5 py-1.5 rounded-lg border border-primary-100 shadow-sm active:scale-95 transition-all"
                             >
-                                <MdStore className="text-blue-600" size={16} />
-                                <span className="text-[10px] font-black text-blue-600 uppercase tracking-tight">Become a Seller</span>
+                                <MdStore className="text-primary-600" size={16} />
+                                <span className="text-[10px] font-black text-primary-600 uppercase tracking-tight">Become a Seller</span>
                             </div>
 
                             {/* Language Switcher (Mobile) */}
                             <div className="flex items-center gap-1 bg-gray-50 p-1 rounded-lg border border-gray-100">
                                 <button
                                     onClick={() => setLanguage('en')}
-                                    className={`text-[9px] font-black px-2 py-1 rounded transition-all ${language === 'en' ? 'bg-white shadow-sm text-blue-600' : 'text-gray-400'}`}
+                                    className={`text-[9px] font-black px-2 py-1 rounded transition-all ${language === 'en' ? 'bg-white shadow-sm text-primary-600' : 'text-gray-400'}`}
                                 >
                                     EN
                                 </button>
                                 <button
                                     onClick={() => setLanguage('hi')}
-                                    className={`text-[9px] font-black px-2 py-1 rounded transition-all ${language === 'hi' ? 'bg-white shadow-sm text-blue-600' : 'text-gray-400'}`}
+                                    className={`text-[9px] font-black px-2 py-1 rounded transition-all ${language === 'hi' ? 'bg-white shadow-sm text-primary-600' : 'text-gray-400'}`}
                                 >
                                     HI
                                 </button>
@@ -482,9 +482,9 @@ const Header = () => {
                 {!isSpecialPage && (
                     <div
                         onClick={() => navigate('/addresses')}
-                        className="flex md:hidden w-full mb-2 items-center gap-1 bg-blue-50/50 p-1.5 rounded-lg border border-blue-100 cursor-pointer active:bg-blue-100 transition-colors"
+                        className="flex md:hidden w-full mb-2 items-center gap-1 bg-primary-50/50 p-1.5 rounded-lg border border-primary-100 cursor-pointer active:bg-primary-100 transition-colors"
                     >
-                        <MdLocationPin className="text-sm text-blue-600 shrink-0" />
+                        <MdLocationPin className="text-sm text-primary-600 shrink-0" />
                         <div className="flex items-center gap-1 min-w-0 flex-1">
                             <span className="text-gray-900 text-xs font-bold whitespace-nowrap">
                                 {primaryAddress ? `Delivering to ${primaryAddress.pincode}` : 'Select Location'}
@@ -502,7 +502,7 @@ const Header = () => {
                     {/* Mobile Back Button (Only on PDP) */}
 
 
-                    <div className={`flex-1 bg-white rounded-lg flex items-center px-3 md:px-4 shadow-sm md:shadow-none overflow-hidden h-10 md:h-11 border transition-all ${isPDP ? 'border-blue-400 md:border-gray-200' : 'border-gray-200'} focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-100`}>
+                    <div className={`flex-1 bg-white rounded-lg flex items-center px-3 md:px-4 shadow-sm md:shadow-none overflow-hidden h-10 md:h-11 border transition-all ${isPDP ? 'border-primary-400 md:border-gray-200' : 'border-gray-200'} focus-within:border-primary-500 focus-within:ring-1 focus-within:ring-primary-100`}>
                         <IoSearch className={`text-gray-400 md:text-gray-500 text-[18px] md:text-[20px] mr-2 md:mr-3 ${isSearching ? 'animate-pulse' : ''}`} />
                         <input
                             className="bg-transparent border-none focus:ring-0 text-[14px] md:text-[15px] w-full p-0 outline-none placeholder-gray-400 md:placeholder-gray-500 text-black md:text-gray-800 h-full flex items-center font-normal"
@@ -543,7 +543,7 @@ const Header = () => {
                                             <button
                                                 key={getCategoryId(cat)}
                                                 onClick={() => handleSearchSelection(buildCategoryRoute(cat.name))}
-                                                className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 text-blue-600 rounded-full text-xs font-bold hover:bg-blue-600 hover:text-white transition-all"
+                                                className="flex items-center gap-1.5 px-3 py-1.5 bg-primary-50 text-primary-600 rounded-full text-xs font-bold hover:bg-primary-600 hover:text-white transition-all"
                                             >
                                                 <MdGridView size={14} />
                                                 {cat.name}
@@ -572,7 +572,7 @@ const Header = () => {
                                             <div
                                                 key={product.id || product._id}
                                                 onClick={() => handleSearchSelection(`/product/${product.id || product._id}`)}
-                                                className="flex items-center gap-4 p-2 hover:bg-blue-50 rounded-lg cursor-pointer transition-colors group"
+                                                className="flex items-center gap-4 p-2 hover:bg-primary-50 rounded-lg cursor-pointer transition-colors group"
                                             >
                                                 <div className="w-12 h-12 bg-gray-100 rounded-md overflow-hidden flex-shrink-0 border border-gray-100">
                                                     <img
@@ -582,9 +582,9 @@ const Header = () => {
                                                     />
                                                 </div>
                                                 <div className="flex-1 min-w-0">
-                                                    <h4 className="text-sm font-bold text-gray-900 truncate group-hover:text-blue-600 transition-colors">{product.name}</h4>
+                                                    <h4 className="text-sm font-bold text-gray-900 truncate group-hover:text-primary-600 transition-colors">{product.name}</h4>
                                                     <p className="text-[10px] text-gray-500 font-medium uppercase tracking-tighter">
-                                                        {product.brand} • <span className="text-blue-600 font-bold">{product.category}</span>
+                                                        {product.brand} • <span className="text-primary-600 font-bold">{product.category}</span>
                                                     </p>
                                                 </div>
                                                 <div className="text-right">
@@ -627,13 +627,13 @@ const Header = () => {
                     <div className="flex items-center gap-1 bg-gray-50 p-1 rounded-lg border border-gray-100">
                         <button
                             onClick={() => { console.log('Clicked EN'); setLanguage('en'); }}
-                            className={`text-[10px] font-bold px-2 py-1 rounded transition-colors ${language === 'en' ? 'bg-white shadow-sm text-blue-600' : 'text-gray-500 hover:text-gray-700'}`}
+                            className={`text-[10px] font-bold px-2 py-1 rounded transition-colors ${language === 'en' ? 'bg-white shadow-sm text-primary-600' : 'text-gray-500 hover:text-gray-700'}`}
                         >
                             <span className="font-sans">EN</span>
                         </button>
                         <button
                             onClick={() => { console.log('Clicked HI'); setLanguage('hi'); }}
-                            className={`text-[10px] font-bold px-2 py-1 rounded transition-colors ${language === 'hi' ? 'bg-white shadow-sm text-blue-600' : 'text-gray-500 hover:text-gray-700'}`}
+                            className={`text-[10px] font-bold px-2 py-1 rounded transition-colors ${language === 'hi' ? 'bg-white shadow-sm text-primary-600' : 'text-gray-500 hover:text-gray-700'}`}
                         >
                             <span className="font-serif">HI</span>
                         </button>
@@ -642,21 +642,21 @@ const Header = () => {
                     {/* Become a Seller */}
                     <div
                         onClick={() => navigate('/become-seller')}
-                        className="flex items-center gap-2 cursor-pointer hover:bg-gray-50 px-3 py-2 rounded-lg transition-colors border border-gray-100 shadow-sm bg-white group ring-1 ring-black/5 hover:ring-blue-100"
+                        className="flex items-center gap-2 cursor-pointer hover:bg-gray-50 px-3 py-2 rounded-lg transition-colors border border-gray-100 shadow-sm bg-white group ring-1 ring-black/5 hover:ring-primary-100"
                     >
-                        <MdStore className="text-[24px] text-gray-700 group-hover:text-blue-600 transition-colors" />
+                        <MdStore className="text-[24px] text-gray-700 group-hover:text-primary-600 transition-colors" />
                         <span className="text-gray-800 font-bold text-[15px] whitespace-nowrap">Become a Seller</span>
                     </div>
 
                     {/* Account */}
-                    <div className="flex items-center gap-2 cursor-pointer hover:bg-blue-50 px-3 py-2 rounded-lg transition-colors group" onClick={() => navigate('/account')}>
+                    <div className="flex items-center gap-2 cursor-pointer hover:bg-primary-50 px-3 py-2 rounded-lg transition-colors group" onClick={() => navigate('/account')}>
                         <MdPersonOutline className="text-[24px] text-gray-700" />
                         <span className="text-gray-800 font-medium text-[15px]">{myAccountText}</span>
                         <MdExpandMore className="text-gray-700 transition-transform group-hover:rotate-180" />
                     </div>
 
                     {/* Cart */}
-                    <div onClick={() => navigate('/cart')} className="flex items-center gap-2 cursor-pointer hover:bg-blue-50 px-3 py-2 rounded-lg transition-colors relative">
+                    <div onClick={() => navigate('/cart')} className="flex items-center gap-2 cursor-pointer hover:bg-primary-50 px-3 py-2 rounded-lg transition-colors relative">
                         <div className="relative">
                             <MdShoppingCart className="text-[24px] text-gray-700" />
                             {totalItems > 0 && <div className="absolute -top-2 -right-2 bg-red-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full border-2 border-white">{totalItems}</div>}
@@ -714,7 +714,7 @@ const Header = () => {
                                     }}
                                     className="relative flex shrink-0 flex-col items-center gap-1 min-w-[60px] cursor-pointer group snap-start"
                                 >
-                                    <div className={`w-10 h-10 md:w-16 md:h-16 rounded-full flex items-center justify-center transition-all overflow-hidden ${active ? 'bg-white ring-2 ring-blue-600 scale-105 shadow-md' : 'bg-white text-gray-600 group-hover:bg-blue-50 group-hover:text-blue-600 border border-gray-100 shadow-sm'}`}>
+                                    <div className={`w-10 h-10 md:w-16 md:h-16 rounded-full flex items-center justify-center transition-all overflow-hidden ${active ? 'bg-white ring-2 ring-primary-600 scale-105 shadow-md' : 'bg-white text-gray-600 group-hover:bg-primary-50 group-hover:text-primary-600 border border-gray-100 shadow-sm'}`}>
                                         {hasCategoryImage ? (
                                             <img
                                                 src={categoryImage}
@@ -732,7 +732,7 @@ const Header = () => {
                                             style={{ display: hasCategoryImage ? 'none' : 'block' }}
                                         />
                                     </div>
-                                    <span className={`text-[10px] md:text-sm font-bold transition-colors ${active ? 'text-blue-600' : 'text-gray-700 group-hover:text-blue-600'}`}>
+                                    <span className={`text-[10px] md:text-sm font-bold transition-colors ${active ? 'text-primary-600' : 'text-gray-700 group-hover:text-primary-600'}`}>
                                         <TranslatedText text={cleanNavLabel(cat.name)} />
                                     </span>
 
@@ -757,7 +757,7 @@ const Header = () => {
                                                             }}
                                                             onMouseEnter={() => setHoveredSubcategory(sub.name)}
                                                             className={`px-4 py-2.5 text-sm font-medium transition-all cursor-pointer flex items-center justify-between group/sub ${hoveredSubcategory === sub.name
-                                                                ? 'bg-blue-50 text-blue-600 border-r-2 border-blue-600'
+                                                                ? 'bg-primary-50 text-primary-600 border-r-2 border-primary-600'
                                                                 : 'text-gray-700 hover:bg-gray-50'
                                                                 }`}
                                                         >
@@ -772,7 +772,7 @@ const Header = () => {
                                                 <div className="flex-1 p-6 bg-white overflow-y-auto max-h-[500px]">
                                                     <div className="flex items-center justify-between mb-5 border-b border-gray-100 pb-3">
                                                         <div className="flex items-center gap-2">
-                                                            <span className="w-1.5 h-6 bg-blue-600 rounded-full"></span>
+                                                            <span className="w-1.5 h-6 bg-primary-600 rounded-full"></span>
                                                             <h3 className="text-lg font-black text-gray-900 uppercase tracking-tight">
                                                                 <TranslatedText text={cleanNavLabel(hoveredSubcategory || cat.name)} />
                                                             </h3>
@@ -782,7 +782,7 @@ const Header = () => {
                                                                 e.stopPropagation();
                                                                 navigate(buildCategoryRoute(cat.name, hoveredSubcategory));
                                                             }}
-                                                            className="text-xs font-bold text-blue-600 hover:text-blue-700 bg-blue-50 px-3 py-1.5 rounded-full transition-colors uppercase tracking-wide"
+                                                            className="text-xs font-bold text-primary-600 hover:text-primary-700 bg-primary-50 px-3 py-1.5 rounded-full transition-colors uppercase tracking-wide"
                                                         >
                                                             Explore All →
                                                         </button>
@@ -808,7 +808,7 @@ const Header = () => {
                                                                         navigate(`/product/${product.id || product._id}`);
                                                                         setHoveredCategory(null);
                                                                     }}
-                                                                    className="bg-white rounded-xl p-3 hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer group/product border border-gray-100 hover:border-blue-100"
+                                                                    className="bg-white rounded-xl p-3 hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer group/product border border-gray-100 hover:border-primary-100"
                                                                 >
                                                                     <div className="aspect-square bg-gray-50 rounded-lg mb-3 overflow-hidden relative">
                                                                         <img
@@ -822,7 +822,7 @@ const Header = () => {
                                                                             </div>
                                                                         )}
                                                                     </div>
-                                                                    <h4 className="text-xs font-bold text-gray-800 line-clamp-2 mb-2 group-hover/product:text-blue-600 transition-colors min-h-[32px]">
+                                                                    <h4 className="text-xs font-bold text-gray-800 line-clamp-2 mb-2 group-hover/product:text-primary-600 transition-colors min-h-[32px]">
                                                                         {product.name}
                                                                     </h4>
                                                                     <div className="flex items-center justify-between mt-auto">
@@ -836,7 +836,7 @@ const Header = () => {
                                                                                 </span>
                                                                             )}
                                                                         </div>
-                                                                        <div className="w-7 h-7 bg-blue-50 group-hover/product:bg-blue-600 text-blue-600 group-hover/product:text-white rounded-full flex items-center justify-center transition-colors">
+                                                                        <div className="w-7 h-7 bg-primary-50 group-hover/product:bg-primary-600 text-primary-600 group-hover/product:text-white rounded-full flex items-center justify-center transition-colors">
                                                                             <MdShoppingCart size={14} />
                                                                         </div>
                                                                     </div>

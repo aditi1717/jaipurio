@@ -7,7 +7,7 @@ The application uses a persistent layout for core navigation, with specific over
 
 ### **Header (Top Navigation)**
 - **Logo Area**:
-  - **Logo**: "IndianKart" logo on the left.
+  - **Logo**: "Jaipurio" logo on the left.
 - **Location Strip**: Displayed below the logo row. Shows "Delivering to [Pincode]" and "Update location".
 - **Search Bar**:
   - Full-width search input ("Search for products").

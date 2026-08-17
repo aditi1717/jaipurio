@@ -61,7 +61,7 @@ const ProductSection = ({
                 {onViewAll && showArrow && (
                     <button
                         onClick={onViewAll}
-                        className="bg-blue-600 text-white rounded-full w-7 h-7 md:w-10 md:h-10 flex items-center justify-center hover:bg-blue-700 transition-colors"
+                        className="bg-primary-600 text-white rounded-full w-7 h-7 md:w-10 md:h-10 flex items-center justify-center hover:bg-primary-700 transition-colors"
                     >
                         <span className="material-icons text-white text-base md:text-lg">arrow_forward</span>
                     </button>

@@ -67,7 +67,7 @@ const InfoPage = () => {
             <div className="w-full px-4 sm:px-5 md:px-7 py-6 md:py-12 min-h-[420px]">
                 {loading ? (
                     <div className="flex flex-col items-center justify-center py-20 gap-4">
-                        <div className="w-12 h-12 border-4 border-blue-50 border-t-blue-600 rounded-full animate-spin"></div>
+                        <div className="w-12 h-12 border-4 border-primary-50 border-t-primary-600 rounded-full animate-spin"></div>
                         <p className="text-sm text-gray-400 font-medium">Loading content...</p>
                     </div>
                 ) : (

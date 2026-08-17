@@ -16,7 +16,7 @@ const PROTECTED_WORDS = [
     'OnePlus', 'Sony', 'LG', 'Google', 'Microsoft', 'Dell', 'HP',
     'Lenovo', 'Asus', 'Acer', 'Motorola', 'Nokia', 'Huawei', 'Honor',
     'Infinix', 'Tecno', 'Itel', 'Lava', 'Nothing', 'Poco', 'iQOO',
-    'Flipkart', 'Amazon', 'IndianKart', 'iPhone', 'iPad', 'MacBook',
+    'Flipkart', 'Amazon', 'Jaipurio', 'iPhone', 'iPad', 'MacBook',
     'Galaxy', 'Note', 'Ultra', 'Pro', 'Max', 'Plus', 'Mini', 'Air',
     'Watch', 'Buds', 'AirPods'
 ];

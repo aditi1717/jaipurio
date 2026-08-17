@@ -298,7 +298,7 @@ const OrderDetails = () => {
     const getStatusColor = (status) => {
         const colors = {
             'Pending': 'bg-yellow-100 text-yellow-800 border-yellow-200',
-            'Confirmed': 'bg-blue-100 text-blue-800 border-blue-200',
+            'Confirmed': 'bg-primary-100 text-primary-800 border-primary-200',
             'Packed': 'bg-indigo-100 text-indigo-800 border-indigo-200',
             'Manifested': 'bg-indigo-100 text-indigo-800 border-indigo-200',
             'Not Picked': 'bg-slate-100 text-slate-800 border-slate-200',
@@ -311,7 +311,7 @@ const OrderDetails = () => {
             'Cancelled': 'bg-red-100 text-red-800 border-red-200',
             'Cancellation Requested': 'bg-orange-100 text-orange-800 border-orange-200',
             'Return Requested': 'bg-orange-100 text-orange-800 border-orange-200',
-            'Replacement Requested': 'bg-blue-100 text-blue-800 border-blue-200',
+            'Replacement Requested': 'bg-primary-100 text-primary-800 border-primary-200',
             'Approved': 'bg-teal-100 text-teal-800 border-teal-200',
             'Pickup Scheduled': 'bg-purple-100 text-purple-800 border-purple-200',
             'Received at Warehouse': 'bg-indigo-100 text-indigo-800 border-indigo-200',
@@ -610,7 +610,7 @@ const OrderDetails = () => {
         return (
             <div className="min-h-screen bg-white flex items-center justify-center">
                 <div className="text-center">
-                    <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                    <div className="w-16 h-16 border-4 border-primary-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
                     <p className="text-gray-600 font-semibold">Loading order details...</p>
                 </div>
             </div>
@@ -624,7 +624,7 @@ const OrderDetails = () => {
                     <span className="material-icons text-red-400 text-6xl mb-4">error</span>
                     <h2 className="text-2xl font-bold text-gray-800 mb-2">Order Not Found</h2>
                     <p className="text-gray-600 mb-6">{error || 'Unable to load order details'}</p>
-                    <button onClick={() => navigate('/my-orders')} className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-bold transition-all">
+                    <button onClick={() => navigate('/my-orders')} className="bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-lg font-bold transition-all">
                         Back to Orders
                     </button>
                 </div>
@@ -668,10 +668,10 @@ const OrderDetails = () => {
                                 </h2>
                                 <div className="md:hidden">
                                     <div className="relative pl-4">
-                                        <div className="absolute left-[33px] top-3 bottom-3 w-0.5 -translate-x-1/2 bg-blue-100">
+                                        <div className="absolute left-[33px] top-3 bottom-3 w-0.5 -translate-x-1/2 bg-primary-100">
                                             {currentStep > 0 ? (
                                                 <div
-                                                    className="w-full bg-blue-600 transition-all duration-500"
+                                                    className="w-full bg-primary-600 transition-all duration-500"
                                                     style={{ height: `${(currentStep / Math.max(steps.length - 1, 1)) * 100}%` }}
                                                 />
                                             ) : null}
@@ -685,9 +685,9 @@ const OrderDetails = () => {
                                                 return (
                                                     <div key={step.status} className="relative flex gap-4 z-10">
                                                         <div className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${isCompleted
-                                                            ? 'bg-blue-600 text-white shadow-[0_10px_24px_rgba(37,99,235,0.24)]'
-                                                            : 'bg-white border-2 border-blue-100 text-gray-400 shadow-sm'
-                                                            } ${isCurrent ? 'ring-4 ring-blue-200' : ''}`}>
+                                                            ? 'bg-primary-600 text-white shadow-[0_10px_24px_rgba(37,99,235,0.24)]'
+                                                            : 'bg-white border-2 border-primary-100 text-gray-400 shadow-sm'
+                                                            } ${isCurrent ? 'ring-4 ring-primary-200' : ''}`}>
                                                             <span className="material-icons text-base">{step.icon}</span>
                                                         </div>
                                                         <div className="pt-0.5">
@@ -706,11 +706,11 @@ const OrderDetails = () => {
                                 </div>
 
                                 <div className="hidden md:block pb-1">
-                                    <div className="relative w-full rounded-2xl border border-blue-50 bg-white px-3 py-4 md:px-3 md:py-4">
+                                    <div className="relative w-full rounded-2xl border border-primary-50 bg-white px-3 py-4 md:px-3 md:py-4">
                                         {/* Progress Bar */}
-                                        <div className="absolute left-[42px] right-[42px] top-[34px] h-0.5 rounded-full bg-blue-100">
+                                        <div className="absolute left-[42px] right-[42px] top-[34px] h-0.5 rounded-full bg-primary-100">
                                             <div
-                                                className="h-full rounded-full bg-blue-600 transition-all duration-500"
+                                                className="h-full rounded-full bg-primary-600 transition-all duration-500"
                                                 style={{ width: `${orderProgress}%` }}
                                             ></div>
                                         </div>
@@ -724,9 +724,9 @@ const OrderDetails = () => {
                                             return (
                                                 <div key={step.status} className="flex flex-col items-center relative z-10 px-0.5 min-w-0">
                                                     <div className={`w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center mb-2 transition-all duration-300 ${isCompleted
-                                                            ? 'bg-blue-600 text-white shadow-[0_10px_24px_rgba(37,99,235,0.24)]'
-                                                            : 'bg-white border-2 border-blue-100 text-gray-400 shadow-sm'
-                                                        } ${isCurrent ? 'ring-4 ring-blue-200 scale-110' : ''}`}>
+                                                            ? 'bg-primary-600 text-white shadow-[0_10px_24px_rgba(37,99,235,0.24)]'
+                                                            : 'bg-white border-2 border-primary-100 text-gray-400 shadow-sm'
+                                                        } ${isCurrent ? 'ring-4 ring-primary-200 scale-110' : ''}`}>
                                                         <span className="material-icons text-sm md:text-base">{step.icon}</span>
                                                     </div>
                                                     <p className={`text-[9px] md:text-[11px] font-bold text-center leading-tight ${isCompleted ? 'text-gray-800' : 'text-gray-400'}`}>
@@ -826,11 +826,11 @@ const OrderDetails = () => {
                                                     <div className="pb-2">
                                                         <div className="relative w-full">
                                                             <div
-                                                                className="absolute left-[calc(100%/(var(--steps)*2))] right-[calc(100%/(var(--steps)*2))] top-5 h-1.5 -translate-y-1/2 rounded-full bg-blue-100"
+                                                                className="absolute left-[calc(100%/(var(--steps)*2))] right-[calc(100%/(var(--steps)*2))] top-5 h-1.5 -translate-y-1/2 rounded-full bg-primary-100"
                                                                 style={{ '--steps': stepsForType.length }}
                                                             >
                                                                 <div
-                                                                    className="h-full rounded-full transition-all duration-300 bg-blue-600"
+                                                                    className="h-full rounded-full transition-all duration-300 bg-primary-600"
                                                                     style={{
                                                                         width: `${returnProgress}%`
                                                                     }}
@@ -849,9 +849,9 @@ const OrderDetails = () => {
                                                                         <div key={`${ret?._id || ret?.id}-${stepName}`} className="flex flex-col items-center relative z-10 px-1">
                                                                             <div className={`w-9 h-9 md:w-11 md:h-11 rounded-full flex items-center justify-center mb-3 transition-all duration-300 ${
                                                                                 done
-                                                                                    ? 'bg-blue-600 text-white shadow-[0_10px_24px_rgba(37,99,235,0.24)]'
-                                                                                    : 'bg-white border-2 border-blue-100 text-gray-400 shadow-sm'
-                                                                            } ${active ? 'ring-4 ring-blue-100 scale-110' : ''}`}>
+                                                                                    ? 'bg-primary-600 text-white shadow-[0_10px_24px_rgba(37,99,235,0.24)]'
+                                                                                    : 'bg-white border-2 border-primary-100 text-gray-400 shadow-sm'
+                                                                            } ${active ? 'ring-4 ring-primary-100 scale-110' : ''}`}>
                                                                                 <span className="material-icons text-base md:text-lg">{getStatusIcon(stepLabel)}</span>
                                                                             </div>
                                                                             <p className={`text-[9px] md:text-[11px] font-semibold text-center leading-tight break-words ${done ? 'text-gray-800' : 'text-gray-500'}`}>
@@ -955,7 +955,7 @@ const OrderDetails = () => {
                                             {/* Item Status Badge */}
                                             {derivedStatus && (
                                                 <>
-                                                    <div className={`mt-2 inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold border ${hasPartialRequest ? 'bg-blue-50 text-blue-700 border-blue-200' : getStatusColor(derivedStatus)}`}>
+                                                    <div className={`mt-2 inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold border ${hasPartialRequest ? 'bg-primary-50 text-primary-700 border-primary-200' : getStatusColor(derivedStatus)}`}>
                                                         <span className="material-icons text-[14px]">{hasPartialRequest ? 'inventory_2' : getStatusIcon(derivedStatus)}</span>
                                                         {derivedStatus}
                                                     </div>
@@ -1184,7 +1184,7 @@ const OrderDetails = () => {
                         }) && (
                             <button
                                 onClick={() => navigate(`/my-orders/${order._id}/return`)}
-                                className="w-full bg-white border border-blue-200 text-blue-700 px-6 py-4 rounded-xl font-bold hover:bg-blue-50 transition-all flex items-center justify-center gap-2"
+                                className="w-full bg-white border border-primary-200 text-primary-700 px-6 py-4 rounded-xl font-bold hover:bg-primary-50 transition-all flex items-center justify-center gap-2"
                             >
                                 <span className="material-icons">assignment_return</span>
                                 Request Return / Replacement
@@ -1217,7 +1217,7 @@ const OrderDetails = () => {
                                 includeShippingLabel={false}
                                 customTrigger={
                                     <button
-                                        className="w-full bg-blue-600 text-white px-6 py-4 rounded-xl font-bold hover:bg-blue-700 transition-all flex items-center justify-center gap-2"
+                                        className="w-full bg-primary-600 text-white px-6 py-4 rounded-xl font-bold hover:bg-primary-700 transition-all flex items-center justify-center gap-2"
                                     >
                                         <span className="material-icons">download</span>
                                         Download Invoice

@@ -114,7 +114,7 @@ const ProfileDrawer = ({ isOpen, onClose }) => {
     const renderMenu = () => (
         <div className="flex-1 flex flex-col h-full bg-white">
             {/* Header */}
-            <div className="p-4 border-b border-gray-100 flex items-center justify-between bg-blue-600 text-white">
+            <div className="p-4 border-b border-gray-100 flex items-center justify-between bg-primary-600 text-white">
                 <h2 className="text-lg font-bold">My Profile</h2>
                 <button onClick={onClose} className="p-1 hover:bg-white/10 rounded-full transition-colors">
                     <MdClose className="text-xl" />
@@ -126,7 +126,7 @@ const ProfileDrawer = ({ isOpen, onClose }) => {
                 {!isEditing ? (
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                            <div className="w-12 h-12 rounded-full bg-white text-blue-600 flex items-center justify-center font-bold text-xl shadow-sm">
+                            <div className="w-12 h-12 rounded-full bg-white text-primary-600 flex items-center justify-center font-bold text-xl shadow-sm">
                                 {(user?.name || userProfile?.name || 'U').charAt(0)}
                             </div>
                              <div>
@@ -138,7 +138,7 @@ const ProfileDrawer = ({ isOpen, onClose }) => {
                         </div>
                         <button
                             onClick={() => setIsEditing(true)}
-                            className="text-xs font-semibold text-blue-600 hover:text-blue-700 hover:bg-blue-50 px-3 py-1.5 rounded transition-all"
+                            className="text-xs font-semibold text-primary-600 hover:text-primary-700 hover:bg-primary-50 px-3 py-1.5 rounded transition-all"
                         >
                             Edit
                         </button>
@@ -155,7 +155,7 @@ const ProfileDrawer = ({ isOpen, onClose }) => {
                                     if (/\d/.test(value)) return;
                                     setFormData({ ...formData, name: value });
                                 }}
-                                className="w-full border border-gray-300 rounded px-2 py-1.5 text-sm focus:border-blue-600 outline-none"
+                                className="w-full border border-gray-300 rounded px-2 py-1.5 text-sm focus:border-primary-600 outline-none"
                             />
                         </div>
                         <div>
@@ -164,7 +164,7 @@ const ProfileDrawer = ({ isOpen, onClose }) => {
                                 type="tel"
                                 value={formData.mobile}
                                 onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
-                                className="w-full border border-gray-300 rounded px-2 py-1.5 text-sm focus:border-blue-600 outline-none"
+                                className="w-full border border-gray-300 rounded px-2 py-1.5 text-sm focus:border-primary-600 outline-none"
                             />
                         </div>
                         <div>
@@ -173,12 +173,12 @@ const ProfileDrawer = ({ isOpen, onClose }) => {
                                 type="email"
                                 value={formData.email}
                                 onChange={(e) => setFormData({ ...formData, email: e.target.value.toLowerCase() })}
-                                className="w-full border border-gray-300 rounded px-2 py-1.5 text-sm focus:border-blue-600 outline-none"
+                                className="w-full border border-gray-300 rounded px-2 py-1.5 text-sm focus:border-primary-600 outline-none"
                             />
                         </div>
                         <div className="flex gap-2 pt-2">
                             <button onClick={handleCancel} className="flex-1 py-1.5 text-xs font-bold text-gray-600 border border-gray-300 rounded hover:bg-gray-50">Cancel</button>
-                            <button onClick={handleSave} className="flex-1 py-1.5 text-xs font-bold text-white bg-blue-600 rounded hover:bg-blue-700 shadow-sm">Save</button>
+                            <button onClick={handleSave} className="flex-1 py-1.5 text-xs font-bold text-white bg-primary-600 rounded hover:bg-primary-700 shadow-sm">Save</button>
                         </div>
                     </div>
                 )}
@@ -188,37 +188,37 @@ const ProfileDrawer = ({ isOpen, onClose }) => {
             <div className="flex-1 overflow-y-auto">
                 <div className="py-2">
                     <div onClick={() => setActiveView('ORDERS')} className="flex items-center gap-4 px-5 py-3.5 hover:bg-gray-50 cursor-pointer transition-colors group">
-                        <span className="material-icons-outlined text-blue-600 group-hover:scale-110 transition-transform">inventory_2</span>
+                        <span className="material-icons-outlined text-primary-600 group-hover:scale-110 transition-transform">inventory_2</span>
                         <div className="flex-1">
-                            <p className="text-sm font-medium text-gray-700 group-hover:text-blue-600">My Orders</p>
+                            <p className="text-sm font-medium text-gray-700 group-hover:text-primary-600">My Orders</p>
                         </div>
                         <span className="material-icons-outlined text-gray-300">chevron_right</span>
                     </div>
                     <div onClick={() => setActiveView('WISHLIST')} className="flex items-center gap-4 px-5 py-3.5 hover:bg-gray-50 cursor-pointer transition-colors group">
-                        <span className="material-icons-outlined text-blue-600 group-hover:scale-110 transition-transform">favorite_border</span>
+                        <span className="material-icons-outlined text-primary-600 group-hover:scale-110 transition-transform">favorite_border</span>
                         <div className="flex-1">
-                            <p className="text-sm font-medium text-gray-700 group-hover:text-blue-600">Wishlist</p>
+                            <p className="text-sm font-medium text-gray-700 group-hover:text-primary-600">Wishlist</p>
                         </div>
                         <span className="material-icons-outlined text-gray-300">chevron_right</span>
                     </div>
                     <div onClick={() => setActiveView('ADDRESSES')} className="flex items-center gap-4 px-5 py-3.5 hover:bg-gray-50 cursor-pointer transition-colors group">
-                        <span className="material-icons-outlined text-blue-600 group-hover:scale-110 transition-transform">location_on</span>
+                        <span className="material-icons-outlined text-primary-600 group-hover:scale-110 transition-transform">location_on</span>
                         <div className="flex-1">
-                            <p className="text-sm font-medium text-gray-700 group-hover:text-blue-600">Saved Addresses</p>
+                            <p className="text-sm font-medium text-gray-700 group-hover:text-primary-600">Saved Addresses</p>
                         </div>
                         <span className="material-icons-outlined text-gray-300">chevron_right</span>
                     </div>
                     <div onClick={() => setActiveView('NOTIFICATIONS')} className="flex items-center gap-4 px-5 py-3.5 hover:bg-gray-50 cursor-pointer transition-colors group">
-                        <span className="material-icons-outlined text-blue-600 group-hover:scale-110 transition-transform">notifications</span>
+                        <span className="material-icons-outlined text-primary-600 group-hover:scale-110 transition-transform">notifications</span>
                         <div className="flex-1">
-                            <p className="text-sm font-medium text-gray-700 group-hover:text-blue-600">Notification Settings</p>
+                            <p className="text-sm font-medium text-gray-700 group-hover:text-primary-600">Notification Settings</p>
                         </div>
                         <span className="material-icons-outlined text-gray-300">chevron_right</span>
                     </div>
                     <div onClick={() => setActiveView('HELP')} className="flex items-center gap-4 px-5 py-3.5 hover:bg-gray-50 cursor-pointer transition-colors group">
-                        <span className="material-icons-outlined text-blue-600 group-hover:scale-110 transition-transform">help_outline</span>
+                        <span className="material-icons-outlined text-primary-600 group-hover:scale-110 transition-transform">help_outline</span>
                         <div className="flex-1">
-                            <p className="text-sm font-medium text-gray-700 group-hover:text-blue-600">Help Center</p>
+                            <p className="text-sm font-medium text-gray-700 group-hover:text-primary-600">Help Center</p>
                         </div>
                         <span className="material-icons-outlined text-gray-300">chevron_right</span>
                     </div>

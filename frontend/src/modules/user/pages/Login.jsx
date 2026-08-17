@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
-import logo from '../../../assets/indiankart-logo.png';
+import logo from '../../../assets/jaipurio-logo.jpeg';
 import toast from 'react-hot-toast';
 
 const Login = () => {
@@ -165,8 +165,8 @@ const Login = () => {
                         {step === 1 && (
                             <>
                                 <div className="relative">
-                                    <label className="text-[10px] uppercase text-blue-600 font-bold absolute -top-1.5 left-3 bg-white px-1">Mobile Number</label>
-                                    <div className="flex items-center border border-blue-600 rounded-lg overflow-hidden h-12">
+                                    <label className="text-[10px] uppercase text-primary-600 font-bold absolute -top-1.5 left-3 bg-white px-1">Mobile Number</label>
+                                    <div className="flex items-center border border-primary-600 rounded-lg overflow-hidden h-12">
                                         <span className="pl-4 text-gray-500 text-sm font-medium">+91</span>
                                         <input
                                             type="tel"
@@ -179,11 +179,11 @@ const Login = () => {
                                  </div>
 
                                 <p className="text-[10px] text-gray-400 leading-tight">
-                                    By continuing, you agree to Indiankart&apos;s{' '}
+                                    By continuing, you agree to Jaipurio&apos;s{' '}
                                     <button
                                         type="button"
                                         onClick={() => navigate('/terms-and-conditions')}
-                                        className="text-blue-600 hover:underline font-medium"
+                                        className="text-primary-600 hover:underline font-medium"
                                     >
                                         Terms of Use
                                     </button>{' '}
@@ -191,7 +191,7 @@ const Login = () => {
                                     <button
                                         type="button"
                                         onClick={() => navigate('/privacy')}
-                                        className="text-blue-600 hover:underline font-medium"
+                                        className="text-primary-600 hover:underline font-medium"
                                     >
                                         Privacy Policy
                                     </button>.
@@ -210,8 +210,8 @@ const Login = () => {
                         {step === 2 && (
                             <>
                                 <div className="relative">
-                                    <label className="text-[10px] uppercase text-blue-600 font-bold absolute -top-1.5 left-3 bg-white px-1">OTP</label>
-                                    <div className="flex items-center border border-blue-600 rounded-lg overflow-hidden h-12">
+                                    <label className="text-[10px] uppercase text-primary-600 font-bold absolute -top-1.5 left-3 bg-white px-1">OTP</label>
+                                    <div className="flex items-center border border-primary-600 rounded-lg overflow-hidden h-12">
                                         <input
                                             type="tel"
                                             value={otp}
@@ -236,7 +236,7 @@ const Login = () => {
                                         type="button"
                                         onClick={handleSendOtp}
                                         disabled={resendCooldown > 0}
-                                        className="text-blue-600 text-sm font-bold disabled:text-gray-400 disabled:cursor-not-allowed"
+                                        className="text-primary-600 text-sm font-bold disabled:text-gray-400 disabled:cursor-not-allowed"
                                     >
                                         {resendCooldown > 0
                                             ? `Resend OTP in ${Math.floor(resendCooldown / 60)}:${String(resendCooldown % 60).padStart(2, '0')}`
@@ -247,7 +247,7 @@ const Login = () => {
                                 <div className="text-center">
                                     <button
                                         onClick={() => setStep(1)}
-                                        className="text-blue-600 text-sm font-bold"
+                                        className="text-primary-600 text-sm font-bold"
                                     >
                                         Change Mobile Number
                                     </button>
@@ -258,8 +258,8 @@ const Login = () => {
                         {step === 3 && (
                             <>
                                 <div className="relative">
-                                    <label className="text-[10px] uppercase text-blue-600 font-bold absolute -top-1.5 left-3 bg-white px-1">Full Name</label>
-                                    <div className="flex items-center border border-blue-600 rounded-lg overflow-hidden h-12">
+                                    <label className="text-[10px] uppercase text-primary-600 font-bold absolute -top-1.5 left-3 bg-white px-1">Full Name</label>
+                                    <div className="flex items-center border border-primary-600 rounded-lg overflow-hidden h-12">
                                         <input
                                             type="text"
                                             value={name}
@@ -271,8 +271,8 @@ const Login = () => {
                                 </div>
 
                                 <div className="relative">
-                                    <label className="text-[10px] uppercase text-blue-600 font-bold absolute -top-1.5 left-3 bg-white px-1">Email Address</label>
-                                    <div className="flex items-center border border-blue-600 rounded-lg overflow-hidden h-12">
+                                    <label className="text-[10px] uppercase text-primary-600 font-bold absolute -top-1.5 left-3 bg-white px-1">Email Address</label>
+                                    <div className="flex items-center border border-primary-600 rounded-lg overflow-hidden h-12">
                                         <input
                                             type="email"
                                             value={email}

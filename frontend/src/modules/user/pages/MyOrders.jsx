@@ -71,7 +71,7 @@ const MyOrders = () => {
     const getStatusColor = (status) => {
         const colors = {
             'Pending': 'bg-yellow-100 text-yellow-800 border-yellow-200',
-            'Confirmed': 'bg-blue-100 text-blue-800 border-blue-200',
+            'Confirmed': 'bg-primary-100 text-primary-800 border-primary-200',
             'Packed': 'bg-indigo-100 text-indigo-800 border-indigo-200',
             'Manifested': 'bg-indigo-100 text-indigo-800 border-indigo-200',
             'Not Picked': 'bg-slate-100 text-slate-800 border-slate-200',
@@ -89,7 +89,7 @@ const MyOrders = () => {
             'Replacement Requested': 'bg-orange-100 text-orange-800 border-orange-200',
             'Approved': 'bg-teal-100 text-teal-800 border-teal-200',
             'Pickup Scheduled': 'bg-purple-100 text-purple-800 border-purple-200',
-            'Received at Warehouse': 'bg-blue-100 text-blue-800 border-blue-200',
+            'Received at Warehouse': 'bg-primary-100 text-primary-800 border-primary-200',
             'Refund Initiated': 'bg-green-100 text-green-800 border-green-200',
             'Replacement Dispatched': 'bg-purple-100 text-purple-800 border-purple-200',
             'Returned': 'bg-green-100 text-green-800 border-green-200',
@@ -150,9 +150,9 @@ const MyOrders = () => {
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-gray-50 flex items-center justify-center">
+            <div className="min-h-screen bg-gradient-to-b from-primary-50 via-white to-gray-50 flex items-center justify-center">
                 <div className="text-center">
-                    <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                    <div className="w-16 h-16 border-4 border-primary-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
                     <p className="text-gray-600 font-semibold">Loading your orders...</p>
                 </div>
             </div>
@@ -160,9 +160,9 @@ const MyOrders = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-gray-50 pb-24 md:pb-6">
+        <div className="min-h-screen bg-gradient-to-b from-primary-50 via-white to-gray-50 pb-24 md:pb-6">
             {/* Mobile Header */}
-            <div className="hidden bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-4 flex items-center justify-between sticky top-0 z-10 md:hidden shadow-lg">
+            <div className="hidden bg-gradient-to-r from-primary-600 to-purple-600 text-white px-4 py-4 flex items-center justify-between sticky top-0 z-10 md:hidden shadow-lg">
                 <div className="flex items-center gap-1">
                     <button
                         onClick={() => navigate('/account')}
@@ -179,11 +179,11 @@ const MyOrders = () => {
             <div className="md:max-w-6xl md:mx-auto md:px-4">
                 {/* Desktop Breadcrumbs */}
                 <div className="hidden md:flex items-center gap-2 text-sm text-gray-500 mt-2 mb-6">
-                    <span onClick={() => navigate('/')} className="cursor-pointer hover:text-blue-600 font-medium">Home</span>
+                    <span onClick={() => navigate('/')} className="cursor-pointer hover:text-primary-600 font-medium">Home</span>
                     <span className="material-icons text-xs">chevron_right</span>
-                    <span onClick={() => navigate('/account')} className="cursor-pointer hover:text-blue-600 font-medium">My Account</span>
+                    <span onClick={() => navigate('/account')} className="cursor-pointer hover:text-primary-600 font-medium">My Account</span>
                     <span className="material-icons text-xs">chevron_right</span>
-                    <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-bold">My Orders</span>
+                    <span className="bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent font-bold">My Orders</span>
                 </div>
 
                 {error && (
@@ -196,13 +196,13 @@ const MyOrders = () => {
                 )}
 
                 {!loading && orders.length === 0 ? (
-                    <div className="flex flex-col items-center justify-center py-20 px-10 text-center bg-white mx-4 md:mx-0 rounded-xl shadow-lg border border-blue-100">
+                    <div className="flex flex-col items-center justify-center py-20 px-10 text-center bg-white mx-4 md:mx-0 rounded-xl shadow-lg border border-primary-100">
                         <div className="w-24 h-24 md:w-32 md:h-32 bg-indigo-50 rounded-full flex items-center justify-center mb-6 shadow-inner ring-8 ring-indigo-50/50">
                             <span className="material-icons text-indigo-600 text-6xl md:text-7xl">receipt_long</span>
                         </div>
                         <h2 className="text-2xl font-bold mb-2 text-gray-800">You haven't placed any orders yet!</h2>
                         <p className="text-gray-600 text-base mb-6">Start shopping to see your orders here.</p>
-                        <button onClick={() => navigate('/')} className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-12 py-3.5 rounded-lg font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
+                        <button onClick={() => navigate('/')} className="bg-gradient-to-r from-primary-600 to-purple-600 text-white px-12 py-3.5 rounded-lg font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
                             Shop Now
                         </button>
                     </div>
@@ -222,14 +222,14 @@ const MyOrders = () => {
                             return (
                             <div 
                                 key={order._id} 
-                                className="bg-white rounded-lg shadow-md border-2 border-blue-100 overflow-hidden hover:shadow-xl transition-all cursor-pointer transform hover:-translate-y-1"
+                                className="bg-white rounded-lg shadow-md border-2 border-primary-100 overflow-hidden hover:shadow-xl transition-all cursor-pointer transform hover:-translate-y-1"
                                 onClick={() => navigate(`/my-orders/${order._id}`)}
                             >
                                 {/* Order Header */}
-                                <div className="bg-gradient-to-r from-white to-blue-50 px-5 py-4 border-b border-blue-100">
+                                <div className="bg-gradient-to-r from-white to-primary-50 px-5 py-4 border-b border-primary-100">
                                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                                         <div className="flex items-center gap-3">
-                                            <span className="material-icons text-blue-600 text-2xl">receipt_long</span>
+                                            <span className="material-icons text-primary-600 text-2xl">receipt_long</span>
                                             <div>
                                                 <p className="text-xs text-gray-500 font-medium">Order ID</p>
                                                 <p className="font-bold text-gray-800 text-sm">#{order.displayId || order._id.slice(-8).toUpperCase()}</p>
@@ -259,7 +259,7 @@ const MyOrders = () => {
                                     <div className="space-y-3">
                                         {order.orderItems.slice(0, 3).map((item, index) => (
                                             <div key={index} className="flex gap-4 items-center">
-                                                <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-gray-50 to-blue-50 rounded-lg border-2 border-blue-100 p-2 flex-shrink-0">
+                                                <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-gray-50 to-primary-50 rounded-lg border-2 border-primary-100 p-2 flex-shrink-0">
                                                     <img src={item.image} alt={item.name} className="w-full h-full object-contain" />
                                                 </div>
                                                 <div className="flex-1 min-w-0">
@@ -268,20 +268,20 @@ const MyOrders = () => {
                                                         <div className="flex flex-wrap gap-x-3 gap-y-1 mt-1">
                                                             {Object.entries(item.variant).map(([key, value]) => (
                                                                 <span key={key} className="text-[10px] text-gray-500 font-bold uppercase tracking-tight">
-                                                                    {key}: <span className="text-blue-600">{value}</span>
+                                                                    {key}: <span className="text-primary-600">{value}</span>
                                                                 </span>
                                                             ))}
                                                         </div>
                                                     )}
-                                                    <p className="text-base font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mt-1">
+                                                    <p className="text-base font-extrabold bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent mt-1">
                                                         ₹{item.price.toLocaleString()}
                                                     </p>
 
                                                     {/* Serial Number / IMEI - Only if Delivered */}
                                                     {(item.serialNumber && (effectiveStatus === 'Delivered' || order.isDelivered)) && (
                                                         <div className="mt-2">
-                                                            <span className="text-xs bg-blue-50 text-blue-700 px-2 py-1 rounded-md font-bold font-mono border border-blue-200 shadow-sm flex items-center gap-1 w-max">
-                                                                <span className="text-blue-400 select-none">{item.serialType === 'IMEI' ? 'IMEI:' : 'SN:'}</span> {item.serialNumber}
+                                                            <span className="text-xs bg-primary-50 text-primary-700 px-2 py-1 rounded-md font-bold font-mono border border-primary-200 shadow-sm flex items-center gap-1 w-max">
+                                                                <span className="text-primary-400 select-none">{item.serialType === 'IMEI' ? 'IMEI:' : 'SN:'}</span> {item.serialNumber}
                                                             </span>
                                                         </div>
                                                     )}
@@ -297,17 +297,17 @@ const MyOrders = () => {
                                             </div>
                                         ))}
                                         {order.orderItems.length > 3 && (
-                                            <p className="text-xs text-blue-600 font-bold">
+                                            <p className="text-xs text-primary-600 font-bold">
                                                 +{order.orderItems.length - 3} more item(s)
                                             </p>
                                         )}
                                     </div>
 
                                     {/* Order Total */}
-                                    <div className="mt-4 pt-4 border-t border-blue-100 flex flex-col md:flex-row justify-between md:items-center gap-3">
+                                    <div className="mt-4 pt-4 border-t border-primary-100 flex flex-col md:flex-row justify-between md:items-center gap-3">
                                         <div>
                                             <p className="text-xs text-gray-500 font-medium">Total Amount</p>
-                                            <p className="text-xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                                            <p className="text-xl font-extrabold bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent">
                                                 ₹{order.totalPrice.toLocaleString()}
                                             </p>
                                         </div>
@@ -324,7 +324,7 @@ const MyOrders = () => {
                                                 </div>
                                             )}
                                             <button 
-                                                className="flex items-center gap-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-lg font-bold text-sm hover:shadow-lg transition-all"
+                                                className="flex items-center gap-1 bg-gradient-to-r from-primary-600 to-purple-600 text-white px-4 py-2 rounded-lg font-bold text-sm hover:shadow-lg transition-all"
                                                 onClick={(e) => {
                                                     e.stopPropagation();
                                                     navigate(`/my-orders/${order._id}`);

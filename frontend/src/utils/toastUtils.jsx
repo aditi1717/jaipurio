@@ -14,13 +14,13 @@ export const confirmToast = ({
         typeof document !== 'undefined'
             ? createPortal(
                 <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/20 backdrop-blur-[1px] p-4">
-                    <div className={`${t.visible ? 'animate-in fade-in zoom-in' : 'animate-out fade-out zoom-out'} max-w-md w-full bg-white shadow-2xl rounded-2xl pointer-events-auto flex flex-col border border-blue-100 overflow-hidden ring-1 ring-black/5`}>
+                    <div className={`${t.visible ? 'animate-in fade-in zoom-in' : 'animate-out fade-out zoom-out'} max-w-md w-full bg-white shadow-2xl rounded-2xl pointer-events-auto flex flex-col border border-primary-100 overflow-hidden ring-1 ring-black/5`}>
                         <div className="flex-1 p-6">
                             <div className="flex items-start gap-4">
                                 <div className={`p-3 rounded-2xl flex-shrink-0 ${
                                     type === 'danger' ? 'bg-red-50 text-red-600' : 
                                     type === 'warning' ? 'bg-orange-50 text-orange-600' : 
-                                    'bg-blue-50 text-blue-600'
+                                    'bg-primary-50 text-primary-600'
                                 }`}>
                                     <span className="material-icons text-2xl">{icon}</span>
                                 </div>
@@ -46,10 +46,10 @@ export const confirmToast = ({
                                     toast.dismiss(t.id);
                                     if (onConfirm) onConfirm();
                                 }}
-                                className={`flex-1 px-6 py-3 rounded-xl text-xs font-black text-white uppercase tracking-widest shadow-lg shadow-blue-500/20 active:scale-[0.98] transition-all ${
+                                className={`flex-1 px-6 py-3 rounded-xl text-xs font-black text-white uppercase tracking-widest shadow-lg shadow-primary-500/20 active:scale-[0.98] transition-all ${
                                     type === 'danger' ? 'bg-gradient-to-r from-red-600 to-pink-600' : 
                                     type === 'warning' ? 'bg-gradient-to-r from-orange-500 to-orange-600' : 
-                                    'bg-gradient-to-r from-blue-600 to-purple-600'
+                                    'bg-gradient-to-r from-primary-600 to-purple-600'
                                 }`}
                             >
                                 {confirmText}

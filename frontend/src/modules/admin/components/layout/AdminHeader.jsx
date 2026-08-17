@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { MdNotifications, MdLogout, MdPerson, MdCheckCircle, MdError, MdInfo, MdClose } from 'react-icons/md';
 import useAdminAuthStore from '../../store/adminAuthStore';
 import useNotificationStore from '../../store/notificationStore';
-import logo from '../../../../assets/indiankart-logo.png';
+import logo from '../../../../assets/jaipurio-logo.jpeg';
 
 const AdminHeader = () => {
     const navigate = useNavigate();
@@ -58,7 +58,7 @@ const AdminHeader = () => {
     const getNotificationIcon = (type) => {
         switch (type) {
             case 'order': return <MdCheckCircle className="text-green-500" size={20} />;
-            case 'return': return <MdInfo className="text-blue-500" size={20} />;
+            case 'return': return <MdInfo className="text-primary-500" size={20} />;
             case 'stock': return <MdError className="text-red-500" size={20} />;
             default: return <MdNotifications className="text-gray-500" size={20} />;
         }
@@ -74,7 +74,7 @@ const AdminHeader = () => {
             <div className="flex items-center gap-2 md:gap-4">
                 <img src={logo} alt="Logo" className="w-14 h-14 object-contain md:hidden" />
                 <h2 className="text-base md:text-2xl font-black text-white tracking-tight italic">
-                    ADMIN <span className="text-blue-500 not-italic">DASHBOARD</span>
+                    ADMIN <span className="text-primary-500 not-italic">DASHBOARD</span>
                 </h2>
             </div>
 
@@ -85,7 +85,7 @@ const AdminHeader = () => {
                         className="relative p-2 hover:bg-gray-800 rounded-xl transition-all duration-300 group"
                         onClick={() => setShowNotifications(!showNotifications)}
                     >
-                        <MdNotifications size={28} className={`group-hover:text-blue-500 ${unreadCount > 0 ? 'text-white' : 'text-gray-400'}`} />
+                        <MdNotifications size={28} className={`group-hover:text-primary-500 ${unreadCount > 0 ? 'text-white' : 'text-gray-400'}`} />
                         {unreadCount > 0 && (
                             <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-gray-900 animate-pulse"></span>
                         )}
@@ -99,7 +99,7 @@ const AdminHeader = () => {
                                 {unreadCount > 0 && (
                                     <button
                                         onClick={markAllAsRead}
-                                        className="text-xs text-blue-600 font-bold hover:text-blue-700 hover:underline"
+                                        className="text-xs text-primary-600 font-bold hover:text-primary-700 hover:underline"
                                     >
                                         Mark all read
                                     </button>
@@ -116,7 +116,7 @@ const AdminHeader = () => {
                                     notifications.map(notification => (
                                         <div
                                             key={notification._id}
-                                            className={`p-4 border-b last:border-0 hover:bg-gray-50 transition-colors cursor-pointer ${notification.isRead ? 'opacity-60' : 'bg-blue-50/50'}`}
+                                            className={`p-4 border-b last:border-0 hover:bg-gray-50 transition-colors cursor-pointer ${notification.isRead ? 'opacity-60' : 'bg-primary-50/50'}`}
                                             onClick={() => markAsRead(notification._id)}
                                         >
                                             <div className="flex gap-3">
@@ -135,7 +135,7 @@ const AdminHeader = () => {
                                                     </span>
                                                 </div>
                                                 {!notification.isRead && (
-                                                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                                                    <div className="w-2 h-2 bg-primary-500 rounded-full mt-2 flex-shrink-0"></div>
                                                 )}
                                             </div>
                                         </div>
@@ -150,9 +150,9 @@ const AdminHeader = () => {
                 <div className="flex items-center gap-2 pl-2 border-l border-gray-800">
                     <div className="text-right hidden sm:block">
                         <p className="text-sm md:text-base font-black text-gray-100 leading-none">{adminUser?.name || 'Super Admin'}</p>
-                        <p className="text-xs md:text-sm text-blue-500 font-bold uppercase tracking-widest mt-1">Full Access</p>
+                        <p className="text-xs md:text-sm text-primary-500 font-bold uppercase tracking-widest mt-1">Full Access</p>
                     </div>
-                    <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl flex items-center justify-center shadow-lg shadow-blue-900/20 border border-blue-400/20">
+                    <div className="w-10 h-10 bg-gradient-to-br from-primary-600 to-indigo-700 rounded-xl flex items-center justify-center shadow-lg shadow-primary-900/20 border border-primary-400/20">
                         <MdPerson size={28} className="text-white" />
                     </div>
                 </div>

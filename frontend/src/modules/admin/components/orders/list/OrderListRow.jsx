@@ -40,7 +40,7 @@ const OrderListRow = ({
     const deliveredAtLabel = formatDeliveredAt(order.deliveredAt);
 
     return (
-        <tr className="hover:bg-blue-50/10 transition-colors group">
+        <tr className="hover:bg-primary-50/10 transition-colors group">
             {/* Checkbox */}
             {/* Checkbox - STICKY */}
             <td className="px-2 py-2 text-center align-middle sticky left-0 z-10 bg-white border-r border-gray-50">
@@ -48,12 +48,12 @@ const OrderListRow = ({
                     type="checkbox"
                     checked={selectedOrderIds.has(order.id)}
                     onChange={() => onToggleOrder(order.id)}
-                    className="h-4 w-4 rounded border-gray-300 text-blue-600 cursor-pointer"
+                    className="h-4 w-4 rounded border-gray-300 text-primary-600 cursor-pointer"
                 />
             </td>
 
             {/* ACTIONS - STICKY LEFT-10 */}
-            <td className="px-2 py-2 align-middle bg-gray-50 sticky left-10 z-10 group-hover:bg-blue-50 border-r border-gray-100 shadow-[2px_0_5px_rgba(0,0,0,0.05)]">
+            <td className="px-2 py-2 align-middle bg-gray-50 sticky left-10 z-10 group-hover:bg-primary-50 border-r border-gray-100 shadow-[2px_0_5px_rgba(0,0,0,0.05)]">
                 <OrderListRowActions
                     order={order}
                     onOpenSerialEditor={onOpenSerialEditor}
@@ -65,7 +65,7 @@ const OrderListRow = ({
             {/* Order ID */}
             <td className="px-4 py-3 align-middle">
                 <div className="flex flex-col">
-                    <span className="text-xs font-black text-gray-900 group-hover:text-blue-600 transition-colors">
+                    <span className="text-xs font-black text-gray-900 group-hover:text-primary-600 transition-colors">
                         {order.displayId || order.id}
                     </span>
                     <span className="text-[10px] font-bold text-gray-400 uppercase mt-1">
@@ -81,7 +81,7 @@ const OrderListRow = ({
                         <button
                             type="button"
                             onClick={() => navigate(`/admin/users/${order.user?._id || order.user?.id}`)}
-                            className="text-xs font-bold text-blue-700 hover:text-blue-800 hover:underline transition-colors text-left truncate"
+                            className="text-xs font-bold text-primary-700 hover:text-primary-800 hover:underline transition-colors text-left truncate"
                         >
                             {order.user?.name || order.shippingAddress?.name || 'Unknown'}
                         </button>
@@ -112,7 +112,7 @@ const OrderListRow = ({
             <td className="px-3 py-3 align-middle max-w-[150px]">
                 <div className="flex flex-wrap gap-1">
                     {getVariantSummary(order.items).map((summary, idx) => (
-                        <span key={idx} className="px-1.5 py-0.5 rounded border border-blue-50 bg-blue-50/50 text-[9px] font-bold text-blue-600 truncate">
+                        <span key={idx} className="px-1.5 py-0.5 rounded border border-primary-50 bg-primary-50/50 text-[9px] font-bold text-primary-600 truncate">
                             {summary}
                         </span>
                     ))}
@@ -137,8 +137,8 @@ const OrderListRow = ({
                         </div>
                     )}
                     {isSyncingLiveStatus && (
-                        <span className="inline-flex items-center gap-1 text-[8px] font-black uppercase tracking-[0.12em] text-blue-600">
-                            <span className="h-2.5 w-2.5 rounded-full border border-blue-200 border-t-blue-600 animate-spin" />
+                        <span className="inline-flex items-center gap-1 text-[8px] font-black uppercase tracking-[0.12em] text-primary-600">
+                            <span className="h-2.5 w-2.5 rounded-full border border-primary-200 border-t-primary-600 animate-spin" />
                             Syncing
                         </span>
                     )}
@@ -161,7 +161,7 @@ const OrderListRow = ({
                     </span>
                     {trackingId && (
                         <div className="mt-1 flex flex-col items-center gap-1">
-                            <span className="text-[8px] font-mono text-gray-500 select-all hover:text-blue-600 transition-colors">
+                            <span className="text-[8px] font-mono text-gray-500 select-all hover:text-primary-600 transition-colors">
                                 {trackingId}
                             </span>
                             {isCourierDelivered && (

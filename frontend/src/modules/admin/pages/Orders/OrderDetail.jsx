@@ -117,7 +117,7 @@ const OrderDetail = () => {
     if (isLoading && !order) {
         return (
             <div className="flex flex-col items-center justify-center min-h-screen">
-                <div className="w-16 h-16 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin"></div>
+                <div className="w-16 h-16 border-4 border-primary-200 border-t-primary-600 rounded-full animate-spin"></div>
                 <p className="mt-4 text-gray-500 font-medium animate-pulse">Loading order details...</p>
             </div>
         );
@@ -130,7 +130,7 @@ const OrderDetail = () => {
                     <MdCancel size={48} />
                 </div>
                 <h2 className="text-2xl font-black text-gray-900">Order Not Found</h2>
-                <button onClick={() => navigate('/admin/orders')} className="mt-4 text-blue-600 font-bold hover:underline">Back to Orders</button>
+                <button onClick={() => navigate('/admin/orders')} className="mt-4 text-primary-600 font-bold hover:underline">Back to Orders</button>
             </div>
         );
     }
@@ -363,7 +363,7 @@ const OrderDetail = () => {
                                     ? 'bg-green-100 text-green-600'
                                     : ['Cancelled', 'RTO', 'DTO'].includes(displayOrderStatus)
                                         ? 'bg-red-100 text-red-600'
-                                        : 'bg-blue-100 text-blue-600 animate-pulse'
+                                        : 'bg-primary-100 text-primary-600 animate-pulse'
                             }`}>
                                 {displayOrderStatus}
                             </span>
@@ -404,7 +404,7 @@ const OrderDetail = () => {
                                     handleAssignFulfillment(e.target.value);
                                 }}
                                 disabled={effectiveAdminStatus === 'Delivered'}
-                                className="w-full bg-white border border-gray-200 focus:border-blue-500 rounded-xl md:rounded-2xl px-3 py-2.5 md:px-4 md:py-3 text-[10px] md:text-xs font-black outline-none transition-all text-gray-900 shadow-sm uppercase tracking-widest"
+                                className="w-full bg-white border border-gray-200 focus:border-primary-500 rounded-xl md:rounded-2xl px-3 py-2.5 md:px-4 md:py-3 text-[10px] md:text-xs font-black outline-none transition-all text-gray-900 shadow-sm uppercase tracking-widest"
                             >
                                 <option value="">Choose Delivery Type</option>
                                 <option value="manual">Manual</option>
@@ -417,7 +417,7 @@ const OrderDetail = () => {
                     {isManualMode && effectiveAdminStatus !== 'Delivered' && effectiveAdminStatus !== 'Cancelled' && (
                         <button
                             onClick={openUpdateModal}
-                            className="flex items-center gap-1 md:gap-2 px-3 py-2 md:px-6 md:py-3 bg-blue-600 text-white font-black text-[10px] md:text-xs rounded-xl md:rounded-2xl hover:bg-blue-700 transition-all shadow-lg shadow-blue-100 uppercase tracking-widest"
+                            className="flex items-center gap-1 md:gap-2 px-3 py-2 md:px-6 md:py-3 bg-primary-600 text-white font-black text-[10px] md:text-xs rounded-xl md:rounded-2xl hover:bg-primary-700 transition-all shadow-lg shadow-primary-100 uppercase tracking-widest"
                         >
                             <span className="hidden md:inline">Update Status</span><span className="md:hidden">Update</span>
                         </button>
@@ -444,11 +444,11 @@ const OrderDetail = () => {
                                         <img src={item.image} className="w-full h-full object-contain" alt={orderedItemName} />
                                     </div>
                                     <div className="flex-1 min-w-0">
-                                        <h3 className="text-sm font-black text-gray-800 group-hover:text-blue-600 transition-colors break-words" title={orderedItemName}>{orderedItemName}</h3>
+                                        <h3 className="text-sm font-black text-gray-800 group-hover:text-primary-600 transition-colors break-words" title={orderedItemName}>{orderedItemName}</h3>
                                         {variantDetails.length > 0 && (
                                             <div className="mt-2 flex flex-wrap gap-2">
                                                 {variantDetails.map((detail) => (
-                                                    <span key={detail} className="rounded-full bg-blue-50 px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-blue-700 border border-blue-100">
+                                                    <span key={detail} className="rounded-full bg-primary-50 px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-primary-700 border border-primary-100">
                                                         {detail}
                                                     </span>
                                                 ))}
@@ -460,8 +460,8 @@ const OrderDetail = () => {
                                         </div>
                                         {item.serialNumber && (
                                             <div className="mt-2">
-                                                <span className="text-sm bg-blue-50 text-blue-700 px-3 py-1.5 rounded-lg font-bold font-mono border border-blue-200 shadow-sm flex items-center gap-2 w-max select-all">
-                                                    <span className="text-blue-400 select-none">{item.serialType === 'IMEI' ? 'IMEI:' : 'SN:'}</span> {item.serialNumber}
+                                                <span className="text-sm bg-primary-50 text-primary-700 px-3 py-1.5 rounded-lg font-bold font-mono border border-primary-200 shadow-sm flex items-center gap-2 w-max select-all">
+                                                    <span className="text-primary-400 select-none">{item.serialType === 'IMEI' ? 'IMEI:' : 'SN:'}</span> {item.serialNumber}
                                                 </span>
                                             </div>
                                         )}
@@ -504,7 +504,7 @@ const OrderDetail = () => {
                     {/* Timeline */}
                     <div className="bg-white p-4 md:p-8 rounded-2xl md:rounded-3xl border border-gray-100 shadow-sm">
                         <h2 className="text-xs md:text-sm font-black text-gray-800 uppercase tracking-widest mb-6 md:mb-8 flex items-center gap-2 md:gap-3">
-                            <MdSchedule className="text-blue-500" size={18} /> Order Timeline
+                            <MdSchedule className="text-primary-500" size={18} /> Order Timeline
                         </h2>
                         <div className="space-y-4 md:space-y-5">
                             {adminTimelineEntries.map((entry, idx) => {
@@ -518,7 +518,7 @@ const OrderDetail = () => {
                                 <div key={entry.key} className="flex items-start gap-3 md:gap-4">
                                     <div className="flex flex-col items-center pt-1">
                                         <div className={`w-3 h-3 rounded-full ${isCurrent
-                                            ? 'bg-blue-600 ring-4 ring-blue-100'
+                                            ? 'bg-primary-600 ring-4 ring-primary-100'
                                             : isCompleted || displayTime
                                                 ? 'bg-green-500'
                                                 : 'bg-gray-300'
@@ -548,7 +548,7 @@ const OrderDetail = () => {
                                             <p className="text-[11px] md:text-xs text-gray-500 font-semibold mt-1">{entry.location}</p>
                                         ) : null}
                                         {isCurrent && entry.type !== 'api' ? (
-                                            <p className="text-[10px] text-blue-600 font-black uppercase tracking-wider mt-1">
+                                            <p className="text-[10px] text-primary-600 font-black uppercase tracking-wider mt-1">
                                                 Current status
                                             </p>
                                         ) : null}
@@ -566,7 +566,7 @@ const OrderDetail = () => {
                     <div className="bg-white p-4 md:p-6 rounded-2xl md:rounded-3xl border border-gray-100 shadow-sm space-y-4 md:space-y-6">
                         <h2 className="text-xs font-black text-gray-400 uppercase tracking-widest border-b border-gray-50 pb-3 md:pb-4">Customer Profile</h2>
                         <div className="flex items-center gap-4 p-3 bg-gray-50 rounded-2xl">
-                            <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-blue-500 shadow-sm font-black text-xl">
+                            <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-primary-500 shadow-sm font-black text-xl">
                                 {order.user?.name?.charAt(0) || 'U'}
                             </div>
                             <div className="min-w-0">
@@ -574,7 +574,7 @@ const OrderDetail = () => {
                                     <button
                                         type="button"
                                         onClick={() => navigate(`/admin/users/${customerProfileId}`)}
-                                        className="truncate text-left text-sm font-black text-gray-900 transition hover:text-blue-600"
+                                        className="truncate text-left text-sm font-black text-gray-900 transition hover:text-primary-600"
                                     >
                                         {order.user?.name || order.shippingAddress?.name || 'Unknown User'}
                                     </button>
@@ -602,7 +602,7 @@ const OrderDetail = () => {
                             <span className="px-2 py-0.5 bg-gray-100 text-[8px] font-black uppercase rounded text-gray-500">{order.address?.type || 'Home'}</span>
                         </div>
                         <div className="flex gap-4">
-                            <MdLocationOn className="text-blue-500 flex-shrink-0 mt-1" size={20} />
+                            <MdLocationOn className="text-primary-500 flex-shrink-0 mt-1" size={20} />
                             <div className="text-xs text-gray-600 leading-relaxed font-medium">
                                 <p className="font-black text-gray-900 mb-1">{order.shippingAddress?.name || order.address?.name || order.user?.name || 'N/A'}</p>
                                 <p>{order.address?.line || order.shippingAddress?.street || 'N/A'}</p>
@@ -681,7 +681,7 @@ const OrderDetail = () => {
                                                 setTrackingLoading(false);
                                             }
                                         }}
-                                        className="rounded-xl border border-blue-100 bg-blue-50 px-3 py-2 text-[10px] font-black uppercase tracking-widest text-blue-600 transition-all hover:bg-blue-100"
+                                        className="rounded-xl border border-primary-100 bg-primary-50 px-3 py-2 text-[10px] font-black uppercase tracking-widest text-primary-600 transition-all hover:bg-primary-100"
                                     >
                                         {trackingLoading ? 'Refreshing...' : 'Refresh Live Status'}
                                     </button>
@@ -691,7 +691,7 @@ const OrderDetail = () => {
                         <div className="space-y-4">
                             <div className="flex justify-between items-center text-xs">
                                 <span className="text-gray-600 font-bold uppercase tracking-widest text-[9px]">Mode</span>
-                                <span className={`font-black uppercase tracking-wider ${hasCourierFulfillment ? 'text-blue-700' : isManualMode ? 'text-amber-700' : 'text-gray-500'}`}>
+                                <span className={`font-black uppercase tracking-wider ${hasCourierFulfillment ? 'text-primary-700' : isManualMode ? 'text-amber-700' : 'text-gray-500'}`}>
                                     {getShippingProviderLabel(fulfillmentMode)}
                                 </span>
                             </div>
@@ -717,7 +717,7 @@ const OrderDetail = () => {
                                 </div>
                             ) : null}
                             {trackingLoading ? (
-                                <div className="rounded-2xl border border-blue-100 bg-blue-50 p-4 text-xs font-semibold text-blue-600">
+                                <div className="rounded-2xl border border-primary-100 bg-primary-50 p-4 text-xs font-semibold text-primary-600">
                                     Fetching live {getShippingProviderLabel(fulfillmentMode)} tracking...
                                 </div>
                             ) : null}
@@ -769,9 +769,9 @@ const OrderDetail = () => {
 
                                 <div className="space-y-3">
                                     {!isFulfillmentAssigned ? (
-                                        <div className="rounded-2xl border border-blue-100 bg-blue-50 p-4">
-                                            <p className="text-xs font-bold uppercase tracking-widest text-blue-700">Assign Fulfillment First</p>
-                                            <p className="mt-2 text-sm font-semibold text-blue-900">
+                                        <div className="rounded-2xl border border-primary-100 bg-primary-50 p-4">
+                                            <p className="text-xs font-bold uppercase tracking-widest text-primary-700">Assign Fulfillment First</p>
+                                            <p className="mt-2 text-sm font-semibold text-primary-900">
                                                 Pick Delhivery or Ekart for API-based tracking, or Manual if your team will update each status here.
                                             </p>
                                         </div>
@@ -801,7 +801,7 @@ const OrderDetail = () => {
                                                     handleAssignFulfillment(e.target.value);
                                                 }}
                                                 disabled={effectiveAdminStatus === 'Delivered' || effectiveAdminStatus === 'Cancelled'}
-                                                className="w-full bg-white border border-gray-200 focus:border-blue-500 rounded-2xl px-4 py-3 text-sm font-bold outline-none transition-all text-gray-900 shadow-sm"
+                                                className="w-full bg-white border border-gray-200 focus:border-primary-500 rounded-2xl px-4 py-3 text-sm font-bold outline-none transition-all text-gray-900 shadow-sm"
                                             >
                                                 <option value="">Choose delivery type</option>
                                                 <option value="manual">Manual</option>
@@ -820,7 +820,7 @@ const OrderDetail = () => {
                                                     <label className="text-xs font-bold text-gray-700 truncate block">{item.name}</label>
                                                     <div className="flex gap-2">
                                                         <select
-                                                            className="bg-white border border-gray-200 focus:border-blue-500 rounded-xl px-3 py-3 text-xs font-bold outline-none transition-all text-gray-700 shadow-sm w-1/3 appearance-none"
+                                                            className="bg-white border border-gray-200 focus:border-primary-500 rounded-xl px-3 py-3 text-xs font-bold outline-none transition-all text-gray-700 shadow-sm w-1/3 appearance-none"
                                                             value={serialTypes[item._id] || (item.serialType || 'Serial Number')}
                                                             onChange={(e) => setSerialTypes(prev => ({ ...prev, [item._id]: e.target.value }))}
                                                         >
@@ -831,7 +831,7 @@ const OrderDetail = () => {
                                                             type="text"
                                                             list={`serials-${item._id}`}
                                                             placeholder="Enter Number..."
-                                                            className="flex-1 bg-white border border-gray-200 focus:border-blue-500 rounded-xl px-4 py-3 text-sm outline-none transition-all placeholder:text-gray-400 font-mono text-gray-900 shadow-sm"
+                                                            className="flex-1 bg-white border border-gray-200 focus:border-primary-500 rounded-xl px-4 py-3 text-sm outline-none transition-all placeholder:text-gray-400 font-mono text-gray-900 shadow-sm"
                                                             value={serialInputs[item._id] !== undefined ? serialInputs[item._id] : (item.serialNumber || '')}
                                                             onChange={(e) => setSerialInputs(prev => ({ ...prev, [item._id]: e.target.value }))}
                                                         />
@@ -854,7 +854,7 @@ const OrderDetail = () => {
                                                         <select
                                                             value={selectedStatus}
                                                             onChange={(e) => setSelectedStatus(e.target.value)}
-                                                            className="w-full bg-white border border-gray-200 focus:border-blue-500 rounded-2xl px-4 py-3 text-sm font-bold outline-none transition-all text-gray-900 shadow-sm"
+                                                            className="w-full bg-white border border-gray-200 focus:border-primary-500 rounded-2xl px-4 py-3 text-sm font-bold outline-none transition-all text-gray-900 shadow-sm"
                                                         >
                                                             {MANUAL_FULFILLMENT_STATUSES.map((status) => (
                                                                 <option key={status} value={status}>{status}</option>
@@ -864,7 +864,7 @@ const OrderDetail = () => {
 
                                                     <button
                                                         onClick={handleUpdateClick}
-                                                        className="w-full mt-2 px-6 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-black uppercase tracking-widest shadow-lg shadow-blue-200 hover:shadow-xl hover:scale-[1.02] transition-all"
+                                                        className="w-full mt-2 px-6 py-4 rounded-2xl bg-gradient-to-r from-primary-600 to-indigo-600 text-white text-sm font-black uppercase tracking-widest shadow-lg shadow-primary-200 hover:shadow-xl hover:scale-[1.02] transition-all"
                                                     >
                                                         Update Manual Status
                                                     </button>
@@ -904,7 +904,7 @@ const OrderDetail = () => {
 
                                             <button
                                                 onClick={handleSerialSave}
-                                                className="w-full mt-2 px-6 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-black uppercase tracking-widest shadow-lg shadow-blue-200 hover:shadow-xl hover:scale-[1.02] transition-all"
+                                                className="w-full mt-2 px-6 py-4 rounded-2xl bg-gradient-to-r from-primary-600 to-indigo-600 text-white text-sm font-black uppercase tracking-widest shadow-lg shadow-primary-200 hover:shadow-xl hover:scale-[1.02] transition-all"
                                             >
                                                 Save Serial / IMEI
                                             </button>
@@ -980,7 +980,7 @@ const OrderDetail = () => {
                                                     <label className="text-xs font-bold text-gray-700 truncate block">{item.name}</label>
                                                     <div className="flex gap-2">
                                                         <select
-                                                            className="bg-white border border-gray-200 focus:border-blue-500 rounded-xl px-3 py-3 text-xs font-bold outline-none transition-all text-gray-700 shadow-sm w-1/3 appearance-none"
+                                                            className="bg-white border border-gray-200 focus:border-primary-500 rounded-xl px-3 py-3 text-xs font-bold outline-none transition-all text-gray-700 shadow-sm w-1/3 appearance-none"
                                                             value={serialTypes[item._id] || (item.serialType || 'Serial Number')}
                                                             onChange={(e) => setSerialTypes(prev => ({ ...prev, [item._id]: e.target.value }))}
                                                         >
@@ -990,7 +990,7 @@ const OrderDetail = () => {
                                                         <input
                                                             type="text"
                                                             placeholder={`Enter Number...`}
-                                                            className="flex-1 bg-white border border-gray-200 focus:border-blue-500 rounded-xl px-4 py-3 text-sm outline-none transition-all placeholder:text-gray-400 font-mono text-gray-900 shadow-sm"
+                                                            className="flex-1 bg-white border border-gray-200 focus:border-primary-500 rounded-xl px-4 py-3 text-sm outline-none transition-all placeholder:text-gray-400 font-mono text-gray-900 shadow-sm"
                                                             value={serialInputs[item._id] !== undefined ? serialInputs[item._id] : (item.serialNumber || '')}
                                                             onChange={(e) => setSerialInputs(prev => ({ ...prev, [item._id]: e.target.value }))}
                                                         />
@@ -1002,7 +1002,7 @@ const OrderDetail = () => {
 
                                     <button
                                         onClick={handleSerialSave}
-                                        className="w-full mt-2 px-6 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm font-black uppercase tracking-widest shadow-lg shadow-blue-200 hover:shadow-xl hover:scale-[1.02] transition-all"
+                                        className="w-full mt-2 px-6 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-primary-600 text-white text-sm font-black uppercase tracking-widest shadow-lg shadow-primary-200 hover:shadow-xl hover:scale-[1.02] transition-all"
                                     >
                                         Save Changes
                                     </button>

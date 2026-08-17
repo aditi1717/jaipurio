@@ -865,7 +865,7 @@ const Checkout = () => {
                 {/* Left Column */}
                 <div className="md:flex-1 md:min-w-0">
                     {/* Enhanced Steps Progress */}
-                    <div className="bg-white px-4 py-6 border-2 border-blue-100 flex items-center justify-center mb-4 md:rounded-2xl md:shadow-lg">
+                    <div className="bg-white px-4 py-6 border-2 border-primary-100 flex items-center justify-center mb-4 md:rounded-2xl md:shadow-lg">
                         <div className="flex items-center w-full max-w-md">
                             {/* Cart Step */}
                             <div className="flex flex-col items-center flex-1 relative">
@@ -875,17 +875,17 @@ const Checkout = () => {
                                 <span className="text-[11px] font-black text-green-600 uppercase mt-2 tracking-tight">Cart</span>
                             </div>
 
-                            <div className="flex-1 h-[3px] bg-gradient-to-r from-green-500 to-blue-500 -mt-8 rounded-full"></div>
+                            <div className="flex-1 h-[3px] bg-gradient-to-r from-green-500 to-primary-500 -mt-8 rounded-full"></div>
 
                             {/* Summary Step */}
                             <div className="flex flex-col items-center flex-1 relative">
-                                <div className={`w-8 h-8 rounded-full flex items-center justify-center z-10 shadow-lg ${step >= 2 ? 'bg-gradient-to-br from-blue-500 to-purple-600 shadow-blue-500/50' : 'bg-gray-200'} text-white text-sm font-black`}>
+                                <div className={`w-8 h-8 rounded-full flex items-center justify-center z-10 shadow-lg ${step >= 2 ? 'bg-gradient-to-br from-primary-500 to-purple-600 shadow-primary-500/50' : 'bg-gray-200'} text-white text-sm font-black`}>
                                     {step > 2 ? <span className="material-icons text-[18px]">check</span> : '2'}
                                 </div>
-                                <span className={`text-[11px] font-black uppercase mt-2 tracking-tight ${step >= 2 ? 'bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent' : 'text-gray-400'}`}>Summary</span>
+                                <span className={`text-[11px] font-black uppercase mt-2 tracking-tight ${step >= 2 ? 'bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent' : 'text-gray-400'}`}>Summary</span>
                             </div>
 
-                            <div className={`flex-1 h-[3px] -mt-8 rounded-full ${step > 2 ? 'bg-gradient-to-r from-blue-500 to-purple-500' : 'bg-gray-200'}`}></div>
+                            <div className={`flex-1 h-[3px] -mt-8 rounded-full ${step > 2 ? 'bg-gradient-to-r from-primary-500 to-purple-500' : 'bg-gray-200'}`}></div>
 
                             {/* Payment Step */}
                             <div className="flex flex-col items-center flex-1 relative">
@@ -914,7 +914,7 @@ const Checkout = () => {
                                     </div>
                                     <button
                                         onClick={() => setIsChangingAddress(true)}
-                                        className="text-blue-600 font-bold text-[12px] border border-gray-100 px-4 py-1.5 rounded-sm shadow-sm active:bg-gray-50 hover:bg-gray-50"
+                                        className="text-primary-600 font-bold text-[12px] border border-gray-100 px-4 py-1.5 rounded-sm shadow-sm active:bg-gray-50 hover:bg-gray-50"
                                     >
                                         Change
                                     </button>
@@ -923,18 +923,18 @@ const Checkout = () => {
                                 <div className="bg-white p-4 animate-in fade-in duration-300 md:rounded-sm md:shadow-sm">
                                     <div className="flex items-center justify-between mb-4">
                                         <h3 className="text-sm font-bold uppercase text-gray-400 tracking-wider">Select Delivery Address</h3>
-                                        <button onClick={() => setIsChangingAddress(false)} className="text-blue-600 text-xs font-bold uppercase">Done</button>
+                                        <button onClick={() => setIsChangingAddress(false)} className="text-primary-600 text-xs font-bold uppercase">Done</button>
                                     </div>
 
                                     <div className="space-y-4">
                                         {addresses.map(addr => (
-                                            <label key={addr.id} className={`block p-4 rounded border transition-all cursor-pointer ${selectedAddress === addr.id ? 'border-blue-500 bg-blue-50/20' : 'border-gray-100 hover:border-gray-300'}`}>
+                                            <label key={addr.id} className={`block p-4 rounded border transition-all cursor-pointer ${selectedAddress === addr.id ? 'border-primary-500 bg-primary-50/20' : 'border-gray-100 hover:border-gray-300'}`}>
                                                 <div className="flex gap-3">
                                                     <input
                                                         type="radio"
                                                         checked={selectedAddress === addr.id}
                                                         onChange={() => setSelectedAddress(addr.id)}
-                                                        className="mt-1 accent-blue-600"
+                                                        className="mt-1 accent-primary-600"
                                                     />
                                                     <div className="flex-1">
                                                         <div className="flex items-center gap-2 mb-1">
@@ -962,33 +962,33 @@ const Checkout = () => {
                                         {!isAddingAddress ? (
                                             <button
                                                 onClick={() => setIsAddingAddress(true)}
-                                                className="w-full flex items-center gap-2 p-4 text-blue-600 border border-dashed border-blue-200 rounded-lg bg-blue-50/30 active:bg-blue-50 transition-colors hover:bg-blue-50"
+                                                className="w-full flex items-center gap-2 p-4 text-primary-600 border border-dashed border-primary-200 rounded-lg bg-primary-50/30 active:bg-primary-50 transition-colors hover:bg-primary-50"
                                             >
                                                 <span className="material-icons text-sm">add</span>
                                                 <span className="text-sm font-bold">Add a new address</span>
                                             </button>
                                         ) : (
-                                            <form onSubmit={handleAddAddress} className="border border-blue-200 p-4 rounded-lg bg-blue-50/10 space-y-4 animate-in slide-in-from-top-4 duration-300">
+                                            <form onSubmit={handleAddAddress} className="border border-primary-200 p-4 rounded-lg bg-primary-50/10 space-y-4 animate-in slide-in-from-top-4 duration-300">
                                                 <div className="grid grid-cols-2 gap-4">
                                                     <div className="space-y-2 col-span-2">
-                                                        <label className="text-xs font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent uppercase tracking-wide pl-1">👤 Full Name</label>
-                                                        <input required type="text" placeholder="Enter your full name" className="w-full border-2 border-blue-200 p-3 rounded-xl text-sm focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none text-gray-900 font-semibold placeholder-blue-300 bg-white shadow-sm" value={newAddr.name} onChange={e => setNewAddr({ ...newAddr, name: e.target.value })} />
+                                                        <label className="text-xs font-black bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent uppercase tracking-wide pl-1">👤 Full Name</label>
+                                                        <input required type="text" placeholder="Enter your full name" className="w-full border-2 border-primary-200 p-3 rounded-xl text-sm focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none text-gray-900 font-semibold placeholder-primary-300 bg-white shadow-sm" value={newAddr.name} onChange={e => setNewAddr({ ...newAddr, name: e.target.value })} />
                                                     </div>
                                                     <div className="space-y-2">
-                                                        <label className="text-xs font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent uppercase tracking-wide pl-1">📱 Mobile</label>
-                                                        <input required type="tel" placeholder="10-digit mobile" className="w-full border-2 border-blue-200 p-3 rounded-xl text-sm focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none text-gray-900 font-semibold placeholder-blue-300 bg-white shadow-sm" value={newAddr.mobile} onChange={e => setNewAddr({ ...newAddr, mobile: e.target.value })} />
+                                                        <label className="text-xs font-black bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent uppercase tracking-wide pl-1">📱 Mobile</label>
+                                                        <input required type="tel" placeholder="10-digit mobile" className="w-full border-2 border-primary-200 p-3 rounded-xl text-sm focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none text-gray-900 font-semibold placeholder-primary-300 bg-white shadow-sm" value={newAddr.mobile} onChange={e => setNewAddr({ ...newAddr, mobile: e.target.value })} />
                                                     </div>
                                                     <div className="space-y-2">
-                                                        <label className="text-xs font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent uppercase tracking-wide pl-1">📮 Pincode</label>
-                                                        <input required type="number" placeholder="6-digit PIN" className="w-full border-2 border-blue-200 p-3 rounded-xl text-sm focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none text-gray-900 font-semibold placeholder-blue-300 bg-white shadow-sm" value={newAddr.pincode} onChange={e => setNewAddr({ ...newAddr, pincode: e.target.value })} />
+                                                        <label className="text-xs font-black bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent uppercase tracking-wide pl-1">📮 Pincode</label>
+                                                        <input required type="number" placeholder="6-digit PIN" className="w-full border-2 border-primary-200 p-3 rounded-xl text-sm focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none text-gray-900 font-semibold placeholder-primary-300 bg-white shadow-sm" value={newAddr.pincode} onChange={e => setNewAddr({ ...newAddr, pincode: e.target.value })} />
                                                     </div>
                                                     <div className="space-y-2 col-span-2 relative">
-                                                        <label className="text-xs font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent uppercase tracking-wide pl-1">🏠 Address (Area and Street)</label>
+                                                        <label className="text-xs font-black bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent uppercase tracking-wide pl-1">🏠 Address (Area and Street)</label>
                                                         <textarea 
                                                             required 
                                                             rows="2" 
                                                             placeholder="Enter flat, house no., building, company, apartment, area, street" 
-                                                            className="w-full border-2 border-blue-200 p-3 rounded-xl text-sm focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none text-gray-900 font-semibold placeholder-blue-300 bg-white shadow-sm" 
+                                                            className="w-full border-2 border-primary-200 p-3 rounded-xl text-sm focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none text-gray-900 font-semibold placeholder-primary-300 bg-white shadow-sm" 
                                                             value={newAddr.address} 
                                                             onChange={e => {
                                                                 const val = e.target.value;
@@ -997,7 +997,7 @@ const Checkout = () => {
                                                             }} 
                                                         />
                                                         {suggestions.length > 0 && (
-                                                            <div className="absolute z-50 left-0 right-0 top-full mt-1 bg-white border border-blue-200 shadow-xl rounded-xl max-h-48 overflow-y-auto">
+                                                            <div className="absolute z-50 left-0 right-0 top-full mt-1 bg-white border border-primary-200 shadow-xl rounded-xl max-h-48 overflow-y-auto">
                                                                 {suggestions.map((suggestion) => (
                                                                     <button
                                                                         key={suggestion.place_id}
@@ -1015,9 +1015,9 @@ const Checkout = () => {
                                                                                 setSuggestions([]);
                                                                             }
                                                                         }}
-                                                                        className="w-full text-left p-3 hover:bg-blue-50 border-b last:border-0 border-blue-50 transition-colors flex items-start gap-2"
+                                                                        className="w-full text-left p-3 hover:bg-primary-50 border-b last:border-0 border-primary-50 transition-colors flex items-start gap-2"
                                                                     >
-                                                                        <span className="material-icons text-blue-400 text-sm mt-0.5">location_on</span>
+                                                                        <span className="material-icons text-primary-400 text-sm mt-0.5">location_on</span>
                                                                         <div className="flex-1">
                                                                             <p className="text-sm text-gray-800 font-medium">{suggestion.description}</p>
                                                                         </div>
@@ -1027,12 +1027,12 @@ const Checkout = () => {
                                                         )}
                                                     </div>
                                                     <div className="space-y-2">
-                                                        <label className="text-xs font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent uppercase tracking-wide pl-1">🏙️ City</label>
-                                                        <input required type="text" placeholder="Your city" className="w-full border-2 border-blue-200 p-3 rounded-xl text-sm focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none text-gray-900 font-semibold placeholder-blue-300 bg-white shadow-sm" value={newAddr.city} onChange={e => setNewAddr({ ...newAddr, city: e.target.value })} />
+                                                        <label className="text-xs font-black bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent uppercase tracking-wide pl-1">🏙️ City</label>
+                                                        <input required type="text" placeholder="Your city" className="w-full border-2 border-primary-200 p-3 rounded-xl text-sm focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none text-gray-900 font-semibold placeholder-primary-300 bg-white shadow-sm" value={newAddr.city} onChange={e => setNewAddr({ ...newAddr, city: e.target.value })} />
                                                     </div>
                                                     <div className="space-y-2">
-                                                        <label className="text-xs font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent uppercase tracking-wide pl-1">🗺️ State</label>
-                                                        <input required type="text" placeholder="Your state" className="w-full border-2 border-blue-200 p-3 rounded-xl text-sm focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none text-gray-900 font-semibold placeholder-blue-300 bg-white shadow-sm" value={newAddr.state} onChange={e => setNewAddr({ ...newAddr, state: e.target.value })} />
+                                                        <label className="text-xs font-black bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent uppercase tracking-wide pl-1">🗺️ State</label>
+                                                        <input required type="text" placeholder="Your state" className="w-full border-2 border-primary-200 p-3 rounded-xl text-sm focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none text-gray-900 font-semibold placeholder-primary-300 bg-white shadow-sm" value={newAddr.state} onChange={e => setNewAddr({ ...newAddr, state: e.target.value })} />
                                                     </div>
                                                 </div>
                                                 <div className="space-y-2">
@@ -1040,7 +1040,7 @@ const Checkout = () => {
                                                     <div className="flex gap-4">
                                                         {['Home', 'Work'].map(type => (
                                                             <label key={type} className="flex items-center gap-2 cursor-pointer">
-                                                                <input type="radio" name="addrType" checked={newAddr.type === type} onChange={() => setNewAddr({ ...newAddr, type })} className="accent-blue-600" />
+                                                                <input type="radio" name="addrType" checked={newAddr.type === type} onChange={() => setNewAddr({ ...newAddr, type })} className="accent-primary-600" />
                                                                 <span className="text-sm text-gray-700">{type}</span>
                                                             </label>
                                                         ))}
@@ -1048,7 +1048,7 @@ const Checkout = () => {
                                                 </div>
                                                 <div className="flex gap-3 pt-2">
                                                     <button type="button" onClick={() => setIsAddingAddress(false)} className="flex-1 py-3 text-gray-500 font-bold uppercase text-[12px]">Cancel</button>
-                                                    <button type="submit" className="flex-1 bg-blue-600 text-white py-3 rounded-sm font-bold uppercase text-[12px] shadow-lg">Save & Deliver</button>
+                                                    <button type="submit" className="flex-1 bg-primary-600 text-white py-3 rounded-sm font-bold uppercase text-[12px] shadow-lg">Save & Deliver</button>
                                                 </div>
                                             </form>
                                         )}
@@ -1060,7 +1060,7 @@ const Checkout = () => {
                             {hasEligibleB2BItems && (
                                 <div className="bg-white p-4 md:rounded-sm md:shadow-sm border border-gray-100 [color-scheme:light]">
                                     <h3 className="text-sm font-bold uppercase text-gray-400 tracking-wider mb-3">Business Details</h3>
-                                    <p className="mb-3 text-xs font-medium text-blue-600">
+                                    <p className="mb-3 text-xs font-medium text-primary-600">
                                         B2B is available for {eligibleB2BItems.length} selected product{eligibleB2BItems.length > 1 ? 's' : ''} in this order.
                                     </p>
                                     <div>
@@ -1080,7 +1080,7 @@ const Checkout = () => {
                                             className={`w-full rounded-lg p-3 text-sm outline-none focus:ring-2 bg-white text-gray-900 ${
                                                 retailerTypeError
                                                     ? 'border border-red-400 focus:border-red-500 focus:ring-red-100'
-                                                    : 'border border-gray-200 focus:border-blue-500 focus:ring-blue-200'
+                                                    : 'border border-gray-200 focus:border-primary-500 focus:ring-primary-200'
                                             }`}
                                         >
                                             <option value="" disabled>Select business type</option>
@@ -1101,7 +1101,7 @@ const Checkout = () => {
                                                     value={retailerInfo.shopName}
                                                     onChange={(e) => setRetailerInfo((prev) => ({ ...prev, shopName: e.target.value }))}
                                                     placeholder="Enter shop name"
-                                                    className="w-full border border-gray-200 rounded-lg p-3 text-sm text-gray-900 placeholder:text-gray-300 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 bg-white"
+                                                    className="w-full border border-gray-200 rounded-lg p-3 text-sm text-gray-900 placeholder:text-gray-300 outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-200 bg-white"
                                                 />
                                             </div>
                                             <div>
@@ -1116,7 +1116,7 @@ const Checkout = () => {
                                                         }))
                                                     }
                                                     placeholder="15-character GSTIN"
-                                                    className="w-full border border-gray-200 rounded-lg p-3 text-sm text-gray-900 placeholder:text-gray-300 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 bg-white uppercase"
+                                                    className="w-full border border-gray-200 rounded-lg p-3 text-sm text-gray-900 placeholder:text-gray-300 outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-200 bg-white uppercase"
                                                 />
                                             </div>
                                         </div>
@@ -1195,7 +1195,7 @@ const Checkout = () => {
                                             disabled={!isPincodeServiceable || isPincodeChecking}
                                             className={`px-10 py-3.5 rounded-xl font-black text-sm shadow-lg hover:shadow-xl transition-all uppercase tracking-wide flex items-center gap-2 ${
                                                 isPincodeServiceable && !isPincodeChecking
-                                                ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-blue-600/20'
+                                                ? 'bg-primary-600 hover:bg-primary-700 text-white shadow-primary-600/20'
                                                 : 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed shadow-none'
                                             }`}
                                         >
@@ -1228,7 +1228,7 @@ const Checkout = () => {
                                     ) : (
                                         <button
                                             onClick={() => handleApplyCoupon()}
-                                            className="bg-blue-600 hover:bg-blue-700 text-white font-black text-sm uppercase px-6 py-3 rounded-xl cursor-pointer transition-all shadow-md hover:shadow-lg"
+                                            className="bg-primary-600 hover:bg-primary-700 text-white font-black text-sm uppercase px-6 py-3 rounded-xl cursor-pointer transition-all shadow-md hover:shadow-lg"
                                         >
                                             Apply
                                         </button>
@@ -1258,10 +1258,10 @@ const Checkout = () => {
                                                 const isExpired = isCouponExpired(coupon);
                                                 const canApply = coupon.active !== false && !isExpired;
                                                 return (
-                                                <div key={coupon._id} className={`bg-white rounded-xl p-3 border border-dashed transition-colors flex items-center justify-between group ${canApply ? 'border-blue-200 hover:border-blue-400' : 'border-gray-200'}`}>
+                                                <div key={coupon._id} className={`bg-white rounded-xl p-3 border border-dashed transition-colors flex items-center justify-between group ${canApply ? 'border-primary-200 hover:border-primary-400' : 'border-gray-200'}`}>
                                                     <div>
                                                         <div className="flex items-center gap-2">
-                                                            <span className={`font-mono font-bold px-2 py-0.5 rounded text-[11px] ${canApply ? 'text-blue-600 bg-blue-50' : 'text-gray-500 bg-gray-100'}`}>{coupon.code}</span>
+                                                            <span className={`font-mono font-bold px-2 py-0.5 rounded text-[11px] ${canApply ? 'text-primary-600 bg-primary-50' : 'text-gray-500 bg-gray-100'}`}>{coupon.code}</span>
                                                             <span className="text-[11px] font-bold text-gray-700">{coupon.title}</span>
                                                             {!canApply && (
                                                                 <span className={`text-[9px] font-bold uppercase px-1.5 py-0.5 rounded ${isExpired ? 'text-red-600 bg-red-50' : 'text-gray-500 bg-gray-100'}`}>
@@ -1274,7 +1274,7 @@ const Checkout = () => {
                                                     {canApply ? (
                                                         <button
                                                             onClick={() => handleApplyCoupon(coupon.code)}
-                                                            className="text-[11px] font-black text-blue-600 uppercase hover:text-blue-700 active:scale-95 transition-all"
+                                                            className="text-[11px] font-black text-primary-600 uppercase hover:text-primary-700 active:scale-95 transition-all"
                                                         >
                                                             Apply
                                                         </button>
@@ -1349,7 +1349,7 @@ const Checkout = () => {
                                     {isCodAdvancedActive ? (
                                         <span className="text-[9px] text-amber-600 font-black uppercase tracking-tighter">₹{codAdvancedAmountToPay} Online + ₹{remainingCodAmount} COD</span>
                                     ) : (
-                                        <button className="text-[10px] text-blue-600 font-black uppercase tracking-tighter text-left w-fit">View Details</button>
+                                        <button className="text-[10px] text-primary-600 font-black uppercase tracking-tighter text-left w-fit">View Details</button>
                                     )}
                                 </div>
                                 <div className="flex flex-col gap-2">
@@ -1376,7 +1376,7 @@ const Checkout = () => {
                                             disabled={!isPincodeServiceable || isPincodeChecking}
                                             className={`px-6 py-3 rounded-xl font-black uppercase text-[11px] shadow-lg active:scale-[0.98] transition-all flex items-center gap-2 ${
                                                 isPincodeServiceable && !isPincodeChecking
-                                                ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-blue-600/20'
+                                                ? 'bg-primary-600 hover:bg-primary-700 text-white shadow-primary-600/20'
                                                 : 'bg-gray-100 text-gray-300 shadow-none cursor-not-allowed'
                                             }`}
                                         >
@@ -1397,8 +1397,8 @@ const Checkout = () => {
                                 </div>
                                 <div className="p-4 space-y-4">
                                     <div className="space-y-3">
-                                        <label className={`flex items-center gap-4 p-4 rounded-lg border transition-all cursor-pointer ${paymentMethod === 'UPI' ? 'border-blue-500 bg-blue-50/20' : 'border-gray-50 hover:bg-gray-50'}`}>
-                                            <input type="radio" checked={paymentMethod === 'UPI'} onChange={() => setPaymentMethod('UPI')} className="accent-blue-600" />
+                                        <label className={`flex items-center gap-4 p-4 rounded-lg border transition-all cursor-pointer ${paymentMethod === 'UPI' ? 'border-primary-500 bg-primary-50/20' : 'border-gray-50 hover:bg-gray-50'}`}>
+                                            <input type="radio" checked={paymentMethod === 'UPI'} onChange={() => setPaymentMethod('UPI')} className="accent-primary-600" />
                                             <div className="flex-1 flex items-center justify-between">
                                                 <div className="flex flex-col">
                                                     <span className="text-sm font-bold text-gray-800">UPI (PhonePe / Google Pay)</span>
@@ -1408,8 +1408,8 @@ const Checkout = () => {
                                             </div>
                                         </label>
 
-                                        <label className={`flex items-center gap-4 p-4 rounded-lg border transition-all cursor-pointer ${paymentMethod === 'Card' ? 'border-blue-500 bg-blue-50/20' : 'border-gray-50 hover:bg-gray-50'}`}>
-                                            <input type="radio" checked={paymentMethod === 'Card'} onChange={() => setPaymentMethod('Card')} className="accent-blue-600" />
+                                        <label className={`flex items-center gap-4 p-4 rounded-lg border transition-all cursor-pointer ${paymentMethod === 'Card' ? 'border-primary-500 bg-primary-50/20' : 'border-gray-50 hover:bg-gray-50'}`}>
+                                            <input type="radio" checked={paymentMethod === 'Card'} onChange={() => setPaymentMethod('Card')} className="accent-primary-600" />
                                             <div className="flex-1 flex items-center justify-between">
                                                 <div className="flex flex-col">
                                                     <span className="text-sm font-bold text-gray-800">Credit / Debit Card</span>
@@ -1422,8 +1422,8 @@ const Checkout = () => {
                                             </div>
                                         </label>
 
-                                        <label className={`flex items-center gap-4 p-4 rounded-lg border transition-all cursor-pointer ${paymentMethod === 'COD' ? 'border-blue-500 bg-blue-50/20' : (!isCODServiceable ? 'bg-gray-50 opacity-50 cursor-not-allowed' : 'border-gray-50 hover:bg-gray-50')}`}>
-                                            <input type="radio" checked={paymentMethod === 'COD'} onChange={() => isCODServiceable && setPaymentMethod('COD')} disabled={!isCODServiceable} className="accent-blue-600" />
+                                        <label className={`flex items-center gap-4 p-4 rounded-lg border transition-all cursor-pointer ${paymentMethod === 'COD' ? 'border-primary-500 bg-primary-50/20' : (!isCODServiceable ? 'bg-gray-50 opacity-50 cursor-not-allowed' : 'border-gray-50 hover:bg-gray-50')}`}>
+                                            <input type="radio" checked={paymentMethod === 'COD'} onChange={() => isCODServiceable && setPaymentMethod('COD')} disabled={!isCODServiceable} className="accent-primary-600" />
                                             <div className="flex flex-col">
                                                 <span className="text-sm font-bold text-gray-800">Cash on Delivery</span>
                                                 {!isCODServiceable && <span className="text-[10px] text-red-500 font-bold">Not available due to high returns/risk</span>}
@@ -1447,7 +1447,7 @@ const Checkout = () => {
 
                                     <button
                                         onClick={() => handlePlaceOrder(paymentMethod)}
-                                        className="w-full mt-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-xl font-black uppercase text-[14px] shadow-lg shadow-blue-600/20 active:scale-[0.98] transition-all hover:shadow-xl"
+                                        className="w-full mt-6 bg-gradient-to-r from-primary-600 to-purple-600 text-white py-4 rounded-xl font-black uppercase text-[14px] shadow-lg shadow-primary-600/20 active:scale-[0.98] transition-all hover:shadow-xl"
                                     >
                                         {paymentMethod === 'COD' ? '🚚 Place Order (COD)' : '💳 Pay & Place Order'}
                                     </button>
@@ -1617,7 +1617,7 @@ const Checkout = () => {
                                 ) : (
                                     <button
                                         onClick={() => handleApplyCoupon()}
-                                        className="bg-blue-600 hover:bg-blue-700 text-white font-black text-sm uppercase px-6 py-3 rounded-xl cursor-pointer transition-all shadow-md hover:shadow-lg"
+                                        className="bg-primary-600 hover:bg-primary-700 text-white font-black text-sm uppercase px-6 py-3 rounded-xl cursor-pointer transition-all shadow-md hover:shadow-lg"
                                     >
                                         Apply
                                     </button>
@@ -1636,13 +1636,13 @@ const Checkout = () => {
                                             const isExpired = isCouponExpired(coupon);
                                             const canApply = coupon.active !== false && !isExpired;
                                             return (
-                                            <div key={coupon._id} className={`p-3 rounded-xl border border-dashed transition-all group ${canApply ? 'border-blue-100 bg-blue-50/10 hover:border-blue-300 hover:bg-blue-50/30' : 'border-gray-200 bg-gray-50/40'}`}>
+                                            <div key={coupon._id} className={`p-3 rounded-xl border border-dashed transition-all group ${canApply ? 'border-primary-100 bg-primary-50/10 hover:border-primary-300 hover:bg-primary-50/30' : 'border-gray-200 bg-gray-50/40'}`}>
                                                 <div className="flex items-center justify-between mb-1">
-                                                    <span className={`font-mono font-bold text-[11px] uppercase tracking-wider ${canApply ? 'text-blue-600' : 'text-gray-500'}`}>{coupon.code}</span>
+                                                    <span className={`font-mono font-bold text-[11px] uppercase tracking-wider ${canApply ? 'text-primary-600' : 'text-gray-500'}`}>{coupon.code}</span>
                                                     {canApply ? (
                                                         <button
                                                             onClick={() => handleApplyCoupon(coupon.code)}
-                                                            className="text-[10px] font-black text-blue-500 uppercase hover:text-blue-700 transition-colors"
+                                                            className="text-[10px] font-black text-primary-500 uppercase hover:text-primary-700 transition-colors"
                                                         >
                                                             Apply
                                                         </button>

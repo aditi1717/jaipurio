@@ -63,7 +63,7 @@ const SortableSlide = ({ slide, index, onRemove, onUpdate, offers, onProductPick
         <div
             ref={setNodeRef}
             style={style}
-            className={`bg-white rounded-xl border border-gray-100 shadow-sm relative group ${isDragging ? 'shadow-xl ring-2 ring-blue-400' : ''}`}
+            className={`bg-white rounded-xl border border-gray-100 shadow-sm relative group ${isDragging ? 'shadow-xl ring-2 ring-primary-400' : ''}`}
         >
             {/* Drag Handle */}
             <div
@@ -75,7 +75,7 @@ const SortableSlide = ({ slide, index, onRemove, onUpdate, offers, onProductPick
             </div>
 
             {/* Slide Number Badge */}
-            <div className="absolute top-2 left-10 z-20 bg-blue-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+            <div className="absolute top-2 left-10 z-20 bg-primary-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
                 #{index + 1}
             </div>
 
@@ -94,7 +94,7 @@ const SortableSlide = ({ slide, index, onRemove, onUpdate, offers, onProductPick
                                 <button
                                     type="button"
                                     onClick={() => mobileFileInputRef.current?.click()}
-                                    className="rounded-md border border-gray-200 bg-gray-50 p-1 text-blue-600 transition hover:border-blue-300 hover:bg-blue-50"
+                                    className="rounded-md border border-gray-200 bg-gray-50 p-1 text-primary-600 transition hover:border-primary-300 hover:bg-primary-50"
                                     title="Add mobile image"
                                 >
                                     <MdAdd size={14} />
@@ -147,7 +147,7 @@ const SortableSlide = ({ slide, index, onRemove, onUpdate, offers, onProductPick
                             onClick={() => onUpdate(index, { targetType: type })}
                             className={`flex-1 py-1 px-2 rounded text-[9px] font-bold transition ${
                                 slide.targetType === type
-                                    ? type === 'product' ? 'bg-blue-100 text-blue-700'
+                                    ? type === 'product' ? 'bg-primary-100 text-primary-700'
                                         : type === 'offer' ? 'bg-green-100 text-green-700'
                                             : 'bg-purple-100 text-purple-700'
                                     : 'bg-gray-50 text-gray-400'
@@ -595,7 +595,7 @@ const HomeBanners = () => {
                                 )}
                                 <div className="absolute top-2 right-2 flex gap-1">
                                      <span className="bg-black/60 text-[8px] font-bold text-white px-2 py-0.5 rounded-full uppercase">{banner.type}</span>
-                                     <span className="bg-blue-600/80 text-[8px] font-bold text-white px-2 py-0.5 rounded-full uppercase">{banner.section}</span>
+                                     <span className="bg-primary-600/80 text-[8px] font-bold text-white px-2 py-0.5 rounded-full uppercase">{banner.section}</span>
                                 </div>
                             </div>
                             <div className="p-4 flex justify-between items-center">
@@ -628,7 +628,7 @@ const HomeBanners = () => {
                 <button 
                     onClick={handleSaveBanner} 
                     disabled={isSaving}
-                    className="px-8 py-2.5 bg-blue-600 text-white rounded-xl text-xs font-black hover:bg-blue-700 transition shadow-lg shadow-blue-200 uppercase tracking-wider disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                    className="px-8 py-2.5 bg-primary-600 text-white rounded-xl text-xs font-black hover:bg-primary-700 transition shadow-lg shadow-primary-200 uppercase tracking-wider disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                 >
                     {isSaving ? 'SAVING...' : 'SAVE CHANGES'}
                 </button>
@@ -666,11 +666,11 @@ const HomeBanners = () => {
                                         {/* Add Slide Button */}
                                         <button
                                             onClick={() => fileInputRef.current.click()}
-                                            className="h-48 border-2 border-dashed border-gray-200 rounded-xl bg-gray-50/50 flex flex-col items-center justify-center hover:border-blue-300 hover:bg-blue-50/30 transition group"
+                                            className="h-48 border-2 border-dashed border-gray-200 rounded-xl bg-gray-50/50 flex flex-col items-center justify-center hover:border-primary-300 hover:bg-primary-50/30 transition group"
                                         >
                                             <input type="file" ref={fileInputRef} hidden multiple onChange={handleAddSlide} accept="image/*" />
-                                            <MdAdd size={32} className="text-gray-300 group-hover:text-blue-400 transition" />
-                                            <span className="text-[10px] font-bold text-gray-400 mt-2 uppercase group-hover:text-blue-500">Add Slides</span>
+                                            <MdAdd size={32} className="text-gray-300 group-hover:text-primary-400 transition" />
+                                            <span className="text-[10px] font-bold text-gray-400 mt-2 uppercase group-hover:text-primary-500">Add Slides</span>
                                         </button>
                                     </div>
                                 </SortableContext>
@@ -748,7 +748,7 @@ const HomeBanners = () => {
                                                     onClick={() => setFormData({...formData, content: {...formData.content, targetType: type}})}
                                                     className={`flex-1 py-2 px-2 rounded-lg text-[10px] font-bold transition ${
                                                         (formData.content.targetType || 'product') === type
-                                                            ? type === 'product' ? 'bg-blue-100 text-blue-700 border border-blue-200'
+                                                            ? type === 'product' ? 'bg-primary-100 text-primary-700 border border-primary-200'
                                                                 : type === 'offer' ? 'bg-green-100 text-green-700 border border-green-200'
                                                                     : 'bg-purple-100 text-purple-700 border border-purple-200'
                                                             : 'bg-gray-50 text-gray-400 border border-transparent'
@@ -771,7 +771,7 @@ const HomeBanners = () => {
                                             <select
                                                 value={formData.content.linkedOffer || ''}
                                                 onChange={(e) => setFormData({...formData, content: {...formData.content, linkedOffer: e.target.value}})}
-                                                className="w-full p-2.5 text-xs border border-gray-200 rounded-lg bg-white text-gray-800 outline-none focus:ring-2 focus:ring-blue-100"
+                                                className="w-full p-2.5 text-xs border border-gray-200 rounded-lg bg-white text-gray-800 outline-none focus:ring-2 focus:ring-primary-100"
                                             >
                                                 <option value="">Select an Offer...</option>
                                                 {offers.map(offer => (
@@ -788,7 +788,7 @@ const HomeBanners = () => {
                                                 className="w-full p-2.5 text-xs bg-white border border-gray-200 rounded-lg text-left hover:bg-gray-50 truncate text-gray-800 flex justify-between items-center"
                                             >
                                                 <span>{formData.content.linkedProduct ? formData.content.linkedProduct.name : 'Select a Product...'}</span>
-                                                <span className="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">BROWSE</span>
+                                                <span className="text-[10px] font-bold text-primary-600 bg-primary-50 px-2 py-0.5 rounded">BROWSE</span>
                                             </button>
                                         )}
                                         {formData.content.targetType === 'url' && (

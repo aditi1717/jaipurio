@@ -20,7 +20,7 @@ const AdminNotifications = () => {
             case 'order':
                 return <MdCheckCircle className="text-green-600" size={16} />;
             case 'return':
-                return <MdInfo className="text-blue-600" size={16} />;
+                return <MdInfo className="text-primary-600" size={16} />;
             case 'stock':
                 return <MdError className="text-red-600" size={16} />;
             default:
@@ -33,7 +33,7 @@ const AdminNotifications = () => {
             case 'order':
                 return 'bg-green-50 text-green-700 border-green-200';
             case 'return':
-                return 'bg-blue-50 text-blue-700 border-blue-200';
+                return 'bg-primary-50 text-primary-700 border-primary-200';
             case 'stock':
                 return 'bg-red-50 text-red-700 border-red-200';
             default:
@@ -138,7 +138,7 @@ const AdminNotifications = () => {
                                 paginatedNotifications.map((notification, index) => (
                                     <tr
                                         key={notification._id}
-                                        className={`transition-colors hover:bg-gray-50 ${notification.isRead ? 'bg-white' : 'bg-blue-50/30'}`}
+                                        className={`transition-colors hover:bg-gray-50 ${notification.isRead ? 'bg-white' : 'bg-primary-50/30'}`}
                                         onClick={() => {
                                             if (!notification.isRead) {
                                                 markAsRead(notification._id);
@@ -163,7 +163,7 @@ const AdminNotifications = () => {
                                             </span>
                                         </td>
                                         <td className="px-5 py-3 text-center">
-                                            <span className={`inline-flex rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] ${notification.isRead ? 'bg-gray-100 text-gray-600' : 'bg-blue-100 text-blue-700'}`}>
+                                            <span className={`inline-flex rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] ${notification.isRead ? 'bg-gray-100 text-gray-600' : 'bg-primary-100 text-primary-700'}`}>
                                                 {notification.isRead ? 'Read' : 'Unread'}
                                             </span>
                                         </td>

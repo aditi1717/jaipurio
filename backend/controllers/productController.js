@@ -1457,7 +1457,7 @@ export const exportProductTemplate = async (req, res) => {
 
         sheet.mergeCells('A1:I1');
         const title = sheet.getCell('A1');
-        title.value = 'IndianKart Bulk Product Upload';
+        title.value = 'Jaipurio Bulk Product Upload';
         title.font = { name: 'Arial', size: 16, bold: true, color: { argb: 'FFFFFF' } };
         title.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: '1E3A8A' } };
         title.alignment = { vertical: 'middle', horizontal: 'center' };
@@ -1674,7 +1674,7 @@ export const exportB2BExcel = async (req, res) => {
 
         worksheet.mergeCells('A1:E1');
         const title = worksheet.getCell('A1');
-        title.value = 'IndianKart B2B Access Sheet';
+        title.value = 'Jaipurio B2B Access Sheet';
         title.font = { name: 'Arial', size: 16, bold: true, color: { argb: 'FFFFFF' } };
         title.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: '1E3A8A' } };
         title.alignment = { vertical: 'middle', horizontal: 'center' };

@@ -199,7 +199,7 @@ const BannerForm = ({ banner, onClose }) => {
                         <select
                             value={formData.section}
                             onChange={(e) => setFormData({ ...formData, section: e.target.value })}
-                            className="w-full p-2 border border-gray-300 rounded-lg outline-none focus:border-blue-500"
+                            className="w-full p-2 border border-gray-300 rounded-lg outline-none focus:border-primary-500"
                         >
                             {sections.map(s => <option key={s} value={s}>{s}</option>)}
                         </select>
@@ -212,7 +212,7 @@ const BannerForm = ({ banner, onClose }) => {
                             <button
                                 type="button"
                                 onClick={addSlide}
-                                className="text-sm flex items-center gap-1 text-blue-600 font-semibold hover:bg-blue-50 px-3 py-1 rounded-lg transition"
+                                className="text-sm flex items-center gap-1 text-primary-600 font-semibold hover:bg-primary-50 px-3 py-1 rounded-lg transition"
                             >
                                 <MdAdd size={16} /> Add Slide
                             </button>
@@ -244,7 +244,7 @@ const BannerForm = ({ banner, onClose }) => {
                                         ) : (
                                             <>
                                                 <label className="text-xs font-semibold text-gray-500 mb-1 block">Banner Image</label>
-                                                <div className="border-2 border-dashed border-gray-300 rounded-lg h-32 flex items-center justify-center relative bg-white overflow-hidden hover:border-blue-400 transition">
+                                                <div className="border-2 border-dashed border-gray-300 rounded-lg h-32 flex items-center justify-center relative bg-white overflow-hidden hover:border-primary-400 transition">
                                                     <input
                                                         type="file"
                                                         className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
@@ -274,7 +274,7 @@ const BannerForm = ({ banner, onClose }) => {
                                                         type="radio"
                                                         checked={slide.targetType === 'product'}
                                                         onChange={() => updateSlide(index, { targetType: 'product' })}
-                                                        className="text-blue-600"
+                                                        className="text-primary-600"
                                                     />
                                                     Product
                                                 </label>
@@ -283,7 +283,7 @@ const BannerForm = ({ banner, onClose }) => {
                                                         type="radio"
                                                         checked={slide.targetType === 'offer'}
                                                         onChange={() => updateSlide(index, { targetType: 'offer' })}
-                                                        className="text-blue-600"
+                                                        className="text-primary-600"
                                                     />
                                                     Offer
                                                 </label>
@@ -292,7 +292,7 @@ const BannerForm = ({ banner, onClose }) => {
                                                         type="radio"
                                                         checked={slide.targetType === 'url'}
                                                         onChange={() => updateSlide(index, { targetType: 'url' })}
-                                                        className="text-blue-600"
+                                                        className="text-primary-600"
                                                     />
                                                     URL
                                                 </label>
@@ -303,7 +303,7 @@ const BannerForm = ({ banner, onClose }) => {
                                             <select
                                                 value={slide.targetValue}
                                                 onChange={(e) => updateSlide(index, { targetValue: e.target.value })}
-                                                className="w-full p-2 text-sm border border-gray-300 rounded-lg outline-none focus:border-blue-500 bg-white"
+                                                className="w-full p-2 text-sm border border-gray-300 rounded-lg outline-none focus:border-primary-500 bg-white"
                                             >
                                                 <option value="">Select Product...</option>
                                                 {productOptions.map(p => (
@@ -314,7 +314,7 @@ const BannerForm = ({ banner, onClose }) => {
                                             <select
                                                 value={slide.linkedOffer || ''}
                                                 onChange={(e) => updateSlide(index, { linkedOffer: e.target.value })}
-                                                className="w-full p-2 text-sm border border-gray-300 rounded-lg outline-none focus:border-blue-500 bg-white"
+                                                className="w-full p-2 text-sm border border-gray-300 rounded-lg outline-none focus:border-primary-500 bg-white"
                                             >
                                                 <option value="">Select Offer...</option>
                                                 {offers.map(offer => (
@@ -329,7 +329,7 @@ const BannerForm = ({ banner, onClose }) => {
                                                 placeholder="/path"
                                                 value={slide.targetValue}
                                                 onChange={(e) => updateSlide(index, { targetValue: e.target.value })}
-                                                className="w-full p-2 text-sm border border-gray-300 rounded-lg outline-none focus:border-blue-500 bg-white"
+                                                className="w-full p-2 text-sm border border-gray-300 rounded-lg outline-none focus:border-primary-500 bg-white"
                                             />
                                         )}
                                     </div>
@@ -340,7 +340,7 @@ const BannerForm = ({ banner, onClose }) => {
                         <button
                             type="button"
                             onClick={addSlide}
-                            className="w-full py-3 border-2 border-dashed border-gray-200 rounded-xl text-gray-500 hover:border-blue-400 hover:text-blue-500 hover:bg-blue-50 transition flex items-center justify-center gap-2 font-medium"
+                            className="w-full py-3 border-2 border-dashed border-gray-200 rounded-xl text-gray-500 hover:border-primary-400 hover:text-primary-500 hover:bg-primary-50 transition flex items-center justify-center gap-2 font-medium"
                         >
                             <MdAdd size={20} /> Add Another Slide
                         </button>
@@ -353,7 +353,7 @@ const BannerForm = ({ banner, onClose }) => {
                                 type="checkbox"
                                 checked={formData.active}
                                 onChange={(e) => setFormData({ ...formData, active: e.target.checked })}
-                                className="w-4 h-4 text-blue-600"
+                                className="w-4 h-4 text-primary-600"
                             />
                             <span className="text-sm font-medium text-gray-700">Collection is Active</span>
                         </label>
@@ -363,7 +363,7 @@ const BannerForm = ({ banner, onClose }) => {
                 <div className="p-4 border-t border-gray-100 bg-gray-50">
                     <button
                         onClick={handleSubmit}
-                        className="w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700 transition"
+                        className="w-full bg-primary-600 text-white py-3 rounded-xl font-bold hover:bg-primary-700 transition"
                     >
                         {banner ? 'Save Changes' : 'Create Collection'}
                     </button>

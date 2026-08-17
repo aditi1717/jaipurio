@@ -119,7 +119,7 @@ const ProductCard = ({ product, footerText }) => {
 
                 {/* Offer/Footer Text */}
                 {displayFooterText && (
-                    <p className="text-[10px] md:text-xs font-bold text-blue-600 line-clamp-1">
+                    <p className="text-[10px] md:text-xs font-bold text-primary-600 line-clamp-1">
                         {displayFooterText}
                     </p>
                 )}

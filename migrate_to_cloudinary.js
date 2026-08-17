@@ -28,7 +28,7 @@ async function migrateImages() {
         for (const sub of subs) {
             console.log(`Uploading image for subcategory: ${sub.name}`);
             const result = await cloudinary.v2.uploader.upload(sub.image, {
-                folder: 'indiankart/subcategories'
+                folder: 'jaipurio/subcategories'
             });
             sub.image = result.secure_url;
             await sub.save();
@@ -53,7 +53,7 @@ async function migrateImages() {
                     if (cat.smallBanners[i].image && cat.smallBanners[i].image.startsWith('data:image')) {
                         console.log(`Uploading small banner ${i} for ${cat.name}`);
                         const result = await cloudinary.v2.uploader.upload(cat.smallBanners[i].image, {
-                            folder: 'indiankart/banners/small'
+                            folder: 'jaipurio/banners/small'
                         });
                         cat.smallBanners[i].image = result.secure_url;
                         updated = true;
@@ -66,7 +66,7 @@ async function migrateImages() {
                     if (cat.secondaryBanners[i].image && cat.secondaryBanners[i].image.startsWith('data:image')) {
                         console.log(`Uploading secondary banner ${i} for ${cat.name}`);
                         const result = await cloudinary.v2.uploader.upload(cat.secondaryBanners[i].image, {
-                            folder: 'indiankart/banners/secondary'
+                            folder: 'jaipurio/banners/secondary'
                         });
                         cat.secondaryBanners[i].image = result.secure_url;
                         updated = true;

@@ -276,7 +276,7 @@ const StockManagement = () => {
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
                     <h1 className="text-2xl font-black text-gray-900 tracking-tight flex items-center gap-2">
-                        <MdInventory className="text-blue-600" /> Stock Management
+                        <MdInventory className="text-primary-600" /> Stock Management
                     </h1>
                     <p className="text-sm text-gray-500 font-medium">Update inventory levels for products and variants</p>
                 </div>
@@ -293,7 +293,7 @@ const StockManagement = () => {
                         type="button"
                         onClick={handleExport}
                         disabled={exporting || loading}
-                        className="flex items-center gap-2 px-4 py-2.5 bg-blue-50 text-blue-600 hover:bg-blue-100 disabled:opacity-50 disabled:cursor-not-allowed rounded-xl transition-all font-bold text-sm border border-blue-100 shadow-sm"
+                        className="flex items-center gap-2 px-4 py-2.5 bg-primary-50 text-primary-600 hover:bg-primary-100 disabled:opacity-50 disabled:cursor-not-allowed rounded-xl transition-all font-bold text-sm border border-primary-100 shadow-sm"
                     >
                         <MdFileDownload size={20} /> Export Excel
                     </button>
@@ -321,7 +321,7 @@ const StockManagement = () => {
                         <input
                             type="text"
                             placeholder="Search products by name or brand..."
-                            className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-transparent rounded-xl focus:bg-white focus:border-blue-500 outline-none transition-all text-sm font-medium text-gray-900 placeholder:text-gray-500"
+                            className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-transparent rounded-xl focus:bg-white focus:border-primary-500 outline-none transition-all text-sm font-medium text-gray-900 placeholder:text-gray-500"
                             value={searchTerm}
                             onChange={handleSearchChange}
                         />
@@ -333,7 +333,7 @@ const StockManagement = () => {
                         <select
                             value={itemsPerPage}
                             onChange={handleItemsPerPageChange}
-                            className="w-full px-3 py-2.5 bg-gray-50 border border-transparent rounded-xl focus:bg-white focus:border-blue-500 outline-none transition-all text-sm font-semibold text-gray-700 cursor-pointer"
+                            className="w-full px-3 py-2.5 bg-gray-50 border border-transparent rounded-xl focus:bg-white focus:border-primary-500 outline-none transition-all text-sm font-semibold text-gray-700 cursor-pointer"
                         >
                             <option value={10}>10 items</option>
                             <option value={20}>20 items</option>
@@ -350,7 +350,7 @@ const StockManagement = () => {
                         <select
                             value={selectedCategory}
                             onChange={handleCategoryChange}
-                            className="px-3 py-2 bg-gray-50 border border-transparent rounded-xl focus:bg-white focus:border-blue-500 outline-none transition-all text-sm font-semibold text-gray-700 cursor-pointer animate-none"
+                            className="px-3 py-2 bg-gray-50 border border-transparent rounded-xl focus:bg-white focus:border-primary-500 outline-none transition-all text-sm font-semibold text-gray-700 cursor-pointer animate-none"
                         >
                             <option value="All">All Categories</option>
                             {categories.map((cat) => (
@@ -366,7 +366,7 @@ const StockManagement = () => {
                         <select
                             value={selectedSubCategory}
                             onChange={handleSubCategoryChange}
-                            className="px-3 py-2 bg-gray-50 border border-transparent rounded-xl focus:bg-white focus:border-blue-500 outline-none transition-all text-sm font-semibold text-gray-700 cursor-pointer animate-none"
+                            className="px-3 py-2 bg-gray-50 border border-transparent rounded-xl focus:bg-white focus:border-primary-500 outline-none transition-all text-sm font-semibold text-gray-700 cursor-pointer animate-none"
                         >
                             <option value="All">All Subcategories</option>
                             {filteredSubCategories.map((sub) => (
@@ -382,7 +382,7 @@ const StockManagement = () => {
                         <select
                             value={stockStatusFilter}
                             onChange={handleStockStatusChange}
-                            className="px-3 py-2 bg-gray-50 border border-transparent rounded-xl focus:bg-white focus:border-blue-500 outline-none transition-all text-sm font-semibold text-gray-700 cursor-pointer animate-none"
+                            className="px-3 py-2 bg-gray-50 border border-transparent rounded-xl focus:bg-white focus:border-primary-500 outline-none transition-all text-sm font-semibold text-gray-700 cursor-pointer animate-none"
                         >
                             <option value="All">All Levels</option>
                             <option value="In Stock">In Stock (&gt; 5)</option>
@@ -428,7 +428,7 @@ const StockManagement = () => {
                             ) : (
                                 products.map(product => (
                                     <React.Fragment key={product.id}>
-                                        <tr className={`hover:bg-blue-50/10 transition-colors group ${expandedProduct === product.id ? 'bg-blue-50/30' : ''}`}>
+                                        <tr className={`hover:bg-primary-50/10 transition-colors group ${expandedProduct === product.id ? 'bg-primary-50/30' : ''}`}>
                                             <td className="px-4 py-3.5">
                                                 <div className="flex items-center gap-3">
                                                     <div className="h-10 w-10 rounded-lg bg-gray-50 border border-gray-100 overflow-hidden flex-shrink-0">
@@ -450,7 +450,7 @@ const StockManagement = () => {
                                                     <button
                                                         type="button"
                                                         onClick={() => setExpandedProduct(expandedProduct === product.id ? null : product.id)}
-                                                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-[0.14em] hover:bg-blue-100 transition-all border border-blue-100 shadow-sm"
+                                                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary-50 text-primary-600 text-[10px] font-black uppercase tracking-[0.14em] hover:bg-primary-100 transition-all border border-primary-100 shadow-sm"
                                                     >
                                                         {product.skus.length} variants
                                                         {expandedProduct === product.id ? <MdExpandLess /> : <MdExpandMore />}
@@ -466,7 +466,7 @@ const StockManagement = () => {
                                                         disabled={product.skus && product.skus.length > 0}
                                                         className={`w-16 px-2 py-1.5 text-center rounded-lg border-2 font-black text-sm transition-all outline-none ${product.skus && product.skus.length > 0
                                                                 ? 'bg-gray-100 border-transparent text-gray-400 cursor-not-allowed'
-                                                                : 'bg-white border-blue-50 focus:border-blue-500 text-gray-900 group-hover:shadow-lg'
+                                                                : 'bg-white border-primary-50 focus:border-primary-500 text-gray-900 group-hover:shadow-lg'
                                                             }`}
                                                         value={
                                                             editingStock[product.id] ??
@@ -488,7 +488,7 @@ const StockManagement = () => {
                                                         onClick={() => updateStock(product)}
                                                         disabled={editingStock[product.id] === undefined}
                                                         className={`p-2 rounded-lg transition-all shadow-sm border ${editingStock[product.id] !== undefined
-                                                                ? 'bg-blue-600 text-white border-blue-700 hover:scale-105 active:scale-95'
+                                                                ? 'bg-primary-600 text-white border-primary-700 hover:scale-105 active:scale-95'
                                                                 : 'bg-gray-50 text-gray-300 border-transparent cursor-not-allowed'
                                                             }`}
                                                     >
@@ -500,7 +500,7 @@ const StockManagement = () => {
 
                                         {/* Variant Rows */}
                                         {expandedProduct === product.id && product.skus?.map((sku, idx) => (
-                                            <tr key={`${product.id}-${idx}`} className="bg-gray-50/80 animate-in slide-in-from-top-2 duration-300 border-l-4 border-blue-500">
+                                            <tr key={`${product.id}-${idx}`} className="bg-gray-50/80 animate-in slide-in-from-top-2 duration-300 border-l-4 border-primary-500">
                                                 <td className="pl-14 pr-4 py-3" colSpan={2}>
                                                     <div className="flex items-center gap-3">
                                                         <div className="flex flex-wrap gap-2">
@@ -518,7 +518,7 @@ const StockManagement = () => {
                                                     <div className="flex items-center justify-center gap-2">
                                                         <input
                                                             type="number"
-                                                            className="w-16 px-2 py-1.5 text-center rounded-lg border-2 bg-white border-blue-100 focus:border-blue-500 text-gray-900 font-black text-sm transition-all outline-none"
+                                                            className="w-16 px-2 py-1.5 text-center rounded-lg border-2 bg-white border-primary-100 focus:border-primary-500 text-gray-900 font-black text-sm transition-all outline-none"
                                                             value={editingStock[`${product.id}-${idx}`] ?? sku.stock}
                                                             onChange={(e) => handleStockChange(`${product.id}-${idx}`, e.target.value)}
                                                         />
@@ -530,7 +530,7 @@ const StockManagement = () => {
                                                         onClick={() => updateStock(product, true, idx)}
                                                         disabled={editingStock[`${product.id}-${idx}`] === undefined}
                                                         className={`p-2 rounded-lg transition-all shadow-sm border ${editingStock[`${product.id}-${idx}`] !== undefined
-                                                                ? 'bg-blue-600 text-white border-blue-700 hover:scale-105 active:scale-95'
+                                                                ? 'bg-primary-600 text-white border-primary-700 hover:scale-105 active:scale-95'
                                                                 : 'bg-gray-50 text-gray-300 border-transparent cursor-not-allowed'
                                                             }`}
                                                     >
@@ -572,7 +572,7 @@ const StockManagement = () => {
                         {/* Modal Header */}
                         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-gray-50/50">
                             <h3 className="text-lg font-black text-gray-900 flex items-center gap-2">
-                                <MdInventory className="text-blue-600" /> Stock Import Report
+                                <MdInventory className="text-primary-600" /> Stock Import Report
                             </h3>
                             <button
                                 onClick={() => setShowResultModal(false)}

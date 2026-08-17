@@ -1,4 +1,4 @@
-import express from 'express'; // Reload trigger 5
+import express from 'express'; // Reload trigger 6
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -74,8 +74,8 @@ const allowedOrigins = process.env.ALLOWED_ORIGINS
         'http://localhost:5173',
         'http://127.0.0.1:5173',
         'https://flipkart-6t6p.vercel.app',
-        'https://indiankart.in',
-        'https://www.indiankart.in'
+        'https://jaipurio.in',
+        'https://www.jaipurio.in'
     ];
 
 const allowedOriginSet = new Set(

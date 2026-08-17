@@ -129,7 +129,7 @@ const defaultConfig = {
         },
         {
             id: 'rewards',
-            title: 'IndianKart Rewards',
+            title: 'Jaipurio Rewards',
             icon: 'stars',
             desc: 'Coins & loyalty benefits',
             faqs: [
@@ -287,7 +287,7 @@ const HelpCenterContentManager = () => {
                     <button
                         onClick={saveDraft}
                         disabled={isLoading}
-                        className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 text-sm font-semibold disabled:opacity-60"
+                        className="px-4 py-2 rounded-lg bg-primary-600 text-white hover:bg-primary-700 text-sm font-semibold disabled:opacity-60"
                     >
                         {isLoading ? 'Saving...' : 'Save Changes'}
                     </button>
@@ -335,7 +335,7 @@ const HelpCenterContentManager = () => {
                         <h2 className="text-sm font-bold text-gray-800">Categories</h2>
                         <button
                             onClick={addCategory}
-                            className="text-xs px-2 py-1 bg-blue-50 text-blue-700 rounded-md flex items-center gap-1"
+                            className="text-xs px-2 py-1 bg-primary-50 text-primary-700 rounded-md flex items-center gap-1"
                         >
                             <MdAdd /> Add
                         </button>
@@ -345,7 +345,7 @@ const HelpCenterContentManager = () => {
                             <button
                                 key={cat.id}
                                 onClick={() => setSelectedCategoryId(cat.id)}
-                                className={`w-full text-left border rounded-lg px-3 py-2 transition ${selectedCategoryId === cat.id ? 'border-blue-300 bg-blue-50' : 'border-gray-200 hover:bg-gray-50'}`}
+                                className={`w-full text-left border rounded-lg px-3 py-2 transition ${selectedCategoryId === cat.id ? 'border-primary-300 bg-primary-50' : 'border-gray-200 hover:bg-gray-50'}`}
                             >
                                 <div className="flex items-center justify-between">
                                     <span className="text-sm font-semibold text-gray-800">{cat.title || 'Untitled'}</span>
@@ -394,7 +394,7 @@ const HelpCenterContentManager = () => {
                                             ))}
                                         </select>
                                         <div className="w-10 h-10 rounded-lg border border-gray-200 bg-gray-50 flex items-center justify-center">
-                                            <span className="material-icons text-blue-600 text-[20px]">
+                                            <span className="material-icons text-primary-600 text-[20px]">
                                                 {selectedCategory.icon || 'help'}
                                             </span>
                                         </div>

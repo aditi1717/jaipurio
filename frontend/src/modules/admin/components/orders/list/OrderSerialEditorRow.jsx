@@ -21,7 +21,7 @@ const OrderSerialEditorRow = ({
                         {variantDetails.map((detail) => (
                             <span
                                 key={detail}
-                                className="rounded-full border border-blue-100 bg-blue-50 px-2 py-0.5 text-[9px] font-black uppercase tracking-wide text-blue-700"
+                                className="rounded-full border border-primary-100 bg-primary-50 px-2 py-0.5 text-[9px] font-black uppercase tracking-wide text-primary-700"
                             >
                                 {detail}
                             </span>

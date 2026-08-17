@@ -245,7 +245,7 @@ const PageManager = () => {
                         </div>
                         <button
                             onClick={startCreatingPage}
-                            className="px-4 py-2.5 rounded-2xl bg-blue-600 text-white font-black text-sm flex items-center gap-2 hover:bg-blue-700 transition-colors"
+                            className="px-4 py-2.5 rounded-2xl bg-primary-600 text-white font-black text-sm flex items-center gap-2 hover:bg-primary-700 transition-colors"
                         >
                             <MdAdd size={18} />
                             Add Page
@@ -272,7 +272,7 @@ const PageManager = () => {
                                                 {page.title || formatTitle(page)}
                                             </p>
                                             <p className="text-[11px] text-gray-500 mt-1 break-all">{buildPageHref(page.pageKey)}</p>
-                                            <p className="text-[10px] font-bold text-blue-600 mt-2 uppercase tracking-wider">
+                                            <p className="text-[10px] font-bold text-primary-600 mt-2 uppercase tracking-wider">
                                                 Fixed link
                                             </p>
                                         </div>
@@ -319,7 +319,7 @@ const PageManager = () => {
                                                     </p>
                                                     <p className="text-[11px] text-gray-500 mt-1 break-all">{buildPageHref(page.pageKey)}</p>
                                                     {page.showInMobileProfile && (
-                                                        <p className="text-[10px] font-bold text-blue-600 mt-2 uppercase tracking-wider">
+                                                        <p className="text-[10px] font-bold text-primary-600 mt-2 uppercase tracking-wider">
                                                             Show in mobile profile
                                                         </p>
                                                     )}
@@ -382,7 +382,7 @@ const PageManager = () => {
                             <button
                                 onClick={handleSave}
                                 disabled={isSaving || isLoading}
-                                className="px-4 py-2.5 rounded-2xl bg-blue-600 text-white font-black text-sm flex items-center gap-2 hover:bg-blue-700 disabled:opacity-60"
+                                className="px-4 py-2.5 rounded-2xl bg-primary-600 text-white font-black text-sm flex items-center gap-2 hover:bg-primary-700 disabled:opacity-60"
                             >
                                 <MdSave size={18} />
                                 {isSaving || isLoading ? 'Saving...' : 'Save Page'}
@@ -402,14 +402,14 @@ const PageManager = () => {
                                     onChange={(e) => handleDraftChange('title', e.target.value)}
                                     placeholder="e.g. Careers"
                                     disabled={isFixedPageEditing}
-                                    className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-900 outline-none focus:border-blue-500"
+                                    className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-900 outline-none focus:border-primary-500"
                                 />
                             </div>
                             <div>
                                 <label className="block text-xs font-black uppercase tracking-widest text-gray-400 mb-2">
                                     Page Link
                                 </label>
-                                <div className="flex items-center gap-2 rounded-2xl border border-gray-200 bg-white px-4 py-3 focus-within:border-blue-500">
+                                <div className="flex items-center gap-2 rounded-2xl border border-gray-200 bg-white px-4 py-3 focus-within:border-primary-500">
                                     <MdLink size={18} className="text-gray-400 shrink-0" />
                                     <span className="text-xs font-bold text-gray-400 shrink-0">/info?type=dynamic&key=</span>
                                     <input
@@ -442,7 +442,7 @@ const PageManager = () => {
                                 checked={draft.showInMobileProfile}
                                 onChange={(e) => handleDraftChange('showInMobileProfile', e.target.checked)}
                                 disabled={isFixedPageEditing}
-                                className="w-4 h-4 accent-blue-600"
+                                className="w-4 h-4 accent-primary-600"
                             />
                             <div>
                                 <p className="text-sm font-semibold text-gray-900">Show in mobile profile page</p>

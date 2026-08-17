@@ -41,7 +41,7 @@ const buildShipmentPayload = (order, settings) => {
         shippingAddress?.city,
         shippingAddress?.state
     ].filter(Boolean).join(', '));
-    const sellerName = sanitizeText(settings?.sellerName || 'IndianKart');
+    const sellerName = sanitizeText(settings?.sellerName || 'Jaipurio');
     const sellerAddress = sanitizeText(settings?.sellerAddress || 'Store Address');
     const totalAmount = Number(order?.totalPrice || 0);
     const paymentMode = getPaymentMode(order);
@@ -291,7 +291,7 @@ const buildReversePickupPayload = (returnRequest, order, settings) => {
         [pickupFrom.address || shippingAddress.street, city, state].filter(Boolean).join(', ')
     );
 
-    const sellerName = sanitizeText(settings?.sellerName || 'IndianKart');
+    const sellerName = sanitizeText(settings?.sellerName || 'Jaipurio');
     const sellerAddress = sanitizeText(settings?.sellerAddress || 'Store Address');
     const reference = sanitizeText(returnRequest?.id || returnRequest?._id || '');
     const quantity = Math.max(1, Number(returnRequest?.requestedQuantity) || 1);

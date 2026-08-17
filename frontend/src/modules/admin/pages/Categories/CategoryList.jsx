@@ -61,7 +61,7 @@ const CategoryList = () => {
                 </div>
                 <button
                     onClick={() => setShowForm(true)}
-                    className="flex items-center gap-1 md:gap-2 bg-blue-600 text-white px-3 py-2 md:px-4 md:py-2 rounded-lg hover:bg-blue-700 transition text-xs md:text-base font-bold"
+                    className="flex items-center gap-1 md:gap-2 bg-primary-600 text-white px-3 py-2 md:px-4 md:py-2 rounded-lg hover:bg-primary-700 transition text-xs md:text-base font-bold"
                 >
                     <MdAdd size={16} className="md:w-5 md:h-5" />
                     Add Category
@@ -76,7 +76,7 @@ const CategoryList = () => {
 
                 {isLoading ? (
                     <div className="p-12 text-center">
-                        <div className="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                        <div className="w-10 h-10 border-4 border-primary-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
                         <p className="text-gray-500 font-medium">Loading categories...</p>
                     </div>
                 ) : error ? (
@@ -132,7 +132,7 @@ const CategoryList = () => {
 
                                         <button
                                             onClick={() => handleEdit(category)}
-                                            className="p-1.5 md:p-2 hover:bg-blue-50 rounded-lg text-blue-600 transition"
+                                            className="p-1.5 md:p-2 hover:bg-primary-50 rounded-lg text-primary-600 transition"
                                             title="Edit"
                                         >
                                             <MdEdit size={16} className="md:w-[18px] md:h-[18px]" />

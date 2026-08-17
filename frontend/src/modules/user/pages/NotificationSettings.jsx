@@ -56,17 +56,17 @@ const NotificationSettings = () => {
                 <div className="hidden md:block w-[280px] shrink-0 space-y-4">
                     {/* Breadcrumbs */}
                     <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
-                        <span onClick={() => navigate('/')} className="cursor-pointer hover:text-blue-600">Home</span>
+                        <span onClick={() => navigate('/')} className="cursor-pointer hover:text-primary-600">Home</span>
                         <span className="material-icons text-[10px]">chevron_right</span>
-                        <span onClick={() => navigate('/account')} className="cursor-pointer hover:text-blue-600">My Account</span>
+                        <span onClick={() => navigate('/account')} className="cursor-pointer hover:text-primary-600">My Account</span>
                         <span className="material-icons text-[10px]">chevron_right</span>
                         <span className="text-gray-800 font-bold">Notifications</span>
                     </div>
 
                     <div className="bg-white p-4 shadow-sm rounded-sm">
                         <div className="flex items-center gap-3 mb-4">
-                            <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center">
-                                <span className="material-icons text-blue-600">notifications</span>
+                            <div className="w-10 h-10 rounded-full bg-primary-50 flex items-center justify-center">
+                                <span className="material-icons text-primary-600">notifications</span>
                             </div>
                             <div>
                                 <p className="text-sm font-bold text-gray-800">Notification Preferences</p>
@@ -91,7 +91,7 @@ const NotificationSettings = () => {
                                     <div key={item.id} className="p-4 flex items-start justify-between gap-4 active:bg-gray-50 transition-colors md:px-6 md:py-5 md:hover:bg-gray-50/50">
                                         <div className="flex gap-4">
                                             <div className="mt-1">
-                                                <span className="material-icons text-blue-600 opacity-80 md:text-2xl">{item.icon}</span>
+                                                <span className="material-icons text-primary-600 opacity-80 md:text-2xl">{item.icon}</span>
                                             </div>
                                             <div className="flex flex-col">
                                                 <span className="text-sm font-bold text-gray-800 md:text-base">{item.label}</span>
@@ -100,7 +100,7 @@ const NotificationSettings = () => {
                                         </div>
                                         <button
                                             onClick={() => toggleSetting(item.id)}
-                                            className={`w-12 h-6 rounded-full relative transition-all duration-300 flex-shrink-0 cursor-pointer ${settings[item.id] ? 'bg-blue-600' : 'bg-gray-200'}`}
+                                            className={`w-12 h-6 rounded-full relative transition-all duration-300 flex-shrink-0 cursor-pointer ${settings[item.id] ? 'bg-primary-600' : 'bg-gray-200'}`}
                                         >
                                             <div className={`absolute top-1 w-4 h-4 rounded-full bg-white transition-all duration-300 shadow-sm ${settings[item.id] ? 'right-1' : 'left-1'}`}></div>
                                         </button>
@@ -112,7 +112,7 @@ const NotificationSettings = () => {
 
                     <div className="p-4 mt-4">
                         <p className="text-[10px] text-gray-400 text-center uppercase tracking-widest font-bold">
-                            IndianKart Private Limited
+                            Jaipurio Private Limited
                         </p>
                     </div>
                 </div>

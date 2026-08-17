@@ -248,7 +248,7 @@ const ProductViews = () => {
     if (loading && !portalInsights) {
         return (
             <div className="flex min-h-[450px] flex-col items-center justify-center space-y-4 py-20 bg-gray-50/50 rounded-3xl border border-dashed border-gray-200">
-                <div className="h-12 w-12 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
+                <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary-500 border-t-transparent"></div>
                 <div className="text-center">
                     <h3 className="text-base font-black text-gray-900 animate-pulse">Calculating Insights...</h3>
                     <p className="mt-1 text-xs font-semibold text-gray-400 uppercase tracking-widest">Aggregating live visitor traffic and funnel stats</p>
@@ -270,7 +270,7 @@ const ProductViews = () => {
                     <select
                         value={dateRange}
                         onChange={(e) => setDateRange(e.target.value)}
-                        className="rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm font-bold text-gray-900 outline-none focus:border-blue-400 focus:bg-white"
+                        className="rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm font-bold text-gray-900 outline-none focus:border-primary-400 focus:bg-white"
                     >
                         {DATE_RANGE_PRESETS.map((preset) => (
                             <option key={preset.value} value={preset.value}>{preset.label}</option>
@@ -283,7 +283,7 @@ const ProductViews = () => {
                                 value={customStart}
                                 max={customEnd || undefined}
                                 onChange={(e) => setCustomStart(e.target.value)}
-                                className="rounded-xl border border-gray-200 bg-gray-50 px-3 py-2.5 text-sm font-bold text-gray-900 outline-none focus:border-blue-400 focus:bg-white"
+                                className="rounded-xl border border-gray-200 bg-gray-50 px-3 py-2.5 text-sm font-bold text-gray-900 outline-none focus:border-primary-400 focus:bg-white"
                             />
                             <span className="text-xs font-black text-gray-400">to</span>
                             <input
@@ -291,7 +291,7 @@ const ProductViews = () => {
                                 value={customEnd}
                                 min={customStart || undefined}
                                 onChange={(e) => setCustomEnd(e.target.value)}
-                                className="rounded-xl border border-gray-200 bg-gray-50 px-3 py-2.5 text-sm font-bold text-gray-900 outline-none focus:border-blue-400 focus:bg-white"
+                                className="rounded-xl border border-gray-200 bg-gray-50 px-3 py-2.5 text-sm font-bold text-gray-900 outline-none focus:border-primary-400 focus:bg-white"
                             />
                         </>
                     )}
@@ -299,7 +299,7 @@ const ProductViews = () => {
                         type="button"
                         disabled={loading}
                         onClick={() => fetchProducts(true)}
-                        className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-blue-700 disabled:opacity-70 transition-opacity"
+                        className="inline-flex items-center gap-2 rounded-xl bg-primary-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-primary-700 disabled:opacity-70 transition-opacity"
                     >
                         <MdRefresh size={18} className={loading ? 'animate-spin' : ''} />
                         {loading ? 'Calculating...' : 'Refresh'}
@@ -343,11 +343,11 @@ const ProductViews = () => {
                     <p className="mt-2 text-3xl font-black text-gray-900">{liveActiveAllUsers.toLocaleString()}</p>
                     <p className="mt-1 text-xs font-semibold text-gray-500">{liveLoggedInUsers} logged in · {liveWindowMinutes}min window</p>
                 </div>
-                <div className="rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50 to-white p-5 shadow-sm">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-600 text-white">
+                <div className="rounded-2xl border border-primary-100 bg-gradient-to-br from-primary-50 to-white p-5 shadow-sm">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary-600 text-white">
                         <MdPeople size={22} />
                     </div>
-                    <p className="mt-4 text-xs font-black uppercase tracking-[0.2em] text-blue-500">
+                    <p className="mt-4 text-xs font-black uppercase tracking-[0.2em] text-primary-500">
                         {isRangeScoped ? 'Visitors In Range' : 'Portal Visitors'}
                     </p>
                     <p className="mt-2 text-3xl font-black text-gray-900">{totalPortalVisitors.toLocaleString()}</p>
@@ -388,8 +388,8 @@ const ProductViews = () => {
             )}
 
             <div className="grid gap-4 md:grid-cols-3">
-                <div className="rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50/20 to-white p-5 shadow-sm">
-                    <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-500">Average Pages Visited</p>
+                <div className="rounded-2xl border border-primary-100 bg-gradient-to-br from-primary-50/20 to-white p-5 shadow-sm">
+                    <p className="text-xs font-black uppercase tracking-[0.2em] text-primary-500">Average Pages Visited</p>
                     <p className="mt-2 text-3xl font-black text-gray-900">{(portalInsights?.engagementStats?.avgPageDepth || 1.0).toLocaleString()} pages</p>
                     <p className="mt-1 text-xs font-semibold text-gray-500">Average number of pages navigated per session</p>
                 </div>
@@ -428,7 +428,7 @@ const ProductViews = () => {
                                 Daily portal visitors and page activity
                             </p>
                         </div>
-                        <MdTimeline className="text-blue-500" size={24} />
+                        <MdTimeline className="text-primary-500" size={24} />
                     </div>
                     <div className="h-[320px] w-full">
                         <ResponsiveContainer width="100%" height="100%">
@@ -534,7 +534,7 @@ const ProductViews = () => {
                                     <div key={entry.state} className="rounded-2xl border border-gray-100 bg-gray-50/80 px-4 py-3">
                                         <div className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">#{index + 1} State</div>
                                         <div className="mt-2 text-base font-black text-gray-900 truncate" title={entry.state}>{entry.state}</div>
-                                        <div className="mt-1 text-sm font-bold text-blue-600">{entry.count.toLocaleString()} views</div>
+                                        <div className="mt-1 text-sm font-bold text-primary-600">{entry.count.toLocaleString()} views</div>
                                     </div>
                                 ))}
                             </div>
@@ -600,9 +600,9 @@ const ProductViews = () => {
                         <div className="mt-2 text-xl font-black text-gray-900">{(portalInsights?.conversionFunnel?.totalSessions || 0).toLocaleString()}</div>
                         <div className="mt-1 text-xs font-semibold text-gray-600">Total Visits</div>
                         <div className="mt-3 h-2 w-full rounded-full bg-gray-100">
-                            <div className="h-full rounded-full bg-blue-500" style={{ width: '100%' }}></div>
+                            <div className="h-full rounded-full bg-primary-500" style={{ width: '100%' }}></div>
                         </div>
-                        <div className="mt-1.5 text-[10px] font-bold text-blue-600">100% Benchmark</div>
+                        <div className="mt-1.5 text-[10px] font-bold text-primary-600">100% Benchmark</div>
                     </div>
 
                     {/* Step 2: Product Views */}
@@ -664,7 +664,7 @@ const ProductViews = () => {
                             <h3 className="text-lg font-black text-gray-900">Page Category Traffic</h3>
                             <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mt-0.5">Traffic share across portal sections</p>
                         </div>
-                        <MdCategory className="text-blue-500" size={24} />
+                        <MdCategory className="text-primary-500" size={24} />
                     </div>
                     
                     <div className="h-[300px] w-full">
@@ -701,7 +701,7 @@ const ProductViews = () => {
                             <h3 className="text-lg font-black text-gray-900">Popular Products</h3>
                             <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mt-0.5">Top 10 most viewed items</p>
                         </div>
-                        <MdBarChart className="text-blue-500" size={24} />
+                        <MdBarChart className="text-primary-500" size={24} />
                     </div>
                     
                     <div className="h-[300px] w-full">
@@ -742,7 +742,7 @@ const ProductViews = () => {
                         <button 
                             type="button"
                             onClick={() => navigate(`/admin/product-views/${getProductId(filteredProducts[0])}`)}
-                            className="text-xs font-black text-blue-600 uppercase tracking-widest hover:underline"
+                            className="text-xs font-black text-primary-600 uppercase tracking-widest hover:underline"
                         >
                             View Full Stats
                         </button>
@@ -797,7 +797,7 @@ const ProductViews = () => {
                                             <tr key={session.sessionId} className="hover:bg-gray-50/50">
                                                 <td className="px-4 py-3.5">
                                                     <div className="flex items-center gap-3">
-                                                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-sm font-bold text-blue-700">
+                                                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 text-sm font-bold text-primary-700">
                                                             {initials}
                                                         </div>
                                                         <div>
@@ -817,7 +817,7 @@ const ProductViews = () => {
                                                 </td>
                                                 <td className="px-4 py-3.5">
                                                     <div className="flex items-center gap-1.5 text-gray-900">
-                                                        <span className="h-2.5 w-2.5 rounded-full bg-blue-500"></span>
+                                                        <span className="h-2.5 w-2.5 rounded-full bg-primary-500"></span>
                                                         <span className="text-sm font-black">{session.state || 'Unknown'}</span>
                                                     </div>
                                                 </td>
@@ -848,7 +848,7 @@ const ProductViews = () => {
                                                                         title={new Date(page.visitedAt).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })}
                                                                         className={`inline-flex items-center rounded-lg px-2 py-1 text-[11px] font-black tracking-wide border cursor-default transition-all duration-200 hover:scale-105 ${
                                                                             idx === session.pagesVisited.length - 1
-                                                                                ? 'bg-blue-600 border-blue-600 text-white font-extrabold shadow-sm'
+                                                                                ? 'bg-primary-600 border-primary-600 text-white font-extrabold shadow-sm'
                                                                                 : 'bg-white border-gray-200 text-gray-700 font-bold'
                                                                         }`}
                                                                     >
@@ -885,7 +885,7 @@ const ProductViews = () => {
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         placeholder="Search by product, brand, or category..."
-                        className="w-full rounded-xl border border-gray-200 bg-gray-50 py-3 pl-11 pr-4 text-sm text-gray-900 outline-none transition focus:border-blue-400 focus:bg-white"
+                        className="w-full rounded-xl border border-gray-200 bg-gray-50 py-3 pl-11 pr-4 text-sm text-gray-900 outline-none transition focus:border-primary-400 focus:bg-white"
                     />
                 </div>
             </div>
@@ -950,13 +950,13 @@ const ProductViews = () => {
                                             <button
                                                 type="button"
                                                 onClick={() => handleViewInsights(product)}
-                                                className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-xs font-black uppercase tracking-wide text-blue-700 hover:bg-blue-100"
+                                                className="inline-flex items-center rounded-full border border-primary-200 bg-primary-50 px-3 py-1.5 text-xs font-black uppercase tracking-wide text-primary-700 hover:bg-primary-100"
                                             >
                                                 View
                                             </button>
                                         </td>
                                         <td className="px-4 py-3 text-right">
-                                            <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-3 py-1 text-sm font-black text-blue-700">
+                                            <span className="inline-flex items-center gap-1 rounded-full bg-primary-50 px-3 py-1 text-sm font-black text-primary-700">
                                                 <MdVisibility size={16} />
                                                 {Number(product?.viewCount || 0).toLocaleString()}
                                             </span>

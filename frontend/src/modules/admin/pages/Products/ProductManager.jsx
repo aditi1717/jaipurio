@@ -408,7 +408,7 @@ const ProductManager = () => {
                         </button>
                         <button
                             onClick={handlePickerSave}
-                            className="flex-1 md:flex-none px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700"
+                            className="flex-1 md:flex-none px-4 py-2 rounded-lg bg-primary-600 text-white text-sm font-semibold hover:bg-primary-700"
                         >
                             Save Selected
                         </button>
@@ -450,7 +450,7 @@ const ProductManager = () => {
                         </button>
                         <button
                             onClick={() => navigate('/admin/products/new')}
-                            className="flex items-center justify-center gap-1 md:gap-2 bg-blue-600 text-white px-3 py-2 md:px-4 md:py-2 rounded-lg hover:bg-blue-700 transition shadow-sm font-medium flex-1 md:flex-none text-xs md:text-base"
+                            className="flex items-center justify-center gap-1 md:gap-2 bg-primary-600 text-white px-3 py-2 md:px-4 md:py-2 rounded-lg hover:bg-primary-700 transition shadow-sm font-medium flex-1 md:flex-none text-xs md:text-base"
                         >
                             <MdAdd size={20} className="w-4 h-4 md:w-5 md:h-5" /> Add Product
                         </button>
@@ -495,7 +495,7 @@ const ProductManager = () => {
                     <input
                         type="text"
                         placeholder="Search products by name or brand..."
-                        className="w-full pl-10 pr-4 py-2 bg-gray-50 border border-transparent rounded-xl md:rounded-2xl focus:bg-white focus:border-blue-500 outline-none transition-all text-sm text-gray-900 placeholder:text-gray-900 font-bold"
+                        className="w-full pl-10 pr-4 py-2 bg-gray-50 border border-transparent rounded-xl md:rounded-2xl focus:bg-white focus:border-primary-500 outline-none transition-all text-sm text-gray-900 placeholder:text-gray-900 font-bold"
                         value={searchTerm}
                         onChange={(e) => {
                             setSearchTerm(e.target.value);
@@ -506,7 +506,7 @@ const ProductManager = () => {
                 <div className="flex items-center gap-2 md:gap-3 w-full md:w-auto">
                     <MdFilterList className="text-gray-400" size={20} />
                     <select
-                        className="px-4 py-2 md:px-6 md:py-3 bg-gray-50 border border-transparent rounded-xl md:rounded-2xl outline-none focus:bg-white focus:border-blue-500 text-sm font-black text-gray-900 min-w-[120px] md:min-w-[150px]"
+                        className="px-4 py-2 md:px-6 md:py-3 bg-gray-50 border border-transparent rounded-xl md:rounded-2xl outline-none focus:bg-white focus:border-primary-500 text-sm font-black text-gray-900 min-w-[120px] md:min-w-[150px]"
                         value={filterCategory}
                         onChange={(e) => {
                             setFilterCategory(e.target.value);
@@ -545,14 +545,14 @@ const ProductManager = () => {
                                 </thead>
                                 <tbody className="divide-y divide-gray-200">
                                     {localProducts.map(product => (
-                                        <tr key={getProductId(product)} className="hover:bg-blue-50/10 transition-colors group">
+                                        <tr key={getProductId(product)} className="hover:bg-primary-50/10 transition-colors group">
                                             {pickerMode && (
                                                 <td className="whitespace-nowrap px-2 py-1.5 md:px-4 md:py-2.5 text-center">
                                                     <input
                                                         type="checkbox"
                                                         checked={pickerSelectedIds.includes(getProductId(product))}
                                                         onChange={(e) => togglePickerSelection(getProductId(product), e.target.checked)}
-                                                        className="h-4 w-4 accent-blue-600"
+                                                        className="h-4 w-4 accent-primary-600"
                                                     />
                                                 </td>
                                             )}
@@ -575,7 +575,7 @@ const ProductManager = () => {
                                             </td>
                                             <td className="whitespace-nowrap md:whitespace-normal px-2 py-1.5 md:px-4 md:py-2.5 text-center">
                                                 <div className="flex flex-col items-center">
-                                                    <span className="inline-block px-2.5 py-1 rounded-full bg-blue-50 text-[10px] font-black text-blue-600 uppercase">
+                                                    <span className="inline-block px-2.5 py-1 rounded-full bg-primary-50 text-[10px] font-black text-primary-600 uppercase">
                                                         {getCategoryLabel(product)}
                                                     </span>
                                                 </div>
@@ -591,7 +591,7 @@ const ProductManager = () => {
                                             </td>
                                             <td className="whitespace-nowrap md:whitespace-normal px-2 py-1.5 md:px-4 md:py-2.5 text-center">
                                                 {String(product.subcategoryBrand || '').trim() ? (
-                                                    <span className="inline-block px-2.5 py-1 rounded-full bg-blue-50 text-[9px] font-bold text-blue-600 uppercase">
+                                                    <span className="inline-block px-2.5 py-1 rounded-full bg-primary-50 text-[9px] font-bold text-primary-600 uppercase">
                                                         {product.subcategoryBrand}
                                                     </span>
                                                 ) : (
@@ -600,12 +600,12 @@ const ProductManager = () => {
                                             </td>
                                             <td className="whitespace-nowrap md:whitespace-normal px-2 py-1.5 md:px-4 md:py-2.5 text-center">
                                                 <div className="flex flex-col items-center">
-                                                    <span className={`text-[11px] font-black uppercase tracking-widest ${(product.stock || 0) <= 5 ? 'text-amber-500 animate-pulse' : 'text-blue-600'}`}>
+                                                    <span className={`text-[11px] font-black uppercase tracking-widest ${(product.stock || 0) <= 5 ? 'text-amber-500 animate-pulse' : 'text-primary-600'}`}>
                                                         {product.stock || 0} Units
                                                     </span>
                                                     <div className="w-16 h-1 bg-gray-100 rounded-full mt-1.5 overflow-hidden">
                                                         <div
-                                                            className={`h-full transition-all duration-1000 ${(product.stock || 0) <= 5 ? 'bg-amber-500' : 'bg-blue-600'}`}
+                                                            className={`h-full transition-all duration-1000 ${(product.stock || 0) <= 5 ? 'bg-amber-500' : 'bg-primary-600'}`}
                                                             style={{ width: `${Math.min(100, (product.stock || 0) * 2)}%` }}
                                                         ></div>
                                                     </div>
@@ -630,7 +630,7 @@ const ProductManager = () => {
                                                         </button>
                                                         <button
                                                             onClick={() => navigate(`/admin/products/edit/${getProductId(product)}`)}
-                                                            className="w-7 h-7 md:w-9 md:h-9 flex items-center justify-center bg-gray-50 hover:bg-blue-600 text-gray-400 hover:text-white rounded-lg md:rounded-xl transition-all shadow-sm border border-transparent hover:border-blue-700"
+                                                            className="w-7 h-7 md:w-9 md:h-9 flex items-center justify-center bg-gray-50 hover:bg-primary-600 text-gray-400 hover:text-white rounded-lg md:rounded-xl transition-all shadow-sm border border-transparent hover:border-primary-700"
                                                             title="Edit Product"
                                                         >
                                                             <MdEdit size={14} className="md:w-[18px] md:h-[18px]" />
@@ -681,7 +681,7 @@ const ProductManager = () => {
                                 </div>
                                 <div className="flex-1 space-y-4">
                                     <div>
-                                        <p className="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-1">{selectedProduct.brand}</p>
+                                        <p className="text-[10px] font-black text-primary-600 uppercase tracking-widest mb-1">{selectedProduct.brand}</p>
                                         <h3 className="text-2xl font-black text-gray-900 leading-tight">{selectedProduct.name}</h3>
                                     </div>
 
@@ -717,7 +717,7 @@ const ProductManager = () => {
                                                 navigate(`/product/${selectedProduct.id}`);
                                                 setSelectedProduct(null);
                                             }}
-                                            className="flex-1 py-3 bg-blue-600 text-white font-black text-xs uppercase tracking-widest rounded-xl hover:bg-blue-700 transition shadow-lg shadow-blue-100"
+                                            className="flex-1 py-3 bg-primary-600 text-white font-black text-xs uppercase tracking-widest rounded-xl hover:bg-primary-700 transition shadow-lg shadow-primary-100"
                                         >
                                             View on Website
                                         </button>

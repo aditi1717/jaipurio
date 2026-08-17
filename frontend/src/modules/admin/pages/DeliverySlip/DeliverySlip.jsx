@@ -68,7 +68,7 @@ const DeliverySlip = () => {
         return (
             <div className="flex items-center justify-center min-h-screen">
                 <div className="text-center">
-                    <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                    <div className="w-16 h-16 border-4 border-primary-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
                     <p className="text-gray-600 font-semibold">Loading orders...</p>
                 </div>
             </div>
@@ -81,8 +81,8 @@ const DeliverySlip = () => {
             <div className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center">
-                            <MdLocalShipping className="text-blue-600" size={28} />
+                        <div className="w-12 h-12 bg-primary-100 rounded-2xl flex items-center justify-center">
+                            <MdLocalShipping className="text-primary-600" size={28} />
                         </div>
                         <div>
                             <h1 className="text-2xl font-black text-gray-900">Delivery & Invoices</h1>
@@ -95,7 +95,7 @@ const DeliverySlip = () => {
                             settings={settings}
                             customTrigger={
                                 <button
-                                    className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-sm rounded-2xl hover:shadow-lg transition-all uppercase tracking-wider"
+                                    className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-600 to-purple-600 text-white font-bold text-sm rounded-2xl hover:shadow-lg transition-all uppercase tracking-wider"
                                 >
                                     <MdDownload size={20} />
                                     Generate {selectedOrders.length} Invoice{selectedOrders.length > 1 ? 's' : ''}
@@ -117,7 +117,7 @@ const DeliverySlip = () => {
                             placeholder="Search by Order ID, Customer Name, or Phone..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-full pl-12 pr-4 py-3 bg-gray-50 border-2 border-transparent focus:border-blue-500 rounded-2xl outline-none transition-all text-sm text-gray-900 placeholder:text-gray-900 font-bold"
+                            className="w-full pl-12 pr-4 py-3 bg-gray-50 border-2 border-transparent focus:border-primary-500 rounded-2xl outline-none transition-all text-sm text-gray-900 placeholder:text-gray-900 font-bold"
                         />
                     </div>
 
@@ -127,7 +127,7 @@ const DeliverySlip = () => {
                         <select
                             value={statusFilter}
                             onChange={(e) => setStatusFilter(e.target.value)}
-                            className="w-full pl-12 pr-4 py-3 bg-gray-50 border-2 border-transparent focus:border-blue-500 rounded-2xl outline-none transition-all text-sm font-black text-gray-900 appearance-none cursor-pointer"
+                            className="w-full pl-12 pr-4 py-3 bg-gray-50 border-2 border-transparent focus:border-primary-500 rounded-2xl outline-none transition-all text-sm font-black text-gray-900 appearance-none cursor-pointer"
                         >
                             <option value="All">All Statuses</option>
                             <option value="Pending">Pending</option>
@@ -149,7 +149,7 @@ const DeliverySlip = () => {
                     {filteredOrders.length > 0 && (
                         <button
                             onClick={handleSelectAll}
-                            className="text-blue-600 font-bold hover:underline flex items-center gap-1"
+                            className="text-primary-600 font-bold hover:underline flex items-center gap-1"
                         >
                             {selectedOrders.length === filteredOrders.length ? (
                                 <>
@@ -190,7 +190,7 @@ const DeliverySlip = () => {
                                             type="checkbox"
                                             checked={selectedOrders.length === filteredOrders.length}
                                             onChange={handleSelectAll}
-                                            className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                                            className="w-4 h-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500 cursor-pointer"
                                         />
                                     </th>
                                     <th className="px-6 py-4 text-left text-[10px] md:text-xs font-black text-white uppercase tracking-widest whitespace-nowrap">Order ID</th>
@@ -210,13 +210,13 @@ const DeliverySlip = () => {
                                                 type="checkbox"
                                                 checked={selectedOrders.includes(order.id)}
                                                 onChange={() => handleSelectOrder(order.id)}
-                                                className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                                                className="w-4 h-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500 cursor-pointer"
                                             />
                                         </td>
                                         <td className="px-6 py-4">
                                             <button
                                                 onClick={() => navigate(`/admin/orders/${order.id}`)}
-                                                className="text-sm font-black text-blue-600 hover:underline"
+                                                className="text-sm font-black text-primary-600 hover:underline"
                                             >
                                                 {order.displayId || order.id}
                                             </button>
@@ -231,7 +231,7 @@ const DeliverySlip = () => {
                                             <span className={`px-3 py-1 rounded-full text-xs font-black uppercase tracking-tight ${order.status === 'Delivered' ? 'bg-green-100 text-green-700' :
                                                 order.status === 'Cancelled' ? 'bg-red-100 text-red-700' :
                                                     order.status === 'Pending' ? 'bg-gray-100 text-gray-700' :
-                                                        order.status === 'Confirmed' ? 'bg-blue-100 text-blue-700' :
+                                                        order.status === 'Confirmed' ? 'bg-primary-100 text-primary-700' :
                                                             order.status === 'Packed' ? 'bg-indigo-100 text-indigo-700' :
                                                                 order.status === 'Dispatched' ? 'bg-purple-100 text-purple-700' :
                                                                     'bg-orange-100 text-orange-700'
@@ -255,7 +255,7 @@ const DeliverySlip = () => {
                                                 items={order.items}
                                                 settings={settings}
                                                 customTrigger={
-                                                    <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-xs font-bold rounded-lg hover:bg-blue-700 transition-all mx-auto shadow-sm">
+                                                    <button className="flex items-center gap-2 px-4 py-2 bg-primary-600 text-white text-xs font-bold rounded-lg hover:bg-primary-700 transition-all mx-auto shadow-sm">
                                                         <MdDownload size={16} />
                                                         Invoice
                                                     </button>
@@ -271,12 +271,12 @@ const DeliverySlip = () => {
             )}
 
             {/* Info Box */}
-            <div className="bg-blue-50 border-2 border-blue-200 p-6 rounded-3xl">
+            <div className="bg-primary-50 border-2 border-primary-200 p-6 rounded-3xl">
                 <div className="flex gap-4">
-                    <MdLocalShipping className="text-blue-600 flex-shrink-0 mt-1" size={24} />
+                    <MdLocalShipping className="text-primary-600 flex-shrink-0 mt-1" size={24} />
                     <div>
-                        <h3 className="text-sm font-black text-blue-900 uppercase tracking-wider mb-2">Quick Tips</h3>
-                        <ul className="text-sm text-blue-800 space-y-1">
+                        <h3 className="text-sm font-black text-primary-900 uppercase tracking-wider mb-2">Quick Tips</h3>
+                        <ul className="text-sm text-primary-800 space-y-1">
                             <li>• View and manage <strong>All Orders</strong> irrespective of their current status</li>
                             <li>• Select multiple orders to generate a bulk PDF with all invoices/slips</li>
                             <li>• Each document includes customer details, items, and payment info</li>

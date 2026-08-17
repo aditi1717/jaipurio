@@ -1048,7 +1048,7 @@ const SubCategoryPageBuilder = () => {
                                 >
                                     Save Order
                                 </button>
-                                <button type="button" onClick={handleCreateSection} className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-3 py-2 text-sm font-semibold text-white"><MdAdd size={18} />Add Section</button>
+                                <button type="button" onClick={handleCreateSection} className="inline-flex items-center gap-2 rounded-xl bg-primary-600 px-3 py-2 text-sm font-semibold text-white"><MdAdd size={18} />Add Section</button>
                             </div>
                         </div>
                         {category && (
@@ -1060,7 +1060,7 @@ const SubCategoryPageBuilder = () => {
                             <SortableContext items={category.pageSections.map((item) => item.id)} strategy={rectSortingStrategy}>
                                 <div className="space-y-3">
                                     {category.pageSections.map((item) => <SortableWrap key={item.id} id={item.id}>
-                                        <button type="button" onClick={() => handleOpenSectionForm(item.id)} className={`w-full rounded-2xl border px-4 py-3 pl-12 text-left transition ${section?.id === item.id ? 'border-blue-500 bg-blue-50 shadow-sm' : 'border-gray-100 bg-white hover:border-gray-200 hover:shadow-sm'}`}>
+                                        <button type="button" onClick={() => handleOpenSectionForm(item.id)} className={`w-full rounded-2xl border px-4 py-3 pl-12 text-left transition ${section?.id === item.id ? 'border-primary-500 bg-primary-50 shadow-sm' : 'border-gray-100 bg-white hover:border-gray-200 hover:shadow-sm'}`}>
                                             <div className="flex items-start justify-between gap-3">
                                                     <div>
                                                     <div className="text-lg font-bold tracking-tight text-gray-900">{item.title || 'Untitled Section'}</div>
@@ -1114,7 +1114,7 @@ const SubCategoryPageBuilder = () => {
                                         disabled={!category || isSavingSection || isUploadingSectionImage}
                                         className={`rounded-lg px-3 py-2 text-xs font-bold uppercase tracking-wide ${
                                             category && !isSavingSection && !isUploadingSectionImage
-                                                ? 'bg-blue-600 text-white hover:bg-blue-700'
+                                                ? 'bg-primary-600 text-white hover:bg-primary-700'
                                                 : 'bg-gray-200 text-gray-500 cursor-not-allowed'
                                         }`}
                                     >
@@ -1138,7 +1138,7 @@ const SubCategoryPageBuilder = () => {
                                 This section could not be found for the selected subcategory.
                             </div>
                         ) : isDefaultSubcategoriesSection ? (
-                            <div className="rounded-xl border border-blue-100 bg-blue-50 p-4 text-sm text-blue-900">
+                            <div className="rounded-xl border border-primary-100 bg-primary-50 p-4 text-sm text-primary-900">
                                 This is a default system section. It automatically fetches all brands for the selected subcategory and cannot be deleted.
                             </div>
                         ) : (
@@ -1309,7 +1309,7 @@ const SubCategoryPageBuilder = () => {
                             )}
                             <div className="grid grid-cols-2 gap-3">
                                 <button type="button" onClick={() => updateSection({ isActive: !section.isActive })} className={`rounded-xl border px-3 py-2.5 text-sm font-semibold ${section.isActive ? 'border-green-200 bg-green-50 text-green-700' : 'border-gray-200 bg-white text-gray-600'}`}>{section.isActive ? 'Section Active' : 'Section Inactive'}</button>
-                                <button type="button" onClick={() => updateSection({ showArrow: !section.showArrow })} className={`rounded-xl border px-3 py-2.5 text-sm font-semibold ${section.showArrow ? 'border-blue-200 bg-blue-50 text-blue-700' : 'border-gray-200 bg-white text-gray-600'}`}>{section.showArrow ? 'Arrow On' : 'Arrow Off'}</button>
+                                <button type="button" onClick={() => updateSection({ showArrow: !section.showArrow })} className={`rounded-xl border px-3 py-2.5 text-sm font-semibold ${section.showArrow ? 'border-primary-200 bg-primary-50 text-primary-700' : 'border-gray-200 bg-white text-gray-600'}`}>{section.showArrow ? 'Arrow On' : 'Arrow Off'}</button>
                             </div>
                         </div>
                         )}
@@ -1332,13 +1332,13 @@ const SubCategoryPageBuilder = () => {
                                     className={`inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-semibold ${
                                         section.mediaDisplay === 'single' && (section.items || []).filter((item) => item.itemType === 'image').length >= 1
                                             ? 'cursor-not-allowed bg-gray-200 text-gray-500'
-                                            : 'bg-blue-600 text-white'
+                                            : 'bg-primary-600 text-white'
                                     }`}
                                 >
                                     <MdAdd size={18} />Add Image
                                 </button>
                             ) : (
-                                <button type="button" onClick={openProductPicker} className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-3 py-2 text-sm font-semibold text-white"><MdAdd size={18} />Add Product</button>
+                                <button type="button" onClick={openProductPicker} className="inline-flex items-center gap-2 rounded-xl bg-primary-600 px-3 py-2 text-sm font-semibold text-white"><MdAdd size={18} />Add Product</button>
                             )}
                         </div>
                         {!hasSelectedSection ? (
@@ -1357,7 +1357,7 @@ const SubCategoryPageBuilder = () => {
                                                             <div className="text-[13px] font-bold leading-tight text-gray-900">Brand {index + 1}</div>
                                                             <div className="text-[10px] uppercase tracking-wide text-gray-500">Auto-fetched</div>
                                                         </div>
-                                                        <span className="rounded-full bg-blue-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-blue-700">Drag</span>
+                                                        <span className="rounded-full bg-primary-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-primary-700">Drag</span>
                                                     </div>
                                                     <div className="overflow-hidden rounded-lg bg-white">
                                                         {item.image ? (
@@ -1561,7 +1561,7 @@ const ProductPickerModal = ({
                             value={searchTerm}
                             onChange={(e) => onSearchTermChange(e.target.value)}
                             placeholder="Search products by name"
-                            className="w-full rounded-2xl border border-gray-200 bg-gray-50 py-3 pl-10 pr-4 text-sm text-gray-900 outline-none transition focus:border-blue-300 focus:bg-white"
+                            className="w-full rounded-2xl border border-gray-200 bg-gray-50 py-3 pl-10 pr-4 text-sm text-gray-900 outline-none transition focus:border-primary-300 focus:bg-white"
                         />
                     </div>
                     <select
@@ -1571,7 +1571,7 @@ const ProductPickerModal = ({
                     >
                         {categoryOptions.map((option) => <option key={option} value={option}>{option}</option>)}
                     </select>
-                    <div className="rounded-full bg-blue-50 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-blue-700">
+                    <div className="rounded-full bg-primary-50 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-primary-700">
                         {selectedIds.size} selected
                     </div>
                 </div>
@@ -1600,7 +1600,7 @@ const ProductPickerModal = ({
                                         onClick={() => onToggle(productId)}
                                         className={`min-w-0 overflow-hidden rounded-2xl border text-left transition ${
                                             isSelected
-                                                ? 'border-blue-500 bg-blue-50 shadow-[0_18px_40px_-24px_rgba(37,99,235,0.55)]'
+                                                ? 'border-primary-500 bg-primary-50 shadow-[0_18px_40px_-24px_rgba(37,99,235,0.55)]'
                                                 : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-md'
                                         }`}
                                     >
@@ -1617,7 +1617,7 @@ const ProductPickerModal = ({
                                                     <div className="truncate text-sm font-bold text-gray-900 md:text-[15px]">{product?.name || 'Untitled product'}</div>
                                                     <div className="mt-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-500">{categoryLabel}</div>
                                                 </div>
-                                                <span className={`shrink-0 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide ${isSelected ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600'}`}>
+                                                <span className={`shrink-0 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide ${isSelected ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-600'}`}>
                                                     {isSelected ? 'Selected' : 'Select'}
                                                 </span>
                                             </div>
@@ -1643,7 +1643,7 @@ const ProductPickerModal = ({
                         <button
                             type="button"
                             onClick={onApply}
-                            className="rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-blue-700"
+                            className="rounded-xl bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-primary-700"
                         >
                             Add Selected
                         </button>
@@ -1703,7 +1703,7 @@ const AdminPreviewItemCard = ({ item, mediaDisplay, getProduct, section }) => {
                         {price ? <span className="text-base font-bold text-gray-900 md:text-lg">Rs.{Number(price).toLocaleString()}</span> : null}
                         {discountLabel ? <span className="text-xs font-bold uppercase text-green-700">{discountLabel}</span> : null}
                     </div>
-                    {description ? <div className="mt-1 line-clamp-1 text-xs font-semibold text-blue-600">{description}</div> : null}
+                    {description ? <div className="mt-1 line-clamp-1 text-xs font-semibold text-primary-600">{description}</div> : null}
                 </div>
             </div>
         );
@@ -1833,7 +1833,7 @@ const SectionPreviewCard = ({
         >
             <div className="mb-4 flex items-center justify-between">
                 <div><h3 className="text-base font-bold text-gray-900">Front-end Preview</h3><p className="mt-1 text-sm text-gray-500">This mirrors how the subcategory landing page will consume the saved config.</p></div>
-                {section.showArrow && <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-white"><MdArrowForward size={18} /></div>}
+                {section.showArrow && <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-600 text-white"><MdArrowForward size={18} /></div>}
             </div>
             <div className="w-full min-w-0 max-w-full overflow-hidden rounded-2xl">
                 <div

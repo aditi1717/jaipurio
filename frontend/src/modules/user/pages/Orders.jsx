@@ -30,7 +30,7 @@ const Orders = () => {
     const getStatusColor = (status) => {
         const colors = {
             'Pending': 'bg-yellow-100 text-yellow-800 border-yellow-200',
-            'Processing': 'bg-blue-100 text-blue-800 border-blue-200',
+            'Processing': 'bg-primary-100 text-primary-800 border-primary-200',
             'Shipped': 'bg-purple-100 text-purple-800 border-purple-200',
             'Delivered': 'bg-green-100 text-green-800 border-green-200',
             'Cancelled': 'bg-red-100 text-red-800 border-red-200'
@@ -40,9 +40,9 @@ const Orders = () => {
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-gray-50 flex items-center justify-center">
+            <div className="min-h-screen bg-gradient-to-b from-primary-50 via-white to-gray-50 flex items-center justify-center">
                 <div className="text-center">
-                    <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                    <div className="w-16 h-16 border-4 border-primary-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
                     <p className="text-gray-600 font-semibold">Loading your orders...</p>
                 </div>
             </div>
@@ -50,19 +50,19 @@ const Orders = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-gray-50 pb-24">
+        <div className="min-h-screen bg-gradient-to-b from-primary-50 via-white to-gray-50 pb-24">
             {/* Header */}
-            <div className="bg-white sticky top-0 z-50 shadow-md border-b border-blue-100">
+            <div className="bg-white sticky top-0 z-50 shadow-md border-b border-primary-100">
                 <div className="px-4 py-4 flex items-center gap-3 max-w-6xl mx-auto">
                     <button
                         onClick={() => navigate(-1)}
-                        className="material-icons p-2 -ml-2 active:bg-blue-50 rounded-full transition-all cursor-pointer text-blue-600 hover:bg-blue-100"
+                        className="material-icons p-2 -ml-2 active:bg-primary-50 rounded-full transition-all cursor-pointer text-primary-600 hover:bg-primary-100"
                     >
                         arrow_back
                     </button>
                     <div className="flex items-center gap-3">
-                        <span className="material-icons text-blue-600 text-3xl">shopping_bag</span>
-                        <h1 className="text-xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent md:text-3xl">
+                        <span className="material-icons text-primary-600 text-3xl">shopping_bag</span>
+                        <h1 className="text-xl font-extrabold bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent md:text-3xl">
                             My Orders
                         </h1>
                     </div>
@@ -81,13 +81,13 @@ const Orders = () => {
                 )}
 
                 {!loading && orders.length === 0 ? (
-                    <div className="flex flex-col items-center justify-center py-20 px-10 text-center bg-white rounded-xl shadow-lg border border-blue-100">
-                        <div className="w-24 h-24 md:w-32 md:h-32 bg-blue-50 rounded-full flex items-center justify-center mb-6 shadow-inner ring-8 ring-blue-50/50">
-                            <span className="material-icons text-blue-600 text-6xl md:text-7xl">shopping_bag</span>
+                    <div className="flex flex-col items-center justify-center py-20 px-10 text-center bg-white rounded-xl shadow-lg border border-primary-100">
+                        <div className="w-24 h-24 md:w-32 md:h-32 bg-primary-50 rounded-full flex items-center justify-center mb-6 shadow-inner ring-8 ring-primary-50/50">
+                            <span className="material-icons text-primary-600 text-6xl md:text-7xl">shopping_bag</span>
                         </div>
                         <h2 className="text-2xl font-bold mb-2 text-gray-800">No orders yet!</h2>
                         <p className="text-gray-600 text-base mb-6">Start shopping to see your orders here.</p>
-                        <button onClick={() => navigate('/')} className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-12 py-3.5 rounded-lg font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
+                        <button onClick={() => navigate('/')} className="bg-gradient-to-r from-primary-600 to-purple-600 text-white px-12 py-3.5 rounded-lg font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
                             Start Shopping
                         </button>
                     </div>
@@ -96,14 +96,14 @@ const Orders = () => {
                         {orders.map((order) => (
                             <div 
                                 key={order._id} 
-                                className="bg-white rounded-lg shadow-md border-2 border-blue-100 overflow-hidden hover:shadow-lg transition-all cursor-pointer"
+                                className="bg-white rounded-lg shadow-md border-2 border-primary-100 overflow-hidden hover:shadow-lg transition-all cursor-pointer"
                                 onClick={() => navigate(`/order/${order._id}`)}
                             >
                                 {/* Order Header */}
-                                <div className="bg-gradient-to-r from-white to-blue-50 px-5 py-4 border-b border-blue-100">
+                                <div className="bg-gradient-to-r from-white to-primary-50 px-5 py-4 border-b border-primary-100">
                                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                                         <div className="flex items-center gap-3">
-                                            <span className="material-icons text-blue-600 text-2xl">receipt_long</span>
+                                            <span className="material-icons text-primary-600 text-2xl">receipt_long</span>
                                             <div>
                                                 <p className="text-xs text-gray-500 font-medium">Order ID</p>
                                                 <p className="font-bold text-gray-800 text-sm">#{order._id.slice(-8).toUpperCase()}</p>
@@ -132,30 +132,30 @@ const Orders = () => {
                                     <div className="space-y-3">
                                         {order.orderItems.slice(0, 3).map((item, index) => (
                                             <div key={index} className="flex gap-4 items-center">
-                                                <div className="w-16 h-16 bg-gradient-to-br from-gray-50 to-blue-50 rounded-lg border-2 border-blue-100 p-2 flex-shrink-0">
+                                                <div className="w-16 h-16 bg-gradient-to-br from-gray-50 to-primary-50 rounded-lg border-2 border-primary-100 p-2 flex-shrink-0">
                                                     <img src={item.image} alt={item.name} className="w-full h-full object-contain" />
                                                 </div>
                                                 <div className="flex-1 min-w-0">
                                                     <h3 className="text-sm font-bold text-gray-800 line-clamp-1">{item.name}</h3>
                                                     <p className="text-xs text-gray-500 mt-1">Quantity: {item.qty}</p>
-                                                    <p className="text-base font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mt-1">
+                                                    <p className="text-base font-extrabold bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent mt-1">
                                                         ₹{item.price.toLocaleString()}
                                                     </p>
                                                 </div>
                                             </div>
                                         ))}
                                         {order.orderItems.length > 3 && (
-                                            <p className="text-xs text-blue-600 font-bold">
+                                            <p className="text-xs text-primary-600 font-bold">
                                                 +{order.orderItems.length - 3} more item(s)
                                             </p>
                                         )}
                                     </div>
 
                                     {/* Order Total */}
-                                    <div className="mt-4 pt-4 border-t border-blue-100 flex justify-between items-center">
+                                    <div className="mt-4 pt-4 border-t border-primary-100 flex justify-between items-center">
                                         <div>
                                             <p className="text-xs text-gray-500 font-medium">Total Amount</p>
-                                            <p className="text-xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                                            <p className="text-xl font-extrabold bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent">
                                                 ₹{order.totalPrice.toLocaleString()}
                                             </p>
                                         </div>
@@ -172,7 +172,7 @@ const Orders = () => {
                                                 </div>
                                             )}
                                             <button 
-                                                className="flex items-center gap-1 bg-blue-600 text-white px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-700 transition-colors"
+                                                className="flex items-center gap-1 bg-primary-600 text-white px-4 py-2 rounded-lg font-bold text-sm hover:bg-primary-700 transition-colors"
                                                 onClick={(e) => {
                                                     e.stopPropagation();
                                                     navigate(`/order/${order._id}`);

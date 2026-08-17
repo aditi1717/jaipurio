@@ -745,7 +745,7 @@ const ProductForm = () => {
                 totalBytes > PRODUCTION_UPLOAD_LIMIT_BYTES;
 
             const message = isLikelyUploadLimitIssue
-                ? `Upload failed because the production server is currently rejecting files above about 1 MB total. Current upload: ${totalMb.toFixed(2)} MB. Reduce image sizes or increase nginx client_max_body_size on backend.indiankart.in.`
+                ? `Upload failed because the production server is currently rejecting files above about 1 MB total. Current upload: ${totalMb.toFixed(2)} MB. Reduce image sizes or increase nginx client_max_body_size on backend.jaipurio.in.`
                 : error.response?.data?.message || "Failed to save product. Please try again.";
             toast.error(message);
         } finally {
@@ -797,7 +797,7 @@ const ProductForm = () => {
                         <button
                             onClick={handleSubmit}
                             disabled={isLoading || isSubmitting}
-                            className={`px-4 py-2 md:px-6 md:py-2.5 rounded-xl text-xs md:text-sm font-bold text-white transition flex items-center gap-2 ${(isLoading || isSubmitting) ? 'bg-blue-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'
+                            className={`px-4 py-2 md:px-6 md:py-2.5 rounded-xl text-xs md:text-sm font-bold text-white transition flex items-center gap-2 ${(isLoading || isSubmitting) ? 'bg-primary-400 cursor-not-allowed' : 'bg-primary-600 hover:bg-primary-700'
                                 }`}
                         >
                             {(isLoading || isSubmitting) ? (
@@ -819,7 +819,7 @@ const ProductForm = () => {
                         {/* Basic Info Card */}
                         <section className="bg-white p-4 md:p-6 rounded-2xl border border-gray-200 space-y-4 md:space-y-6">
                             <div className="flex items-center gap-2 md:gap-3 border-b border-gray-50 pb-2 md:pb-4">
-                                <span className="w-6 h-6 md:w-8 md:h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm md:text-base">1</span>
+                                <span className="w-6 h-6 md:w-8 md:h-8 rounded-lg bg-primary-50 text-primary-600 flex items-center justify-center font-bold text-sm md:text-base">1</span>
                                 <h2 className="text-base md:text-lg font-bold text-gray-800">Basic Information</h2>
                             </div>
 
@@ -828,11 +828,11 @@ const ProductForm = () => {
                                 {/* Thumbnail Selection */}
                                 <div className="space-y-2 md:space-y-3">
                                     <label className="flex items-center gap-1 md:gap-2 text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-wider">
-                                        <MdImage className="text-blue-500" size={14} />
+                                        <MdImage className="text-primary-500" size={14} />
                                         Primary Thumbnail
                                     </label>
 
-                                    <div className="relative group w-full h-48 md:h-64 rounded-2xl border-2 border-dashed border-gray-200 bg-gray-50 flex flex-col items-center justify-center overflow-hidden transition-all hover:border-blue-400 hover:bg-blue-50/30">
+                                    <div className="relative group w-full h-48 md:h-64 rounded-2xl border-2 border-dashed border-gray-200 bg-gray-50 flex flex-col items-center justify-center overflow-hidden transition-all hover:border-primary-400 hover:bg-primary-50/30">
                                         {formData.thumbnail ? (
                                             <>
                                                 <img
@@ -842,7 +842,7 @@ const ProductForm = () => {
                                                 />
                                                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
                                                     <label className="p-3 bg-white rounded-full cursor-pointer hover:scale-110 transition-transform shadow-lg">
-                                                        <MdImage className="text-blue-600" size={24} />
+                                                        <MdImage className="text-primary-600" size={24} />
                                                         <input
                                                             type="file"
                                                             className="hidden"
@@ -861,7 +861,7 @@ const ProductForm = () => {
                                             </>
                                         ) : (
                                             <label className="flex flex-col items-center justify-center w-full h-full cursor-pointer">
-                                                <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition-transform">
+                                                <div className="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition-transform">
                                                     <MdAdd size={32} />
                                                 </div>
                                                 <span className="text-sm font-bold text-gray-600">Click to upload Thumbnail</span>
@@ -930,7 +930,7 @@ const ProductForm = () => {
                                         name="brand"
                                         value={formData.brand}
                                         onChange={handleChange}
-                                        className="w-full px-3 py-2 md:px-4 md:py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-blue-500 focus:bg-white outline-none transition-all font-bold text-gray-900 caret-black placeholder:text-gray-500 text-sm md:text-base"
+                                        className="w-full px-3 py-2 md:px-4 md:py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-primary-500 focus:bg-white outline-none transition-all font-bold text-gray-900 caret-black placeholder:text-gray-500 text-sm md:text-base"
                                         placeholder="e.g. NIKE, ADIDAS"
                                     />
                                 </div>
@@ -941,7 +941,7 @@ const ProductForm = () => {
                                         name="name"
                                         value={formData.name}
                                         onChange={handleChange}
-                                        className="w-full px-3 py-2 md:px-4 md:py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-blue-500 focus:bg-white outline-none transition-all font-bold text-gray-900 caret-black placeholder:text-gray-500 text-sm md:text-base"
+                                        className="w-full px-3 py-2 md:px-4 md:py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-primary-500 focus:bg-white outline-none transition-all font-bold text-gray-900 caret-black placeholder:text-gray-500 text-sm md:text-base"
                                         placeholder="Full product name..."
                                     />
                                 </div>
@@ -953,7 +953,7 @@ const ProductForm = () => {
                                         min="1"
                                         value={formData.maxOrderQuantity}
                                         onChange={handleChange}
-                                        className="w-full px-3 py-2 md:px-4 md:py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-blue-500 focus:bg-white outline-none transition-all font-bold text-gray-900 caret-black placeholder:text-gray-500 text-sm md:text-base"
+                                        className="w-full px-3 py-2 md:px-4 md:py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-primary-500 focus:bg-white outline-none transition-all font-bold text-gray-900 caret-black placeholder:text-gray-500 text-sm md:text-base"
                                         placeholder="1"
                                     />
                                     <p className="text-[11px] text-gray-500 font-medium">
@@ -964,7 +964,7 @@ const ProductForm = () => {
 
                             <div className="space-y-2 md:space-y-4 p-3 md:p-5 bg-gray-50 rounded-2xl border border-gray-100">
                                 <label className="text-xs font-bold text-gray-500 uppercase flex items-center gap-2">
-                                    <span className="material-icons text-sm text-blue-500">category</span>
+                                    <span className="material-icons text-sm text-primary-500">category</span>
                                     Category Attachment
                                 </label>
                                 <div className="grid grid-cols-1 gap-4">
@@ -1011,7 +1011,7 @@ const ProductForm = () => {
                                                 variantHeadings: newHeadings.length > 0 ? newHeadings : prev.variantHeadings
                                             }));
                                         }}
-                                        className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-200 outline-none focus:ring-2 ring-blue-100 text-sm font-medium text-gray-900"
+                                        className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-200 outline-none focus:ring-2 ring-primary-100 text-sm font-medium text-gray-900"
                                     >
                                         <option value="">Select Primary Category</option>
                                         {categories.map(cat => <option key={cat.id} value={cat.id}>{cat.name}</option>)}
@@ -1032,7 +1032,7 @@ const ProductForm = () => {
                                                         subcategoryBrand: ''
                                                     }));
                                                 }}
-                                                className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-200 outline-none focus:ring-2 ring-blue-100 text-sm font-medium text-gray-900"
+                                                className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-200 outline-none focus:ring-2 ring-primary-100 text-sm font-medium text-gray-900"
                                             >
                                                 <option value="">Select Sub Category</option>
                                                 {availableSubCategories.map(sub => (
@@ -1054,7 +1054,7 @@ const ProductForm = () => {
                                                         name="subcategoryBrand"
                                                         value={formData.subcategoryBrand}
                                                         onChange={handleChange}
-                                                        className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-200 outline-none focus:ring-2 ring-blue-100 text-sm font-medium text-gray-900"
+                                                        className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-200 outline-none focus:ring-2 ring-primary-100 text-sm font-medium text-gray-900"
                                                     >
                                                         <option value="">Select Subcategory Brand</option>
                                                         {brandOptions.map((name) => (
@@ -1073,13 +1073,13 @@ const ProductForm = () => {
                         <section className="bg-white p-4 md:p-6 rounded-2xl border border-gray-200 space-y-4 md:space-y-6">
                             <div className="flex items-center justify-between border-b border-gray-50 pb-2 md:pb-4">
                                 <div className="flex items-center gap-2 md:gap-3">
-                                    <span className="w-6 h-6 md:w-8 md:h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold"><span className="material-icons text-sm md:text-[18px]">star</span></span>
+                                    <span className="w-6 h-6 md:w-8 md:h-8 rounded-lg bg-primary-50 text-primary-600 flex items-center justify-center font-bold"><span className="material-icons text-sm md:text-[18px]">star</span></span>
                                     <h2 className="text-base md:text-lg font-bold text-gray-800">Product Highlights</h2>
                                 </div>
                                 <button
                                     type="button"
                                     onClick={() => setShowPasteModal(true)}
-                                    className="px-2 py-1 md:px-3 md:py-1.5 bg-blue-50 text-blue-700 rounded-lg text-[9px] md:text-[10px] font-bold uppercase tracking-wider hover:bg-blue-100 transition-colors flex items-center gap-1"
+                                    className="px-2 py-1 md:px-3 md:py-1.5 bg-primary-50 text-primary-700 rounded-lg text-[9px] md:text-[10px] font-bold uppercase tracking-wider hover:bg-primary-100 transition-colors flex items-center gap-1"
                                 >
                                     <span className="material-icons text-xs md:text-sm">content_paste</span>
                                     Paste & Parse
@@ -1100,7 +1100,7 @@ const ProductForm = () => {
                                                     setFormData(prev => ({ ...prev, highlights: newHighlights }));
                                                 }}
                                                 placeholder="Section Heading (e.g., Specifications)"
-                                                className="flex-1 px-3 py-2 md:px-4 md:py-2.5 rounded-xl bg-white border border-gray-300 focus:border-blue-500 outline-none transition-all font-bold text-gray-900 caret-black placeholder:text-gray-500 text-xs md:text-base"
+                                                className="flex-1 px-3 py-2 md:px-4 md:py-2.5 rounded-xl bg-white border border-gray-300 focus:border-primary-500 outline-none transition-all font-bold text-gray-900 caret-black placeholder:text-gray-500 text-xs md:text-base"
                                             />
                                             <button
                                                 type="button"
@@ -1128,7 +1128,7 @@ const ProductForm = () => {
                                                             setFormData(prev => ({ ...prev, highlights: newHighlights }));
                                                         }}
                                                         placeholder="Bullet point..."
-                                                        className="flex-1 px-4 py-2 rounded-lg bg-white border border-gray-200 focus:border-blue-500 outline-none transition-all text-sm text-gray-900 caret-black placeholder:text-gray-500"
+                                                        className="flex-1 px-4 py-2 rounded-lg bg-white border border-gray-200 focus:border-primary-500 outline-none transition-all text-sm text-gray-900 caret-black placeholder:text-gray-500"
                                                     />
                                                     <button
                                                         type="button"
@@ -1153,7 +1153,7 @@ const ProductForm = () => {
                                                     newHighlights[sectionIdx].points.push('');
                                                     setFormData(prev => ({ ...prev, highlights: newHighlights }));
                                                 }}
-                                                className="mt-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-all text-sm font-bold"
+                                                className="mt-2 px-4 py-2 bg-primary-50 text-primary-600 rounded-lg hover:bg-primary-100 transition-all text-sm font-bold"
                                             >
                                                 + Add Bullet Point
                                             </button>
@@ -1254,7 +1254,7 @@ const ProductForm = () => {
                                 <button
                                     type="button"
                                     onClick={addVariantHeading}
-                                    className="px-3 py-1.5 md:px-4 md:py-2 bg-blue-600 text-white text-[10px] md:text-xs font-bold rounded-xl hover:bg-blue-700 transition flex items-center gap-1 md:gap-2"
+                                    className="px-3 py-1.5 md:px-4 md:py-2 bg-primary-600 text-white text-[10px] md:text-xs font-bold rounded-xl hover:bg-primary-700 transition flex items-center gap-1 md:gap-2"
                                 >
                                     <MdAdd size={16} /> Add Variant
                                 </button>
@@ -1279,7 +1279,7 @@ const ProductForm = () => {
                                                     type="text"
                                                     value={vh.name}
                                                     onChange={(e) => updateVariantHeading(vh.id, 'name', e.target.value)}
-                                                    className="w-full px-3 py-2 md:px-4 md:py-2.5 rounded-xl bg-white border border-gray-200 outline-none focus:border-blue-500 font-bold text-gray-900 caret-black placeholder:text-gray-500 text-sm md:text-base"
+                                                    className="w-full px-3 py-2 md:px-4 md:py-2.5 rounded-xl bg-white border border-gray-200 outline-none focus:border-primary-500 font-bold text-gray-900 caret-black placeholder:text-gray-500 text-sm md:text-base"
                                                     placeholder="Enter heading..."
                                                 />
                                             </div>
@@ -1292,7 +1292,7 @@ const ProductForm = () => {
                                                             checked={vh.hasImage}
                                                             onChange={(e) => updateVariantHeading(vh.id, 'hasImage', e.target.checked)}
                                                         />
-                                                        <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                                                        <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
                                                     </div>
                                                     <span className="text-xs font-bold text-gray-500 uppercase tracking-wider group-hover/toggle:text-gray-800 transition-colors">Has Image Options</span>
                                                 </label>
@@ -1305,14 +1305,14 @@ const ProductForm = () => {
                                                 <button
                                                     type="button"
                                                     onClick={() => addVariantOption(vh.id)}
-                                                    className="text-[10px] font-black text-blue-600 hover:underline px-2"
+                                                    className="text-[10px] font-black text-primary-600 hover:underline px-2"
                                                 >
                                                     + ADD OPTION
                                                 </button>
                                             </div>
                                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 md:gap-4">
                                                 {vh.options.map((opt, optIdx) => (
-                                                    <div key={optIdx} className="bg-white p-3 rounded-xl border border-gray-200 shadow-sm relative group/opt transition-all hover:border-blue-200">
+                                                    <div key={optIdx} className="bg-white p-3 rounded-xl border border-gray-200 shadow-sm relative group/opt transition-all hover:border-primary-200">
                                                         <button
                                                             type="button"
                                                             onClick={() => removeVariantOption(vh.id, optIdx)}
@@ -1326,7 +1326,7 @@ const ProductForm = () => {
                                                                 placeholder="Option (e.g. Red, XL)"
                                                                 value={opt.name}
                                                                 onChange={(e) => updateVariantOption(vh.id, optIdx, 'name', e.target.value)}
-                                                                className="text-xs font-bold border-b border-gray-200 outline-none p-1 focus:border-blue-500 text-gray-900 caret-black placeholder:text-gray-500"
+                                                                className="text-xs font-bold border-b border-gray-200 outline-none p-1 focus:border-primary-500 text-gray-900 caret-black placeholder:text-gray-500"
                                                             />
                                                             {vh.hasImage && (
                                                                 <div className="space-y-2">
@@ -1349,7 +1349,7 @@ const ProductForm = () => {
                                                                         ))}
 
                                                                         {/* Add More Images Button */}
-                                                                        <label className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center border-2 border-dashed border-gray-200 cursor-pointer hover:border-blue-400 hover:bg-blue-50 transition-all">
+                                                                        <label className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center border-2 border-dashed border-gray-200 cursor-pointer hover:border-primary-400 hover:bg-primary-50 transition-all">
                                                                             <MdAdd className="text-gray-400" size={16} />
                                                                             <input
                                                                                 type="file"
@@ -1388,7 +1388,7 @@ const ProductForm = () => {
                                     <div className="mt-6 md:mt-8 p-4 md:p-6 bg-gray-50 rounded-2xl border border-gray-200">
                                         <div className="flex justify-between items-center mb-4 md:mb-8">
                                             <div className="flex items-center gap-4">
-                                                <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white">
+                                                <div className="w-10 h-10 rounded-xl bg-primary-600 flex items-center justify-center text-white">
                                                     <span className="material-icons text-2xl">grid_view</span>
                                                 </div>
                                                 <div>
@@ -1399,7 +1399,7 @@ const ProductForm = () => {
                                             <button
                                                 type="button"
                                                 onClick={generateCombinations}
-                                                className="px-3 py-2 md:px-6 md:py-2.5 bg-white text-blue-600 border border-blue-200 rounded-xl text-[10px] md:text-xs font-black shadow-sm hover:shadow-md transition-all flex items-center gap-1 md:gap-2"
+                                                className="px-3 py-2 md:px-6 md:py-2.5 bg-white text-primary-600 border border-primary-200 rounded-xl text-[10px] md:text-xs font-black shadow-sm hover:shadow-md transition-all flex items-center gap-1 md:gap-2"
                                             >
                                                 <span className="material-icons text-sm">refresh</span>
                                                 GENERATE ALL
@@ -1424,7 +1424,7 @@ const ProductForm = () => {
                                                             {formData.skus.slice((variantPage - 1) * variantsPerPage, variantPage * variantsPerPage).map((sku, idx) => {
                                                                 const originalIdx = (variantPage - 1) * variantsPerPage + idx;
                                                                 return (
-                                                                    <tr key={originalIdx} className="hover:bg-blue-50/20 transition-colors">
+                                                                    <tr key={originalIdx} className="hover:bg-primary-50/20 transition-colors">
                                                                         {formData.variantHeadings.map(vh => (
                                                                             <td key={vh.id} className="px-3 py-2 md:px-6 md:py-4 text-[10px] md:text-xs font-bold text-gray-700 whitespace-nowrap">
                                                                                 {sku.combination[vh.name] || '-'}
@@ -1436,7 +1436,7 @@ const ProductForm = () => {
                                                                                 min="0"
                                                                                 value={sku.price ?? ''}
                                                                                 onChange={(e) => updateSkuField(originalIdx, 'price', Math.max(0, Number(e.target.value) || 0))}
-                                                                                className="w-24 text-right px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-200 focus:bg-white focus:border-blue-500 outline-none text-sm font-black text-gray-900 transition-all shadow-inner caret-black"
+                                                                                className="w-24 text-right px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-200 focus:bg-white focus:border-primary-500 outline-none text-sm font-black text-gray-900 transition-all shadow-inner caret-black"
                                                                             />
                                                                         </td>
                                                                         <td className="px-3 py-2 md:px-6 md:py-4 text-right">
@@ -1445,7 +1445,7 @@ const ProductForm = () => {
                                                                                 min="0"
                                                                                 value={sku.originalPrice ?? ''}
                                                                                 onChange={(e) => updateSkuField(originalIdx, 'originalPrice', Math.max(0, Number(e.target.value) || 0))}
-                                                                                className="w-24 text-right px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-200 focus:bg-white focus:border-blue-500 outline-none text-sm font-black text-gray-900 transition-all shadow-inner caret-black"
+                                                                                className="w-24 text-right px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-200 focus:bg-white focus:border-primary-500 outline-none text-sm font-black text-gray-900 transition-all shadow-inner caret-black"
                                                                             />
                                                                         </td>
                                                                         <td className="px-3 py-2 md:px-6 md:py-4 text-right">
@@ -1465,7 +1465,7 @@ const ProductForm = () => {
                                                                                         }
                                                                                         updateSkuField(originalIdx, 'stock', Math.max(0, parseInt(raw, 10) || 0));
                                                                                     }}
-                                                                                    className="w-20 text-right px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-200 focus:bg-white focus:border-blue-500 outline-none text-sm font-black text-gray-900 transition-all shadow-inner caret-black"
+                                                                                    className="w-20 text-right px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-200 focus:bg-white focus:border-primary-500 outline-none text-sm font-black text-gray-900 transition-all shadow-inner caret-black"
                                                                                 />
                                                                             </div>
                                                                         </td>
@@ -1680,7 +1680,7 @@ const ProductForm = () => {
                                                     type="text"
                                                     value={formData.warranty.summary}
                                                     onChange={(e) => setFormData(prev => ({ ...prev, warranty: { ...prev.warranty, summary: e.target.value } }))}
-                                                    className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs font-bold text-gray-900 focus:border-blue-500 outline-none caret-black placeholder:text-gray-500"
+                                                    className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs font-bold text-gray-900 focus:border-primary-500 outline-none caret-black placeholder:text-gray-500"
                                                     placeholder="e.g. 1 Year Manufacturer Warranty"
                                                 />
                                             </div>
@@ -1689,7 +1689,7 @@ const ProductForm = () => {
                                                 <textarea
                                                     value={formData.warranty.covered}
                                                     onChange={(e) => setFormData(prev => ({ ...prev, warranty: { ...prev.warranty, covered: e.target.value } }))}
-                                                    className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs h-20 font-bold text-gray-900 focus:border-blue-500 outline-none caret-black placeholder:text-gray-500"
+                                                    className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs h-20 font-bold text-gray-900 focus:border-primary-500 outline-none caret-black placeholder:text-gray-500"
                                                     placeholder="Manufacturing defects, parts replacement..."
                                                 />
                                             </div>
@@ -1698,7 +1698,7 @@ const ProductForm = () => {
                                                 <textarea
                                                     value={formData.warranty.notCovered}
                                                     onChange={(e) => setFormData(prev => ({ ...prev, warranty: { ...prev.warranty, notCovered: e.target.value } }))}
-                                                    className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs h-20 font-bold text-gray-900 focus:border-blue-500 outline-none caret-black placeholder:text-gray-500"
+                                                    className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs h-20 font-bold text-gray-900 focus:border-primary-500 outline-none caret-black placeholder:text-gray-500"
                                                     placeholder="Physical damage, water damage..."
                                                 />
                                             </div>

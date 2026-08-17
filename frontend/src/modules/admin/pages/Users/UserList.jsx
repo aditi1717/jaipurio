@@ -168,9 +168,9 @@ const UserList = () => {
                         <p className="text-[10px] font-black uppercase tracking-[0.18em] text-gray-400">Total Users</p>
                         <p className="mt-1 text-xl font-black text-gray-900">{totalUsers}</p>
                     </div>
-                    <div className="rounded-2xl border border-blue-100 bg-blue-50/70 px-4 py-3 shadow-sm">
-                        <p className="text-[10px] font-black uppercase tracking-[0.18em] text-blue-400">Current Page</p>
-                        <p className="mt-1 text-xl font-black text-blue-700">{currentPage}<span className="text-sm text-blue-400">/{totalPages}</span></p>
+                    <div className="rounded-2xl border border-primary-100 bg-primary-50/70 px-4 py-3 shadow-sm">
+                        <p className="text-[10px] font-black uppercase tracking-[0.18em] text-primary-400">Current Page</p>
+                        <p className="mt-1 text-xl font-black text-primary-700">{currentPage}<span className="text-sm text-primary-400">/{totalPages}</span></p>
                     </div>
                 </div>
             </div>
@@ -182,7 +182,7 @@ const UserList = () => {
                     <input
                         type="text"
                         placeholder="Search by name, email or phone..."
-                        className="w-full pl-11 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-2xl focus:bg-white focus:border-blue-500 outline-none transition-all text-sm text-gray-900 placeholder:text-gray-400 font-semibold"
+                        className="w-full pl-11 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-2xl focus:bg-white focus:border-primary-500 outline-none transition-all text-sm text-gray-900 placeholder:text-gray-400 font-semibold"
                         value={searchTerm}
                         onChange={(e) => {
                             setSearchTerm(e.target.value);
@@ -192,7 +192,7 @@ const UserList = () => {
                 </div>
                 <div className="flex items-center gap-2 md:gap-3 w-full lg:w-auto">
                     <select
-                        className="flex-1 lg:flex-none px-4 py-2.5 md:px-5 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:bg-white focus:border-blue-500 text-sm font-semibold text-gray-900 min-w-[130px] md:min-w-[170px]"
+                        className="flex-1 lg:flex-none px-4 py-2.5 md:px-5 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:bg-white focus:border-primary-500 text-sm font-semibold text-gray-900 min-w-[130px] md:min-w-[170px]"
                         value={statusFilter}
                         onChange={(e) => {
                             setStatusFilter(e.target.value);
@@ -207,7 +207,7 @@ const UserList = () => {
                         type="button"
                         onClick={handleExportCSV}
                         disabled={exporting}
-                        className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white rounded-2xl text-sm font-bold shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                        className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-primary-600 hover:bg-primary-700 disabled:bg-primary-400 text-white rounded-2xl text-sm font-bold shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
                     >
                         <MdFileDownload size={18} className={exporting ? 'animate-bounce' : ''} />
                         {exporting ? 'Exporting...' : 'Export CSV'}
@@ -237,10 +237,10 @@ const UserList = () => {
                                     </tr>
                                 ) : (
                                     paginatedUsers.map(user => (
-                                        <tr key={user._id || user.id} className="group transition-colors hover:bg-blue-50/30">
+                                        <tr key={user._id || user.id} className="group transition-colors hover:bg-primary-50/30">
                                             <td className="whitespace-nowrap px-3 py-2.5 md:px-5 md:py-3">
                                                 <div className="min-w-0">
-                                                    <h4 className="font-black text-sm text-gray-900 group-hover:text-blue-700 transition-colors">{user.name || 'Unnamed User'}</h4>
+                                                    <h4 className="font-black text-sm text-gray-900 group-hover:text-primary-700 transition-colors">{user.name || 'Unnamed User'}</h4>
                                                 </div>
                                             </td>
                                             <td className="whitespace-nowrap px-3 py-2.5 md:px-5 md:py-3 text-sm text-gray-600">
@@ -255,7 +255,7 @@ const UserList = () => {
                                                 {new Date(user.joinedDate || user.createdAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })}
                                             </td>
                                             <td className="whitespace-nowrap px-3 py-2.5 md:px-5 md:py-3 text-center">
-                                                <span className="inline-flex min-w-[38px] items-center justify-center px-2.5 py-1 bg-blue-50 text-blue-700 rounded-lg font-black text-sm border border-blue-100">
+                                                <span className="inline-flex min-w-[38px] items-center justify-center px-2.5 py-1 bg-primary-50 text-primary-700 rounded-lg font-black text-sm border border-primary-100">
                                                     {user.orderStats?.total || 0}
                                                 </span>
                                             </td>
@@ -271,7 +271,7 @@ const UserList = () => {
                                                 <div className="flex items-center justify-end gap-2">
                                                     <button
                                                         onClick={() => navigate(`/admin/users/${user._id || user.id}`)}
-                                                        className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all border border-transparent hover:border-blue-100"
+                                                        className="p-2 text-gray-400 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-all border border-transparent hover:border-primary-100"
                                                         title="View Profile"
                                                     >
                                                         <MdVisibility size={17} />

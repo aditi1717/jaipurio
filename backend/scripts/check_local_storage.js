@@ -6,7 +6,7 @@ import os from 'node:os';
 import { saveUploadedFile, UPLOADS_ROOT, toPublicUrl } from '../utils/localStorage.js';
 import { toRelativePath } from './cloudinary_download.js';
 
-process.env.ASSET_BASE_URL = 'https://backend.indiankart.in';
+process.env.ASSET_BASE_URL = 'https://backend.jaipurio.in';
 
 // --- URL derivation used by the migration -------------------------------
 assert.strictEqual(
@@ -29,7 +29,7 @@ const saved = await saveUploadedFile(
     { folder: 'ecom_uploads/products' }
 );
 
-assert.ok(saved.secure_url.startsWith('https://backend.indiankart.in/uploads/ecom_uploads/products/'),
+assert.ok(saved.secure_url.startsWith('https://backend.jaipurio.in/uploads/ecom_uploads/products/'),
     `unexpected url: ${saved.secure_url}`);
 assert.strictEqual(saved.format, 'png');
 assert.strictEqual(saved.bytes, buffer.length);
@@ -61,6 +61,6 @@ const movedPath = path.join(UPLOADS_ROOT, moved.secure_url.split('/uploads/')[1]
 assert.ok(fs.existsSync(movedPath));
 fs.unlinkSync(movedPath);
 
-assert.strictEqual(toPublicUrl('a/b.png'), 'https://backend.indiankart.in/uploads/a/b.png');
+assert.strictEqual(toPublicUrl('a/b.png'), 'https://backend.jaipurio.in/uploads/a/b.png');
 
 console.log('local storage adapter OK');

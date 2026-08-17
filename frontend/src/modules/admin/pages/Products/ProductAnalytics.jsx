@@ -245,7 +245,7 @@ const ProductAnalytics = () => {
         return (
             <div className="flex h-[60vh] items-center justify-center">
                 <div className="flex flex-col items-center gap-4">
-                    <div className="h-12 w-12 animate-spin rounded-full border-4 border-blue-600 border-t-transparent"></div>
+                    <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary-600 border-t-transparent"></div>
                     <p className="text-sm font-bold text-gray-500">Generating dynamic insights...</p>
                 </div>
             </div>
@@ -294,7 +294,7 @@ const ProductAnalytics = () => {
                 <div className="flex flex-col md:flex-row">
                     <div className="w-full md:w-72 bg-gray-50 p-8 flex items-center justify-center border-r border-gray-100">
                         <div className="relative group">
-                            <div className="absolute -inset-4 bg-blue-100/50 rounded-full blur-2xl group-hover:bg-blue-200/60 transition-colors opacity-0 group-hover:opacity-100"></div>
+                            <div className="absolute -inset-4 bg-primary-100/50 rounded-full blur-2xl group-hover:bg-primary-200/60 transition-colors opacity-0 group-hover:opacity-100"></div>
                             <img 
                                 src={data?.image || '/placeholder-product.png'} 
                                 alt={data?.name} 
@@ -305,7 +305,7 @@ const ProductAnalytics = () => {
                     <div className="flex-1 p-8 md:p-10 flex flex-col justify-between">
                         <div className="space-y-4">
                             <div className="flex flex-wrap gap-2">
-                                <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-4 py-1.5 text-xs font-black uppercase tracking-wider text-blue-600 ring-1 ring-blue-100">
+                                <span className="inline-flex items-center gap-1.5 rounded-full bg-primary-50 px-4 py-1.5 text-xs font-black uppercase tracking-wider text-primary-600 ring-1 ring-primary-100">
                                     <MdCategory size={14} />
                                     {data?.category || 'General'}
                                 </span>
@@ -350,7 +350,7 @@ const ProductAnalytics = () => {
             {/* Stats Grid */}
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
                 <motion.div initial={{ opacity: 0, x: -20, delay: 0.1 }} animate={{ opacity: 1, x: 0 }} className="rounded-3xl border border-gray-100 bg-white p-6 shadow-sm hover:shadow-md transition-shadow">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 mb-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-50 text-primary-600 mb-4">
                         <MdVisibility size={24} />
                     </div>
                     <p className="text-xs font-black uppercase tracking-widest text-gray-400">Unique Visits</p>
@@ -407,7 +407,7 @@ const ProductAnalytics = () => {
                                 onClick={() => setTimeRange(range)}
                                 className={`rounded-xl px-6 py-2 text-xs font-black uppercase tracking-widest transition-all ${
                                     timeRange === range 
-                                        ? 'bg-white text-blue-600 shadow-sm' 
+                                        ? 'bg-white text-primary-600 shadow-sm' 
                                         : 'text-gray-400 hover:text-gray-600'
                                 }`}
                             >
@@ -479,7 +479,7 @@ const ProductAnalytics = () => {
 
                 <div className="mt-8 flex justify-center gap-8 border-t border-gray-100 pt-8">
                     <div className="flex items-center gap-2">
-                        <div className="h-4 w-4 rounded-full bg-blue-600"></div>
+                        <div className="h-4 w-4 rounded-full bg-primary-600"></div>
                         <span className="text-xs font-black text-gray-600 uppercase tracking-widest">Total Page Views</span>
                     </div>
                     <div className="flex items-center gap-2">
@@ -528,7 +528,7 @@ const ProductAnalytics = () => {
                                     <tr key={row.label} className="group hover:bg-gray-50 transition-colors">
                                         <td className="py-4 text-sm font-bold text-gray-500 group-hover:text-gray-900 transition-colors">{row.label}</td>
                                         <td className="py-4 text-right">
-                                            <span className="text-lg font-black text-blue-600">{(row.visitors || 0).toLocaleString()}</span>
+                                            <span className="text-lg font-black text-primary-600">{(row.visitors || 0).toLocaleString()}</span>
                                         </td>
                                         <td className="py-4 text-right">
                                             <span className="text-xl font-black text-slate-900/90">{(row.views || 0).toLocaleString()}</span>
@@ -552,7 +552,7 @@ const ProductAnalytics = () => {
                         <h3 className="text-xl font-black text-gray-900">Last 7 Days Visitors</h3>
                         <p className="text-sm font-medium text-gray-400">Date-wise visitor count from today back through the previous 6 days</p>
                     </div>
-                    <div className="inline-flex items-center gap-2 rounded-2xl bg-blue-50 px-4 py-2 text-sm font-black text-blue-700">
+                    <div className="inline-flex items-center gap-2 rounded-2xl bg-primary-50 px-4 py-2 text-sm font-black text-primary-700">
                         <MdPeople size={18} />
                         Weekly Visitors: {weeklyVisitorsTotal.toLocaleString()}
                     </div>
@@ -585,7 +585,7 @@ const ProductAnalytics = () => {
                                 {weeklyVisitorRows.map((row) => (
                                     <tr key={`weekly-row-${row.dateKey}`} className="hover:bg-gray-50 transition-colors">
                                         <td className="py-4 text-sm font-bold text-gray-700">{row.label}</td>
-                                        <td className="py-4 text-right text-lg font-black text-blue-600">{row.visitors.toLocaleString()}</td>
+                                        <td className="py-4 text-right text-lg font-black text-primary-600">{row.visitors.toLocaleString()}</td>
                                         <td className="py-4 text-right text-lg font-black text-slate-900/90">{row.views.toLocaleString()}</td>
                                     </tr>
                                 ))}
@@ -621,7 +621,7 @@ const ProductAnalytics = () => {
                                         initial={{ width: 0 }}
                                         animate={{ width: `${(item.count / (data?.viewCount || 1)) * 100}%` }}
                                         transition={{ duration: 1, delay: 0.5 + (index * 0.1) }}
-                                        className="h-full bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full group-hover:brightness-110 transition-all"
+                                        className="h-full bg-gradient-to-r from-primary-500 to-indigo-600 rounded-full group-hover:brightness-110 transition-all"
                                     ></motion.div>
                                 </div>
                             </div>
@@ -641,17 +641,17 @@ const ProductAnalytics = () => {
                     transition={{ delay: 0.3 }}
                     className="rounded-[2.5rem] bg-slate-900 p-8 shadow-xl shadow-slate-200 text-white overflow-hidden relative"
                 >
-                    <div className="absolute -top-24 -right-24 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl"></div>
+                    <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary-500/20 rounded-full blur-3xl"></div>
                     
                     <div className="mb-8 flex items-center justify-between relative z-10">
                         <h3 className="text-xl font-black">Platform Insights</h3>
-                        <MdTrendingUp className="text-blue-400" size={24} />
+                        <MdTrendingUp className="text-primary-400" size={24} />
                     </div>
 
                     <div className="space-y-8 relative z-10">
                         <div className="flex gap-4 items-center">
                             <div className="h-14 w-14 rounded-2xl bg-white/10 flex items-center justify-center shrink-0 border border-white/10">
-                                <MdVisibility className="text-blue-400" size={28} />
+                                <MdVisibility className="text-primary-400" size={28} />
                             </div>
                             <div>
                                 <h4 className="font-black text-lg">Discovery Rate</h4>
@@ -683,8 +683,8 @@ const ProductAnalytics = () => {
                         </div>
                     </div>
 
-                    <div className="mt-12 p-6 rounded-3xl bg-blue-600/20 border border-blue-500/30 relative z-10">
-                        <p className="text-xs font-bold leading-relaxed text-blue-100 italic">
+                    <div className="mt-12 p-6 rounded-3xl bg-primary-600/20 border border-primary-500/30 relative z-10">
+                        <p className="text-xs font-bold leading-relaxed text-primary-100 italic">
                             "This product is trending higher in North India compared to other regions in the same category. Consider a focused marketing campaign in metropolitan areas."
                         </p>
                     </div>

@@ -130,7 +130,7 @@ const Cart = () => {
                     <div className="space-y-6">
                         <div className="flex flex-col items-center justify-center py-12 px-4 text-center bg-white min-h-[40vh] md:rounded-2xl md:shadow-sm md:py-24 md:border border-gray-100 mx-4 md:mx-0">
                             <div className="relative mb-6 group">
-                                <div className="absolute inset-0 bg-blue-100 rounded-full animate-ping opacity-20 duration-[2s]"></div>
+                                <div className="absolute inset-0 bg-primary-100 rounded-full animate-ping opacity-20 duration-[2s]"></div>
                                 <div className="relative w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center shadow-inner transition-transform duration-300">
                                     <span className="material-icons text-gray-500 text-4xl md:text-[80px] drop-shadow-sm -ml-1">remove_shopping_cart</span>
                                 </div>
@@ -146,7 +146,7 @@ const Cart = () => {
 
                             <button
                                 onClick={() => navigate('/')}
-                                className="group relative inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-full font-bold shadow-blue-200 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden text-sm"
+                                className="group relative inline-flex items-center gap-2 bg-primary-600 text-white px-8 py-3 rounded-full font-bold shadow-primary-200 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden text-sm"
                             >
                                 <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
                                 <span className="material-icons relative z-10 text-lg transition-transform group-hover:rotate-12">shopping_bag</span>
@@ -169,16 +169,16 @@ const Cart = () => {
                                             <img src={item.image} alt={item.name} className="w-full h-full object-contain" />
                                         </div>
                                         <div className="flex-1">
-                                            <h2 className="text-base font-bold text-gray-700 line-clamp-2 hover:text-blue-700 cursor-pointer transition-colors" onClick={() => navigate(`/product/${item.id}`)}>{item.name}</h2>
+                                            <h2 className="text-base font-bold text-gray-700 line-clamp-2 hover:text-primary-700 cursor-pointer transition-colors" onClick={() => navigate(`/product/${item.id}`)}>{item.name}</h2>
                                             <div className="flex items-center gap-2 mt-2">
                                                 <span className="text-xl font-extrabold text-gray-700">₹{item.price.toLocaleString()}</span>
                                             </div>
                                             <div className="flex items-center gap-6 mt-4 text-sm font-bold uppercase">
-                                                <button onClick={() => moveToCart(item)} className="text-blue-600 hover:text-blue-700 transition-colors flex items-center gap-1">
+                                                <button onClick={() => moveToCart(item)} className="text-primary-600 hover:text-primary-700 transition-colors flex items-center gap-1">
                                                     <span className="material-icons text-base">add_shopping_cart</span>
                                                     Move to Cart
                                                 </button>
-                                                <button onClick={() => removeFromSavedForLater(item.id, item.variant)} className="text-blue-600 hover:text-blue-700 transition-colors flex items-center gap-1">
+                                                <button onClick={() => removeFromSavedForLater(item.id, item.variant)} className="text-primary-600 hover:text-primary-700 transition-colors flex items-center gap-1">
                                                     <span className="material-icons text-base">bookmark</span>
                                                     Saved for later
                                                 </button>
@@ -198,13 +198,13 @@ const Cart = () => {
                                 <div className="bg-white px-4 py-4 flex items-center justify-between border-b border-gray-200 md:rounded-lg md:shadow-md w-full">
                                     <div className="flex flex-col flex-1 min-w-0 mr-4">
                                         <div className="flex items-center gap-2">
-                                            <span className="material-icons text-blue-600 text-lg">location_on</span>
-                                            <span className="text-sm text-gray-800 font-semibold">Deliver to: <span className="font-extrabold text-blue-600">{addresses[0]?.name}, {addresses[0]?.pincode}</span></span>
+                                            <span className="material-icons text-primary-600 text-lg">location_on</span>
+                                            <span className="text-sm text-gray-800 font-semibold">Deliver to: <span className="font-extrabold text-primary-600">{addresses[0]?.name}, {addresses[0]?.pincode}</span></span>
                                             <span className="text-[10px] bg-gray-100 text-gray-700 px-2 py-1 rounded-full font-bold uppercase shrink-0">{addresses[0]?.type}</span>
                                         </div>
                                         <p className="text-xs text-gray-600 truncate mt-1 ml-7">{addresses[0]?.address}, {addresses[0]?.city}</p>
                                     </div>
-                                    <button onClick={handleCheckout} className="text-blue-600 font-bold text-sm border-2 border-blue-600 px-5 py-2 rounded-lg active:bg-blue-50 hover:bg-blue-600 hover:text-white transition-all whitespace-nowrap shrink-0 shadow-sm">
+                                    <button onClick={handleCheckout} className="text-primary-600 font-bold text-sm border-2 border-primary-600 px-5 py-2 rounded-lg active:bg-primary-50 hover:bg-primary-600 hover:text-white transition-all whitespace-nowrap shrink-0 shadow-sm">
                                         Change
                                     </button>
                                 </div>
@@ -214,10 +214,10 @@ const Cart = () => {
                                     <div className="absolute top-[38px] left-12 right-12 h-[2px] bg-gray-200 -z-0"></div>
 
                                     <div className="flex flex-col items-center gap-2 min-w-[60px] relative z-10">
-                                        <div className="w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-bold shadow-lg ring-4 ring-blue-100">
+                                        <div className="w-9 h-9 rounded-full bg-primary-600 text-white flex items-center justify-center text-sm font-bold shadow-lg ring-4 ring-primary-100">
                                             <span className="material-icons text-lg">shopping_cart</span>
                                         </div>
-                                        <span className="text-[10px] font-extrabold text-blue-600 uppercase tracking-tight">Cart</span>
+                                        <span className="text-[10px] font-extrabold text-primary-600 uppercase tracking-tight">Cart</span>
                                     </div>
 
                                     <div className="flex flex-col items-center gap-2 min-w-[60px] relative z-10 opacity-40">
@@ -256,10 +256,10 @@ const Cart = () => {
                                                     <img src={item.image} alt={item.name} className="w-full h-full object-contain" />
                                                 </div>
                                                 <div className="flex-1">
-                                                    <h2 className="text-base font-bold text-gray-900 line-clamp-2 hover:text-blue-600 cursor-pointer transition-colors" onClick={() => navigate(`/product/${item.id}`)}>{item.name}</h2>
+                                                    <h2 className="text-base font-bold text-gray-900 line-clamp-2 hover:text-primary-600 cursor-pointer transition-colors" onClick={() => navigate(`/product/${item.id}`)}>{item.name}</h2>
                                                     {item.variant && Object.entries(item.variant).map(([key, value]) => (
                                                         <p key={key} className="text-xs text-gray-600 mt-0.5 font-medium">
-                                                            {key}: <span className="text-blue-600">{value}</span>
+                                                            {key}: <span className="text-primary-600">{value}</span>
                                                         </p>
                                                     ))}
                                                     <div className="flex items-center gap-3 mt-3">
@@ -274,14 +274,14 @@ const Cart = () => {
                                                 </div>
                                             </div>
                                             <div className="flex items-center gap-4 mt-6">
-                                                <div className="flex items-center border-2 border-blue-600 rounded-lg overflow-hidden shadow-sm">
+                                                <div className="flex items-center border-2 border-primary-600 rounded-lg overflow-hidden shadow-sm">
                                                     <button
                                                         onClick={() => updateQuantity(item.id, item.quantity - 1, item.variant)}
-                                                        className="w-10 h-10 flex items-center justify-center active:bg-blue-600 hover:bg-blue-50 active:text-white transition-all"
+                                                        className="w-10 h-10 flex items-center justify-center active:bg-primary-600 hover:bg-primary-50 active:text-white transition-all"
                                                     >
                                                         <span className="material-icons text-lg">remove</span>
                                                     </button>
-                                                    <span className="w-12 text-center text-base font-extrabold text-blue-600">{item.quantity}</span>
+                                                    <span className="w-12 text-center text-base font-extrabold text-primary-600">{item.quantity}</span>
                                                     <button
                                                         onClick={() => {
                                                             const purchaseLimit = getItemPurchaseLimit(item);
@@ -294,14 +294,14 @@ const Cart = () => {
                                                         className={`w-10 h-10 flex items-center justify-center transition-all ${
                                                             Number.isFinite(getItemPurchaseLimit(item)) && item.quantity >= getItemPurchaseLimit(item)
                                                                 ? 'text-gray-300 cursor-not-allowed'
-                                                                : 'active:bg-blue-600 hover:bg-blue-50 active:text-white'
+                                                                : 'active:bg-primary-600 hover:bg-primary-50 active:text-white'
                                                         }`}
                                                     >
                                                         <span className="material-icons text-lg">add</span>
                                                     </button>
                                                 </div>
                                                 <div className="flex items-center gap-6 text-sm font-bold uppercase">
-                                                    <button onClick={() => moveToSavedForLater(item)} className="text-blue-600 hover:text-blue-700 transition-colors flex items-center gap-1">
+                                                    <button onClick={() => moveToSavedForLater(item)} className="text-primary-600 hover:text-primary-700 transition-colors flex items-center gap-1">
                                                         <span className="material-icons text-base">bookmark_border</span>
                                                         Save for later
                                                     </button>
@@ -318,7 +318,7 @@ const Cart = () => {
                                         <div className="hidden md:flex justify-end p-5 shadow-[0_-2px_10px_0_rgba(59,130,246,0.1)] sticky bottom-0 bg-white">
                                             <button
                                                 onClick={handleCheckout}
-                                                className="bg-blue-600 text-white px-12 py-4 rounded-lg font-bold text-base shadow-lg hover:shadow-xl transform hover:scale-105 transition-all uppercase tracking-wide"
+                                                className="bg-primary-600 text-white px-12 py-4 rounded-lg font-bold text-base shadow-lg hover:shadow-xl transform hover:scale-105 transition-all uppercase tracking-wide"
                                             >
                                                 Place Order
                                             </button>
@@ -341,16 +341,16 @@ const Cart = () => {
                                                     <img src={item.image} alt={item.name} className="w-full h-full object-contain" />
                                                 </div>
                                                 <div className="flex-1">
-                                                    <h2 className="text-base font-bold text-gray-700 line-clamp-2 hover:text-blue-700 cursor-pointer transition-colors" onClick={() => navigate(`/product/${item.id}`)}>{item.name}</h2>
+                                                    <h2 className="text-base font-bold text-gray-700 line-clamp-2 hover:text-primary-700 cursor-pointer transition-colors" onClick={() => navigate(`/product/${item.id}`)}>{item.name}</h2>
                                                     <div className="flex items-center gap-2 mt-2">
                                                         <span className="text-xl font-extrabold text-gray-700">₹{item.price.toLocaleString()}</span>
                                                     </div>
                                                     <div className="flex items-center gap-6 mt-4 text-sm font-bold uppercase">
-                                                        <button onClick={() => moveToCart(item)} className="text-blue-600 hover:text-blue-700 transition-colors flex items-center gap-1">
+                                                        <button onClick={() => moveToCart(item)} className="text-primary-600 hover:text-primary-700 transition-colors flex items-center gap-1">
                                                             <span className="material-icons text-base">add_shopping_cart</span>
                                                             Move to Cart
                                                         </button>
-                                                        <button onClick={() => removeFromSavedForLater(item.id, item.variant)} className="text-blue-600 hover:text-blue-700 transition-colors flex items-center gap-1">
+                                                        <button onClick={() => removeFromSavedForLater(item.id, item.variant)} className="text-primary-600 hover:text-primary-700 transition-colors flex items-center gap-1">
                                                             <span className="material-icons text-base">bookmark</span>
                                                             Saved for later
                                                         </button>
@@ -366,7 +366,7 @@ const Cart = () => {
                                     {cart.length > 0 && (
                                         <div className="bg-white py-5 mb-4 border-t border-b border-gray-200 md:border-t-0 md:border-b-0 md:rounded-lg md:shadow-lg">
                                             <h3 className="text-gray-700 font-extrabold uppercase text-sm mb-4 border-b border-gray-200 pb-3 px-5 flex items-center gap-2">
-                                                <span className="material-icons text-blue-600">receipt_long</span>
+                                                <span className="material-icons text-primary-600">receipt_long</span>
                                                 Price Details
                                             </h3>
                                             <div className="space-y-3 text-base px-5 font-medium">
@@ -382,7 +382,7 @@ const Cart = () => {
                                                     <span className="text-gray-700">Delivery Charges</span>
                                                     <span className={delivery === 0 ? "font-bold text-green-700" : "font-bold text-gray-800"}>{delivery === 0 ? "FREE" : `₹${delivery}`}</span>
                                                 </div>
-                                                <div className="flex justify-between font-extrabold text-xl border-t border-dashed border-blue-200 pt-4 mt-4">
+                                                <div className="flex justify-between font-extrabold text-xl border-t border-dashed border-primary-200 pt-4 mt-4">
                                                     <span className="text-gray-800">Total Amount</span>
                                                     <span className="text-gray-900">₹{(price + delivery).toLocaleString()}</span>
                                                 </div>
@@ -406,7 +406,7 @@ const Cart = () => {
                                     {cart.length > 0 && (
                                         <div className="bg-white p-5 rounded-lg shadow-lg border-2 border-gray-200">
                                             <h3 className="text-gray-700 font-extrabold uppercase text-sm mb-4 border-b border-gray-200 pb-3 flex items-center gap-2">
-                                                <span className="material-icons text-blue-600">receipt_long</span>
+                                                <span className="material-icons text-primary-600">receipt_long</span>
                                                 Price Details
                                             </h3>
                                             <div className="space-y-3 text-base font-medium">
@@ -422,7 +422,7 @@ const Cart = () => {
                                                     <span className="text-gray-700">Delivery Charges</span>
                                                     <span className={delivery === 0 ? "font-bold text-green-700" : "font-bold text-gray-800"}>{delivery === 0 ? "FREE" : `₹${delivery}`}</span>
                                                 </div>
-                                                <div className="flex justify-between font-extrabold text-xl border-t border-dashed border-blue-200 pt-4 mt-4">
+                                                <div className="flex justify-between font-extrabold text-xl border-t border-dashed border-primary-200 pt-4 mt-4">
                                                     <span className="text-gray-800">Total Amount</span>
                                                     <span className="text-gray-900">₹{(price + delivery).toLocaleString()}</span>
                                                 </div>
@@ -438,7 +438,7 @@ const Cart = () => {
 
                                     {/* Safe Payment Badge */}
                                     <div className="flex items-center gap-3 p-4 text-sm text-gray-600 font-semibold bg-white rounded-lg border border-gray-200">
-                                        <span className="material-icons text-blue-600 text-2xl">gpp_good</span>
+                                        <span className="material-icons text-primary-600 text-2xl">gpp_good</span>
                                         <p>Safe and Secure Payments. 100% Authentic products.</p>
                                     </div>
                                 </div>
@@ -462,14 +462,14 @@ const Cart = () => {
             {/* Bottom Actions - MOBILE ONLY */}
             {
                 cart.length > 0 && (
-                    <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t-2 border-blue-200 px-4 py-4 flex items-center justify-between z-[100] shadow-[0_-6px_20px_rgba(59,130,246,0.2)]">
+                    <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t-2 border-primary-200 px-4 py-4 flex items-center justify-between z-[100] shadow-[0_-6px_20px_rgba(59,130,246,0.2)]">
                         <div className="flex flex-col">
                             <span className="text-2xl font-extrabold text-gray-900">₹{(price + delivery).toLocaleString()}</span>
-                            <span className="text-xs text-blue-600 font-bold cursor-pointer hover:underline" onClick={() => document.getElementById('price-details')?.scrollIntoView({ behavior: 'smooth' })}>View price details</span>
+                            <span className="text-xs text-primary-600 font-bold cursor-pointer hover:underline" onClick={() => document.getElementById('price-details')?.scrollIntoView({ behavior: 'smooth' })}>View price details</span>
                         </div>
                         <button
                             onClick={handleCheckout}
-                            className="bg-blue-600 text-white px-8 py-3.5 rounded-lg font-bold text-base shadow-lg hover:shadow-xl transform hover:scale-105 transition-all w-1/2 ml-4"
+                            className="bg-primary-600 text-white px-8 py-3.5 rounded-lg font-bold text-base shadow-lg hover:shadow-xl transform hover:scale-105 transition-all w-1/2 ml-4"
                         >
                             Place Order
                         </button>

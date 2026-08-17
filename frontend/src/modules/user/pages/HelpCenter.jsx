@@ -153,7 +153,7 @@ const defaultCategories = [
             },
             {
                 question: 'Sale offers kab aate hain?',
-                answer: 'IndianKart par festivals ke time special sales hoti hain. App notifications ON karein sale alerts ke liye. "Offers" section mein current deals dekh sakte hain.'
+                answer: 'Jaipurio par festivals ke time special sales hoti hain. App notifications ON karein sale alerts ke liye. "Offers" section mein current deals dekh sakte hain.'
             },
             {
                 question: 'Referral bonus kaise use karein?',
@@ -177,7 +177,7 @@ const defaultCategories = [
             },
             {
                 question: 'Product genuine hai ya fake — kaise check karein?',
-                answer: 'IndianKart par sirf authorized sellers hain. "Sold by" section mein seller details check karein. Authenticity doubt hone par report karein — strict action liya jata hai.'
+                answer: 'Jaipurio par sirf authorized sellers hain. "Sold by" section mein seller details check karein. Authenticity doubt hone par report karein — strict action liya jata hai.'
             },
             {
                 question: 'Product description se alag item aaya',
@@ -196,8 +196,8 @@ const defaultCategories = [
         desc: 'Scam alerts & account security',
         faqs: [
             {
-                question: 'IndianKart ka naam lekar fraud call aaya — kya karoon?',
-                answer: 'IndianKart kabhI OTP, bank details ya password phone par nahi maangta. Aise calls ko ignore karein, number block karein, aur Cyber Crime helpline 1930 par report karein.'
+                question: 'Jaipurio ka naam lekar fraud call aaya — kya karoon?',
+                answer: 'Jaipurio kabhI OTP, bank details ya password phone par nahi maangta. Aise calls ko ignore karein, number block karein, aur Cyber Crime helpline 1930 par report karein.'
             },
             {
                 question: 'Mera account hack ho gaya — immediately kya karoon?',
@@ -208,24 +208,24 @@ const defaultCategories = [
                 answer: '"My Orders" mein suspicious order dekh rahe hain? Turant "Report Unauthorized Transaction" karein. Order delivery se pehle cancel ho sakta hai aur full refund milega.'
             },
             {
-                question: 'Fake IndianKart website/app — kaise pehchanen?',
+                question: 'Fake Jaipurio website/app — kaise pehchanen?',
                 answer: 'Official app sirf Google Play Store aur Apple App Store se download karein. Website URL check karein — sirf official domain. Kisi bhi third-party site par login maat karein.'
             }
         ]
     },
     {
         id: 'rewards',
-        title: 'IndianKart Rewards',
+        title: 'Jaipurio Rewards',
         icon: 'stars',
         desc: 'Coins & loyalty benefits',
         faqs: [
             {
-                question: 'IndianKart Coins kaise earn karein?',
+                question: 'Jaipurio Coins kaise earn karein?',
                 answer: 'Har successful delivery par coins milte hain. Reviews likhne par, referrals par, aur special events par bonus coins milte hain. "My Rewards" section mein track karein.'
             },
             {
                 question: 'Coins redeem kaise karein?',
-                answer: 'Checkout par "Use IndianKart Coins" option select karein. 1 Coin = ₹1 discount. Minimum 50 coins use kar sakte hain ek order mein.'
+                answer: 'Checkout par "Use Jaipurio Coins" option select karein. 1 Coin = ₹1 discount. Minimum 50 coins use kar sakte hain ek order mein.'
             },
             {
                 question: 'Coins expire kab hote hain?',
@@ -233,7 +233,7 @@ const defaultCategories = [
             },
             {
                 question: 'Rewards ke kya-kya benefits hain?',
-                answer: 'IndianKart Rewards se milta hai: Free delivery on select orders | Priority customer support | Early access to sales | Special birthday discounts | Higher coin earning rate.'
+                answer: 'Jaipurio Rewards se milta hai: Free delivery on select orders | Priority customer support | Early access to sales | Special birthday discounts | Higher coin earning rate.'
             }
         ]
     }
@@ -393,7 +393,7 @@ const HelpCenter = ({ embeddedInInfo = false }) => {
                     <div className="flex items-start gap-3">
                         <button
                             onClick={() => navigate(-1)}
-                            className="mt-1 p-1.5 rounded-full text-gray-500 hover:text-[#2874f0] hover:bg-blue-50 transition-colors"
+                            className="mt-1 p-1.5 rounded-full text-gray-500 hover:text-[#2874f0] hover:bg-primary-50 transition-colors"
                             aria-label="Go back"
                         >
                             <span className="material-icons text-[20px]">arrow_back</span>
@@ -432,7 +432,7 @@ const HelpCenter = ({ embeddedInInfo = false }) => {
                                 }}
                                 className={`rounded-lg border p-3 text-center transition-all active:scale-95 md:py-5 md:rounded-md
                                     ${activeCategory === cat.id
-                                        ? 'bg-[#2874f0] border-[#2874f0] shadow-md shadow-blue-200'
+                                        ? 'bg-[#2874f0] border-[#2874f0] shadow-md shadow-primary-200'
                                         : 'bg-white border-gray-100 hover:border-[#2874f0] hover:shadow-sm'}`}
                             >
                                 <span className={`material-icons text-2xl mb-1 md:text-3xl md:mb-2 ${activeCategory === cat.id ? 'text-white' : 'text-[#2874f0]'}`}>
@@ -441,7 +441,7 @@ const HelpCenter = ({ embeddedInInfo = false }) => {
                                 <p className={`text-[10px] font-bold leading-tight md:text-xs ${activeCategory === cat.id ? 'text-white' : 'text-gray-700'}`}>
                                     {cat.title}
                                 </p>
-                                <p className={`text-[9px] mt-0.5 hidden md:block ${activeCategory === cat.id ? 'text-blue-100' : 'text-gray-400'}`}>
+                                <p className={`text-[9px] mt-0.5 hidden md:block ${activeCategory === cat.id ? 'text-primary-100' : 'text-gray-400'}`}>
                                     {getCategoryCount(cat.id)} topics
                                 </p>
                             </button>
@@ -510,7 +510,7 @@ const HelpCenter = ({ embeddedInInfo = false }) => {
                             <div className="bg-white rounded-xl border border-gray-100 overflow-hidden md:rounded-md shadow-sm">
                                 {isConfigLoading ? (
                                     <div className="py-12 text-center">
-                                        <div className="w-8 h-8 mx-auto border-2 border-blue-100 border-t-[#2874f0] rounded-full animate-spin"></div>
+                                        <div className="w-8 h-8 mx-auto border-2 border-primary-100 border-t-[#2874f0] rounded-full animate-spin"></div>
                                         <p className="text-sm text-gray-500 mt-3">Topics load ho rahe hain...</p>
                                     </div>
                                 ) : filteredFaqs.length === 0 ? (

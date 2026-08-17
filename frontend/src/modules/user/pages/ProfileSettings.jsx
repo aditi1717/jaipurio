@@ -107,7 +107,7 @@ const ProfileSettings = () => {
                                                 if (/\d/.test(value)) return;
                                                 setFormData({ ...formData, name: value });
                                             }}
-                                            className="w-full border border-gray-300 rounded-xl pl-11 pr-4 py-3 text-sm text-gray-900 outline-none focus:border-blue-500 bg-white"
+                                            className="w-full border border-gray-300 rounded-xl pl-11 pr-4 py-3 text-sm text-gray-900 outline-none focus:border-primary-500 bg-white"
                                             placeholder="Enter your full name"
                                         />
                                     </div>
@@ -118,7 +118,7 @@ const ProfileSettings = () => {
                                     <select
                                         value={formData.gender}
                                         onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
-                                        className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 outline-none focus:border-blue-500 bg-white"
+                                        className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 outline-none focus:border-primary-500 bg-white"
                                     >
                                         <option value="">Select gender</option>
                                         <option value="Male">Male</option>
@@ -135,7 +135,7 @@ const ProfileSettings = () => {
                                         type="email"
                                         value={formData.email}
                                         onChange={(e) => setFormData({ ...formData, email: e.target.value.toLowerCase() })}
-                                        className="w-full border border-gray-300 rounded-xl pl-11 pr-4 py-3 text-sm text-gray-900 outline-none focus:border-blue-500 bg-white"
+                                        className="w-full border border-gray-300 rounded-xl pl-11 pr-4 py-3 text-sm text-gray-900 outline-none focus:border-primary-500 bg-white"
                                         placeholder="Enter your email"
                                     />
                                 </div>
@@ -158,7 +158,7 @@ const ProfileSettings = () => {
                             <div className="flex flex-col sm:flex-row gap-3 pt-3">
                                 <button
                                     onClick={handleSave}
-                                    className="flex-1 bg-blue-600 text-white py-3 rounded-xl text-sm font-semibold hover:bg-blue-700 transition-colors shadow-sm"
+                                    className="flex-1 bg-primary-600 text-white py-3 rounded-xl text-sm font-semibold hover:bg-primary-700 transition-colors shadow-sm"
                                 >
                                     Save Changes
                                 </button>

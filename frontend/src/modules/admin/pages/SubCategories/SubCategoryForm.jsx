@@ -137,7 +137,7 @@ const SubCategoryForm = ({ subCategory, onClose }) => {
                             autoCorrect="off"
                             autoCapitalize="none"
                             spellCheck={false}
-                            className="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-gray-900 placeholder:text-gray-500"
+                            className="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none text-gray-900 placeholder:text-gray-500"
                             placeholder="e.g. Mobile Accessories"
                             required
                         />
@@ -149,7 +149,7 @@ const SubCategoryForm = ({ subCategory, onClose }) => {
                             name="category"
                             value={formData.category}
                             onChange={handleChange}
-                            className="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-gray-900"
+                            className="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none text-gray-900"
                             required
                         >
                             <option value="">
@@ -172,7 +172,7 @@ const SubCategoryForm = ({ subCategory, onClose }) => {
                             type="file"
                             accept="image/*"
                             onChange={handleImageChange}
-                            className="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-gray-900 text-sm md:text-base"
+                            className="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none text-gray-900 text-sm md:text-base"
                         />
                         {formData.image && (
                             <div className="mt-2 border border-gray-200 rounded-lg p-2 bg-gray-50">
@@ -193,7 +193,7 @@ const SubCategoryForm = ({ subCategory, onClose }) => {
                             name="isActive"
                             checked={formData.isActive}
                             onChange={handleChange}
-                            className="w-4 h-4 md:w-5 md:h-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500"
+                            className="w-4 h-4 md:w-5 md:h-5 text-primary-600 rounded focus:ring-2 focus:ring-primary-500"
                         />
                         <label htmlFor="isActive" className="text-xs md:text-sm font-medium text-gray-700">Active</label>
                     </div>
@@ -210,7 +210,7 @@ const SubCategoryForm = ({ subCategory, onClose }) => {
                         <button
                             type="submit"
                             disabled={isLoading}
-                            className={`flex-1 px-4 py-2.5 md:px-6 md:py-3 text-white rounded-lg transition font-semibold text-sm md:text-base flex items-center justify-center gap-2 ${isLoading ? 'bg-blue-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'}`}
+                            className={`flex-1 px-4 py-2.5 md:px-6 md:py-3 text-white rounded-lg transition font-semibold text-sm md:text-base flex items-center justify-center gap-2 ${isLoading ? 'bg-primary-400 cursor-not-allowed' : 'bg-primary-600 hover:bg-primary-700'}`}
                         >
                             {isLoading ? (
                                 <>
