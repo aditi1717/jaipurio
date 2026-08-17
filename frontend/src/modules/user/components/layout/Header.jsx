@@ -103,7 +103,7 @@ const Header = () => {
         const fetchHeaderLogo = async () => {
             try {
                 const { data } = await API.get('/settings');
-                if (data?.logoUrl) {
+                if (data?.logoUrl && typeof data.logoUrl === 'string' && !data.logoUrl.includes('localhost')) {
                     setHeaderLogo(data.logoUrl);
                 }
             } catch (error) {
@@ -435,7 +435,7 @@ const Header = () => {
                             className="flex items-center md:hidden -my-4 cursor-pointer shrink-0"
                             onClick={() => navigate('/')}
                         >
-                            <img src={headerLogo} alt="Jaipurio" className="h-32 object-contain" />
+                            <img src={headerLogo} alt="Jaipurio" className="h-32 object-contain" onError={(e) => { e.target.src = logo; }} />
                         </div>
                     )}
 
@@ -444,7 +444,7 @@ const Header = () => {
                         className="hidden md:flex flex-col cursor-pointer"
                         onClick={() => navigate('/')}
                     >
-                        <img src={headerLogo} alt="Jaipurio" className="h-[70px] lg:h-[100px] object-contain" />
+                        <img src={headerLogo} alt="Jaipurio" className="h-[70px] lg:h-[100px] object-contain" onError={(e) => { e.target.src = logo; }} />
                     </div>
 
                     {/* Mobile Header Actions (Seller + Language) - Only on Homepage */}
