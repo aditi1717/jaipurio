@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
-const logo = '/logo.png';
+const logo = '/jaipurio-logo.png';
 import toast from 'react-hot-toast';
 
 const Login = () => {
