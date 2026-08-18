@@ -5,7 +5,7 @@ import useAdminAuthStore from '../../store/adminAuthStore';
 import useNewOrderStore from '../../store/newOrderStore';
 import { ADMIN_MENU_GROUPS, hasAdminPermission } from '../../constants/adminPermissions';
 
-import logo from '../../../../assets/jaipurio-logo.jpeg';
+const logo = '/logo.png';
 
 const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(true);

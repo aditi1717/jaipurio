@@ -31,7 +31,7 @@ import {
     MdSportsEsports,
     MdCancel
 } from 'react-icons/md';
-import logo from '../../../../assets/jaipurio-logo.jpeg';
+const logo = '/logo.png';
 
 const normalizeSearchText = (value) => String(value || '').trim().toLowerCase();
 

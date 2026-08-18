@@ -48,3 +48,7 @@ backend/cloudinary-manifest.json
 backend/cloudinary-url-map.json
 backend/cloudinary-failures.json
 backend/remap-backup-*.jsonl
+
+# Public Downloads
+frontend/public/Downloads/
+

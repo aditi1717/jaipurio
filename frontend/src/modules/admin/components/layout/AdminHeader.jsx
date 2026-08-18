@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { MdNotifications, MdLogout, MdPerson, MdCheckCircle, MdError, MdInfo, MdClose } from 'react-icons/md';
 import useAdminAuthStore from '../../store/adminAuthStore';
 import useNotificationStore from '../../store/notificationStore';
-import logo from '../../../../assets/jaipurio-logo.jpeg';
+const logo = '/logo.png';
 
 const AdminHeader = () => {
     const navigate = useNavigate();

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MdVisibility, MdVisibilityOff } from 'react-icons/md';
 import useAdminAuthStore from '../store/adminAuthStore';
-import logo from '../../../assets/jaipurio-logo.jpeg';
+const logo = '/logo.png';
 
 import toast from 'react-hot-toast';
 

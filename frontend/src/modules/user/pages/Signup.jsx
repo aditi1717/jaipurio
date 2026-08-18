@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
-import logo from '../../../assets/jaipurio-logo.jpeg';
+const logo = '/logo.png';
 
 import toast from 'react-hot-toast';
 
@@ -44,7 +44,7 @@ const Signup = () => {
             <div className="p-8 flex-1 flex flex-col">
                 <div className="mb-8 mt-4">
                     <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center mb-6 overflow-hidden border border-gray-100 p-1">
-                        <img src="/jaipurio-logo.jpeg" alt="logo" className="w-full h-full object-contain" />
+                        <img src={logo} alt="logo" className="w-full h-full object-contain" />
                     </div>
                     <h2 className="text-2xl font-bold text-gray-900 mb-2">Looks like you're new here!</h2>
                     <p className="text-sm text-gray-500">Sign up with your mobile number to get started</p>
