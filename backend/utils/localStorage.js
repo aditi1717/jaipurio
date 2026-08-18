@@ -13,17 +13,36 @@ export const UPLOADS_URL_PREFIX = '/uploads';
 // Stored URLs must be absolute: the frontend runs on a different origin than
 // the API, so a relative /uploads/... path would resolve against the storefront.
 const getAssetBaseUrl = () => {
-    let base = String(process.env.ASSET_BASE_URL || 'https://backend.jaipurio.in').replace(/\/+$/, '');
-    if (base.toLowerCase().endsWith('/uploads')) {
-        base = base.slice(0, -8);
+    let base = String(process.env.ASSET_BASE_URL || 'https://jaipurio.onrender.com').replace(/\/+$/, '');
+    if (base.includes('/uploads/')) {
+        base = base.split(/\/uploads\//i)[0];
     }
-    return base;
+    while (base.toLowerCase().endsWith('/uploads')) {
+        base = base.slice(0, -8).replace(/\/+$/, '');
+    }
+    return base.replace(/\/+$/, '');
+};
+
+export const sanitizeImageUrl = (url) => {
+    if (!url || typeof url !== 'string') return url;
+    if (!url.includes('/uploads/')) return url;
+
+    const originMatch = url.match(/^(https?:\/\/[^\/]+)/i);
+    const domain = originMatch ? originMatch[1].replace(/\/+$/, '') : getAssetBaseUrl();
+
+    const parts = url.split(/\/uploads\//i);
+    let finalRelative = parts[parts.length - 1].replace(/^(\.\.\/)+/g, '').replace(/^\/+/, '');
+    if (finalRelative.startsWith('uploads/')) {
+        finalRelative = finalRelative.replace(/^uploads\//i, '');
+    }
+
+    return `${domain}/uploads/${finalRelative}`;
 };
 
 export const toPublicUrl = (relativePath) => {
     let cleanPath = String(relativePath || '').replace(/^\/+/, '');
     cleanPath = cleanPath.replace(/^(\.\.\/)+/g, '').replace(/^uploads\//i, '');
-    return `${getAssetBaseUrl()}/uploads/${cleanPath}`;
+    return sanitizeImageUrl(`${getAssetBaseUrl()}/uploads/${cleanPath}`);
 };
 
 // Folder values come from our own call sites, but never let one escape uploads/.
