@@ -6,6 +6,25 @@ const CATEGORY_CACHE_TTL_MS = 2 * 60 * 1000;
 let categoriesFetchPromise = null;
 let categoriesFetchedAt = 0;
 
+const formatImageUrl = (url) => {
+    if (!url || typeof url !== 'string') return url;
+    if (!url.includes('/uploads/')) return url;
+    const parts = url.split(/\/uploads\//i);
+    const domainMatch = url.match(/^(https?:\/\/[^\/]+)/i);
+    const domain = domainMatch ? domainMatch[1] : '';
+    const cleanRelative = parts[parts.length - 1].replace(/^(\.\.\/)+/g, '').replace(/^\/+/, '');
+    return `${domain}/uploads/${cleanRelative}`;
+};
+
+const sanitizeCategory = (cat) => {
+    if (!cat || typeof cat !== 'object') return cat;
+    return {
+        ...cat,
+        icon: formatImageUrl(cat.icon || cat.image),
+        children: Array.isArray(cat.children) ? cat.children.map(sanitizeCategory) : cat.children
+    };
+};
+
 const useCategoryStore = create((set, get) => ({
     categories: [],
     isLoading: false,
@@ -60,7 +79,8 @@ const useCategoryStore = create((set, get) => ({
         categoriesFetchPromise = (async () => {
             try {
                 const { data } = await API.get('/categories?all=true&lite=true');
-                const sortedCategories = get().sortByNewestFirst(data);
+                const sanitizedData = Array.isArray(data) ? data.map(sanitizeCategory) : data;
+                const sortedCategories = get().sortByNewestFirst(sanitizedData);
                 categoriesFetchedAt = Date.now();
                 set({ categories: sortedCategories, isLoading: false, error: null });
                 return sortedCategories;
@@ -83,7 +103,7 @@ const useCategoryStore = create((set, get) => ({
         try {
             const { data } = await API.get(`/categories/${id}`);
             set({ isLoading: false });
-            return data;
+            return sanitizeCategory(data);
         } catch (error) {
             set({
                 error: error.response?.data?.message || error.message,
