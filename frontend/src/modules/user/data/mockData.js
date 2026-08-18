@@ -1,959 +1,1810 @@
 export const categories = [
     {
-        id: 1,
-        name: "For You",
-        icon: "grid_view",
-        bannerImage: "https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/aa1b23763c2c4d6a.jpg?q=20",
-        bannerAlt: "Republic Day Sale",
-        subCategories: [] // Home doesn't have same subcats usually
-    },
-    {
-        id: 2,
-        name: "Fashion",
-        icon: "checkroom",
-        bannerImage: "https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=600&auto=format&fit=crop",
-        bannerAlt: "Fashion Sale",
-        secondaryBannerImage: "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?q=80&w=600&auto=format&fit=crop",
-        subCategories: [
+        "id": 1,
+        "name": "Home & Living",
+        "icon": "home",
+        "bannerImage": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=600&auto=format&fit=crop",
+        "bannerAlt": "Home & Living Collection",
+        "subCategories": [
             {
-                name: "Top Wear",
-                image: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=150&auto=format&fit=crop",
-                bannerImage: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=600&auto=format&fit=crop",
-                bannerAlt: "Top Wear Sale",
-                secondaryBannerImage: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=600&auto=format&fit=crop",
-                banners: [
-                    { id: 1, image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1000&auto=format&fit=crop", alt: "T-Shirts Sale" },
-                    { id: 2, image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=600&auto=format&fit=crop", alt: "Jackets Offer" }
-                ],
-                subCategories: [
-                    {
-                        name: "T-Shirts",
-                        image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=150&auto=format&fit=crop",
-                        bannerImage: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=600&auto=format&fit=crop",
-                        bannerAlt: "T-Shirts Collection",
-                        banners: [
-                            { id: 1, image: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?q=80&w=1000&auto=format&fit=crop", alt: "Graphic Tees" }
-                        ]
-                    },
-                    { name: "Shirts", image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=150&auto=format&fit=crop" },
-                    { name: "Jackets", image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=150&auto=format&fit=crop" }
-                ]
+                "name": "Spirituality & Religion",
+                "image": "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=150&auto=format&fit=crop"
+            },
+            {see
+                "name": "Religious Home & Decor",
+                "image": "https://images.unsplash.com/photo-1582582621959-48d273528920?q=80&w=150&auto=format&fit=crop"
             },
             {
-                name: "Bottoms",
-                image: "https://images.unsplash.com/photo-1542272454315-4c01d7abdf4a?q=80&w=150&auto=format&fit=crop",
-                bannerImage: "https://images.unsplash.com/photo-1542272454315-4c01d7abdf4a?q=80&w=600&auto=format&fit=crop",
-                bannerAlt: "Bottoms Sale",
-                banners: [
-                    { id: 1, image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=1000&auto=format&fit=crop", alt: "Jeans Fest" }
-                ],
-                subCategories: [
-                    { name: "Jeans", image: "https://images.unsplash.com/photo-1542272454315-4c01d7abdf4a?q=80&w=150&auto=format&fit=crop" },
-                    { name: "Trousers", image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=150&auto=format&fit=crop" },
-                    { name: "Shorts", image: "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?q=80&w=150&auto=format&fit=crop" }
-                ]
+                "name": "Home Decor",
+                "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=150&auto=format&fit=crop"
             },
-            { name: "Footwear", image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=150&auto=format&fit=crop" },
-            { name: "Ethnic", image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=150&auto=format&fit=crop" },
-            { name: "Watches", image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?q=80&w=150&auto=format&fit=crop" },
-            { name: "Bags", image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=150&auto=format&fit=crop" },
-        ]
-    },
-    {
-        id: 3,
-        name: "Mobiles",
-        icon: "smartphone",
-        bannerImage: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=600&auto=format&fit=crop",
-        bannerAlt: "Mobile Deals",
-        secondaryBannerImage: "https://images.unsplash.com/photo-1596742578443-7682e525c489?q=80&w=600&auto=format&fit=crop",
-        subCategories: [
             {
-                name: "5G Phones",
-                image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=150&auto=format&fit=crop",
-                bannerImage: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=600&auto=format&fit=crop",
-                bannerAlt: "5G Revolution",
-                banners: [
-                    { id: 1, image: "https://images.unsplash.com/photo-1605236453806-6ff36851218e?q=80&w=1000&auto=format&fit=crop", alt: "Latest 5G Mobiles" }
-                ]
+                "name": "Religious Statuary Idols",
+                "image": "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=150&auto=format&fit=crop"
             },
-            { name: "Realme", image: "https://images.unsplash.com/photo-1605236453806-6ff36851218e?q=80&w=150&auto=format&fit=crop" },
-            { name: "iPhone", image: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?q=80&w=150&auto=format&fit=crop" },
-            { name: "Samsung", image: "https://images.unsplash.com/photo-1610945415295-d9baf130d50a?q=80&w=150&auto=format&fit=crop" },
-            { name: "Vivo", image: "https://images.unsplash.com/photo-1580910051074-3eb6948865c5?q=80&w=150&auto=format&fit=crop" },
-            { name: "Xiaomi", image: "https://images.unsplash.com/photo-1512054502232-10a0a035d672?q=80&w=150&auto=format&fit=crop" },
-        ]
-    },
-    {
-        id: 4,
-        name: "Beauty",
-        icon: "face",
-        bannerImage: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=600&auto=format&fit=crop",
-        bannerAlt: "Beauty Sale",
-        secondaryBannerImage: "https://images.unsplash.com/photo-1522335789203-abd1aaccd158?q=80&w=600&auto=format&fit=crop",
-        subCategories: [
-            { name: "Makeup", image: "https://images.unsplash.com/photo-1522335789203-abd1aaccd158?q=80&w=150&auto=format&fit=crop" },
-            { name: "Skin", image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=150&auto=format&fit=crop" },
-            { name: "Hair", image: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=150&auto=format&fit=crop" },
-            { name: "Fragrance", image: "https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=150&auto=format&fit=crop" },
-            { name: "Baby", image: "https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=150&auto=format&fit=crop" },
-            { name: "Men", image: "https://images.unsplash.com/photo-1621607512214-68297480165e?q=80&w=150&auto=format&fit=crop" },
-        ]
-    },
-    {
-        id: 5,
-        name: "Electronics",
-        icon: "laptop",
-        bannerImage: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=600&auto=format&fit=crop",
-        bannerAlt: "Tech Sale",
-        deals: [
-            { name: "OnePlus BW Z3", offer: "Just ₹1,299", image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=80&w=300&auto=format&fit=crop" },
-            { name: "Moto Pad 60 Pro", offer: "From ₹22,499*", image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?q=80&w=300&auto=format&fit=crop" },
-            { name: "Apple Watch S11", offer: "From ₹37,999", image: "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?q=80&w=300&auto=format&fit=crop" },
-            { name: "Bajaj Pulsar 125", offer: "From ₹68,999*", image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=300&auto=format&fit=crop" },
-            { name: "Havells styling", offer: "From ₹599", image: "https://images.unsplash.com/photo-1621607512214-68297480165e?q=80&w=300&auto=format&fit=crop" },
-            { name: "Canon Pixma", offer: "From ₹3,199*", image: "https://cdn-icons-png.flaticon.com/512/3616/3616899.png" },
-            { name: "HP mouse", offer: "From ₹229", image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?q=80&w=300&auto=format&fit=crop" },
-            { name: "MagSafe covers", offer: "From ₹129", image: "https://cdn-icons-png.flaticon.com/512/15525/15525049.png" },
-            { name: "Dell Ryzen 5", offer: "Just ₹38,999*", image: "https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?q=80&w=300&auto=format&fit=crop" },
-        ],
-        scrollDeals: [
-            { name: "HP pendrives", offer: "From ₹599*", image: "https://cdn-icons-png.flaticon.com/512/2888/2888716.png" },
-            { name: "Huawei Watch GT 6", offer: "From ₹17,999", image: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?q=80&w=300&auto=format&fit=crop" },
-            { name: "Hair Styling", offer: "From ₹499", image: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=300&auto=format&fit=crop" },
-            { name: "Gaming Mouse", offer: "From ₹899", image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?q=80&w=300&auto=format&fit=crop" },
-            { name: "Keyboards", offer: "From ₹1299", image: "https://images.unsplash.com/photo-1587829741301-308231c8e052?q=80&w=300&auto=format&fit=crop" },
-        ],
-        banners: [
-            { id: 1, image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=1000&auto=format&fit=crop", alt: "Republic Day Sale" },
-            { id: 2, image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=600&auto=format&fit=crop", alt: "Tech Sale" },
-            { id: 3, image: "https://images.unsplash.com/photo-1550009158-9ebf69173e03?q=80&w=600&auto=format&fit=crop", alt: "Special Offer" }
-        ],
-        subCategories: [
             {
-                name: "Mobiles",
-                image: "https://images.unsplash.com/photo-1596558450255-7c0b7be9d56a?q=80&w=150",
-                subCategories: [
-                    { name: "Samsung", image: "https://cdn-icons-png.flaticon.com/512/5969/5969116.png" },
-                    { name: "Apple", image: "https://cdn-icons-png.flaticon.com/512/731/731985.png" },
-                    { name: "Realme", image: "https://cdn-icons-png.flaticon.com/512/882/882731.png" },
-                    { name: "Vivo", image: "https://cdn-icons-png.flaticon.com/512/882/882704.png" },
-                    { name: "Oppo", image: "https://cdn-icons-png.flaticon.com/512/882/882746.png" },
-                ]
+                "name": "Home & Living",
+                "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=150&auto=format&fit=crop"
             },
-            { name: "New launches", image: "https://cdn-icons-png.flaticon.com/512/1067/1067357.png" },
-            { name: "Audio", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=150&auto=format&fit=crop" },
-            { name: "Wearables", image: "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?q=80&w=150&auto=format&fit=crop" },
-            { name: "Grooming", image: "https://images.unsplash.com/photo-1621607512214-68297480165e?q=80&w=150&auto=format&fit=crop" },
-            { name: "2 Wheelers", image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=150&auto=format&fit=crop" },
-            { name: "Cameras", image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=150&auto=format&fit=crop" },
-            { name: "Laptops", image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=150&auto=format&fit=crop" },
-            { name: "Tablet", image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?q=80&w=150&auto=format&fit=crop" },
-            { name: "ITPeripherals", image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=150&auto=format&fit=crop" },
-            { name: "PC accessories", image: "https://images.unsplash.com/photo-1587829741301-308231c8e052?q=80&w=150&auto=format&fit=crop" },
-            { name: "Mobile cases", image: "https://images.unsplash.com/photo-1601593346740-9256127726df?q=80&w=150&auto=format&fit=crop" },
-            { name: "Chargers", image: "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?q=80&w=150&auto=format&fit=crop" },
-            { name: "Power Banks", image: "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?q=80&w=150&auto=format&fit=crop" },
-            { name: "Storage", image: "https://images.unsplash.com/photo-1597852074816-d933c7d2b988?q=80&w=150&auto=format&fit=crop" },
-            { name: "Printers", image: "https://images.unsplash.com/photo-1612815154858-60aa4c4603e1?q=80&w=150&auto=format&fit=crop" },
-            { name: "Monitors", image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=150&auto=format&fit=crop" },
-            { name: "Routers", image: "https://images.unsplash.com/photo-1544197150-b99a580bbcbf?q=80&w=150&auto=format&fit=crop" },
-            { name: "Projectors", image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=150&auto=format&fit=crop" },
-            { name: "Smart Lighting", image: "https://images.unsplash.com/photo-1550989460-0adf9ea622e2?q=80&w=150&auto=format&fit=crop" },
-            { name: "Calculators", image: "https://images.unsplash.com/photo-1587145820266-9917d3665a4f?q=80&w=150&auto=format&fit=crop" },
+            {
+                "name": "Handicrafts",
+                "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Painting",
+                "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=150&auto=format&fit=crop"
+            }
         ]
     },
     {
-        id: 6,
-        name: "Home",
-        icon: "home",
-        bannerImage: "https://images.unsplash.com/photo-1484154218962-a1c002085aa9?q=80&w=600&auto=format&fit=crop",
-        bannerAlt: "Home & Kitchen Sale",
-        secondaryBannerImage: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?q=80&w=600&auto=format&fit=crop",
-        subCategories: [
-            { name: "Shop now", image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?q=80&w=150&auto=format&fit=crop" },
-            { name: "Lighting", image: "https://images.unsplash.com/photo-1540932296774-7ddac6055589?q=80&w=150&auto=format&fit=crop" },
-            { name: "Wall decor", image: "https://images.unsplash.com/photo-1582201968431-a0c541579d58?q=80&w=150&auto=format&fit=crop" },
-            { name: "Blankets", image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b91d?q=80&w=150&auto=format&fit=crop" },
-            { name: "Mattresses", image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70d04?q=80&w=150&auto=format&fit=crop" },
-            { name: "Cookware", image: "https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=150&auto=format&fit=crop" },
-            { name: "Sofas", image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=150&auto=format&fit=crop" },
-            { name: "Bedsheets", image: "https://images.unsplash.com/photo-1522771753035-1a5b6562f36c?q=80&w=150&auto=format&fit=crop" },
-            { name: "Utilities", image: "https://images.unsplash.com/photo-1584622050111-993a426fbf0a?q=80&w=150&auto=format&fit=crop" },
-            { name: "Bathroom", image: "https://images.unsplash.com/photo-1584622050111-993a426fbf0a?q=80&w=150&auto=format&fit=crop" },
+        "id": 2,
+        "name": "Clothing & Apparel",
+        "icon": "checkroom",
+        "bannerImage": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=600&auto=format&fit=crop",
+        "bannerAlt": "Clothing & Apparel Collection",
+        "subCategories": [
+            {
+                "name": "Sarees",
+                "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Blazers",
+                "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Jodhpuri Breeches (Riding Pants)",
+                "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Real Silver Saree",
+                "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Clothing",
+                "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Men's Clothing",
+                "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Kurtas",
+                "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Rajputi Poshak",
+                "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Women's Clothing",
+                "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Suits and Jackets",
+                "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Real Silver Poshak",
+                "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Jodhpuri Achkans",
+                "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Jodhpuri Waistcoat Sets",
+                "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Jodhpuri Bandhgala Suits",
+                "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=150&auto=format&fit=crop"
+            }
         ]
     },
-    { id: 7, name: "Grocery", icon: "shopping_basket" },
     {
-        id: 8,
-        name: "Appliances",
-        icon: "kitchen",
-        bannerImage: "https://images.unsplash.com/photo-1556910103-1c02745a30bf?q=80&w=600&auto=format&fit=crop",
-        bannerAlt: "Appliances Sale",
-        subCategories: [
-            { name: "TVs", image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?q=80&w=150" },
-            { name: "Washing Machines", image: "https://images.unsplash.com/photo-1626806819282-2c1dc01a5e0c?q=80&w=150" },
-            { name: "ACs", image: "https://images.unsplash.com/photo-1534033620953-e381d6d3765e?q=80&w=150" }
+        "id": 3,
+        "name": "Home, Garden & Kitchen",
+        "icon": "kitchen",
+        "bannerImage": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=600&auto=format&fit=crop",
+        "bannerAlt": "Home, Garden & Kitchen Collection",
+        "subCategories": [
+            {
+                "name": "Top Handle Bags",
+                "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Sculpture",
+                "image": "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Crossbody Bags",
+                "image": "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Painting",
+                "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Shoulder Bags",
+                "image": "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Handbags",
+                "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Art & Collectibles",
+                "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Clutches & Evening Bags",
+                "image": "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Bags & Purses",
+                "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Potli Bags",
+                "image": "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?q=80&w=150&auto=format&fit=crop"
+            }
         ]
     },
     {
-        id: 9,
-        name: "Toys",
-        icon: "sports_esports",
-        bannerImage: "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?q=80&w=600",
-        subCategories: []
+        "id": 4,
+        "name": "Accessories",
+        "icon": "watch",
+        "bannerImage": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=600&auto=format&fit=crop",
+        "bannerAlt": "Accessories Collection",
+        "subCategories": [
+            {
+                "name": "Jewellery",
+                "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Bangles",
+                "image": "https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Moissanite Stones",
+                "image": "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Bracelets",
+                "image": "https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Rings",
+                "image": "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Necklaces",
+                "image": "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Gemstone",
+                "image": "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Earrings",
+                "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=150&auto=format&fit=crop"
+            }
+        ]
     },
     {
-        id: 10,
-        name: "Flights",
-        icon: "flight",
-        bannerImage: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=600",
-        subCategories: []
-    },
-];
-
-export const secondaryCategories = [
-    { id: 1, name: "Grocery", icon: "shopping_cart", color: "bg-pink-100" },
-    { id: 2, name: "For GenZ", icon: "bolt", color: "bg-orange-100" },
-    { id: 3, name: "Gift Cards", icon: "redeem", color: "bg-blue-100" },
-    { id: 4, name: "Sell Phone", icon: "phonelink_setup", color: "bg-green-100" },
-    { id: 5, name: "BLACK", icon: "dark_mode", color: "bg-gray-100" },
-    { id: 6, name: "SuperCoin", icon: "stars", color: "bg-yellow-100" },
+        "id": 5,
+        "name": "Jewellery",
+        "icon": "diamond",
+        "bannerImage": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=600&auto=format&fit=crop",
+        "bannerAlt": "Jewellery Collection",
+        "subCategories": [
+            {
+                "name": "Top Handle Bags",
+                "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Crossbelt",
+                "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Lapel Pins",
+                "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Pocket Squares",
+                "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=150&auto=format&fit=crop"
+            },
+            {
+                "name": "Painting",
+                "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=150&auto=format&fit=crop"
+            }
+        ]
+    }
 ];
 
 export const products = [
-    // Fashion - 6 items
     {
-        id: 1,
-        name: "Kvinner Casual Regular Fit Tops",
-        brand: "Kvinner",
-        price: 360,
-        originalPrice: 1999,
-        discount: "81% off",
-        rating: 4.2,
-        buyAt: 340,
-        image: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?q=80&w=300",
-        category: "Fashion",
-        tags: ["Fashion", "Top Wear", "T-Shirts"]
+        "id": 1001,
+        "name": "Royal Jaipur Spirituality & Religion - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 6415,
+        "originalPrice": 8981,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=150&auto=format&fit=crop",
+        "category": "Home & Living",
+        "categoryId": 1,
+        "subCategory": "Spirituality & Religion",
+        "tags": [
+            "Home & Living",
+            "Spirituality & Religion"
+        ]
     },
     {
-        id: 2,
-        name: "The Souled Store Cotton T-Shirt",
-        brand: "The Souled Store",
-        price: 499,
-        originalPrice: 1799,
-        discount: "72% off",
-        rating: 4.3,
-        buyAt: 474,
-        image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=300",
-        category: "Fashion",
-        tags: ["Fashion", "Top Wear", "T-Shirts"]
+        "id": 1002,
+        "name": "Handcrafted Spirituality & Religion - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 2421,
+        "originalPrice": 3389,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=150&auto=format&fit=crop",
+        "category": "Home & Living",
+        "categoryId": 1,
+        "subCategory": "Spirituality & Religion",
+        "tags": [
+            "Home & Living",
+            "Spirituality & Religion"
+        ]
     },
     {
-        id: 20,
-        name: "Men Slim Fit Blue Jeans",
-        brand: "Roadster",
-        price: 699,
-        originalPrice: 2499,
-        discount: "72% off",
-        rating: 4.0,
-        image: "https://rukminim1.flixcart.com/image/612/612/xif0q/jean/d/5/4/32-21160366-roadster-original-imag5g88qj3z3k22-bb.jpeg?q=70",
-        category: "Fashion",
-        tags: ["Fashion", "Bottoms", "Jeans"]
+        "id": 1003,
+        "name": "Royal Jaipur Religious Home & Decor - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 7926,
+        "originalPrice": 11096,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1582582621959-48d273528920?q=80&w=150&auto=format&fit=crop",
+        "category": "Home & Living",
+        "categoryId": 1,
+        "subCategory": "Religious Home & Decor",
+        "tags": [
+            "Home & Living",
+            "Religious Home & Decor"
+        ]
     },
     {
-        id: 21,
-        name: "Women Printed Kurta",
-        brand: "Mokshi",
-        price: 450,
-        originalPrice: 1499,
-        discount: "70% off",
-        rating: 4.1,
-        image: "https://rukminim1.flixcart.com/image/612/612/xif0q/kurta/2/y/o/s-ku657-mokshi-original-imagm5wzbg7x6l3h.jpeg?q=70",
-        category: "Fashion",
-        tags: ["Fashion", "Ethnic"]
+        "id": 1004,
+        "name": "Handcrafted Religious Home & Decor - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 6132,
+        "originalPrice": 8584,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1582582621959-48d273528920?q=80&w=150&auto=format&fit=crop",
+        "category": "Home & Living",
+        "categoryId": 1,
+        "subCategory": "Religious Home & Decor",
+        "tags": [
+            "Home & Living",
+            "Religious Home & Decor"
+        ]
     },
     {
-        id: 22,
-        name: "Running Shoes for Men",
-        brand: "ASIAN",
-        price: 899,
-        originalPrice: 2999,
-        discount: "70% off",
-        rating: 3.9,
-        image: "https://rukminim1.flixcart.com/image/612/612/xif0q/shoe/s/a/k/-original-imaggcax25d8z5e6.jpeg?q=70",
-        category: "Fashion",
-        tags: ["Fashion", "Footwear"]
+        "id": 1005,
+        "name": "Royal Jaipur Home Decor - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 4371,
+        "originalPrice": 6119,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=150&auto=format&fit=crop",
+        "category": "Home & Living",
+        "categoryId": 1,
+        "subCategory": "Home Decor",
+        "tags": [
+            "Home & Living",
+            "Home Decor"
+        ]
     },
     {
-        id: 301,
-        name: "Formal Blue Shirt",
-        brand: "US Polo Association",
-        price: 899,
-        originalPrice: 1999,
-        discount: "55% off",
-        rating: 4.2,
-        image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=300",
-        category: "Fashion",
-        tags: ["Fashion", "Top Wear", "Shirts"]
+        "id": 1006,
+        "name": "Handcrafted Home Decor - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 3799,
+        "originalPrice": 5318,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=150&auto=format&fit=crop",
+        "category": "Home & Living",
+        "categoryId": 1,
+        "subCategory": "Home Decor",
+        "tags": [
+            "Home & Living",
+            "Home Decor"
+        ]
     },
     {
-        id: 302,
-        name: "Casual Black Trousers",
-        brand: "Peter England",
-        price: 1299,
-        originalPrice: 2499,
-        discount: "48% off",
-        rating: 4.1,
-        image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=300",
-        category: "Fashion",
-        tags: ["Fashion", "Bottoms", "Trousers"]
+        "id": 1007,
+        "name": "Royal Jaipur Religious Statuary Idols - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 5023,
+        "originalPrice": 7032,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=150&auto=format&fit=crop",
+        "category": "Home & Living",
+        "categoryId": 1,
+        "subCategory": "Religious Statuary Idols",
+        "tags": [
+            "Home & Living",
+            "Religious Statuary Idols"
+        ]
     },
     {
-        id: 303,
-        name: "Gold Plated Party Designer Stone Stud For Women",
-        brand: "SOHI",
-        price: 1750,
-        originalPrice: 3500,
-        discount: "50% off",
-        rating: 4.5,
-        image: "https://images.unsplash.com/photo-1616530940355-351fabd9524b?q=80&w=300",
-        category: "Fashion",
-        tags: ["Fashion", "Jewelry", "Earrings"]
-    },
-
-    // Electronics - 4 items
-    {
-        id: 3,
-        name: "Acer Iconia Tab i8 - 4 GB RAM | 64 GB ROM",
-        brand: "Acer",
-        price: 9990,
-        originalPrice: 21999,
-        discount: "55% off",
-        rating: 4.3,
-        image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?q=80&w=300&auto=format&fit=crop",
-        category: "Electronics",
-        tags: ["Electronics", "Tablet"]
+        "id": 1008,
+        "name": "Handcrafted Religious Statuary Idols - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 3761,
+        "originalPrice": 5265,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=150&auto=format&fit=crop",
+        "category": "Home & Living",
+        "categoryId": 1,
+        "subCategory": "Religious Statuary Idols",
+        "tags": [
+            "Home & Living",
+            "Religious Statuary Idols"
+        ]
     },
     {
-        id: 23,
-        name: "HP Laptop 15s Ryzen 5",
-        brand: "HP",
-        price: 39999,
-        originalPrice: 47123,
-        discount: "16% off",
-        rating: 4.4,
-        image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=300&auto=format&fit=crop",
-        category: "Electronics",
-        tags: ["Electronics", "Laptops"]
+        "id": 1009,
+        "name": "Royal Jaipur Home & Living - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 7429,
+        "originalPrice": 10400,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=150&auto=format&fit=crop",
+        "category": "Home & Living",
+        "categoryId": 1,
+        "subCategory": "Home & Living",
+        "tags": [
+            "Home & Living",
+            "Home & Living"
+        ]
     },
     {
-        id: 101,
-        name: "Canon Pixma MG2577s All-in-One Inkjet Printer",
-        brand: "Canon",
-        price: 3099,
-        originalPrice: 4500,
-        discount: "31% off",
-        rating: 4.1,
-        image: "https://cdn-icons-png.flaticon.com/512/3616/3616899.png",
-        category: "Electronics",
-        tags: ["Electronics", "Printers"]
+        "id": 1010,
+        "name": "Handcrafted Home & Living - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 3513,
+        "originalPrice": 4918,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=150&auto=format&fit=crop",
+        "category": "Home & Living",
+        "categoryId": 1,
+        "subCategory": "Home & Living",
+        "tags": [
+            "Home & Living",
+            "Home & Living"
+        ]
     },
     {
-        id: 102,
-        name: "Samsung 24 inch Full HD IPS Panel Monitor",
-        brand: "Samsung",
-        price: 8999,
-        originalPrice: 14000,
-        discount: "35% off",
-        rating: 4.5,
-        image: "https://cdn-icons-png.flaticon.com/512/5700/5700806.png",
-        category: "Electronics",
-        tags: ["Electronics", "Monitors"]
+        "id": 1011,
+        "name": "Royal Jaipur Handicrafts - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 1307,
+        "originalPrice": 1829,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=150&auto=format&fit=crop",
+        "category": "Home & Living",
+        "categoryId": 1,
+        "subCategory": "Handicrafts",
+        "tags": [
+            "Home & Living",
+            "Handicrafts"
+        ]
     },
     {
-        id: 103,
-        name: "Mi 3i 20000 mAh Power Bank",
-        brand: "Xiaomi",
-        price: 1699,
-        originalPrice: 2199,
-        discount: "22% off",
-        rating: 4.3,
-        image: "https://cdn-icons-png.flaticon.com/512/9655/9655189.png",
-        category: "Electronics",
-        tags: ["Electronics", "Power Banks"]
+        "id": 1012,
+        "name": "Handcrafted Handicrafts - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 3389,
+        "originalPrice": 4744,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=150&auto=format&fit=crop",
+        "category": "Home & Living",
+        "categoryId": 1,
+        "subCategory": "Handicrafts",
+        "tags": [
+            "Home & Living",
+            "Handicrafts"
+        ]
     },
     {
-        id: 104,
-        name: "TP-Link Archer C6 Router",
-        brand: "TP-Link",
-        price: 2499,
-        originalPrice: 4999,
-        discount: "50% off",
-        rating: 4.4,
-        image: "https://cdn-icons-png.flaticon.com/512/2885/2885417.png",
-        category: "Electronics",
-        tags: ["Electronics", "Routers"]
-    },
-
-    // Mobiles - 4 items
-    {
-        id: 4,
-        name: "Smart Phone X - 8GB RAM | 128GB Storage",
-        brand: "SmartX",
-        price: 18499,
-        originalPrice: 25999,
-        discount: "28% off",
-        rating: 4.6,
-        image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=300",
-        category: "Mobiles",
-        ram: "8 GB",
-        tags: ["Mobiles", "5G Phones"]
+        "id": 1013,
+        "name": "Royal Jaipur Painting - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 5617,
+        "originalPrice": 7863,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=150&auto=format&fit=crop",
+        "category": "Home & Living",
+        "categoryId": 1,
+        "subCategory": "Painting",
+        "tags": [
+            "Home & Living",
+            "Painting"
+        ]
     },
     {
-        id: 24,
-        name: "Apple iPhone 14 (Blue, 128 GB)",
-        brand: "Apple",
-        price: 58999,
-        originalPrice: 69900,
-        discount: "15% off",
-        rating: 4.6,
-        image: "https://rukminim1.flixcart.com/image/312/312/xif0q/mobile/k/u/6/-original-imaghxen343entpp.jpeg?q=70",
-        category: "Mobiles",
-        ram: "6 GB",
-        tags: ["Mobiles", "iPhone", "Apple"]
-    },
-
-    // Beauty - 4 items (Matching the screenshot types)
-    {
-        id: 25,
-        name: "Mamaearth Rosemary Hair Fall Control Kit",
-        price: 515,
-        originalPrice: 1031,
-        discount: "50% off",
-        rating: 4.2,
-        ratingCount: "(20,731)",
-        image: "https://rukminim1.flixcart.com/image/612/612/xif0q/shampoo/j/x/o/-original-imagm5y2j5j5z5e6.jpeg?q=70",
-        category: "Beauty",
-        brand: "Mamaearth",
-        tags: ["Beauty", "Hair"]
+        "id": 1014,
+        "name": "Handcrafted Painting - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 3645,
+        "originalPrice": 5103,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=150&auto=format&fit=crop",
+        "category": "Home & Living",
+        "categoryId": 1,
+        "subCategory": "Painting",
+        "tags": [
+            "Home & Living",
+            "Painting"
+        ]
     },
     {
-        id: 26,
-        name: "The Plant Fix Plix Rosemary Hair Spray",
-        price: 179,
-        originalPrice: 225,
-        discount: "20% off",
-        rating: 4.2,
-        ratingCount: "(31,665)",
-        image: "https://rukminim1.flixcart.com/image/612/612/xif0q/hair-oil/z/w/f/-original-imagg2abzhxqcgny.jpeg?q=70",
-        category: "Beauty",
-        brand: "The Plant Fix Plix",
-        tags: ["Beauty", "Hair"]
+        "id": 1015,
+        "name": "Royal Jaipur Sarees - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 3030,
+        "originalPrice": 4242,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Sarees",
+        "tags": [
+            "Clothing & Apparel",
+            "Sarees"
+        ]
     },
     {
-        id: 27,
-        name: "Mamaearth Onion Hair Oil",
-        price: 399,
-        originalPrice: 599,
-        discount: "33% off",
-        rating: 4.4,
-        ratingCount: "(15,000)",
-        image: "https://rukminim1.flixcart.com/image/612/612/xif0q/hair-oil/2/y/o/s-ku657-mokshi-original-imagm5wzbg7x6l3h.jpeg?q=70",
-        category: "Beauty",
-        brand: "Mamaearth",
-        tags: ["Beauty", "Hair"]
+        "id": 1016,
+        "name": "Handcrafted Sarees - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 4545,
+        "originalPrice": 6363,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Sarees",
+        "tags": [
+            "Clothing & Apparel",
+            "Sarees"
+        ]
     },
     {
-        id: 28,
-        name: "Lauki Oil for Silky Strong Hair",
-        price: 299,
-        originalPrice: 499,
-        discount: "40% off",
-        rating: 4.1,
-        ratingCount: "(457)",
-        image: "https://rukminim1.flixcart.com/image/612/612/xif0q/hair-oil/m/n/o/-original-imagm5y2j5j5z5e6.jpeg?q=70",
-        category: "Beauty",
-        brand: "Kajal Mantra",
-        tags: ["Beauty", "Hair"]
+        "id": 1017,
+        "name": "Royal Jaipur Blazers - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 3982,
+        "originalPrice": 5574,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Blazers",
+        "tags": [
+            "Clothing & Apparel",
+            "Blazers"
+        ]
     },
     {
-        id: 29,
-        name: "Plix Rosemary Anti Hairfall Treatment",
-        price: 450,
-        originalPrice: 800,
-        discount: "40% off",
-        rating: 4.5,
-        ratingCount: "(457)",
-        image: "https://rukminim1.flixcart.com/image/612/612/xif0q/hair-mask/m/n/o/-original-imagm5y2j5j5z5e6.jpeg?q=70",
-        category: "Beauty",
-        brand: "Plix",
-        tags: ["Beauty", "Hair"]
-    },
-
-    // Home - 4 items
-    {
-        id: 30,
-        name: "Prestige Induction Base Cookware Set",
-        price: 1599,
-        originalPrice: 3500,
-        discount: "54% off",
-        rating: 4.2,
-        image: "https://rukminim1.flixcart.com/image/612/612/kfa0b0w0/pot/v/z/v/aluminium-non-stick-cookware-set-3-piece-induction-bottom-ck-original-imafvrg8wd5gzb9d.jpeg?q=70",
-        category: "Home",
-        tags: ["Home", "Cookware"]
+        "id": 1018,
+        "name": "Handcrafted Blazers - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 8853,
+        "originalPrice": 12394,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Blazers",
+        "tags": [
+            "Clothing & Apparel",
+            "Blazers"
+        ]
     },
     {
-        id: 31,
-        name: "Double Bed Mink Blanket",
-        price: 499,
-        originalPrice: 1999,
-        discount: "75% off",
-        rating: 4.0,
-        image: "https://rukminim1.flixcart.com/image/612/612/xif0q/blanket/b/r/n/double-bed-mink-blanket-for-winter-soft-warm-thick-heavy-weight-original-imagm5y2j5j5z5e6.jpeg?q=70",
-        category: "Home",
-        tags: ["Home", "Blankets"]
-    },
-
-    // Grocery items (Existing)
-    {
-        id: 5,
-        name: "Daawat Biryani Basmati Rice",
-        price: 76,
-        originalPrice: 125,
-        discount: "39% off",
-        rating: 4.1,
-        image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?q=80&w=300&auto=format&fit=crop",
-        category: "Grocery"
+        "id": 1019,
+        "name": "Royal Jaipur Jodhpuri Breeches (Riding Pants) - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 6700,
+        "originalPrice": 9380,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Jodhpuri Breeches (Riding Pants)",
+        "tags": [
+            "Clothing & Apparel",
+            "Jodhpuri Breeches (Riding Pants)"
+        ]
     },
     {
-        id: 6,
-        name: "Thums Up Soft Drink 750ml",
-        price: 35,
-        originalPrice: 40,
-        discount: "12% off",
-        rating: 4.3,
-        image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=300&auto=format&fit=crop",
-        category: "Grocery"
+        "id": 1020,
+        "name": "Handcrafted Jodhpuri Breeches (Riding Pants) - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 5658,
+        "originalPrice": 7921,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Jodhpuri Breeches (Riding Pants)",
+        "tags": [
+            "Clothing & Apparel",
+            "Jodhpuri Breeches (Riding Pants)"
+        ]
     },
     {
-        id: 10,
-        name: "Farmley Prasadam Makhana",
-        price: 378,
-        originalPrice: 595,
-        rating: 4.3,
-        image: "https://images.unsplash.com/photo-1621607512214-68297480165e?q=80&w=300",
-        category: "Grocery"
+        "id": 1021,
+        "name": "Royal Jaipur Real Silver Saree - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 6341,
+        "originalPrice": 8877,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Real Silver Saree",
+        "tags": [
+            "Clothing & Apparel",
+            "Real Silver Saree"
+        ]
     },
     {
-        id: 11,
-        name: "INDIA GATE 1 Cup Mogra Rice",
-        price: 302,
-        originalPrice: 378,
-        rating: 4.1,
-        image: "https://images.unsplash.com/photo-1516684732162-798a0062be99?q=80&w=300&auto=format&fit=crop",
-        category: "Grocery"
-    },
-
-    // Existing Health items ...
-    {
-        id: 402,
-        name: "Aashirvaad Atta 5kg",
-        price: 245,
-        originalPrice: 299,
-        discount: "18% off",
-        rating: 4.6,
-        image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=300",
-        category: "Grocery"
+        "id": 1022,
+        "name": "Handcrafted Real Silver Saree - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 8864,
+        "originalPrice": 12409,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Real Silver Saree",
+        "tags": [
+            "Clothing & Apparel",
+            "Real Silver Saree"
+        ]
     },
     {
-        id: 403,
-        name: "Tetley Green Tea 100 bags",
-        price: 450,
-        originalPrice: 550,
-        discount: "18% off",
-        rating: 4.4,
-        image: "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?q=80&w=300",
-        category: "Grocery"
+        "id": 1023,
+        "name": "Royal Jaipur Clothing - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 5995,
+        "originalPrice": 8393,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Clothing",
+        "tags": [
+            "Clothing & Apparel",
+            "Clothing"
+        ]
     },
     {
-        id: 13,
-        name: "PARLE Platina Nutricrunch Diges",
-        price: 126,
-        originalPrice: 285,
-        rating: 4.3,
-        image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=300&auto=format&fit=crop",
+        "id": 1024,
+        "name": "Handcrafted Clothing - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 7353,
+        "originalPrice": 10294,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Clothing",
+        "tags": [
+            "Clothing & Apparel",
+            "Clothing"
+        ]
     },
     {
-        id: 14,
-        brand: "AIMIL",
-        name: "Amynity Plus Syrup | Natural Immunity Booster | (200 ml)",
-        price: 277,
-        originalPrice: 351,
-        discount: "21% off",
-        buyAt: 249, // WOW Deal price
-        rating: 2.5,
-        ratingCount: 4,
-        expiry: "17 Dec 2027",
-        quantity: "200 ml",
-        image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=300&auto=format&fit=crop",
-        category: "Health"
+        "id": 1025,
+        "name": "Royal Jaipur Men's Clothing - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 5583,
+        "originalPrice": 7816,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Men's Clothing",
+        "tags": [
+            "Clothing & Apparel",
+            "Men's Clothing"
+        ]
     },
     {
-        id: 15,
-        brand: "AIMIL",
-        name: "Asthigon Syrup - Lungs Health | (200 ml)",
-        price: 218,
-        originalPrice: 280,
-        buyAt: 196,
-        rating: 4.2,
-        ratingCount: 128,
-        expiry: "12 Oct 2026",
-        quantity: "200 ml",
-        image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=300",
-        category: "Health"
+        "id": 1026,
+        "name": "Handcrafted Men's Clothing - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 5453,
+        "originalPrice": 7634,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Men's Clothing",
+        "tags": [
+            "Clothing & Apparel",
+            "Men's Clothing"
+        ]
     },
     {
-        id: 16,
-        brand: "AIMIL",
-        name: "Giloe (Giloy) Immunity Capsules | 60 Caps",
-        price: 146,
-        originalPrice: 187,
-        buyAt: 131,
-        rating: 4.4,
-        ratingCount: 856,
-        expiry: "05 Jan 2028",
-        quantity: "60 Caps",
-        image: "https://images.unsplash.com/photo-1585435557343-3b092031a831?q=80&w=300",
-        category: "Health"
+        "id": 1027,
+        "name": "Royal Jaipur Kurtas - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 4905,
+        "originalPrice": 6867,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Kurtas",
+        "tags": [
+            "Clothing & Apparel",
+            "Kurtas"
+        ]
     },
     {
-        id: 17,
-        brand: "ACTIWOW",
-        name: "Revital H Men Multivitamin | 30 Caps",
-        price: 245,
-        originalPrice: 350,
-        buyAt: 220,
-        rating: 4.3,
-        ratingCount: 1542,
-        expiry: "20 Nov 2026",
-        quantity: "30 Caps",
-        image: "https://images.unsplash.com/photo-1584017947486-599293996252?q=80&w=300",
-        category: "Health"
+        "id": 1028,
+        "name": "Handcrafted Kurtas - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 8222,
+        "originalPrice": 11510,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Kurtas",
+        "tags": [
+            "Clothing & Apparel",
+            "Kurtas"
+        ]
     },
     {
-        id: 18,
-        brand: "AIMIL",
-        name: "Memtone Syrup - Mental Wellness | (200 ml)",
-        price: 192,
-        originalPrice: 244,
-        buyAt: 172,
-        rating: 4.2,
-        ratingCount: 215,
-        expiry: "15 Aug 2027",
-        quantity: "200 ml",
-        image: "https://images.unsplash.com/photo-1624454002302-36b824d7bd0a?q=80&w=300&auto=format&fit=crop",
-        category: "Health"
+        "id": 1029,
+        "name": "Royal Jaipur Rajputi Poshak - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 5422,
+        "originalPrice": 7590,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Rajputi Poshak",
+        "tags": [
+            "Clothing & Apparel",
+            "Rajputi Poshak"
+        ]
     },
     {
-        id: 19,
-        brand: "Baidyanath",
-        name: "Wild Premium Amla Juice | (1 L)",
-        price: 188,
-        originalPrice: 239,
-        buyAt: 179,
-        rating: 4.3,
-        ratingCount: 1543,
-        expiry: "01 Mar 2026",
-        quantity: "1 L",
-        image: "https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=300&auto=format&fit=crop",
-        category: "Health"
-    },
-    // New Mobile Products for nesting demo
-    {
-        id: 201,
-        name: "Samsung Galaxy S24 Ultra",
-        brand: "Samsung",
-        price: 124999,
-        originalPrice: 134999,
-        discount: "7% off",
-        rating: 4.8,
-        image: "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?q=80&w=300",
-        category: "Electronics",
-        ram: "12 GB",
-        tags: ["Mobiles", "Samsung", "Electronics"] // Tags for filtering
+        "id": 1030,
+        "name": "Handcrafted Rajputi Poshak - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 7857,
+        "originalPrice": 10999,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Rajputi Poshak",
+        "tags": [
+            "Clothing & Apparel",
+            "Rajputi Poshak"
+        ]
     },
     {
-        id: 202,
-        name: "Samsung Galaxy A55 5G",
-        brand: "Samsung",
-        price: 39999,
-        originalPrice: 45000,
-        discount: "11% off",
-        rating: 4.3,
-        image: "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?q=80&w=300",
-        category: "Electronics",
-        ram: "8 GB",
-        tags: ["Mobiles", "Samsung", "Electronics"]
+        "id": 1031,
+        "name": "Royal Jaipur Women's Clothing - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 7515,
+        "originalPrice": 10521,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Women's Clothing",
+        "tags": [
+            "Clothing & Apparel",
+            "Women's Clothing"
+        ]
     },
     {
-        id: 203,
-        name: "Samsung Galaxy M14",
-        brand: "Samsung",
-        price: 9999,
-        originalPrice: 14999,
-        discount: "33% off",
-        rating: 4.1,
-        image: "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?q=80&w=300",
-        category: "Electronics",
-        ram: "6 GB",
-        tags: ["Mobiles", "Samsung", "Electronics"]
+        "id": 1032,
+        "name": "Handcrafted Women's Clothing - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 3474,
+        "originalPrice": 4863,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Women's Clothing",
+        "tags": [
+            "Clothing & Apparel",
+            "Women's Clothing"
+        ]
     },
     {
-        id: 204,
-        name: "Apple iPhone 15",
-        brand: "Apple",
-        price: 69999,
-        originalPrice: 79999,
-        discount: "12% off",
-        rating: 4.6,
-        image: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?q=80&w=300",
-        category: "Electronics",
-        ram: "6 GB",
-        tags: ["Mobiles", "Apple", "Electronics", "iPhone"]
+        "id": 1033,
+        "name": "Royal Jaipur Suits and Jackets - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 1033,
+        "originalPrice": 1446,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Suits and Jackets",
+        "tags": [
+            "Clothing & Apparel",
+            "Suits and Jackets"
+        ]
+    },
+    {
+        "id": 1034,
+        "name": "Handcrafted Suits and Jackets - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 4598,
+        "originalPrice": 6437,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Suits and Jackets",
+        "tags": [
+            "Clothing & Apparel",
+            "Suits and Jackets"
+        ]
+    },
+    {
+        "id": 1035,
+        "name": "Royal Jaipur Real Silver Poshak - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 5791,
+        "originalPrice": 8107,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Real Silver Poshak",
+        "tags": [
+            "Clothing & Apparel",
+            "Real Silver Poshak"
+        ]
+    },
+    {
+        "id": 1036,
+        "name": "Handcrafted Real Silver Poshak - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 6435,
+        "originalPrice": 9009,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Real Silver Poshak",
+        "tags": [
+            "Clothing & Apparel",
+            "Real Silver Poshak"
+        ]
+    },
+    {
+        "id": 1037,
+        "name": "Royal Jaipur Jodhpuri Achkans - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 4485,
+        "originalPrice": 6279,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Jodhpuri Achkans",
+        "tags": [
+            "Clothing & Apparel",
+            "Jodhpuri Achkans"
+        ]
+    },
+    {
+        "id": 1038,
+        "name": "Handcrafted Jodhpuri Achkans - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 3942,
+        "originalPrice": 5518,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Jodhpuri Achkans",
+        "tags": [
+            "Clothing & Apparel",
+            "Jodhpuri Achkans"
+        ]
+    },
+    {
+        "id": 1039,
+        "name": "Royal Jaipur Jodhpuri Waistcoat Sets - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 3841,
+        "originalPrice": 5377,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Jodhpuri Waistcoat Sets",
+        "tags": [
+            "Clothing & Apparel",
+            "Jodhpuri Waistcoat Sets"
+        ]
+    },
+    {
+        "id": 1040,
+        "name": "Handcrafted Jodhpuri Waistcoat Sets - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 4309,
+        "originalPrice": 6032,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Jodhpuri Waistcoat Sets",
+        "tags": [
+            "Clothing & Apparel",
+            "Jodhpuri Waistcoat Sets"
+        ]
+    },
+    {
+        "id": 1041,
+        "name": "Royal Jaipur Jodhpuri Bandhgala Suits - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 1771,
+        "originalPrice": 2479,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Jodhpuri Bandhgala Suits",
+        "tags": [
+            "Clothing & Apparel",
+            "Jodhpuri Bandhgala Suits"
+        ]
+    },
+    {
+        "id": 1042,
+        "name": "Handcrafted Jodhpuri Bandhgala Suits - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 8073,
+        "originalPrice": 11302,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=150&auto=format&fit=crop",
+        "category": "Clothing & Apparel",
+        "categoryId": 2,
+        "subCategory": "Jodhpuri Bandhgala Suits",
+        "tags": [
+            "Clothing & Apparel",
+            "Jodhpuri Bandhgala Suits"
+        ]
+    },
+    {
+        "id": 1043,
+        "name": "Royal Jaipur Top Handle Bags - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 6172,
+        "originalPrice": 8640,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=150&auto=format&fit=crop",
+        "category": "Home, Garden & Kitchen",
+        "categoryId": 3,
+        "subCategory": "Top Handle Bags",
+        "tags": [
+            "Home, Garden & Kitchen",
+            "Top Handle Bags"
+        ]
+    },
+    {
+        "id": 1044,
+        "name": "Handcrafted Top Handle Bags - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 6155,
+        "originalPrice": 8617,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=150&auto=format&fit=crop",
+        "category": "Home, Garden & Kitchen",
+        "categoryId": 3,
+        "subCategory": "Top Handle Bags",
+        "tags": [
+            "Home, Garden & Kitchen",
+            "Top Handle Bags"
+        ]
+    },
+    {
+        "id": 1045,
+        "name": "Royal Jaipur Sculpture - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 3305,
+        "originalPrice": 4627,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=150&auto=format&fit=crop",
+        "category": "Home, Garden & Kitchen",
+        "categoryId": 3,
+        "subCategory": "Sculpture",
+        "tags": [
+            "Home, Garden & Kitchen",
+            "Sculpture"
+        ]
+    },
+    {
+        "id": 1046,
+        "name": "Handcrafted Sculpture - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 8538,
+        "originalPrice": 11953,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=150&auto=format&fit=crop",
+        "category": "Home, Garden & Kitchen",
+        "categoryId": 3,
+        "subCategory": "Sculpture",
+        "tags": [
+            "Home, Garden & Kitchen",
+            "Sculpture"
+        ]
+    },
+    {
+        "id": 1047,
+        "name": "Royal Jaipur Crossbody Bags - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 3083,
+        "originalPrice": 4316,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?q=80&w=150&auto=format&fit=crop",
+        "category": "Home, Garden & Kitchen",
+        "categoryId": 3,
+        "subCategory": "Crossbody Bags",
+        "tags": [
+            "Home, Garden & Kitchen",
+            "Crossbody Bags"
+        ]
+    },
+    {
+        "id": 1048,
+        "name": "Handcrafted Crossbody Bags - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 6911,
+        "originalPrice": 9675,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?q=80&w=150&auto=format&fit=crop",
+        "category": "Home, Garden & Kitchen",
+        "categoryId": 3,
+        "subCategory": "Crossbody Bags",
+        "tags": [
+            "Home, Garden & Kitchen",
+            "Crossbody Bags"
+        ]
+    },
+    {
+        "id": 1049,
+        "name": "Royal Jaipur Painting - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 5990,
+        "originalPrice": 8386,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=150&auto=format&fit=crop",
+        "category": "Home, Garden & Kitchen",
+        "categoryId": 3,
+        "subCategory": "Painting",
+        "tags": [
+            "Home, Garden & Kitchen",
+            "Painting"
+        ]
+    },
+    {
+        "id": 1050,
+        "name": "Handcrafted Painting - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 8726,
+        "originalPrice": 12216,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=150&auto=format&fit=crop",
+        "category": "Home, Garden & Kitchen",
+        "categoryId": 3,
+        "subCategory": "Painting",
+        "tags": [
+            "Home, Garden & Kitchen",
+            "Painting"
+        ]
+    },
+    {
+        "id": 1051,
+        "name": "Royal Jaipur Shoulder Bags - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 1517,
+        "originalPrice": 2123,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?q=80&w=150&auto=format&fit=crop",
+        "category": "Home, Garden & Kitchen",
+        "categoryId": 3,
+        "subCategory": "Shoulder Bags",
+        "tags": [
+            "Home, Garden & Kitchen",
+            "Shoulder Bags"
+        ]
+    },
+    {
+        "id": 1052,
+        "name": "Handcrafted Shoulder Bags - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 3450,
+        "originalPrice": 4830,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?q=80&w=150&auto=format&fit=crop",
+        "category": "Home, Garden & Kitchen",
+        "categoryId": 3,
+        "subCategory": "Shoulder Bags",
+        "tags": [
+            "Home, Garden & Kitchen",
+            "Shoulder Bags"
+        ]
+    },
+    {
+        "id": 1053,
+        "name": "Royal Jaipur Handbags - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 8972,
+        "originalPrice": 12560,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=150&auto=format&fit=crop",
+        "category": "Home, Garden & Kitchen",
+        "categoryId": 3,
+        "subCategory": "Handbags",
+        "tags": [
+            "Home, Garden & Kitchen",
+            "Handbags"
+        ]
+    },
+    {
+        "id": 1054,
+        "name": "Handcrafted Handbags - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 5426,
+        "originalPrice": 7596,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=150&auto=format&fit=crop",
+        "category": "Home, Garden & Kitchen",
+        "categoryId": 3,
+        "subCategory": "Handbags",
+        "tags": [
+            "Home, Garden & Kitchen",
+            "Handbags"
+        ]
+    },
+    {
+        "id": 1055,
+        "name": "Royal Jaipur Art & Collectibles - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 2040,
+        "originalPrice": 2856,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=150&auto=format&fit=crop",
+        "category": "Home, Garden & Kitchen",
+        "categoryId": 3,
+        "subCategory": "Art & Collectibles",
+        "tags": [
+            "Home, Garden & Kitchen",
+            "Art & Collectibles"
+        ]
+    },
+    {
+        "id": 1056,
+        "name": "Handcrafted Art & Collectibles - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 3281,
+        "originalPrice": 4593,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=150&auto=format&fit=crop",
+        "category": "Home, Garden & Kitchen",
+        "categoryId": 3,
+        "subCategory": "Art & Collectibles",
+        "tags": [
+            "Home, Garden & Kitchen",
+            "Art & Collectibles"
+        ]
+    },
+    {
+        "id": 1057,
+        "name": "Royal Jaipur Clutches & Evening Bags - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 7819,
+        "originalPrice": 10946,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?q=80&w=150&auto=format&fit=crop",
+        "category": "Home, Garden & Kitchen",
+        "categoryId": 3,
+        "subCategory": "Clutches & Evening Bags",
+        "tags": [
+            "Home, Garden & Kitchen",
+            "Clutches & Evening Bags"
+        ]
+    },
+    {
+        "id": 1058,
+        "name": "Handcrafted Clutches & Evening Bags - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 4170,
+        "originalPrice": 5838,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?q=80&w=150&auto=format&fit=crop",
+        "category": "Home, Garden & Kitchen",
+        "categoryId": 3,
+        "subCategory": "Clutches & Evening Bags",
+        "tags": [
+            "Home, Garden & Kitchen",
+            "Clutches & Evening Bags"
+        ]
+    },
+    {
+        "id": 1059,
+        "name": "Royal Jaipur Bags & Purses - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 4819,
+        "originalPrice": 6746,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=150&auto=format&fit=crop",
+        "category": "Home, Garden & Kitchen",
+        "categoryId": 3,
+        "subCategory": "Bags & Purses",
+        "tags": [
+            "Home, Garden & Kitchen",
+            "Bags & Purses"
+        ]
+    },
+    {
+        "id": 1060,
+        "name": "Handcrafted Bags & Purses - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 3784,
+        "originalPrice": 5297,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=150&auto=format&fit=crop",
+        "category": "Home, Garden & Kitchen",
+        "categoryId": 3,
+        "subCategory": "Bags & Purses",
+        "tags": [
+            "Home, Garden & Kitchen",
+            "Bags & Purses"
+        ]
+    },
+    {
+        "id": 1061,
+        "name": "Royal Jaipur Potli Bags - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 6523,
+        "originalPrice": 9132,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?q=80&w=150&auto=format&fit=crop",
+        "category": "Home, Garden & Kitchen",
+        "categoryId": 3,
+        "subCategory": "Potli Bags",
+        "tags": [
+            "Home, Garden & Kitchen",
+            "Potli Bags"
+        ]
+    },
+    {
+        "id": 1062,
+        "name": "Handcrafted Potli Bags - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 3095,
+        "originalPrice": 4333,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?q=80&w=150&auto=format&fit=crop",
+        "category": "Home, Garden & Kitchen",
+        "categoryId": 3,
+        "subCategory": "Potli Bags",
+        "tags": [
+            "Home, Garden & Kitchen",
+            "Potli Bags"
+        ]
+    },
+    {
+        "id": 1063,
+        "name": "Royal Jaipur Jewellery - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 7730,
+        "originalPrice": 10822,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=150&auto=format&fit=crop",
+        "category": "Accessories",
+        "categoryId": 4,
+        "subCategory": "Jewellery",
+        "tags": [
+            "Accessories",
+            "Jewellery"
+        ]
+    },
+    {
+        "id": 1064,
+        "name": "Handcrafted Jewellery - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 6037,
+        "originalPrice": 8451,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=150&auto=format&fit=crop",
+        "category": "Accessories",
+        "categoryId": 4,
+        "subCategory": "Jewellery",
+        "tags": [
+            "Accessories",
+            "Jewellery"
+        ]
+    },
+    {
+        "id": 1065,
+        "name": "Royal Jaipur Bangles - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 5319,
+        "originalPrice": 7446,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=150&auto=format&fit=crop",
+        "category": "Accessories",
+        "categoryId": 4,
+        "subCategory": "Bangles",
+        "tags": [
+            "Accessories",
+            "Bangles"
+        ]
+    },
+    {
+        "id": 1066,
+        "name": "Handcrafted Bangles - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 5400,
+        "originalPrice": 7559,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=150&auto=format&fit=crop",
+        "category": "Accessories",
+        "categoryId": 4,
+        "subCategory": "Bangles",
+        "tags": [
+            "Accessories",
+            "Bangles"
+        ]
+    },
+    {
+        "id": 1067,
+        "name": "Royal Jaipur Moissanite Stones - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 6073,
+        "originalPrice": 8502,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?q=80&w=150&auto=format&fit=crop",
+        "category": "Accessories",
+        "categoryId": 4,
+        "subCategory": "Moissanite Stones",
+        "tags": [
+            "Accessories",
+            "Moissanite Stones"
+        ]
+    },
+    {
+        "id": 1068,
+        "name": "Handcrafted Moissanite Stones - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 1627,
+        "originalPrice": 2277,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?q=80&w=150&auto=format&fit=crop",
+        "category": "Accessories",
+        "categoryId": 4,
+        "subCategory": "Moissanite Stones",
+        "tags": [
+            "Accessories",
+            "Moissanite Stones"
+        ]
+    },
+    {
+        "id": 1069,
+        "name": "Royal Jaipur Bracelets - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 6072,
+        "originalPrice": 8500,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=150&auto=format&fit=crop",
+        "category": "Accessories",
+        "categoryId": 4,
+        "subCategory": "Bracelets",
+        "tags": [
+            "Accessories",
+            "Bracelets"
+        ]
+    },
+    {
+        "id": 1070,
+        "name": "Handcrafted Bracelets - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 8097,
+        "originalPrice": 11335,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=150&auto=format&fit=crop",
+        "category": "Accessories",
+        "categoryId": 4,
+        "subCategory": "Bracelets",
+        "tags": [
+            "Accessories",
+            "Bracelets"
+        ]
+    },
+    {
+        "id": 1071,
+        "name": "Royal Jaipur Rings - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 8546,
+        "originalPrice": 11964,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?q=80&w=150&auto=format&fit=crop",
+        "category": "Accessories",
+        "categoryId": 4,
+        "subCategory": "Rings",
+        "tags": [
+            "Accessories",
+            "Rings"
+        ]
+    },
+    {
+        "id": 1072,
+        "name": "Handcrafted Rings - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 6245,
+        "originalPrice": 8743,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?q=80&w=150&auto=format&fit=crop",
+        "category": "Accessories",
+        "categoryId": 4,
+        "subCategory": "Rings",
+        "tags": [
+            "Accessories",
+            "Rings"
+        ]
+    },
+    {
+        "id": 1073,
+        "name": "Royal Jaipur Necklaces - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 2376,
+        "originalPrice": 3326,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=150&auto=format&fit=crop",
+        "category": "Accessories",
+        "categoryId": 4,
+        "subCategory": "Necklaces",
+        "tags": [
+            "Accessories",
+            "Necklaces"
+        ]
+    },
+    {
+        "id": 1074,
+        "name": "Handcrafted Necklaces - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 5197,
+        "originalPrice": 7275,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=150&auto=format&fit=crop",
+        "category": "Accessories",
+        "categoryId": 4,
+        "subCategory": "Necklaces",
+        "tags": [
+            "Accessories",
+            "Necklaces"
+        ]
+    },
+    {
+        "id": 1075,
+        "name": "Royal Jaipur Gemstone - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 6526,
+        "originalPrice": 9136,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?q=80&w=150&auto=format&fit=crop",
+        "category": "Accessories",
+        "categoryId": 4,
+        "subCategory": "Gemstone",
+        "tags": [
+            "Accessories",
+            "Gemstone"
+        ]
+    },
+    {
+        "id": 1076,
+        "name": "Handcrafted Gemstone - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 7339,
+        "originalPrice": 10274,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?q=80&w=150&auto=format&fit=crop",
+        "category": "Accessories",
+        "categoryId": 4,
+        "subCategory": "Gemstone",
+        "tags": [
+            "Accessories",
+            "Gemstone"
+        ]
+    },
+    {
+        "id": 1077,
+        "name": "Royal Jaipur Earrings - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 5367,
+        "originalPrice": 7513,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=150&auto=format&fit=crop",
+        "category": "Accessories",
+        "categoryId": 4,
+        "subCategory": "Earrings",
+        "tags": [
+            "Accessories",
+            "Earrings"
+        ]
+    },
+    {
+        "id": 1078,
+        "name": "Handcrafted Earrings - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 4859,
+        "originalPrice": 6802,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=150&auto=format&fit=crop",
+        "category": "Accessories",
+        "categoryId": 4,
+        "subCategory": "Earrings",
+        "tags": [
+            "Accessories",
+            "Earrings"
+        ]
+    },
+    {
+        "id": 1079,
+        "name": "Royal Jaipur Top Handle Bags - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 8750,
+        "originalPrice": 12250,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=150&auto=format&fit=crop",
+        "category": "Jewellery",
+        "categoryId": 5,
+        "subCategory": "Top Handle Bags",
+        "tags": [
+            "Jewellery",
+            "Top Handle Bags"
+        ]
+    },
+    {
+        "id": 1080,
+        "name": "Handcrafted Top Handle Bags - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 3427,
+        "originalPrice": 4797,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=150&auto=format&fit=crop",
+        "category": "Jewellery",
+        "categoryId": 5,
+        "subCategory": "Top Handle Bags",
+        "tags": [
+            "Jewellery",
+            "Top Handle Bags"
+        ]
+    },
+    {
+        "id": 1081,
+        "name": "Royal Jaipur Crossbelt - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 1432,
+        "originalPrice": 2004,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=150&auto=format&fit=crop",
+        "category": "Jewellery",
+        "categoryId": 5,
+        "subCategory": "Crossbelt",
+        "tags": [
+            "Jewellery",
+            "Crossbelt"
+        ]
+    },
+    {
+        "id": 1082,
+        "name": "Handcrafted Crossbelt - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 3105,
+        "originalPrice": 4347,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=150&auto=format&fit=crop",
+        "category": "Jewellery",
+        "categoryId": 5,
+        "subCategory": "Crossbelt",
+        "tags": [
+            "Jewellery",
+            "Crossbelt"
+        ]
+    },
+    {
+        "id": 1083,
+        "name": "Royal Jaipur Lapel Pins - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 4307,
+        "originalPrice": 6029,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=150&auto=format&fit=crop",
+        "category": "Jewellery",
+        "categoryId": 5,
+        "subCategory": "Lapel Pins",
+        "tags": [
+            "Jewellery",
+            "Lapel Pins"
+        ]
+    },
+    {
+        "id": 1084,
+        "name": "Handcrafted Lapel Pins - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 6230,
+        "originalPrice": 8722,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=150&auto=format&fit=crop",
+        "category": "Jewellery",
+        "categoryId": 5,
+        "subCategory": "Lapel Pins",
+        "tags": [
+            "Jewellery",
+            "Lapel Pins"
+        ]
+    },
+    {
+        "id": 1085,
+        "name": "Royal Jaipur Pocket Squares - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 3495,
+        "originalPrice": 4893,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=150&auto=format&fit=crop",
+        "category": "Jewellery",
+        "categoryId": 5,
+        "subCategory": "Pocket Squares",
+        "tags": [
+            "Jewellery",
+            "Pocket Squares"
+        ]
+    },
+    {
+        "id": 1086,
+        "name": "Handcrafted Pocket Squares - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 3999,
+        "originalPrice": 5598,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=150&auto=format&fit=crop",
+        "category": "Jewellery",
+        "categoryId": 5,
+        "subCategory": "Pocket Squares",
+        "tags": [
+            "Jewellery",
+            "Pocket Squares"
+        ]
+    },
+    {
+        "id": 1087,
+        "name": "Royal Jaipur Painting - Premium Edition",
+        "brand": "Jaipurio Royal",
+        "price": 6302,
+        "originalPrice": 8822,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=150&auto=format&fit=crop",
+        "category": "Jewellery",
+        "categoryId": 5,
+        "subCategory": "Painting",
+        "tags": [
+            "Jewellery",
+            "Painting"
+        ]
+    },
+    {
+        "id": 1088,
+        "name": "Handcrafted Painting - Heritage Collection",
+        "brand": "Jaipurio Royal",
+        "price": 8154,
+        "originalPrice": 11415,
+        "discount": "29% off",
+        "rating": 4.5,
+        "ratingCount": 45,
+        "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=150&auto=format&fit=crop",
+        "category": "Jewellery",
+        "categoryId": 5,
+        "subCategory": "Painting",
+        "tags": [
+            "Jewellery",
+            "Painting"
+        ]
     }
 ];
-
-export const videos = [
-    {
-        id: 1,
-        user: "Nikki chauhan",
-        type: "Sponsored",
-        views: "2.3L",
-        title: "LOOKING FOR SOME GIFT IDEAS FOR YOUR MAN?",
-        likes: "360",
-        comments: "12",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDQccKpbs5j7JThIXBWIUIEAb1P9OQRxv5tspc2jIgDR9rNuwp7w8vJMnJrxgeMclIw648gCX5JktKnLmJ95LA-5rQfFYJ7qv5zaXGJQcQTS2SEyid94otZE7p2ugSXNsuOCvN7RInLmdMWCyl3piqM1C2GFlN0NLXj6qCEvFFAckgJHtA4K6xKTdA2WfQLFiglNuvLNwQuuygab64qIYQ_b0faQpEQsWbWquUFyLbFmaVUO818Id1KsAnpIjOL9LPQj_3GhGpWZPyC",
-        avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuBNJXnGE_ZmJO3awIF8rz7ijd8PYy2M9eath8VuPWZH_wDlwEiuGibeeINye3RRZR-8xZnLuRgQCpcJAi5fUi5fyf_MrQgKndSOKtlpTfbugS4u5yNpiazYwfa5bXtN1yGoulIeOmzla59ekdapfPAeCs210Vjv0JUoE8ychZ5IjbSF63xJxMTNG5kMcnBryqpOtbsS1Iuim7yoRwC0M7qHvJtfV438AxprHExyKhKtGR9QYcmkbZO8Mu49xZ0lF5RLVbRl05SNFeGz"
-    },
-    {
-        id: 2,
-        user: "Abhishek sawant",
-        type: "Verified",
-        views: "14.1L",
-        title: "Nike Air Max Premium Edition Special Offer",
-        likes: "1.2K",
-        comments: "45",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDnDrFEzMuLm6U-vzwFcTxHIGfwrW9jsktHOa97spZeQPgMf-KIJaF23I9vFexrOWUNa-II8Ihj0lt-Wmo8JU1P31dSLmU02-OAi1GozDbV-eYJqZ4q5GVC4KtiED5sg3WO8bYkQvndeI1kafJRkjgcJigFUJsgHuaroe3X_69OkvXdCsUCJwfgtUlnZqvOLoL2o-GblkKlH6NRA3JsoJqjPbivYzbCwKUlLGgJSK5cBcwF4actK0Q8P_GP3SmWG8YzCU-CaNQ3V3Km"
-    },
-];
-
-export const fashionValueDeals = [
-    {
-        id: 'fvd1',
-        name: 'True Wireless',
-        discount: 'Min. 50% Off',
-        image: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=80&w=300&auto=format&fit=crop'
-    },
-    {
-        id: 'fvd2',
-        name: "Men's Slippers & Flip Flops",
-        discount: 'Min. 70% Off',
-        image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=300&auto=format&fit=crop',
-        category: 'Fashion',
-        subcategory: 'Footwear'
-    },
-    {
-        id: 'fvd3',
-        name: "Men's Casual Shoes",
-        discount: 'Min. 70% Off',
-        image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=300&auto=format&fit=crop',
-        category: 'Fashion',
-        subcategory: 'Footwear'
-    },
-    {
-        id: 'fvd4',
-        name: 'Wrist Watches',
-        discount: 'Min. 90% Off',
-        image: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?q=80&w=300&auto=format&fit=crop',
-        category: 'Fashion',
-        subcategory: 'Watches'
-    },
-    {
-        id: 'fvd5',
-        name: 'Backpacks',
-        discount: 'Min. 60% Off',
-        image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=300',
-        category: 'Fashion',
-        subcategory: 'Bags'
-    },
-    {
-        id: 'fvd6',
-        name: 'Sunglasses',
-        discount: 'Flat 50% Off',
-        image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=300&auto=format&fit=crop',
-        category: 'Fashion',
-        subcategory: 'Accessories'
-    },
-    {
-        id: 'fvd7',
-        name: 'Kurta Sets',
-        discount: 'Under ₹499',
-        image: 'https://images.unsplash.com/photo-1583391733958-e0295c29026.jpg?q=80&w=300',
-        category: 'Fashion',
-        subcategory: 'Ethnic'
-    },
-    {
-        id: 'fvd8',
-        name: 'Sports Shoes',
-        discount: 'Min. 40% Off',
-        image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=300',
-        category: 'Fashion',
-        subcategory: 'Footwear'
-    },
-    {
-        id: 'fvd9',
-        name: 'Handbags',
-        discount: 'Flat 60% Off',
-        image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=300',
-        category: 'Fashion',
-        subcategory: 'Bags'
-    }
-];
-
-export const interestingFinds = [
-    {
-        title: 'Best Picks',
-        tag: 'Under ₹399',
-        image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=300&auto=format&fit=crop', // Saree
-        category: 'Fashion',
-        subcategory: 'Ethnic'
-    },
-    {
-        title: 'Top Collection',
-        tag: 'Special offer',
-        image: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=300&auto=format&fit=crop', // Underwear
-        category: 'Fashion',
-        subcategory: 'Innerwear'
-    },
-    {
-        title: 'Wedding Special',
-        tag: 'Grab Now',
-        image: 'https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=300&auto=format&fit=crop',
-        category: 'Fashion',
-        subcategory: 'Ethnic'
-    },
-    {
-        title: 'Designer Wear',
-        tag: 'New Arrivals',
-        image: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=300&auto=format&fit=crop',
-        category: 'Fashion',
-        subcategory: 'Dresses'
-    },
-    {
-        title: 'Party Essentials',
-        tag: 'Min 50% Off',
-        image: 'https://images.unsplash.com/photo-1627483262268-9c96d8e360c7?q=80&w=300&auto=format&fit=crop',
-        category: 'Electronics',
-        subcategory: 'Audio'
-    },
-    {
-        title: 'Gym Gear',
-        tag: 'Start at ₹299',
-        image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=300&auto=format&fit=crop',
-        category: 'Sports',
-        subcategory: 'Tops'
-    },
-    {
-        title: 'Top Collection',
-        tag: 'Min. 60% Off',
-        image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=300&auto=format&fit=crop', // Mop
-        category: 'Home',
-        subcategory: 'Cleaning'
-    },
-    {
-        title: 'New Range',
-        tag: 'Special offer',
-        image: 'https://images.unsplash.com/photo-1511067007398-7e4b90cfa4bc?q=80&w=300&auto=format&fit=crop', // Jar of nuts
-        category: 'Grocery',
-        subcategory: 'Snacks'
-    },
-    {
-        title: 'Tech Gadgets',
-        tag: 'From ₹199',
-        image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=300',
-        category: 'Electronics',
-        subcategory: 'Accessories'
-    },
-    {
-        title: 'Home Decor',
-        tag: 'Min. 40% Off',
-        image: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=300',
-        category: 'Home',
-        subcategory: 'Decor'
-    }
-];
-
-export const saleBanner = {
-    image: 'https://images.unsplash.com/photo-1532375810709-75b1da00537c?q=80&w=1200&auto=format&fit=crop', // Better Republic Day vibe
-    alt: 'REPUBLIC DAY SALE IS LIVE!'
-};
-
-export const resolveCategoryPath = (baseCategoryName, subPathStr) => {
-    // 1. Find Base Category
-    let current = categories.find(c => c.name.toLowerCase() === baseCategoryName?.toLowerCase());
-    if (!current) return null;
-
-    const breadcrumbs = [current];
-
-    // 2. Traverse Sub Path if exists
-    if (subPathStr) {
-        const segments = subPathStr.split('/').filter(Boolean); // "Mobiles", "Samsung"
-        for (const segment of segments) {
-            if (current.subCategories) {
-                const decodedSegment = decodeURIComponent(segment);
-                const found = current.subCategories.find(s => s.name.toLowerCase() === decodedSegment.toLowerCase());
-                if (found) {
-                    current = found;
-                    breadcrumbs.push(current);
-                }
-            }
-        }
-    }
-
-    // 3. Filter Products
-    const filteredProducts = products.filter(p => {
-        // Match Base Category (fallback to category string if tags not present, or if base category matches)
-        if (p.category === breadcrumbs[0].name) {
-            // If we are deeper than base
-            if (breadcrumbs.length > 1) {
-                const currentName = current.name.toLowerCase();
-
-                // Check tags if available (Preferred)
-                if (p.tags) {
-                    return p.tags.some(tag => tag.toLowerCase() === currentName);
-                }
-
-                return p.name.toLowerCase().includes(currentName);
-            }
-            return true;
-        }
-
-        // Also check tags for base category match if p.category doesn't match directly (e.g. multi-category items)
-        if (p.tags && p.tags.includes(breadcrumbs[0].name)) {
-            if (breadcrumbs.length > 1) {
-                const currentName = current.name.toLowerCase();
-                return p.tags.some(tag => tag.toLowerCase() === currentName);
-            }
-            return true;
-        }
-
-        return false;
-    });
-
-    return {
-        data: current,
-        breadcrumbs,
-        products: filteredProducts,
-        isLeaf: !current.subCategories || current.subCategories.length === 0
-    };
-};

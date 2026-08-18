@@ -12,18 +12,30 @@ export const UPLOADS_URL_PREFIX = '/uploads';
 
 // Stored URLs must be absolute: the frontend runs on a different origin than
 // the API, so a relative /uploads/... path would resolve against the storefront.
-const getAssetBaseUrl = () =>
-    String(process.env.ASSET_BASE_URL || 'https://backend.jaipurio.in').replace(/\/+$/, '');
+const getAssetBaseUrl = () => {
+    let base = String(process.env.ASSET_BASE_URL || 'https://backend.jaipurio.in').replace(/\/+$/, '');
+    if (base.toLowerCase().endsWith('/uploads')) {
+        base = base.slice(0, -8);
+    }
+    return base;
+};
 
-export const toPublicUrl = (relativePath) =>
-    `${getAssetBaseUrl()}${UPLOADS_URL_PREFIX}/${String(relativePath).replace(/^\/+/, '')}`;
+export const toPublicUrl = (relativePath) => {
+    let cleanPath = String(relativePath || '').replace(/^\/+/, '');
+    cleanPath = cleanPath.replace(/^(\.\.\/)+/g, '').replace(/^uploads\//i, '');
+    return `${getAssetBaseUrl()}/uploads/${cleanPath}`;
+};
 
 // Folder values come from our own call sites, but never let one escape uploads/.
 const sanitizeFolder = (folder = '') => {
-    const parts = String(folder || 'ecom_uploads')
+    let parts = String(folder || 'ecom_uploads')
         .split('/')
         .map((segment) => segment.trim().replace(/[^A-Za-z0-9._-]/g, ''))
         .filter((segment) => segment && segment !== '.' && segment !== '..');
+
+    if (parts.length > 0 && parts[0].toLowerCase() === 'uploads') {
+        parts.shift();
+    }
 
     return parts.length ? parts.join('/') : 'ecom_uploads';
 };
